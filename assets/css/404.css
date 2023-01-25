@@ -1,0 +1,49 @@
+@import url(main.css);
+
+.main {
+    height: 100vh;
+    background-color: var(--dark-gray);
+    padding-top: 128px;
+    padding-bottom: 173px;
+    background-image: url('../img/404-1920/back.jpg');
+    background-repeat: no-repeat;
+}
+.main__nav {
+    display: flex;
+    justify-content: center;
+}
+.main__nav-item {
+    color: var(--white);
+    text-decoration: underline;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 16px;
+}
+.main__nav-item:not(:last-child) {
+    margin-right: 45px;
+}
+.main__404 {
+    font-size: 381px;
+    color: var(--white);
+}
+.main-kia {
+    position: absolute;
+    top: 31%;
+    left: 48%;
+    border-radius: 51px;
+}
+.main__title {
+    font-size: 44px;
+    color: var(--white);
+    font-weight: 400;
+    margin-bottom: 26px;
+}
+.main__subtitle {
+    text-align: center;
+    color: var(--light-gray);
+    font-size: 18px;
+    margin-bottom: 60px;
+}
+.main__btn {
+    padding: 25px 83px;
+}

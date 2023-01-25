@@ -1,0 +1,16 @@
+@import url(main.css);
+@import url(index.css);
+
+.peoples__list {
+  flex-wrap: wrap;
+}
+
+.otzivi-btn {
+  width: 270px;
+  height: 65px;
+  margin-bottom: 100px;
+}
+
+.peoples__list-item {
+  margin-bottom: 30px;
+}

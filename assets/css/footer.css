@@ -1,0 +1,160 @@
+.footer {
+    background-color: var(--dark-gray);
+    border-radius: 25px;
+    margin-right: 25px;
+    margin-left: 25px;
+    padding-top: 40px;
+}
+.footer__nav {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 35px;
+    border-bottom: 1px solid var(--light-gray);
+    margin-bottom: 60px;
+}
+.footer__nav-item {
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--white);
+}
+.footer__main {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 40px;
+}
+.footer__main-left {
+    width: 45%;
+}
+.footer__main-left__top {
+    display: flex;
+    justify-content: space-between;
+}
+.footer__main-left__top-title {
+    display: flex;
+}
+.footer__title {
+    font-weight: 900;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 25px;
+}
+.footer__main-left__top-title__map {
+    font-weight: 400;
+    font-size: 16px;
+    color: var(--light-gray);
+    text-decoration-line: underline;
+    font-weight: 900;
+    margin-left: 20px;
+}
+.footer__main-left__top-map {
+    font-weight: 400;
+    font-size: 16px;
+    color: var(--light-gray);
+    text-decoration-line: underline;
+}
+.footer__main-left__item {
+    font-weight: 400;
+    font-size: 16px;
+    color: var(--light-gray);
+    text-decoration-line: underline;
+}
+.footer__main-left__item:not(:nth-child(6n)){
+    margin-bottom: 15px;
+}
+
+.footer__main-center__list {
+    display: flex;
+    flex-direction: column;
+}
+.footer__main-center__item {
+    font-weight: 400;
+    font-size: 16px;
+    color: var(--light-gray);
+    text-decoration: underline;
+}
+.footer__main-center__item:not(:last-child) {
+    margin-bottom: 15px;
+}
+
+.footer__main-right__item {
+    display: flex;
+    align-items: center;
+}
+.footer__main-right__item:not(:last-child){
+    margin-bottom: 15px;
+}
+.footer__main-right__item-info {
+    font-weight: 400;
+    font-size: 16px;
+    color: var(--light-gray);
+    padding-left: 10px;
+}
+.footer__main-right__item-info span {
+    color: var(--dark-red);
+    text-decoration: underline;
+}
+.footer__main-right__select {
+    width: 326px;
+    height: 40px;
+    align-items: center;
+    padding-left: 15px;
+    background-color: #595D60;
+    border: none;
+    border-radius: 9px;
+    color: var(--white);
+    padding-right: 15px;
+    margin-top: 10px;
+}
+.footer__bottom {
+    background-color: #1B1B1B;
+    padding-bottom: 33px;
+    padding-top: 40px;
+}
+.footer__bottom-cont{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer__bottom-left__copy {
+    font-weight: 400;
+    font-size: 18px;
+    color: var(--white);
+    margin-bottom: 20px;
+}
+.footer__bottom-left__links {
+    display: flex;
+}
+.footer__bottom-left__links-item {
+    font-weight: 400;
+    font-size: 14px;
+    color: var(--light-gray);
+    text-decoration: underline;
+}
+.footer__bottom-left__links-item:nth-child(1) {
+    margin-right: 20px;
+}
+.footer__bottom-center {
+    width: 45%;
+    font-weight: 400;
+    font-size: 14px;
+    color: var(--light-gray);
+    margin-left: 30px;
+}
+
+.footer__cars {
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer__cars-div {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer__cars-div:not(:last-child) {
+    margin-right: 20px;
+}

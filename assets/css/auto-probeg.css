@@ -1,0 +1,144 @@
+@import url(main.css);
+@import url(index.css);
+
+.choose {
+    padding-top: 30px;
+    margin-bottom: 35px;
+}
+
+.choose__marks {
+    margin-right: 40px;
+}
+
+.params-choice__select {
+    margin-bottom: 15px;
+}
+
+.choose__params {
+    padding-right: 30px;
+}
+
+.choose__params-title {
+    margin-bottom: 35px;
+}
+
+.choose__params-price__top {
+    display: flex;
+    justify-content: space-between;
+}
+
+.choose__params-price__top span {
+    font-weight: 700;
+}
+
+.params-choice__select {
+    width: 237px;
+    height: 45px;
+    padding-top: 0;
+    padding-bottom: 0;
+    font-size: 14px;
+    margin-right: 10px !important;
+}
+
+.choose__params-choice {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 25px;
+    justify-content: space-between;
+}
+
+.choose__params-btn {
+    width: 100%;
+}
+
+.probeg {
+}
+.probeg__cards {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.probeg__cards-item {
+    padding-bottom: 25px;
+    border: 1px solid #E1E1E1;
+    border-radius: 25px;
+    width: 447px;
+    margin-bottom: 30px;
+}
+.probeg__cards-item__top {
+    margin-bottom: 21px;
+}
+.slider-photos {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    top: -20px;
+}
+.slide {
+    margin-right: 10px;
+    width: 20%;
+    height: 5px;
+    background-color: var(--white);
+    border-radius: 20px;
+}
+.probeg__cards-item__title {
+    font-size: 22px;
+    color: var(--dark-gray);
+    border-bottom: 1px solid var(--gray);
+    padding-bottom: 21px;
+    margin-bottom: 20px;
+}
+.probeg__cards-item__params {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+.probeg__cards-item__content {
+    padding-left: 25px;
+    padding-right: 25px;
+}
+.probeg__cards-item__params-item {
+    text-align: left;
+    color: var(--light-gray);
+    font-size: 16px;
+}
+.probeg__cards-item__params-item span {
+    font-weight: 700;
+    color: var(--dark-gray);
+}
+.probeg__cards-item__price {
+    display: flex;
+    margin-bottom: 25px;
+    align-items: center;
+}
+.probeg__cards-item__price p {
+    margin-right: 15px;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--dark-gray);
+}
+.probeg__cards-item__price span {
+    color: var(--light-gray);
+    font-size: 14px;
+}
+.auto__card-btns {
+    display: flex;
+}
+
+.auto__card-btns__btn::before {
+    right: -11px;
+}
+
+.auto__card-btns__btn:nth-child(3)::before {
+    right: -15px;
+}
+
+.probeg__btn-cont {
+    text-align: center;
+}
+
+.probeg__more {
+    padding: 25px 73px 25px 73px;
+    margin-bottom: 75px;
+}

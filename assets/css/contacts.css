@@ -1,0 +1,42 @@
+@import url(main.css);
+@import url(index.css);
+
+.contacts__list {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 67px;
+    margin-bottom: 70px;
+}
+.contacts__list-item {
+    display: flex;
+    align-items: flex-start;
+}
+.contacts__list-item__content {
+    margin-left: 25px;
+}
+.contacts__list-item__content-title {
+    color: var(--dark-gray);
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+.contacts__list-item__content-desc {
+    color: var(--light-gray);
+}
+.contacts__about {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 100px;
+}
+.map {
+    margin-bottom: 70px;
+}
+.contacts__about-left {
+    max-width: 39%;
+}
+.contacts__about-left__des {
+    margin-top: 30px;
+    font-size: 16px;
+    color: var(--light-gray);
+}

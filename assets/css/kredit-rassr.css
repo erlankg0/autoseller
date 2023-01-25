@@ -1,0 +1,16 @@
+@import url(main.css);
+@import url(index.css);
+
+/* KREDIT */
+
+.kredit__list {
+    border-top: none;
+    padding-top: 0;
+}
+
+/* OUR-IDEAS */
+
+.our-ideas__sale {
+    margin-top: 0;
+    margin-bottom: 80px;
+}

@@ -1,0 +1,142 @@
+@import url(main.css);
+@import url(index.css);
+@import url(auto-probeg.css);
+
+.auto__cards {
+    justify-content: start;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+.auto__card-title {
+    margin-bottom: 10px;
+}
+.auto__cards-item:not(:nth-child(3)) {
+    margin-right: 20px;
+}
+.auto__cards-item{
+    min-height: 415px;
+}
+.main-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.main-top__left {
+    display: flex;
+    align-items: center;
+}
+.btn-fav {
+    font-size: 16px;
+    padding: 10px 15px 10px 15px;
+    border-radius: 11px;
+    border: none;
+    margin-bottom: 70px;
+}
+.btn-fav span {
+    font-weight: 700;
+    color: var(--dark-red);
+}
+.main__btns-new {
+    margin-left: 54px;
+}
+.main__count {
+    margin-bottom: 70px;
+}
+.btn-fav:not(:last-child) {
+    margin-right: 15px;
+}
+.main__count span {
+    font-weight: 700;
+}
+/* .auto__cards-item:nth-child(1){
+    background-color: rgba(0,0,0,0.5);
+    z-index: 123123;
+} */
+
+.probeg__cards {
+    margin-top: 25px;
+}
+
+.taxi__cards {
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 120px;
+}
+.taxi__cards-item {
+    width: 447px;
+    border: 1px solid var(--gray);
+    border-radius: 25px;
+    padding: 25px;
+}
+.taxi__cards-item:nth-child(1) {
+    margin-right: 30px;
+}
+.taxi__cards-item__top {
+    display: flex;
+    justify-content: space-between;
+}
+.taxi__cards-item__top p {
+    background-color: #E1E1E1;
+    border-radius: 51px;
+    color: var(--dark-gray);
+    font-weight: 700;
+    padding: 5px 15px;
+    text-transform: uppercase;
+}
+.taxi__cards-item__imgs {
+    gap: 15px;
+}
+.taxi__cards-item__content {
+    text-align: center;
+}
+.taxi__cards-item__content-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--dark-gray);
+    text-align: center;
+}
+.taxi__cards-item__content-price {
+    font-size: 20px;
+    color: var(--light-gray);
+}
+.taxi__cards-item__content-day {
+    font-size: 34px;
+    color: var(--dark-gray);
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+.taxi__cards-item__params {
+    margin-top: 30px;
+}
+.taxi__cards-item__params-item {
+    display: flex;
+}
+.taxi__cards-item__params-item p{
+    margin-left: 12px;
+}
+.taxi__cards-item__btns {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 25px;
+}
+.taxi__cards-item__btns-more {
+    padding: 12px 50px 12px 50px;
+    color: var(--dark-gray);
+    background-color: #E1E1E1;
+}
+.taxi__cards-item__btns-request {
+    padding: 12px 25px 12px 25px;
+}
+
+.main-cont {
+    display: none;
+}
+
+.probeg-cont {
+    display: none;
+}
+
+.taxi-cont {
+    display: none;
+}

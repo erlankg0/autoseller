@@ -1,0 +1,277 @@
+@import url(header.css);
+@import url(main.css);
+@import url(index.css);
+@import url(footer.css);
+
+/* Hero */
+
+.hero {
+    background-image: url('/img/strahovanie-1920/hero-back.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-top: 30px;
+    padding-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 630px;
+    border-radius: 25px;
+}
+
+.hero__nav a{
+    color: var(--white);
+    font-size: 14px;
+    font-weight: 400;
+}
+.hero__title {
+    font-size: 60px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 20px;
+    margin-top: 54px;
+}
+.hero__desc {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--white);
+    max-width: 35%;
+    margin-bottom: 54px;
+}
+.hero__advantages {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 50%;
+}
+.hero__advantages-item {
+    color: var(--white);
+    display: flex;
+    align-items: center;
+}
+
+.hero__advantages-item img{
+    margin-right: 20px;
+}
+
+.hero__advantages-item:not(:nth-child(3n)) {
+    margin-right: 35px;
+}
+
+.hero__advantages-item:nth-child(1),
+.hero__advantages-item:nth-child(2),
+.hero__advantages-item:nth-child(3) {
+    margin-bottom: 40px;
+}
+
+.hero__special {
+    position: relative;
+    min-height: 160px;
+    border: 1px solid var(--dark-gray);
+    background-color: var(--white);
+    border-radius: 25px;
+    top: 25px;
+    padding-top: 32px;
+    padding-left: 42px;
+    padding-bottom: 32px;
+    display: flex;
+}
+.hero__special-left p{
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--dark-gray);
+    max-width: 66%;
+}
+
+.hero__special-left span {
+    color: var(--white);
+    font-size: 16px;
+    font-weight: 700;
+    background-color: var(--dark-red);
+    padding-top: 3px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 15px;
+}
+
+.hero__special-left p {
+    margin-bottom: 15px;
+}
+
+.hero__special-right p{
+    font-weight: 400;
+    font-size: 13px;
+    color: var(--light-gray);
+    margin-top: 11px;
+}
+
+.hero__special-right__top {
+    display: flex;
+    justify-content: space-between;
+}
+
+.hero__special-right__top input{
+    background-color: #E1E1E1;
+    color: var(--dark-gray);
+    border: none;
+    width: 320px;
+    height: 65px;
+    padding-left: 17px;
+    border-radius: 5px;
+    margin-right: 20px;
+}
+
+.hero__special-right__btn {
+    width: 320px;
+    height: 65px;
+    text-align: center;
+    background-color: var(--dark-red);
+    text-transform: uppercase;
+    color: var(--white);
+    border-radius: 6px;
+    border: none;
+}
+
+/* POLIS */
+
+.polis {
+    margin-top: 139px;
+    margin-bottom: 96px;
+}
+
+.polis-cont {
+    display: flex;
+    justify-content: space-between;
+}
+
+.polis__item {
+    width: 684px;
+    height: 151px;
+    background-color: var(--gray);
+    display: flex;
+    align-items: center;
+    padding: 15px 28px 17px 20px;
+    border-radius: 25px;
+}
+.polis__item-text {
+}
+.polis__item-text__title {
+    font-weight: 900;
+    font-size: 20px;
+    color: var(--dark-gray);
+    text-transform: uppercase;
+}
+.polis__item-text__desc {
+    font-weight: 400;
+    font-size: 16px;
+    color: var(--light-gray);
+    width: 90%;
+}
+.polis__item-btn {
+    padding: 14px 40px 14px 40px;
+    height: 47px;
+    background-color: var(--dark-red);
+    color: var(--white);
+    text-transform: uppercase;
+    border: none;
+    font-weight: 700;
+    font-size: 16px;
+    border-radius: 6px;
+}
+
+/* OFORMLENIE */
+
+.oformlenie {
+    background-image: url('../img/strahovanie-1920/oformlenie.png');
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: auto;
+    margin-bottom: 123px;
+}
+
+.oform-cont {
+    width: 40%;
+}
+
+.oformlenie__desc {
+    font-weight: 400;
+    font-size: 16px;
+    color: var(--light-gray);
+    margin-top: 37px;
+    margin-bottom: 32px;
+}
+
+.oformlenie__list-title {
+    font-weight: 700;
+    font-size: 20px;
+    color: var(--dark-gray);
+    margin-bottom: 32px;
+}
+.oformlenie__list-item {
+    display: flex;
+    align-items: center;
+}
+.oformlenie__list-item:not(:last-child) {
+    margin-bottom: 20px;
+}
+.oformlenie__list-item__title {
+    font-weight: 400;
+    font-size: 16px;
+    color: var(--dark-gray);
+    margin-left: 30px;
+}
+.oformlenie__btn {
+    margin-top: 40px;
+    padding: 20px 55px 20px 55px;
+}
+
+/* TARIF */
+
+.tarif {
+}
+.tarif__cont {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+.tarif__cont-item {
+    width: 446px;
+    height: 509px;
+    padding: 40px 35px 40px 35px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    background-color: var(--gray);
+    border-radius: 25px;
+}
+.tarif__cont-item__title {
+    font-weight: 900;
+    font-size: 22px;
+    color: var(--dark-gray);
+}
+.tarif__cont-item__list {
+}
+.tarif__cont-item__list-item {
+    display: flex;
+    align-items: center;
+}
+.tarif__cont-item__list-item:not(:last-child) {
+    margin-bottom: 25px;
+}
+.tarif__cont-item__list-item__desc {
+    font-weight: 400;
+    font-size: 16px;
+    color: var(--light-gray);
+    margin-left: 15px;
+}
+
+.tarif__cont-item__list__btn {
+    padding: 20px 55px 20px 55px;
+}
+
+/* BANKS */
+
+.banks {
+    margin-bottom: 132px;
+}
+
+/* FOOTER */

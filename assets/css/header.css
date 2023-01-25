@@ -1,0 +1,109 @@
+@import url('main.css');
+
+/* header */
+
+/* header-top */
+
+.header-top {
+    background-color: var(--gray);
+    height: 45px;
+    padding-top: 10px;
+}
+
+.cont__h-t,
+.header-bottom__upper-side,
+.header-bottom__list,
+.header-bottom__list-stats,
+.header-bottom__callback {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-bottom__callback img {
+    margin-right: 15px;
+}
+
+.ten-years {
+    background-color: var(--dark-red);
+    border-radius: 22px;
+    color: white;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-weight: 700;
+}
+
+.header-bottom__callback-btn {
+    width: 210px;
+    height: 50px;
+    background-color: var(--dark-red);
+    border-radius: 6px;
+    border: none;
+    color: var(--white);
+    font-size: 16px;
+    font-weight: 700;
+    margin-left: 20px;
+    text-transform: uppercase;
+}
+
+.callback__nums {
+    text-align: right;
+}
+
+.callback-num-1 {
+    color: var(--black);
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.callback-num-2 {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.header-bottom__nav-link {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.header-bottom__nav-link:not(:last-child) {
+    margin-right: 16px;
+}
+
+.header-bottom__nav-link:hover {
+    color: var(--dark-red);
+}
+
+.header-bottom__list-link {
+    text-transform: uppercase;
+    color: var(--black);
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.header-bottom {
+    margin-top: 25px;
+}
+
+.header-bottom__list {
+    margin-top: 20px;
+}
+
+.list-stats__item:not(:last-child) {
+    margin-right: 30px;
+}
+
+.list-stats__item  span{
+    background-color: var(--dark-red);
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 7px;
+    padding-right: 7px;
+    border-radius: 14px;
+    color: var(--white);
+    position: relative;
+    top: -20px;
+    left: -12px;
+}
