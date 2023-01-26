@@ -117,9 +117,9 @@
     border-radius: 25px;
     border: 1px solid var(--medium-gray);
     height: 600px;
-    background-image: url('/img/main-1920/kia-hero-back.png'), url('/img/main-1920/toyota-hero-back.png'), url('/img/main-1920/rapid-hero-back.png'),url('/img/main-1920/hero-back.png');
+    background-image: url('/assets/img/main-1920/kia-hero-back.png'), url('/assets/img/main-1920/toyota-hero-back.png'), url('/assets/img/main-1920/rapid-hero-back.png'), url('/assets/img/main-1920/hero-back.png');
     background-repeat: no-repeat;
-    background-position: 65% 83%,80% 65%,90% 50%,right;
+    background-position: 65% 83%, 80% 65%, 90% 50%, right;
     background-size: 35%, 30%, 25%, contain;
 }
 
@@ -213,15 +213,16 @@
 
 .choose__params-price__input {
     -webkit-appearance: none !important;
-    background:#E1E1E1;
-    height:7px;
+    background: #E1E1E1;
+    height: 7px;
     border-radius: 6px;
 }
+
 .choose__params-price__input::-webkit-slider-thumb {
     -webkit-appearance: none !important;
-    background:var(--dark-red);
-    height:14px;
-    width:14px;
+    background: var(--dark-red);
+    height: 14px;
+    width: 14px;
     border-radius: 50%;
 }
 
@@ -278,7 +279,7 @@
     border-radius: 25px;
     background-color: var(--white);
     box-shadow: 0px 0px 30px rgba(133, 147, 159, 0.3);
-    background-image: url('/img/main-1920/auto-skoda-back.png'), url('/img/main-1920/auto-back.png');
+    background-image: url('/assets/img/main-1920/auto-skoda-back.png'), url('/assets/img/main-1920/auto-back.png');
     background-repeat: no-repeat;
     background-size: 60%, 85%;
     background-position: 85% center, 100% 30%;
@@ -302,7 +303,7 @@
 }
 
 .auto__card-promo span {
-    background-image: url('/img/main-1920/auto-span.png');
+    background-image: url('/assets/img/main-1920/auto-span.png');
     background-size: contain;
     background-repeat: no-repeat;
     color: var(--white);
@@ -360,7 +361,7 @@
 }
 
 .auto__card-gifts__item {
-    background-image: url('/img/main-1920/auto-gift-back.png');
+    background-image: url('/assets/img/main-1920/auto-gift-back.png');
     background-repeat: no-repeat;
     padding-left: 42px;
 }
@@ -420,6 +421,7 @@
     border-bottom-left-radius: 6px;
     width: 130px;
 }
+
 .auto__card-btns__btn:nth-child(1)::before {
     border-left: 15px solid var(--dark-red);
     position: absolute;
@@ -430,6 +432,7 @@
     left: -4px;
     width: 130px;
 }
+
 .auto__card-btns__btn:nth-child(2)::before {
     border-left: 15px solid var(--dark-gray);
 }
@@ -439,6 +442,7 @@
     left: -8px;
     width: 130px;
 }
+
 .auto__card-btns__btn:nth-child(3)::before {
     border-left: 15px solid var(--light-gray);
 }
@@ -513,26 +517,27 @@
 }
 
 .our-ideas__bottomside-card:nth-child(1) {
-    background-image: url('/img/main-1920/our-ideas-1.png');
+    background-image: url('/assets/img/main-1920/our-ideas-1.png');
 }
 
 .our-ideas__bottomside-card:nth-child(2) {
-    background-image: url('/img/main-1920/our-ideas-2.png');
+    background-image: url('/assets/img/main-1920/our-ideas-2.png');
 }
 
 .our-ideas__bottomside-card:nth-child(3) {
-    background-image: url('/img/main-1920/our-ideas-3.png');
+    background-image: url('/assets/img/main-1920/our-ideas-3.png');
 }
+
 .our-ideas__bottomside-card:nth-child(4) {
-    background-image: url('/img/main-1920/our-ideas-1.png');
+    background-image: url('/assets/img/main-1920/our-ideas-1.png');
 }
 
 .our-ideas__bottomside-card:nth-child(6) {
-    background-image: url('/img/main-1920/our-ideas-2.png');
+    background-image: url('/assets/img/main-1920/our-ideas-2.png');
 }
 
 .our-ideas__bottomside-card:nth-child(5) {
-    background-image: url('/img/main-1920/our-ideas-3.png');
+    background-image: url('/assets/img/main-1920/our-ideas-3.png');
 }
 
 .our-ideas__sale {
@@ -540,7 +545,7 @@
     background-color: var(--dark-gray);
     width: 100%;
     min-height: 328px;
-    background-image: url('/img/main-1920/our-ideas-bottom2.png'), url('/img/main-1920/our-ideas-bottom1.png');
+    background-image: url('/assets/img/main-1920/our-ideas-bottom2.png'), url('/assets/img/main-1920/our-ideas-bottom1.png');
     background-repeat: no-repeat;
     background-position: left center;
     border-radius: 25px;
@@ -557,6 +562,7 @@
     font-weight: 700;
     margin-bottom: 10px;
 }
+
 .our-ideas__sale-subtitle {
     font-size: 20px;
     font-weight: 400;
@@ -574,6 +580,7 @@
     justify-content: space-between;
     margin-bottom: 25px;
 }
+
 .our-ideas__sale-form__input {
     background-color: var(--white);
     border: none;
@@ -584,6 +591,7 @@
     width: 369px;
     height: 65px;
 }
+
 .our-ideas__sale-form__btn {
     background-color: var(--dark-red);
     color: var(--white);
@@ -596,6 +604,7 @@
     border-radius: 6px;
     text-transform: uppercase;
 }
+
 .our-ideas__sale-bottom-desc {
     font-size: 13px;
     font-weight: 400;
@@ -612,13 +621,14 @@
 .special__topside {
     display: flex;
     justify-content: space-between;
-} 
+}
 
 .special__cards {
     margin-top: 46px;
     display: flex;
     justify-content: space-between;
 }
+
 .special__cards-item {
     min-width: 447px;
     min-height: 196px;
@@ -635,23 +645,23 @@
 }
 
 .special__cards-item:nth-child(1) {
-    background-image: url('/img/main-1920/special-1.png');
+    background-image: url('/assets/img/main-1920/special-1.png');
 }
 
 .special__cards-item:nth-child(2) {
-    background-image: url('/img/main-1920/special-2.png');
+    background-image: url('/assets/img/main-1920/special-2.png');
 }
 
 .special__cards-item:nth-child(3) {
-    background-image: url('/img/main-1920/special-3.png');
+    background-image: url('/assets/img/main-1920/special-3.png');
 }
 
-.special__cards-item:nth-child(4)  {
-    background-image: url('/img/main-1920/credit-med.png');
+.special__cards-item:nth-child(4) {
+    background-image: url('/assets/img/main-1920/credit-med.png');
 }
 
-.special__cards-item:nth-child(5)  {
-    background-image: url('/img/main-1920/credit-rass.png');
+.special__cards-item:nth-child(5) {
+    background-image: url('/assets/img/main-1920/credit-rass.png');
 }
 
 .special__cards-item__title {
@@ -659,11 +669,13 @@
     color: var(--black);
     font-weight: 700;
 }
+
 .special__cards-item__subtitle {
     font-size: 14px;
     font-weight: 400;
     color: var(--light-gray);
 }
+
 .special__cards-item__btn {
     width: 142px;
     height: 40px;
@@ -701,6 +713,7 @@
     padding: 23px;
     margin-bottom: 25px;
 }
+
 .autocredit-right__select-item {
     width: 280px;
     height: 46px;
@@ -708,11 +721,13 @@
     border-radius: 6px;
     padding-left: 20px;
 }
+
 .autocredit-right__car {
     display: flex;
 }
+
 .autocredit-right__car-elem {
-    
+
 }
 
 .autocredit-right__car-elem__price {
@@ -727,7 +742,7 @@
     justify-content: space-between;
 }
 
-.autocredit-right__car-elem__price div span{
+.autocredit-right__car-elem__price div span {
     width: 78px;
     height: 23px;
     color: var(--white);
@@ -755,19 +770,23 @@
 
 .autocredit-right__car-sum {
 }
+
 .autocredit-right__car-sum__item {
     display: flex;
     margin-bottom: 50px;
     margin-left: 25px;
 }
+
 .sum {
-    
+
 }
+
 .first {
     display: flex;
     margin-top: 15px;
     margin-left: 35px;
 }
+
 .autocredit-left {
     width: 447px;
     min-height: 485px;
@@ -776,6 +795,7 @@
     padding-top: 41px;
     border-radius: 25px;
 }
+
 .autocredit-left__title {
     font-size: 30px;
     font-weight: 700;
@@ -796,6 +816,7 @@
     padding-left: 25px;
     margin-bottom: 10px;
 }
+
 .autocredit-left__btn {
     background-color: var(--dark-red);
     color: var(--white);
@@ -839,19 +860,19 @@
 }
 
 .banks__bottom-item:nth-child(1) {
-    background-image: url('/img/main-1920/banks-1.png');
+    background-image: url('/assets/img/main-1920/banks-1.png');
 }
 
 .banks__bottom-item:nth-child(2) {
-    background-image: url('/img/main-1920/banks-2.png');
+    background-image: url('/assets/img/main-1920/banks-2.png');
 }
 
 .banks__bottom-item:nth-child(3) {
-    background-image: url('/img/main-1920/banks-3.png');
+    background-image: url('/assets/img/main-1920/banks-3.png');
 }
 
 .banks__bottom-item:nth-child(4) {
-    background-image: url('/img/main-1920/banks-4.png');
+    background-image: url('/assets/img/main-1920/banks-4.png');
 }
 
 /* Feedback */
@@ -866,12 +887,15 @@
 .feedback {
     margin-bottom: 100px;
 }
+
 .feedback__bottomside {
 }
+
 .feedback__bottomside-top {
     display: flex;
     justify-content: space-between;
 }
+
 .feedback__bottomside-top__item {
     width: 327px;
     height: 145px;
@@ -882,17 +906,20 @@
     padding-right: 23px;
     padding-bottom: 20px;
 }
+
 .feedback__bottomside-top__item-title {
     font-weight: 700;
     font-size: 20px;
     margin-bottom: 5px;
 }
+
 .feedback__bottomside-top__item-subtitle {
     font-size: 18px;
     font-weight: 400;
     color: #ADADB0;
     margin-bottom: 30px;
 }
+
 .feedback__bottomside-top__item-rec {
     display: flex;
     font-size: 14px;
@@ -901,14 +928,17 @@
     align-items: center;
     text-align: center;
 }
+
 .feedback__rate {
     display: flex;
 }
+
 .feedback__bottomside-bottom {
     margin-top: 54px;
     display: flex;
     justify-content: space-between;
 }
+
 .feedback__bottomside-bottom__item {
     display: flex;
     width: 684px;
@@ -931,28 +961,32 @@
     margin-top: 50px;
     justify-content: space-between;
 }
+
 .peoples__list-item {
     width: 447px;
     height: 585px;
     border-radius: 25px;
     background-color: #F2F2F2;
-    background-image: url('../img/main-1920/peoples-play-btn.png'), url('../img/main-1920/peoples-back-logo.png'), url('../img/main-1920/peoples-back.png');
+    background-image: url('/assets/img/main-1920/peoples-play-btn.png'), url('/assets/img/main-1920/peoples-back-logo.png'), url('/assets/img/main-1920/peoples-back.png');
     background-position: center 20%, center 15%, center top;
     background-repeat: no-repeat;
     padding: 330px 30px 40px 30px;
     margin-bottom: 105px;
 }
+
 .peoples__list-item__author {
     font-size: 20px;
     font-weight: 700;
     color: var(--dark-gray);
     margin-bottom: 30px;
 }
+
 .peoples__list-item__desc {
     font-size: 16px;
     color: var(--light-gray);
     margin-bottom: 20px;
 }
+
 .peoples__list-item__btn {
     width: 188px;
     height: 36px;
@@ -969,30 +1003,53 @@
     border: none;
 }
 
+@media screen and (max-width: 1024px) {
+    .peoples__list {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .peoples__list-item {
+        width: 100%;
+        margin-bottom: 50px;
+    }
+
+    .peoples__list-item__author {
+        text-align: center;
+    }
+
+    .peoples__list-item__text {
+        text-align: center;
+    }
+
+    .peoples__list-item__btn {
+        margin: 0 auto;
+    }
+}
+
 /* ABOUT */
 
 .about {
-    margin-bottom: 115px;
-    text-align: center;
-}
-.about-cont {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    max-width: 57%;
 }
-.about__desc {
-    font-size: 16px;
-    color: var(--light-gray);
-    margin-top: 30px;
-    margin-bottom: 40px;
+
+
+#poster {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+    cursor: pointer;
+
 }
-.video {
-    background-image: url('../img/main-1920/about-play.png'), url('../img/main-1920/about-back.png');
-    background-repeat: no-repeat;
-    background-position: center center;
-    width: 924px;
-    height: 573px;
+
+#video_poster {
+    max-width: 100%;
 }
 
 /* BLOG */
@@ -1000,16 +1057,19 @@
 .blog {
     margin-bottom: 115px;
 }
+
 .blog__top {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 50px;
 }
+
 .blog__top-left {
     display: flex;
     align-items: center;
 }
+
 .blog__top-left__btn {
     margin-left: 24px;
     width: 132px;
@@ -1020,19 +1080,23 @@
     font-size: 16px;
     border: none;
 }
+
 .blog__list {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
+
 .blog__list-item {
     width: 328px;
 }
+
 .blog__list-item__date {
     font-size: 14px;
     color: #ADADB0;
     margin-top: 20px;
 }
+
 .blog__list-item__title {
     font-size: 16px;
     color: var(--dark-gray);
@@ -1046,25 +1110,31 @@
 .autosalon {
     margin-bottom: 110px;
 }
+
 .autosalon-top {
     display: flex;
 }
+
 .autosalon-top__item {
     font-weight: 700;
     color: var(--dark-gray);
     font-size: 16px;
 }
-.autosalon-top__item:nth-child(1){
+
+.autosalon-top__item:nth-child(1) {
     color: var(--dark-red);
     border-bottom: 2px solid var(--dark-red);
     height: 40px;
 }
+
 .autosalon-top__item:not(:last-child) {
     margin-right: 50px;
 }
+
 .autosalon__content {
     margin-top: 40px;
 }
+
 .autosalon__content-desc {
     margin-top: 30px;
     font-size: 16px;
@@ -1097,14 +1167,17 @@
     overflow: hidden;
     transition: 0.5s ease max-height;
 }
+
 .burger-show {
     max-height: 1000px;
     display: block;
     padding-bottom: 70px;
 }
+
 .burger-btn-open {
     background-image: url('../img/main-1920/header-burger-open.png');
 }
+
 .burger-search {
     width: 100%;
     display: flex;
@@ -1117,10 +1190,12 @@
     height: 68px;
     margin-bottom: 60px;
 }
-.burger-search__img{
+
+.burger-search__img {
     display: flex;
     align-items: center;
 }
+
 .burger-search__input {
     background-color: transparent;
     color: var(--dark-gray);
@@ -1128,37 +1203,46 @@
     height: 68px;
     width: 1000px;
 }
+
 .burger-search__input::placeholder {
     color: var(--light-gray);
     font-size: 16px;
 }
+
 .burger-search__btn {
     padding: 12px 22px 12px 22px;
 }
+
 .burger-list {
     display: flex;
     justify-content: space-between;
 }
+
 .burger-list__item {
     margin-bottom: 30px;
 }
+
 .burger-list__item-cars {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
 }
-.burger-list__item-cars div{
+
+.burger-list__item-cars div {
     justify-content: space-between;
 }
-.burger-list__item-cars div:not(:last-child){
+
+.burger-list__item-cars div:not(:last-child) {
     margin-right: 30px;
 }
+
 .burger-list__item-title {
     font-size: 30px;
     color: var(--dark-gray);
     margin-bottom: 20px;
     font-weight: 700;
 }
+
 .burger-list__item-link {
     font-size: 16px;
     margin-bottom: 10px;
@@ -1176,6 +1260,7 @@
     top: 0;
     left: 0;
 }
+
 .popup-callback {
     display: none;
     position: fixed;
@@ -1191,17 +1276,21 @@
     padding-bottom: 35px;
     margin: auto;
 }
+
 .popup-callback-open {
     display: block;
 }
+
 .popup-callback__close {
     position: absolute;
     top: 120px;
     right: 50px;
 }
+
 .popup-callback__content {
     max-width: 50%;
 }
+
 /* .popup-callback__content-block {
     background-color: var(--white);
     width: 70vw;
@@ -1213,6 +1302,7 @@
     color: var(--dark-gray);
     margin-bottom: 40px;
 }
+
 .popup-callback__input {
     width: 356px;
     padding-left: 20px;
@@ -1222,14 +1312,17 @@
     margin-bottom: 15px;
     height: 50px;
 }
+
 .popup-callback__input::placeholder {
     font-size: 14px;
     color: var(--dark-gray);
 }
+
 .popup-callback__btn {
     margin-bottom: 33px;
     padding: 20px 110px 20px 110px;
 }
+
 .popup-callback__desc {
     font-size: 13px;
     color: var(--light-gray);
@@ -1244,22 +1337,27 @@
     border-top: 1px solid var(--gray);
     display: none;
 }
+
 .katalog-auto__list-marks {
     display: flex;
     justify-content: space-between;
 }
+
 .katalog-auto__list-marks div {
     text-align: left;
 }
+
 .katalog-auto__list-types {
     display: flex;
     justify-content: space-between;
     margin-top: 70px;
     margin-bottom: 100px;
 }
+
 .katalog-auto__list-types__item {
     text-align: center;
 }
+
 .katalog-auto__list-types__item p {
     font-size: 13px;
     color: var(--light-gray);
@@ -1306,14 +1404,15 @@
     background-image: url('/img/main-1920/special-3.png');
 }
 
-.header-kredit-item:nth-child(4)  {
+.header-kredit-item:nth-child(4) {
     background-image: url('/img/main-1920/credit-med.png');
 }
 
-.header-kredit-item:nth-child(5)  {
+.header-kredit-item:nth-child(5) {
     background-image: url('/img/main-1920/credit-rass.png');
 }
-.header-kredit-item:nth-child(6)  {
+
+.header-kredit-item:nth-child(6) {
     background-image: url('/img/main-1920/credit-traIn.png');
 }
 
@@ -1329,10 +1428,11 @@
     margin-bottom: 100px;
 }
 
-.spec-util  {
+.spec-util {
     background-image: url('/img/main-1920/spec-util.png') !important;
     margin-right: 30px;
 }
+
 .spec-tradeIn {
     background-image: url('/img/main-1920/credit-traIn.png') !important;
 }

@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'cars.apps.CarsConfig',  # application for selling cars
     'credit.apps.CreditConfig',  # application for credit calculation
+    'content.apps.ContentConfig',  # application for content
 ]
 
 MIDDLEWARE = [
@@ -53,6 +54,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'cars.context_processors.get_all_brands',  # context processor for getting all brands
+                'cars.context_processors.get_all_vehicle_types',  # context processor for getting all vehicles types
             ],
         },
     },
@@ -103,8 +105,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'assets/'  # path to static files
-# STATIC_ROOT = os.path.join(BASE_DIR, 'assets')  # for production server only (nginx)
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'assets')]  # for development server only (manage.py runserver)
+STATICFILES_DIRS = [
+    BASE_DIR / 'assets',
+]  # for development server only (manage.py runserver)
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+]  # for development server only (manage.py runserver)
+# for development server only (manage.py runserver)
 # Media files (user uploaded files)
 MEDIA_URL = 'media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
