@@ -29,8 +29,8 @@
                 </div>
 
                 <div class="navigation__logo logo">
-                    <a href="#" class="logo__link">
-                        <img src="img/abc-auto_logo.svg" alt="" class="logo__img">
+                    <a href="{% url 'index' %}" class="logo__link">
+                        <img src="{% static 'img/abc-auto_logo.svg' %}" alt="" class="logo__img">
                     </a>
                     <div class="logo__tagline">
                         <span class="-highlighted">10 лет</span>
@@ -83,7 +83,7 @@
                             <a href="/used_cars/" class="header-bottom__list-link">авто с пробегом</a>
                             <a class="header-bottom__list-link credit-h">кредит и рассрочка</a>
                             <a class="header-bottom__list-link special-h">спецпредложения</a>
-                            <a href="/taxi_cars/" class="header-bottom__list-link">такси в кредит</a>
+                            <a href="{% url 'taxi_cars' %}" class="header-bottom__list-link">такси в кредит</a>
                             <div class="header-bottom__list-stats">
                                 <div class="list-stats__item">
                                     <a href="assets/favourite-new.html">
@@ -504,7 +504,8 @@
                                 <span class="ar">Каталог авто</span>
                                 <div class="test">
                                     <div class="_container">
-                                        <ul class="menu" style="display: flex; flex-direction: column; overflow: scroll;">
+                                        <ul class="menu"
+                                            style="display: flex; flex-direction: column; overflow: scroll;">
                                             {% for brand in brands %}
                                                 <li class="menu__item">
                                                     {{ brand.title }}
@@ -518,7 +519,8 @@
                                 <span class="ar">Авто с пробегом</span>
                                 <div class="test">
                                     <div class="_container">
-                                         <ul class="menu" style="display: flex; flex-direction: column; overflow: hidden;">
+                                        <ul class="menu"
+                                            style="display: flex; flex-direction: column; overflow: hidden;">
                                             {% for brand in brands %}
                                                 <li class="menu__item">
                                                     {{ brand.title }}
@@ -590,7 +592,7 @@
                     </ul>
                 </div>
                 <div class="fullmenu__taxi">
-                    <a href="">
+                    <a href="{% url 'taxi_cars' %}">
                         <h3>Такси в кредит</h3>
                     </a>
                 </div>
