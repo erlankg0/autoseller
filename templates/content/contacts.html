@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/contacts.css' %}">
+{% endblock css %}
+{% block content %}
+    <main class="main" style="padding: 30px;">
+        <div class="container">
+            <p class="backlink-p">
+                <a href="{% url 'index' %}" class="back-link">Главная / </a>
+                Контакты
+            </p>
+            <h1 class="page__title">
+                Контакты
+            </h1>
+            <div class="contacts__list">
+                <div class="contacts__list-item">
+                    <img src="{% static 'img/contacts-1920/call.png' %}" alt="">
+                    <div class="contacts__list-item__content">
+                        <p class="contacts__list-item__content-title">Телефон</p>
+                        <p class="contacts__list-item__content-desc">+7 (800) 551-94-31</p>
+                        <p class="contacts__list-item__content-desc">+7 (495) 292-18-67</p>
+                    </div>
+                </div>
+                <div class="contacts__list-item">
+                    <img src="{% static 'img/contacts-1920/gps.png' %}" alt="">
+                    <div class="contacts__list-item__content">
+                        <p class="contacts__list-item__content-title">Адрес</p>
+                        <p class="contacts__list-item__content-desc">Россия, Москва, 38КМ МКАД, 6Бс1</p>
+                        <p class="contacts__list-item__content-desc">GPS: 55.597068, 37.511805</p>
+                    </div>
+                </div>
+                <div class="contacts__list-item">
+                    <img src="{% static 'img/contacts-1920/nav.png' %}" alt="">
+                    <div class="contacts__list-item__content">
+                        <p class="contacts__list-item__content-title">Как проехать</p>
+                        <p class="contacts__list-item__content-desc">от МКАД (внутренняя сторона)</p>
+                        <p class="contacts__list-item__content-desc">от МКАД (внешняя сторона)</p>
+                        <p class="contacts__list-item__content-desc">из области, из центра</p>
+                    </div>
+                </div>
+            </div>
+            <div class="map">
+                <img src="{% static 'img/contacts-1920/map.png' %}" alt="">
+            </div>
+            <div class="contacts__about">
+                <div class="contacts__about-left">
+                    <h2 class="sec-title">О компании</h2>
+                    <p class="contacts__about-left__des">
+                        Мы располагаем огромной торговой площадкой более 5000 квадратных метров, у нас в наличии не
+                        менее 200 автомобилей как отечественного, так и иностранного производства. В штате автосалона
+                        «Альтера» работают настоящие профессионалы, которые знают особенности каждого конкретного
+                        автомобиля.
+                    </p>
+                    <img src="{% static 'img/contacts-1920/about.png' %}" alt="">
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock content %}

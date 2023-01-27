@@ -4121,3 +4121,7 @@ input:-webkit-autofill:active {
         margin-bottom: 15px;
     }
 }
+
+.main {
+    padding: 30px;
+}

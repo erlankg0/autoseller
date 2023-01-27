@@ -59,13 +59,41 @@
     top: 70px;
 }
 
+@media screen and (max-width: 426px) {
+    .hero__special {
+        display: flex;
+        flex-direction: column;
+    }
+    .hero-adv__item {
+        margin-bottom: 10px;
+    }
+
+    .hero__special-right__top input[type="text"], input[type="tel"] {
+        width: 100%;
+        font-size: 10px;
+    }
+
+    .hero__special-right__btn {
+        max-width: 100%;
+        font-size: 9px;
+    }
+
+    .advantages-desc {
+        margin-top: 400px;
+        font-weight: 700;
+    }
+
+
+}
+
 @media screen and (max-width: 1024px) {
     .hero {
         background-position: center center;
+        padding: 20px;
     }
 
     .hero-title {
-        font-size: 40px;
+        font-size: 30px;
     }
 
     .hero__special-left p, span {
@@ -128,6 +156,25 @@
         max-width: 35%;
     }
 }
+
+@media screen and (max-width: 426px) {
+    .autos-top__img {
+        display: none;
+    }
+
+    .work-cont {
+        flex-direction: column;
+        padding: 56px 50px 56px 56px;
+    }
+
+    .advantages-list__item {
+        width: 100%;
+        margin-bottom: 30px;
+    }
+
+
+}
+
 
 /* AUTOS */
 
@@ -206,6 +253,19 @@
     padding: 22px 72px;
 }
 
+@media screen and (max-width: 426px) {
+    .autos-select__left p {
+        display: none;
+    }
+
+    .autos-select {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+}
+
 /* WORK */
 
 .work {
@@ -214,8 +274,8 @@
     background-size: auto;
     background-repeat: no-repeat;
     background-position: center center;
-    background-position-x: 13%;
-    background-position-y: 120%;
+    background-position-x: -17%;
+    background-position-y: 65%;
     padding-bottom: 100px;
     margin-bottom: 100px;
 }
@@ -229,6 +289,45 @@
     border-radius: 25px;
     position: relative;
     z-index: -1;
+}
+
+@media screen and (max-width: 1024px) {
+    .work {
+        background-size: 600px;
+    }
+
+}
+
+@media screen and (max-width: 768px) {
+    .work {
+        background-size: 440px;
+    }
+
+}
+
+@media screen and (max-width: 426px) {
+    .work {
+        background-image: none;
+    }
+
+    .work-title {
+        font-size: 24px;
+        margin-bottom: 20px;
+        text-align: center;
+        align-items: center;
+        align-content: center;
+    }
+
+    .work-cont {
+        flex-direction: column;
+        padding: 56px 50px 56px 56px;
+    }
+
+    .work-center {
+        width: 100%;
+    }
+
+
 }
 
 .work-title {
@@ -347,6 +446,7 @@
     margin-top: 35px;
     background-repeat: no-repeat;
     background-position: center right;
+    background-size: auto;
 }
 
 .card-title {
@@ -386,13 +486,85 @@
 @media screen and (max-width: 768px) {
     .calc-list__item-content__card {
         width: 100%;
+        background-size: 70%;
+    }
+
+    .card-title {
+        font-size: 13px;
+    }
+    .card-price__main {
+        font-size: 12px;
+    }
+    .card-price__credit {
+        font-size: 14px;
     }
 
     .calc-list__item-content__selects {
         flex-direction: column;
         width: 100%;
     }
-    .calc-list__item-content__select{
+
+    .calc-list__item-content__select {
         width: 100%;
+    }
+
+    .advantages-list__top {
+        justify-content: space-between;
+    }
+
+    .advantages__line {
+        display: none;
+    }
+
+    .autos-select {
+        height: 100%;
+    }
+
+    .autos-select__left {
+        flex-direction: column;
+    }
+
+    .autos-select__left-btn {
+        margin-bottom: 5px;
+    }
+
+    .select__right {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .autos-select__right select {
+        margin-bottom: 10px;
+    }
+}
+
+@media screen and (max-width: 426px) {
+    .calc-btn {
+        padding: 25px 40px;
+    }
+
+    .calc-list__item {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .calc-list__item img {
+        display: none;
+    }
+
+    .calc-list__item-content {
+        max-width: 80%;
+    }
+
+    .calc-list__item-content__selects-item {
+        width: 100%;
+    }
+
+    .calc-list__item-content input {
+        width: 85%;
+    }
+
+    .autos-select__right {
+        padding-left: 25%;
     }
 }

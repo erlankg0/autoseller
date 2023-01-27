@@ -1011,7 +1011,7 @@
     }
 
     .peoples__list-item {
-        width: 100%;
+        width: 60%;
         margin-bottom: 50px;
     }
 
@@ -1026,6 +1026,13 @@
     .peoples__list-item__btn {
         margin: 0 auto;
     }
+}
+
+@media screen and (max-width: 426px) {
+    .peoples__list-item {
+        width: 100%;
+    }
+
 }
 
 /* ABOUT */

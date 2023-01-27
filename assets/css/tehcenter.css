@@ -8,29 +8,50 @@
     margin-bottom: 95px;
     max-width: 55%;
 }
+
 .tehcenter__list {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
     margin-bottom: 30px;
 }
+
 .tehcenter__list-item {
     text-align: left;
     max-width: 30%;
     margin-bottom: 70px;
 }
+
 .tehcenter__list-item__top {
     display: flex;
     align-items: center;
     margin-bottom: 30px;
 }
+
 .tehcenter__list-item__top-title {
     margin-left: 22px;
     font-weight: 700;
     font-size: 24px;
     color: var(--dark-gray);
 }
+
 .tehcenter__list-item__desc {
     font-size: 16px;
     color: var(--light-gray);
+}
+
+@media screen and (max-width: 768px) {
+    .tehcenter__desc {
+        max-width: 100%;
+    }
+
+    .tehcenter__list-item {
+        max-width: 100%;
+    }
+
+    .page__title {
+        font-size: 40px;
+    }
+
+
 }

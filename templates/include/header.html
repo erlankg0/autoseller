@@ -49,11 +49,10 @@
                 <div class="navigation__navblock">
                     <nav class="navigation__navbar">
                         <ul class="navbar nav">
-                            <li class="navbar__item -accent">Подбор авто</li>
-                            <li class="navbar__item">О компании</li>
-                            <li class="navbar__item">Техцентр</li>
-                            <li class="navbar__item">Отзывы</li>
-                            <li class="navbar__item">Контакты</li>
+                            <li class="navbar__item"><a href="{% url 'about' %}">О компании</a></li>
+                            <li class="navbar__item"><a href="{% url 'services' %}">Техцентр</a></li>
+                            <li class="navbar__item"><a href="{% url 'feedback' %}">Отзывы</a></li>
+                            <li class="navbar__item"><a href="{% url 'contacts' %}">Контакты</a></li>
                         </ul>
                     </nav>
 
@@ -84,19 +83,7 @@
                             <a class="header-bottom__list-link credit-h">кредит и рассрочка</a>
                             <a class="header-bottom__list-link special-h">спецпредложения</a>
                             <a href="{% url 'taxi_cars' %}" class="header-bottom__list-link">такси в кредит</a>
-                            <div class="header-bottom__list-stats">
-                                <div class="list-stats__item">
-                                    <a href="assets/favourite-new.html">
-                                        <img src="/assets/img/main-1920/header-heart.svg" alt="">
-                                    </a>
-                                </div>
-                                <div class="list-stats__item">
-                                    <img src="/assets/img/main-1920/header-stats.svg" alt="">
-                                </div>
-                                <div class="list-stats__item">
-                                    <img src="/assets/img/main-1920/header-search.svg" alt="">
-                                </div>
-                            </div>
+                            <a href="{% url 'insurance' %}" class="header-bottom__list-link">страхование</a>
                         </div>
                         <div class="katalog-auto__list ">
                             <div class="katalog-auto__list-marks">

@@ -1,0 +1,365 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/strahovanie.css' %}">
+    <link rel="stylesheet" href="{% static 'css/taxi-credit.css' %}">
+{% endblock css %}
+{% block top-banner %}
+
+{% endblock %}
+{% block content %}
+    <style>
+        @media screen and (max-width: 2500px) {
+            .hero__special {
+                top: 150px;
+            }
+
+        }
+        @media screen and (max-width: 768px) {
+            .hero__special {
+                top: 40px;
+            }
+
+            .hero__desc {
+                font-size: 24px;
+            }
+
+            .hero__title {
+                font-size: 35px;
+            }
+
+            .hero__special-right__top input[type="text"], input[type="tel"] {
+                width: 50%;
+            }
+
+        }
+
+        @media screen and (max-width: 426px) {
+            .hero__special {
+                display: none;
+            }
+
+        }
+
+        @media screen and (max-width: 321px) {
+            .hero__title {
+                font-size: 30px;
+            }
+
+            .hero__desc {
+                font-size: 20px;
+            }
+        }
+    </style>
+    <main class="main">
+        <section class="hero"
+                 style="background-image: url({% static 'img/strahovanie-1920/hero-back.png' %});">
+            <div class="container">
+                <p class="backlink-p" style="color: white;">
+                    <a href="{% url 'index' %}" class="back-link">Главная / </a>
+                    Такси в кредит
+                </p>
+                <h3 class="hero__title">
+                    Страховые полисы <br> без комиссий и надбавок
+                </h3>
+                <p class="hero__desc">Расчет сразу в нескольких компаниях и официальное оформление страхового полиса</p>
+                <div class="hero__special">
+                    <div class="hero__special-left">
+                        <p>Получите специальную цену</p>
+                        <span>Только до 10.10.21</span>
+                    </div>
+                    <div class="hero__special-right">
+                        <div class="hero__special-right__top">
+                            <input type="text" placeholder="Ваше имя">
+                            <input type="tel" placeholder="Ваш телефон">
+                            <button type="submit" class="hero__special-right__btn red-btn">получить предложение</button>
+                        </div>
+                        <p>Нажимая кнопку “Получить скидку” Вы даете согласие на обработку своих персональных данных</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="hero__special" id="hero_special">
+            <div class="hero__special-left">
+                <p>Получите специальную цену</p>
+                <span>Только до 10.10.21</span>
+            </div>
+            <div class="hero__special-right">
+                <form class="hero__special-right__top">
+                    <input type="text" placeholder="Ваше имя">
+                    <input type="tel" placeholder="Ваш телефон">
+                </form>
+                <button type="submit" class="hero__special-right__btn red-btn"
+                        style="max-width: 90%; margin-top: 20px;">получить предложение
+                </button>
+                <p>Нажимая кнопку “Получить скидку” Вы даете согласие на обработку своих персональных данных</p>
+            </div>
+        </div>
+        <section class="polis">
+            <div class="container">
+                <div class="polis-cont">
+                    <div class="polis__item">
+                        <img src="{% static 'img/strahovanie-1920/kasko.png' %}" alt="">
+                        <div class="polis__item-text">
+                            <p class="polis__item-text__title">
+                                каско
+                            </p>
+                            <p class="polis__item-text__desc">
+                                Страхование транспортного средства от ущерба, хищения и угона
+                            </p>
+                        </div>
+                        <button class="polis__item-btn">
+                            рассчитать
+                        </button>
+                    </div>
+                    <div class="polis__item">
+                        <img src="{% static 'img/strahovanie-1920/osago.png' %}" alt="">
+                        <div class="polis__item-text">
+                            <p class="polis__item-text__title">
+                                осаго
+                            </p>
+                            <p class="polis__item-text__desc">
+                                Обязательное страхование автогражданской ответственности
+                            </p>
+                        </div>
+                        <button class="polis__item-btn">
+                            рассчитать
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="oformlenie">
+            <div class="container">
+                <div class="oform-cont">
+                    <h2 class="sec-title">
+                        Оформить ОСАГО легко и удобно
+                    </h2>
+                    <p class="oformlenie__desc">
+                        Полис ОСАГО - это обязательное страхование автогражданской ответственности за причинение вреда
+                        жизни, здоровью и имуществу третьих лиц при эксплуатации автомобиля.
+                    </p>
+                    <ul class="oformlenie__list">
+                        <p class="oformlenie__list-title">
+                            Преимущества электронного полиса
+                        </p>
+                        <li class="oformlenie__list-item">
+                            <img src="{% static 'img/strahovanie-1920/arrow-list.png' %}" alt="">
+                            <p class="oformlenie__list-item__title">
+                                Нет необходимости посещать офис для оформления или проделения полиса ОСАГО
+                            </p>
+                        </li>
+                        <li class="oformlenie__list-item">
+                            <img src="{% static 'img/strahovanie-1920/arrow-list.png' %}" alt="">
+                            <p class="oformlenie__list-item__title">
+                                Отсутствуют риски потерять бумажный эксземпляр страховки. Полис всегда в почтовом ящике
+                                клиента
+                            </p>
+                        </li>
+                        <li class="oformlenie__list-item">
+                            <img src="{% static 'img/strahovanie-1920/arrow-list.png' %}" alt="">
+                            <p class="oformlenie__list-item__title">
+                                100% гарантия достоверности полиса (аналог бумажного экземпляра)
+                            </p>
+                        </li>
+                        <li class="oformlenie__list-item">
+                            <img src="{% static 'img/strahovanie-1920/arrow-list.png' %}" alt="">
+                            <p class="oformlenie__list-item__title">
+                                Надежная защита сведений клиента и его операций по оформлению и оплате страховки.
+                                Отсутствует риск мошенничества (только отобранные страховщики)
+                            </p>
+                        </li>
+                    </ul>
+                    <button class="oformlenie__btn red-btn">
+                        оформить полис
+                    </button>
+                </div>
+            </div>
+        </section>
+        <section class="tarif">
+            <div class="container">
+                <h2 class="sec-title" style="margin-top: 20px;">
+                    Выбрать свое КАСКО просто и выгодно
+                </h2>
+                <div class="tarif__cont">
+                    <div class="tarif__cont-item">
+                        <p class="tarif__cont-item__title">
+                            Доступное КАСКО
+                        </p>
+                        <ul class="tarif__cont-item__list">
+                            <li class="tarif__cont-item__list-item">
+                                <img src="{% static 'img/strahovanie-1920/tarif-arrow.png' %}" alt="">
+                                <p class="tarif__cont-item__list-item__desc">
+                                    Единый тариф независимо от стажа и возраста - 1,9%
+                                </p>
+                            </li>
+                            <li class="tarif__cont-item__list-item">
+                                <img src="{% static 'img/strahovanie-1920/tarif-arrow.png' %}" alt="">
+                                <p class="tarif__cont-item__list-item__desc">
+                                    Защита по основным рискам: угон, полная гибель, ДТП с участием третьих лиц, в
+                                    котором установлена вина клиента
+                                </p>
+                            </li>
+                            <li class="tarif__cont-item__list-item">
+                                <img src="{% static 'img/strahovanie-1920/tarif-arrow.png' %}" alt="">
+                                <p class="tarif__cont-item__list-item__desc">
+                                    Необходимый уровень защиты по доустпной цене
+                                </p>
+                            </li>
+                            <li class="tarif__cont-item__list-item">
+                                <img src="{% static 'img/strahovanie-1920/tarif-arrow.png' %}" alt="">
+                                <p class="tarif__cont-item__list-item__desc">
+                                    Нет ограничения по допущенным к управлению
+                                </p>
+                            </li>
+                        </ul>
+                        <button class="tarif__cont-item__list__btn red-btn">
+                            оформить полис
+                        </button>
+                    </div>
+                    <div class="tarif__cont-item">
+                        <p class="tarif__cont-item__title">
+                            Оптимальное КАСКО
+                        </p>
+                        <ul class="tarif__cont-item__list">
+                            <li class="tarif__cont-item__list-item">
+                                <img src="{% static 'img/strahovanie-1920/tarif-arrow.png' %}" alt="">
+                                <p class="tarif__cont-item__list-item__desc">
+                                    Выгода до 20% от стоимости полного КАСКО
+                                </p>
+                            </li>
+                            <li class="tarif__cont-item__list-item">
+                                <img src="{% static 'img/strahovanie-1920/tarif-arrow.png' %}" alt="">
+                                <p class="tarif__cont-item__list-item__desc">
+                                    Полная страховая защита по рискам "Угон" и "Ущерб"
+                                </p>
+                            </li>
+                            <li class="tarif__cont-item__list-item">
+                                <img src="{% static 'img/strahovanie-1920/tarif-arrow.png' %}" alt="">
+                                <p class="tarif__cont-item__list-item__desc">
+                                    Первый страховой случай покрывается без ограничений
+                                </p>
+                            </li>
+                            <li class="tarif__cont-item__list-item">
+                                <img src="{% static 'img/strahovanie-1920/tarif-arrow.png' %}" alt="">
+                                <p class="tarif__cont-item__list-item__desc">
+                                    Со 2-го страхового случая применяется безусловная франшиза
+                                </p>
+                            </li>
+                            <li class="tarif__cont-item__list-item">
+                                <img src="{% static 'img/strahovanie-1920/tarif-arrow.png' %}" alt="">
+                                <p class="tarif__cont-item__list-item__desc">
+                                    Индивидуальный выгодный тариф для каждого клиента
+                                </p>
+                            </li>
+                        </ul>
+                        <button class="tarif__cont-item__list__btn red-btn">
+                            оформить полис
+                        </button>
+                    </div>
+                    <div class="tarif__cont-item">
+                        <p class="tarif__cont-item__title">
+                            Полное КАСКО
+                        </p>
+                        <ul class="tarif__cont-item__list">
+                            <li class="tarif__cont-item__list-item">
+                                <img src="{% static 'img/strahovanie-1920/tarif-arrow.png' %}" alt="">
+                                <p class="tarif__cont-item__list-item__desc">
+                                    Полная защита по рискам "Угон" и "Ущерб"
+                                </p>
+                            </li>
+                            <li class="tarif__cont-item__list-item">
+                                <img src=".{% static 'img/strahovanie-1920/tarif-arrow.png' %}" alt="">
+                                <p class="tarif__cont-item__list-item__desc">
+                                    Возможность выбора франшизы при покупке за наличные
+                                </p>
+                            </li>
+                            <li class="tarif__cont-item__list-item">
+                                <img src="{% static 'img/strahovanie-1920/tarif-arrow.png' %}" alt="">
+                                <p class="tarif__cont-item__list-item__desc">
+                                    Индивидуальный выгодный тариф для каждого клиента
+                                </p>
+                            </li>
+                        </ul>
+                        <button class="tarif__cont-item__list__btn red-btn">
+                            оформить полис
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="partners">
+            <div class="_container">
+                <h2 class="partners__heading">Наши партнёры</h2>
+            </div>
+            <div class="partners__container _container">
+                <div class="slider-swiper" data-slides="1">
+                    <div class="slider-swiper__item">
+                        <div class="partners__slide">
+                            <div class="partners__item">
+                                <img src="{% static 'img/logo/0alfa.png' %}" alt="">
+                            </div>
+                            <div class="partners__item">
+                                <img src="{% static 'img/logo/0vsk.png' %}" alt="">
+                            </div>
+                            <div class="partners__item">
+                                <img src="{% static 'img/logo/0sovkom.png' %}" alt="">
+                            </div>
+                            <div class="partners__item">
+                                <img src="{% static 'img/logo/0rosgosstrah.png' %}" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slider-swiper__item">
+                        <div class="partners__slide">
+                            <div class="partners__item">
+                                <img src="{% static 'img/logo/0alfa.png' %}" alt="">
+                            </div>
+                            <div class="partners__item">
+                                <img src="{% static 'img/logo/0vsk.png' %}" alt="">
+                            </div>
+                            <div class="partners__item">
+                                <img src="{% static 'img/logo/0sovkom.png' %}" alt="">
+                            </div>
+                            <div class="partners__item">
+                                <img src="{% static 'img/logo/0rosgosstrah.png' %}" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slider-swiper__item">
+                        <div class="partners__slide">
+                            <div class="partners__item">
+                                <img src="{% static 'img/logo/0alfa.png' %}" alt="">
+                            </div>
+                            <div class="partners__item">
+                                <img src="{% static 'img/logo/0vsk.png' %}" alt="">
+                            </div>
+                            <div class="partners__item">
+                                <img src="{% static 'img/logo/0sovkom.png' %}" alt="">
+                            </div>
+                            <div class="partners__item">
+                                <img src="{% static 'img/logo/0rosgosstrah.png' %}" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slider-swiper__item">
+                        <div class="partners__slide">
+                            <div class="partners__item">
+                                <img src="{% static 'img/logo/0alfa.png' %}" alt="">
+                            </div>
+                            <div class="partners__item">
+                                <img src="{% static 'img/logo/0vsk.png' %}" alt="">
+                            </div>
+                            <div class="partners__item">
+                                <img src="{% static 'img/logo/0sovkom.png' %}" alt="">
+                            </div>
+                            <div class="partners__item">
+                                <img src="{% static 'img/logo/0rosgosstrah.png' %}" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock content %}

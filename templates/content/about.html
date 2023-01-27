@@ -1,0 +1,228 @@
+{% extends 'base.html' %}
+
+{% block title %}О компании{% endblock title %}
+{% load static %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/o-kompanii.css' %}">
+{% endblock css %}
+
+{% block content %}
+    <main class="main">
+        <section class="about">
+            <div class="container">
+                <p class="about__backlink"><a href="{% url 'index' %}">Главная/</a>О компании</p>
+                <h1 class="about__title">
+                    О компании
+                </h1>
+                <p class="about__desc desc-1">Официальный дилер Азимут Варшавка предлагает широкий выбор автомобилей
+                    различных цветов и комплектаций на самых выгодных условиях. На территории автосалона представлено
+                    свыше двухсот новых автомобилей и с пробегом. Среди ассортимента представленных автомобилей
+                    встречаются наиболее популярные представители европейского, азиатского и российского производства.
+                    Для каждого клиента в нашем автосалоне предоставляется полная персональная консультация по любому из
+                    представленных автомобилей. Подробнее о представленных в салоне моделях Вы можете узнать на сайте и
+                    у наших менеджеров.
+                </p>
+                <p class="about__desc desc-2">
+                    Выбирая автосалон Азимут Варшавка Вы получаете:
+                </p>
+                <div class="about__list">
+                    <p class="about__list-item"><img src="../img/o-kompanii-1920/list-item.png" alt="">самые выгодные
+                        цены на автомобили в Москве;</p>
+                    <p class="about__list-item"><img src="../img/o-kompanii-1920/list-item.png" alt="">возможность
+                        выбора автомобилей более чем из двухсот моделей различных цветов и комплектаций;</p>
+                    <p class="about__list-item"><img src="../img/o-kompanii-1920/list-item.png" alt="">приобретение
+                        автомобилей с пробегом, прошедших предпродажную подготовку и юридическую экспертизу;</p>
+                    <p class="about__list-item"><img src="../img/o-kompanii-1920/list-item.png" alt="">быстрое и
+                        качественное оформление документов;</p>
+                    <p class="about__list-item"><img src="../img/o-kompanii-1920/list-item.png" alt="">высокий уровень
+                        сервиса и индивидуальный подход;</p>
+                    <p class="about__list-item"><img src="../img/o-kompanii-1920/list-item.png" alt="">выгодное
+                        приобретение автомобиля по программам Trade-in и утилизация;</p>
+                    <p class="about__list-item"><img src="../img/o-kompanii-1920/list-item.png" alt="">сотрудничество с
+                        самыми крупными банками Москвы, предлагающими наиболее выгодные условия кредитования;</p>
+                    <p class="about__list-item"><img src="../img/o-kompanii-1920/list-item.png" alt="">возможность
+                        участия в программах льготного кредитования «Семейный автомобиль», и «Первый автомобиль», а
+                        также льготное условия для медицинских работников и тех, кто сдает свой автомобиль по программе
+                        Trade-in в счёт оплаты первоначального взноса;</p>
+                    <p class="about__list-item"><img src="../img/o-kompanii-1920/list-item.png" alt="">акции и подарки
+                        от автосалона при покупке автомобиля;</p>
+                </div>
+                <p class="about__desc desc-3">
+                    Все вопросы о наличии, цветах и комплектациях автомобилей, а также по работе автосалона Вы всегда
+                    можете узнать по телефону, указанному на сайте, а также при помощи формы обратной связи.
+                </p>
+                <p class="about__desc desc-4">
+                    Мы ценим каждого клиента и гарантируем высокий уровень сервиса!
+                </p>
+                <p class="about__desc desc-5">
+                    Азимут Варшавка — с нами Вам покорятся все направления!
+                </p>
+            </div>
+        </section>
+        <section class="comp">
+            <div class="comp__top _container">
+                <h2 class="comp__heading">Фото автосалона</h2>
+            </div>
+            <div class="comp__container _container">
+                <div class="slider-swiper">
+                    <div class="slider-swiper__item">
+                        <div class="comp__slide">
+                            <img src="{% static 'img/o-kompanii-1920/photos.png' %}" alt="" class="comp__img">
+                        </div>
+                    </div>
+                    <div class="slider-swiper__item">
+                        <div class="comp__slide">
+                            <img src="{% static 'img/o-kompanii-1920/photos.png' %}" alt="" class="comp__img">
+                        </div>
+                    </div>
+                    <div class="slider-swiper__item">
+                        <div class="comp__slide">
+                            <img src="{% static 'img/o-kompanii-1920/photos.png' %}" alt="" class="comp__img">
+                        </div>
+                    </div>
+                    <div class="slider-swiper__item">
+                        <div class="comp__slide">
+                            <img src="{% static 'img/o-kompanii-1920/photos.png' %}" alt="" class="comp__img">
+                        </div>
+                    </div>
+                    <div class="slider-swiper__item">
+                        <div class="comp__slide">
+                            <img src="{% static 'img/o-kompanii-1920/photos.png' %}" alt="" class="comp__img">
+                        </div>
+                    </div>
+                    <div class="slider-swiper__item">
+                        <div class="comp__slide">
+                            <img src="{% static 'img/o-kompanii-1920/photos.png' %}" alt="" class="comp__img">
+                        </div>
+                    </div>
+                    <div class="slider-swiper__item">
+                        <div class="comp__slide">
+                            <img src="{% static 'img/o-kompanii-1920/photos.png' %}" alt="" class="comp__img">
+                        </div>
+                    </div>
+                    <div class="slider-swiper__item">
+                        <div class="comp__slide">
+                            <img src="{% static 'img/o-kompanii-1920/photos.png' %}" alt="" class="comp__img">
+                        </div>
+                    </div>
+                    <div class="slider-swiper__item">
+                        <div class="comp__slide">
+                            <img src="{% static 'img/o-kompanii-1920/photos.png' %}" alt="" class="comp__img">
+                        </div>
+                    </div>
+                    <div class="slider-swiper__item">
+                        <div class="comp__slide">
+                            <img src="{% static 'img/o-kompanii-1920/photos.png' %}" alt="" class="comp__img">
+                        </div>
+                    </div>
+                    <div class="slider-swiper__item">
+                        <div class="comp__slide">
+                            <img src="{% static 'img/o-kompanii-1920/photos.png' %}" alt="" class="comp__img">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="map">
+            <div class="container">
+                <div class="map-div">
+                    <p class="map-div__12">
+                        12
+                    </p>
+                    <p class="map-div__city">
+                        Городов присутствия
+                    </p>
+                    <div class="map-div__stats">
+                        <div class="map-div__stats-item">
+                            <img src="../img/o-kompanii-1920/1000-workers.png" alt="">
+                            <p class="span">
+                                1000
+                            </p>
+                            <p>работников</p>
+                        </div>
+                        <div class="map-div__stats-item">
+                            <img src="../img/o-kompanii-1920/20-years.png" alt="">
+                            <p class="span">
+                                20 лет
+                            </p>
+                            <p>на рынке</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="partners">
+            <div class="_container">
+                <h2 class="partners__heading">Наши партнёры</h2>
+            </div>
+            <div class="partners__container _container">
+                <div class="slider-swiper" data-slides="1">
+                    <div class="slider-swiper__item">
+                        <div class="partners__slide">
+                            <div class="partners__item">
+                                <img src="{% static 'img/logo/0alfa.png' %}" alt="">
+                            </div>
+                            <div class="partners__item">
+                                <img src="{% static 'img/logo/0vsk.png' %}" alt="">
+                            </div>
+                            <div class="partners__item">
+                                <img src="{% static 'img/logo/0sovkom.png' %}" alt="">
+                            </div>
+                            <div class="partners__item">
+                                <img src="{% static 'img/logo/0rosgosstrah.png' %}" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slider-swiper__item">
+                        <div class="partners__slide">
+                            <div class="partners__item">
+                                <img src="{% static 'img/logo/0alfa.png' %}" alt="">
+                            </div>
+                            <div class="partners__item">
+                                <img src="{% static 'img/logo/0vsk.png' %}" alt="">
+                            </div>
+                            <div class="partners__item">
+                                <img src="{% static 'img/logo/0sovkom.png' %}" alt="">
+                            </div>
+                            <div class="partners__item">
+                                <img src="{% static 'img/logo/0rosgosstrah.png' %}" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slider-swiper__item">
+                        <div class="partners__slide">
+                            <div class="partners__item">
+                                <img src="{% static 'img/logo/0alfa.png' %}" alt="">
+                            </div>
+                            <div class="partners__item">
+                                <img src="{% static 'img/logo/0vsk.png' %}" alt="">
+                            </div>
+                            <div class="partners__item">
+                                <img src="{% static 'img/logo/0sovkom.png' %}" alt="">
+                            </div>
+                            <div class="partners__item">
+                                <img src="{% static 'img/logo/0rosgosstrah.png' %}" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slider-swiper__item">
+                        <div class="partners__slide">
+                            <div class="partners__item">
+                                <img src="{% static 'img/logo/0alfa.png' %}" alt="">
+                            </div>
+                            <div class="partners__item">
+                                <img src="{% static 'img/logo/0vsk.png' %}" alt="">
+                            </div>
+                            <div class="partners__item">
+                                <img src="{% static 'img/logo/0sovkom.png' %}" alt="">
+                            </div>
+                            <div class="partners__item">
+                                <img src="{% static 'img/logo/0rosgosstrah.png' %}" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock content %}
