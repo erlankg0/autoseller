@@ -834,7 +834,8 @@ input[type=search]::-webkit-search-cancel-button {
 }
 
 .card img {
-    width: 153px;
+    width: 100%;
+    height: 100%;
     object-fit: scale-down;
 }
 
@@ -1014,7 +1015,7 @@ input[type=search]::-webkit-search-cancel-button {
     }
 
     .card img {
-        width: 213px;
+        width: 100%;
     }
 
     .card__title {
@@ -1083,7 +1084,7 @@ input[type=search]::-webkit-search-cancel-button {
 
 @media screen and (min-width: 1366px) {
     .card img {
-        width: 273px;
+        width: 100%;
     }
 
     .card__price {
@@ -2499,6 +2500,7 @@ input:-webkit-autofill:active {
         padding: 20px 30px;
         background-color: #EFF0F0;
         border-radius: 11px;
+        flex-direction: column;
     }
 
     .pick-up__list {
@@ -3512,7 +3514,7 @@ input:-webkit-autofill:active {
     margin-bottom: 20px;
     position: relative;
     width: 290px;
-    height: 115px;
+    height: auto;
     background-color: #fff;
     border-radius: 10px;
     padding: 17px 20px;
@@ -3651,7 +3653,8 @@ input:-webkit-autofill:active {
 
     .trust__slide {
         width: auto;
-        height: 145px;
+        height: auto;
+
     }
 
     .trust__map {

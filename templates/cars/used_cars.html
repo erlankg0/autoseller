@@ -14,970 +14,417 @@
                 Авто с пробегом
             </h1>
         </div>
-        <section class="choose container">
-            <div class="choose__marks">
-                <div class="choose__marks-item">
-                    <img src="/img/main-1920-auto/kia.png" alt=""> Kia
+        <section class="pick-up">
+            <div class="pick-up__container _container">
+                <div class="pick-up__content-wrapper">
+                    <form>
+                        <div class="pick-up__form-inner">
+                            <div class="pick-up__slider-inscription">
+                                <div>
+                                    Цена
+                                </div>
+                                <div class="pick-up__range-text">
+                                    <span id="pick-up-irs-from"></span>
+                                    &nbsp;-&nbsp;
+                                    <span id="pick-up-irs-to"></span>
+                                </div>
+                            </div>
+                            <input type="text" class="js-range-slider" name="my_range" value=""/>
+                            <div class="pick-up__flex">
+                                <select class="pick-up__transmission">
+                                    {% for brand in brands %}
+                                        <option value="{{ brand.pk }}">{{ brand }}</option>
+                                    {% endfor %}
+                                </select>
+                                <select class="pick-up__transmission" data-state="">
+                                    <option value="1">Модель</option>
+                                    <option value="1">X5</option>
+                                    <option value="2">X6</option>
+                                </select>
+                                <select class="pick-up__body-type select">
+                                    <option value="1" selected>Поколение</option>
+                                    <option value="2">E70</option>
+                                    <option value="3">E71</option>
+                                </select>
+                                <select class="pick-up__transmission">
+                                    <option value="1" selected>Год выпуска</option>
+                                    <option value="2">2010</option>
+                                    <option value="3">2011</option>
+                                    <option value="4">2012</option>
+                                    <option value="5">2013</option>
+                                    <option value="6">2014</option>
+                                    <option value="7">2015</option>
+                                    <option value="8">2016</option>
+                                    <option value="9">2017</option>
+                                    <option value="10">2018</option>
+                                    <option value="11">2019</option>
+                                    <option value="12">2020</option>
+                                </select>
+                            </div>
+                            <div class="pick-up__flex">
+                                <select class="pick-up__body-type">
+                                    <option value="1" selected>Привод</option>
+                                    <option value="2">Передний</option>
+                                    <option value="3">Задний</option>
+                                    <option value="4">Полный</option>
+                                </select>
+                                <select class="pick-up__transmission">
+                                    <option value="1" selected>Коробка передач</option>
+                                    <option value="2">Механическая</option>
+                                    <option value="3">Автоматическая</option>
+                                    <option value="4">Роботизированная</option>
+                                    <option value="5">Вариатор</option>
+                                </select>
+                                <select class="pick-up__body-type select">
+                                    <option value="1" selected>Седан</option>
+                                    <option value="2">Универсал</option>
+                                    <option value="3">Хэтчбэк</option>
+                                    <option value="4">Лифтбэк</option>
+                                    <option value="5">Минивен</option>
+                                    <option value="6">Купе</option>
+                                    <option value="7">Кроссовер</option>
+                                    <option value="8">Внедорожник</option>
+                                    <option value="9">Кабриолет</option>
+                                    <option value="10">Пикап</option>
+                                    <option value="11">Фургон</option>
+                                </select>
+                                <button class="pick-up__list button" style="height: auto;">Показать&nbsp;<span>73</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-                <div class="choose__marks-item">
-                    <img src="/img/main-1920-auto/brilliance.png" alt=""> Brilliance
-                </div>
-                <div class="choose__marks-item">
-                    <img src="/img/main-1920-auto/citroen.png" alt=""> Citroen
-                </div>
-                <div class="choose__marks-item">
-                    <img src="/img/main-1920-auto/ford.png" alt=""> Ford
-                </div>
-                <div class="choose__marks-item">
-                    <img src="/img/main-1920-auto/haima.png" alt=""> Haima
-                </div>
-                <div class="choose__marks-item">
-                    <img src="/img/main-1920-auto/lifan.png" alt=""> Lifan
-                </div>
-                <div class="choose__marks-item">
-                    <img src="/img/main-1920-auto/peugeot.png" alt=""> Peugeot
-                </div>
-                <div class="choose__marks-item">
-                    <img src="/img/main-1920-auto/uaz.png" alt=""> UAZ
-                </div>
-                <div class="choose__marks-item">
-                    <img src="/img/main-1920-auto/hyundai.png" alt=""> Hyundai
-                </div>
-                <div class="choose__marks-item">
-                    <img src="/img/main-1920-auto/changan.png" alt=""> Changan
-                </div>
-                <div class="choose__marks-item">
-                    <img src="/img/main-1920-auto/datsun.png" alt=""> Datsun
-                </div>
-                <div class="choose__marks-item">
-                    <img src="/img/main-1920-auto/foton.png" alt=""> Foton
-                </div>
-                <div class="choose__marks-item">
-                    <img src="/img/main-1920-auto/haval.png" alt=""> Haval
-                </div>
-                <div class="choose__marks-item">
-                    <img src="/img/main-1920-auto/mazda.png" alt=""> Mazda
-                </div>
-                <div class="choose__marks-item">
-                    <img src="/img/main-1920-auto/ravon.png" alt=""> Ravon
-                </div>
-                <div class="choose__marks-item">
-                    <img src="/img/main-1920-auto/zotye.png" alt=""> Zotye
-                </div>
-                <div class="choose__marks-item">
-                    <img src="/img/main-1920-auto/skoda.png" alt=""> Skoda
-                </div>
-                <div class="choose__marks-item">
-                    <img src="/img/main-1920-auto/chery.png" alt=""> Chery
-                </div>
-                <div class="choose__marks-item">
-                    <img src="/img/main-1920-auto/dongfenf.png" alt=""> Dongfenf
-                </div>
-                <div class="choose__marks-item">
-                    <img src="/img/main-1920-auto/gac.png" alt=""> GAC
-                </div>
-                <div class="choose__marks-item">
-                    <img src="/img/main-1920-auto/honda.png" alt=""> Honda
-                </div>
-                <div class="choose__marks-item">
-                    <img src="/img/main-1920-auto/mitsubishi.png" alt=""> Mitsubishi
-                </div>
-                <div class="choose__marks-item">
-                    <img src="/img/main-1920-auto/renault.png" alt=""> Renault
-                </div>
-                <div class="choose__marks-item">
-                    <img src="/img/main-1920-auto/volkswagen.png" alt=""> Volkswagen
-                </div>
-                <div class="choose__marks-item">
-                    <img src="/img/main-1920-auto/cheryExeed.png" alt=""> CheryExeed
-                </div>
-                <div class="choose__marks-item">
-                    <img src="/img/main-1920-auto/dwHover.png" alt=""> DW Hover
-                </div>
-                <div class="choose__marks-item">
-                    <img src="/img/main-1920-auto/geely.png" alt=""> Geely
-                </div>
-                <div class="choose__marks-item">
-                    <img src="/img/main-1920-auto/jac.png" alt=""> JAC
-                </div>
-                <div class="choose__marks-item">
-                    <img src="/img/main-1920-auto/nissan.png" alt=""> Nissan
-                </div>
-                <div class="choose__marks-item">
-                    <img src="/img/main-1920-auto/ssang.png" alt=""> Ssang
-                </div>
-                <div class="choose__marks-item">
-                    <img src="/img/main-1920-auto/toyta.png" alt=""> Toyota
-                </div>
-                <div class="choose__marks-item">
-                    <img src="/img/main-1920-auto/chevrolet.png" alt=""> Chevrolet
-                </div>
-                <div class="choose__marks-item">
-                    <img src="/img/main-1920-auto/faw.png" alt=""> FAW
-                </div>
-                <div class="choose__marks-item">
-                    <img src="/img/main-1920-auto/greatWall.png" alt=""> Great Wall
-                </div>
-                <div class="choose__marks-item">
-                    <img src="/img/main-1920-auto/lada.png" alt=""> Lada
-                </div>
-                <div class="choose__marks-item">
-                    <img src="/img/main-1920-auto/opel.png" alt=""> Opel
-                </div>
-                <div class="choose__marks-item">
-                    <img src="/img/main-1920-auto/suzuki.png" alt=""> Suzuki
-                </div>
-            </div>
-            <div class="choose__params">
-                <p class="choose__params-title">
-                    Быстрый подбор авто
-                </p>
-                <div class="choose__params-price">
-                    <div class="choose__params-price__top">
-                        <p>Цена</p>
-                        <span>0-500т</span>
-                    </div>
-                    <input type="range" step="100" min="0" max="1000" class="choose__params-price__input">
-                    <div class="choose__params-price__steps">
-                        <p class="choose__params-price__step">
-                            <img src="/img/range-line.png" alt="">
-                            0
-                        </p>
-                        <p class="choose__params-price__step">
-                            <img src="/img/range-line.png" alt="">
-                            500т
-                        </p>
-                        <p class="choose__params-price__step">
-                            <img src="/img/range-line.png" alt="">
-                            800т
-                        </p>
-                        <p class="choose__params-price__step">
-                            <img src="/img/range-line.png" alt="">
-                            1.1м
-                        </p>
-                        <p class="choose__params-price__step">
-                            <img src="/img/range-line.png" alt="">
-                            1.4м
-                        </p>
-                        <p class="choose__params-price__step">
-                            <img src="/img/range-line.png" alt="">
-                            1.7м
-                        </p>
-                        <p class="choose__params-price__step">
-                            <img src="/img/range-line.png" alt="">
-                            2м
-                        </p>
-                        <p class="choose__params-price__step">
-                            <img src="/img/range-line.png" alt="">
-                            2.3м
-                        </p>
-                        <p class="choose__params-price__step">
-                            <img src="/img/range-line.png" alt="">
-                            2.7м
-                        </p>
-                        <p class="choose__params-price__step">
-                            <img src="/img/range-line.png" alt="">
-                            3м
-                        </p>
-                    </div>
-                </div>
-                <div class="choose__params-choice">
-                    <select name="" id="" class="params-choice__select">
-                        <option value="">Модель</option>
-                        <option value="">Седан</option>
-                        <option value="">Пикап</option>
-                        <option value="">Внедорожник</option>
-                        <option value="">Хетчбэк</option>
-                    </select>
-                    <select name="" id="" class="params-choice__select">
-                        <option value="">Год выпуска</option>
-                        <option value="">Седан</option>
-                        <option value="">Пикап</option>
-                        <option value="">Внедорожник</option>
-                        <option value="">Хетчбэк</option>
-                    </select>
-                    <select name="" id="" class="params-choice__select">
-                        <option value="">Тип кузова</option>
-                        <option value="">Седан</option>
-                        <option value="">Пикап</option>
-                        <option value="">Внедорожник</option>
-                        <option value="">Хетчбэк</option>
-                    </select>
-                    <select name="" id="" class="params-choice__select">
-                        <option value="">Коробка</option>
-                        <option value="">Автоматическая</option>
-                        <option value="">Механическая</option>
-                    </select>
-                </div>
-                <button class="choose__params-btn red-btn">ПОКАЗАТЬ 73</button>
             </div>
         </section>
-        <section class="probeg">
-            <div class="container">
-                <div class="probeg__cards">
-                    <a href="{% url 'used_cars' %}">
-                        <div class="probeg__cards-item">
-                            <div class="probeg__cards-item__top">
-                                <img src="{% static 'img/auto-probeg-1920/camry.png' %}" alt="">
-                                <div class="slider-photos">
-                                    <div class="slide"></div>
-                                    <div class="slide"></div>
-                                    <div class="slide"></div>
-                                    <div class="slide"></div>
+        <section class="auto">
+            <div class="_container">
+                <h2 class="auto__heading">Автомобили с пробегом</h2>
+            </div>
+            <div class="auto__container _container">
+                <div class="auto__list">
+                    <div class="auto__item">
+                        <div class="card">
+                            <div class="card__flex">
+                                <div class="card__title">
+                                    Skoda Octavia
+                                </div>
+                                <div class="card__icons">
+                                    <i class="card__likes likes-icon"></i>
                                 </div>
                             </div>
-                            <div class="probeg__cards-item__content">
-                                <p class="probeg__cards-item__title">
-                                    Toyota Camry 2013
-                                </p>
-                                <div class="probeg__cards-item__params">
-                                    <div class="">
-                                        <p class="probeg__cards-item__params-item">
-                                            Мощность:
-                                            <span>115 л.с.</span>
-                                        </p>
-                                        <p class="probeg__cards-item__params-item">
-                                            Объем двигателя:
-                                            <span>1.2 л.</span>
-                                        </p>
-                                        <p class="probeg__cards-item__params-item">
-                                            Привод:
-                                            <span>передний</span>
-                                        </p>
-                                    </div>
-                                    <div class="">
-                                        <p class="probeg__cards-item__params-item">
-                                            Кузов:
-                                            <span>внедорожник</span>
-                                        </p>
-                                        <p class="probeg__cards-item__params-item">
-                                            КПП:
-                                            <span>механика</span>
-                                        </p>
-                                        <p class="probeg__cards-item__params-item">
-                                            Пробег:
-                                            <span>123456 км.</span>
-                                        </p>
-                                    </div>
+
+                            <div class="card__flex">
+                                <a href="{% url 'detail' %}" class="owl-carousel owl-theme">
+                                    <img src="{% static 'img/auto-probeg-1920/camry.png' %}" alt="">
+                                    <img src="{% static 'img/auto-probeg-1920/camry.png' %}" alt="">
+                                    <img src="{% static 'img/auto-probeg-1920/camry.png' %}" alt="">
+                                    <img src="{% static 'img/auto-probeg-1920/camry.png' %}" alt="">
+                                    <img src="{% static 'img/auto-probeg-1920/camry.png' %}" alt="">
+                                    <img src="{% static 'img/auto-probeg-1920/camry.png' %}" alt="">
+                                </a>
+                            </div>
+                            <div class="card__price card__flex">
+                                <span class=" -bold">от 1 615 000 &#8381</span>
+                                <div class="card__payment">
+                                    Кредит
+                                    <p class="-bold">от 115 000 &#8381/мес.</p>
                                 </div>
-                                <div class="probeg__cards-item__price">
-                                    <p>от 1 615 000 ₽ </p>
-                                    <span>от 115 000 ₽/мес. </span>
+                            </div>
+                            <div class="card__flex card__option-list">
+                                <div class="card__option-item i-engine i-engine--m">
+                                    115 л.с.
                                 </div>
-                                <div class="auto__card-btns">
-                                    <button class="auto__card-btns__btn">
-                                        Резерв онлайн
-                                    </button>
-                                    <button class="auto__card-btns__btn">
-                                        Купить
-                                    </button>
-                                    <button class="auto__card-btns__btn">
-                                        Подробнее
-                                    </button>
+                                <div class="card__option-item i-gas i-gas--m">
+                                    5.3 л/км
+                                </div>
+                                <div class="card__option-item i-speed i-speed--m">
+                                    189 км/ч
+                                </div>
+                                <div class="card__option-item i-timer i-timer--m">
+                                    10,3 c.
                                 </div>
                             </div>
                         </div>
-                    </a>
-                    <a href="{% url 'used_cars' %}">
-                        <div class="probeg__cards-item">
-                            <div class="probeg__cards-item__top">
-                                <img src="{% static 'img/auto-probeg-1920/camry.png' %}" alt="">
-                                <div class="slider-photos">
-                                    <div class="slide"></div>
-                                    <div class="slide"></div>
-                                    <div class="slide"></div>
-                                    <div class="slide"></div>
+                    </div>
+                    <div class="auto__item">
+                        <div class="card">
+                            <div class="card__flex">
+                                <div class="card__title">
+                                    Skoda Octavia
+                                </div>
+                                <div class="card__icons">
+                                    <i class="card__likes likes-icon"></i>
                                 </div>
                             </div>
-                            <div class="probeg__cards-item__content">
-                                <p class="probeg__cards-item__title">
-                                    Toyota Camry 2013
-                                </p>
-                                <div class="probeg__cards-item__params">
-                                    <div class="">
-                                        <p class="probeg__cards-item__params-item">
-                                            Мощность:
-                                            <span>115 л.с.</span>
-                                        </p>
-                                        <p class="probeg__cards-item__params-item">
-                                            Объем двигателя:
-                                            <span>1.2 л.</span>
-                                        </p>
-                                        <p class="probeg__cards-item__params-item">
-                                            Привод:
-                                            <span>передний</span>
-                                        </p>
-                                    </div>
-                                    <div class="">
-                                        <p class="probeg__cards-item__params-item">
-                                            Кузов:
-                                            <span>внедорожник</span>
-                                        </p>
-                                        <p class="probeg__cards-item__params-item">
-                                            КПП:
-                                            <span>механика</span>
-                                        </p>
-                                        <p class="probeg__cards-item__params-item">
-                                            Пробег:
-                                            <span>123456 км.</span>
-                                        </p>
-                                    </div>
+
+                            <div class="card__flex">
+                                <a href="{% url 'detail' %}">
+                                    <img src="{% static 'img/octavia.png' %}" alt="">
+                                </a>
+                            </div>
+                            <div class="card__price card__flex">
+                                <span class=" -bold">от 1 615 000 &#8381</span>
+                                <div class="card__payment">
+                                    Кредит
+                                    <p class="-bold">от 115 000 &#8381/мес.</p>
                                 </div>
-                                <div class="probeg__cards-item__price">
-                                    <p>от 1 615 000 ₽ </p>
-                                    <span>от 115 000 ₽/мес. </span>
+                            </div>
+                            <div class="card__flex card__option-list">
+                                <div class="card__option-item i-engine i-engine--m">
+                                    115 л.с.
                                 </div>
-                                <div class="auto__card-btns">
-                                    <button class="auto__card-btns__btn">
-                                        Резерв онлайн
-                                    </button>
-                                    <button class="auto__card-btns__btn">
-                                        Купить
-                                    </button>
-                                    <button class="auto__card-btns__btn">
-                                        Подробнее
-                                    </button>
+                                <div class="card__option-item i-gas i-gas--m">
+                                    5.3 л/км
+                                </div>
+                                <div class="card__option-item i-speed i-speed--m">
+                                    189 км/ч
+                                </div>
+                                <div class="card__option-item i-timer i-timer--m">
+                                    10,3 c.
                                 </div>
                             </div>
                         </div>
-                    </a>
-                    <a href="{% url 'used_cars' %}">
-                        <div class="probeg__cards-item">
-                            <div class="probeg__cards-item__top">
-                                <img src="{% static 'img/auto-probeg-1920/camry.png' %}" alt="">
-                                <div class="slider-photos">
-                                    <div class="slide"></div>
-                                    <div class="slide"></div>
-                                    <div class="slide"></div>
-                                    <div class="slide"></div>
+                    </div>
+                    <div class="auto__item">
+                        <div class="card">
+                            <div class="card__flex">
+                                <div class="card__title">
+                                    Skoda Octavia
+                                </div>
+                                <div class="card__icons">
+                                    <i class="card__likes likes-icon"></i>
                                 </div>
                             </div>
-                            <div class="probeg__cards-item__content">
-                                <p class="probeg__cards-item__title">
-                                    Toyota Camry 2013
-                                </p>
-                                <div class="probeg__cards-item__params">
-                                    <div class="">
-                                        <p class="probeg__cards-item__params-item">
-                                            Мощность:
-                                            <span>115 л.с.</span>
-                                        </p>
-                                        <p class="probeg__cards-item__params-item">
-                                            Объем двигателя:
-                                            <span>1.2 л.</span>
-                                        </p>
-                                        <p class="probeg__cards-item__params-item">
-                                            Привод:
-                                            <span>передний</span>
-                                        </p>
-                                    </div>
-                                    <div class="">
-                                        <p class="probeg__cards-item__params-item">
-                                            Кузов:
-                                            <span>внедорожник</span>
-                                        </p>
-                                        <p class="probeg__cards-item__params-item">
-                                            КПП:
-                                            <span>механика</span>
-                                        </p>
-                                        <p class="probeg__cards-item__params-item">
-                                            Пробег:
-                                            <span>123456 км.</span>
-                                        </p>
-                                    </div>
+
+                            <div class="card__flex">
+                                <a href="{% url 'detail' %}">
+                                    <img src="{% static 'img/octavia.png' %}" alt="">
+                                </a>
+                            </div>
+                            <div class="card__price card__flex">
+                                <span class=" -bold">от 1 615 000 &#8381</span>
+                                <div class="card__payment">
+                                    Кредит
+                                    <p class="-bold">от 115 000 &#8381/мес.</p>
                                 </div>
-                                <div class="probeg__cards-item__price">
-                                    <p>от 1 615 000 ₽ </p>
-                                    <span>от 115 000 ₽/мес. </span>
+                            </div>
+                            <div class="card__flex card__option-list">
+                                <div class="card__option-item i-engine i-engine--m">
+                                    115 л.с.
                                 </div>
-                                <div class="auto__card-btns">
-                                    <button class="auto__card-btns__btn">
-                                        Резерв онлайн
-                                    </button>
-                                    <button class="auto__card-btns__btn">
-                                        Купить
-                                    </button>
-                                    <button class="auto__card-btns__btn">
-                                        Подробнее
-                                    </button>
+                                <div class="card__option-item i-gas i-gas--m">
+                                    5.3 л/км
+                                </div>
+                                <div class="card__option-item i-speed i-speed--m">
+                                    189 км/ч
+                                </div>
+                                <div class="card__option-item i-timer i-timer--m">
+                                    10,3 c.
                                 </div>
                             </div>
                         </div>
-                    </a>
-                    <a href="{% url 'used_cars' %}">
-                        <div class="probeg__cards-item">
-                            <div class="probeg__cards-item__top">
-                                <img src="{% static 'img/auto-probeg-1920/camry.png' %}" alt="">
-                                <div class="slider-photos">
-                                    <div class="slide"></div>
-                                    <div class="slide"></div>
-                                    <div class="slide"></div>
-                                    <div class="slide"></div>
+                    </div>
+                    <div class="auto__item">
+                        <div class="card">
+                            <div class="card__flex">
+                                <div class="card__title">
+                                    Skoda Octavia
+                                </div>
+                                <div class="card__icons">
+                                    <i class="card__likes likes-icon"></i>
                                 </div>
                             </div>
-                            <div class="probeg__cards-item__content">
-                                <p class="probeg__cards-item__title">
-                                    Toyota Camry 2013
-                                </p>
-                                <div class="probeg__cards-item__params">
-                                    <div class="">
-                                        <p class="probeg__cards-item__params-item">
-                                            Мощность:
-                                            <span>115 л.с.</span>
-                                        </p>
-                                        <p class="probeg__cards-item__params-item">
-                                            Объем двигателя:
-                                            <span>1.2 л.</span>
-                                        </p>
-                                        <p class="probeg__cards-item__params-item">
-                                            Привод:
-                                            <span>передний</span>
-                                        </p>
-                                    </div>
-                                    <div class="">
-                                        <p class="probeg__cards-item__params-item">
-                                            Кузов:
-                                            <span>внедорожник</span>
-                                        </p>
-                                        <p class="probeg__cards-item__params-item">
-                                            КПП:
-                                            <span>механика</span>
-                                        </p>
-                                        <p class="probeg__cards-item__params-item">
-                                            Пробег:
-                                            <span>123456 км.</span>
-                                        </p>
-                                    </div>
+
+                            <div class="card__flex">
+                                <a href="{% url 'detail' %}">
+                                    <img src="{% static 'img/octavia.png' %}" alt="">
+                                </a>
+                            </div>
+                            <div class="card__price card__flex">
+                                <span class=" -bold">от 1 615 000 &#8381</span>
+                                <div class="card__payment">
+                                    Кредит
+                                    <p class="-bold">от 115 000 &#8381/мес.</p>
                                 </div>
-                                <div class="probeg__cards-item__price">
-                                    <p>от 1 615 000 ₽ </p>
-                                    <span>от 115 000 ₽/мес. </span>
+                            </div>
+                            <div class="card__flex card__option-list">
+                                <div class="card__option-item i-engine i-engine--m">
+                                    115 л.с.
                                 </div>
-                                <div class="auto__card-btns">
-                                    <button class="auto__card-btns__btn">
-                                        Резерв онлайн
-                                    </button>
-                                    <button class="auto__card-btns__btn">
-                                        Купить
-                                    </button>
-                                    <button class="auto__card-btns__btn">
-                                        Подробнее
-                                    </button>
+                                <div class="card__option-item i-gas i-gas--m">
+                                    5.3 л/км
+                                </div>
+                                <div class="card__option-item i-speed i-speed--m">
+                                    189 км/ч
+                                </div>
+                                <div class="card__option-item i-timer i-timer--m">
+                                    10,3 c.
                                 </div>
                             </div>
                         </div>
-                    </a>
-                    <a href="{% url 'used_cars' %}">
-                        <div class="probeg__cards-item">
-                            <div class="probeg__cards-item__top">
-                                <img src="{% static 'img/auto-probeg-1920/camry.png' %}" alt="">
-                                <div class="slider-photos">
-                                    <div class="slide"></div>
-                                    <div class="slide"></div>
-                                    <div class="slide"></div>
-                                    <div class="slide"></div>
+                    </div>
+                    <div class="auto__item">
+                        <div class="card">
+                            <div class="card__flex">
+                                <div class="card__title">
+                                    Skoda Octavia
+                                </div>
+                                <div class="card__icons">
+                                    <i class="card__likes likes-icon"></i>
                                 </div>
                             </div>
-                            <div class="probeg__cards-item__content">
-                                <p class="probeg__cards-item__title">
-                                    Toyota Camry 2013
-                                </p>
-                                <div class="probeg__cards-item__params">
-                                    <div class="">
-                                        <p class="probeg__cards-item__params-item">
-                                            Мощность:
-                                            <span>115 л.с.</span>
-                                        </p>
-                                        <p class="probeg__cards-item__params-item">
-                                            Объем двигателя:
-                                            <span>1.2 л.</span>
-                                        </p>
-                                        <p class="probeg__cards-item__params-item">
-                                            Привод:
-                                            <span>передний</span>
-                                        </p>
-                                    </div>
-                                    <div class="">
-                                        <p class="probeg__cards-item__params-item">
-                                            Кузов:
-                                            <span>внедорожник</span>
-                                        </p>
-                                        <p class="probeg__cards-item__params-item">
-                                            КПП:
-                                            <span>механика</span>
-                                        </p>
-                                        <p class="probeg__cards-item__params-item">
-                                            Пробег:
-                                            <span>123456 км.</span>
-                                        </p>
-                                    </div>
+
+                            <div class="card__flex">
+                                <a href="{% url 'detail' %}">
+                                    <img src="{% static 'img/octavia.png' %}" alt="">
+                                </a>
+                            </div>
+                            <div class="card__price card__flex">
+                                <span class=" -bold">от 1 615 000 &#8381</span>
+                                <div class="card__payment">
+                                    Кредит
+                                    <p class="-bold">от 115 000 &#8381/мес.</p>
                                 </div>
-                                <div class="probeg__cards-item__price">
-                                    <p>от 1 615 000 ₽ </p>
-                                    <span>от 115 000 ₽/мес. </span>
+                            </div>
+                            <div class="card__flex card__option-list">
+                                <div class="card__option-item i-engine i-engine--m">
+                                    115 л.с.
                                 </div>
-                                <div class="auto__card-btns">
-                                    <button class="auto__card-btns__btn">
-                                        Резерв онлайн
-                                    </button>
-                                    <button class="auto__card-btns__btn">
-                                        Купить
-                                    </button>
-                                    <button class="auto__card-btns__btn">
-                                        Подробнее
-                                    </button>
+                                <div class="card__option-item i-gas i-gas--m">
+                                    5.3 л/км
+                                </div>
+                                <div class="card__option-item i-speed i-speed--m">
+                                    189 км/ч
+                                </div>
+                                <div class="card__option-item i-timer i-timer--m">
+                                    10,3 c.
                                 </div>
                             </div>
                         </div>
-                    </a>
-                    <a href="{% url 'used_cars' %}">
-                        <div class="probeg__cards-item">
-                            <div class="probeg__cards-item__top">
-                                <img src="{% static 'img/auto-probeg-1920/camry.png' %}" alt="">
-                                <div class="slider-photos">
-                                    <div class="slide"></div>
-                                    <div class="slide"></div>
-                                    <div class="slide"></div>
-                                    <div class="slide"></div>
+                    </div>
+                    <div class="auto__item">
+                        <div class="card">
+                            <div class="card__flex">
+                                <div class="card__title">
+                                    Skoda Octavia
+                                </div>
+                                <div class="card__icons">
+                                    <i class="card__likes likes-icon"></i>
                                 </div>
                             </div>
-                            <div class="probeg__cards-item__content">
-                                <p class="probeg__cards-item__title">
-                                    Toyota Camry 2013
-                                </p>
-                                <div class="probeg__cards-item__params">
-                                    <div class="">
-                                        <p class="probeg__cards-item__params-item">
-                                            Мощность:
-                                            <span>115 л.с.</span>
-                                        </p>
-                                        <p class="probeg__cards-item__params-item">
-                                            Объем двигателя:
-                                            <span>1.2 л.</span>
-                                        </p>
-                                        <p class="probeg__cards-item__params-item">
-                                            Привод:
-                                            <span>передний</span>
-                                        </p>
-                                    </div>
-                                    <div class="">
-                                        <p class="probeg__cards-item__params-item">
-                                            Кузов:
-                                            <span>внедорожник</span>
-                                        </p>
-                                        <p class="probeg__cards-item__params-item">
-                                            КПП:
-                                            <span>механика</span>
-                                        </p>
-                                        <p class="probeg__cards-item__params-item">
-                                            Пробег:
-                                            <span>123456 км.</span>
-                                        </p>
-                                    </div>
+
+                            <div class="card__flex">
+                                <a href="{% url 'detail' %}">
+                                    <img src="{% static 'img/octavia.png' %}" alt="">
+                                </a>
+                            </div>
+                            <div class="card__price card__flex">
+                                <span class=" -bold">от 1 615 000 &#8381</span>
+                                <div class="card__payment">
+                                    Кредит
+                                    <p class="-bold">от 115 000 &#8381/мес.</p>
                                 </div>
-                                <div class="probeg__cards-item__price">
-                                    <p>от 1 615 000 ₽ </p>
-                                    <span>от 115 000 ₽/мес. </span>
+                            </div>
+                            <div class="card__flex card__option-list">
+                                <div class="card__option-item i-engine i-engine--m">
+                                    115 л.с.
                                 </div>
-                                <div class="auto__card-btns">
-                                    <button class="auto__card-btns__btn">
-                                        Резерв онлайн
-                                    </button>
-                                    <button class="auto__card-btns__btn">
-                                        Купить
-                                    </button>
-                                    <button class="auto__card-btns__btn">
-                                        Подробнее
-                                    </button>
+                                <div class="card__option-item i-gas i-gas--m">
+                                    5.3 л/км
+                                </div>
+                                <div class="card__option-item i-speed i-speed--m">
+                                    189 км/ч
+                                </div>
+                                <div class="card__option-item i-timer i-timer--m">
+                                    10,3 c.
                                 </div>
                             </div>
                         </div>
-                    </a>
-                    <a href="{% url 'used_cars' %}">
-                        <div class="probeg__cards-item">
-                            <div class="probeg__cards-item__top">
-                                <img src="{% static 'img/auto-probeg-1920/camry.png' %}" alt="">
-                                <div class="slider-photos">
-                                    <div class="slide"></div>
-                                    <div class="slide"></div>
-                                    <div class="slide"></div>
-                                    <div class="slide"></div>
+                    </div>
+                    <div class="auto__item">
+                        <div class="card">
+                            <div class="card__flex">
+                                <div class="card__title">
+                                    Skoda Octavia
+                                </div>
+                                <div class="card__icons">
+                                    <i class="card__likes likes-icon"></i>
                                 </div>
                             </div>
-                            <div class="probeg__cards-item__content">
-                                <p class="probeg__cards-item__title">
-                                    Toyota Camry 2013
-                                </p>
-                                <div class="probeg__cards-item__params">
-                                    <div class="">
-                                        <p class="probeg__cards-item__params-item">
-                                            Мощность:
-                                            <span>115 л.с.</span>
-                                        </p>
-                                        <p class="probeg__cards-item__params-item">
-                                            Объем двигателя:
-                                            <span>1.2 л.</span>
-                                        </p>
-                                        <p class="probeg__cards-item__params-item">
-                                            Привод:
-                                            <span>передний</span>
-                                        </p>
-                                    </div>
-                                    <div class="">
-                                        <p class="probeg__cards-item__params-item">
-                                            Кузов:
-                                            <span>внедорожник</span>
-                                        </p>
-                                        <p class="probeg__cards-item__params-item">
-                                            КПП:
-                                            <span>механика</span>
-                                        </p>
-                                        <p class="probeg__cards-item__params-item">
-                                            Пробег:
-                                            <span>123456 км.</span>
-                                        </p>
-                                    </div>
+
+                            <div class="card__flex">
+                                <a href="{% url 'detail' %}">
+                                    <img src="{% static 'img/octavia.png' %}" alt="">
+                                </a>
+                            </div>
+                            <div class="card__price card__flex">
+                                <span class=" -bold">от 1 615 000 &#8381</span>
+                                <div class="card__payment">
+                                    Кредит
+                                    <p class="-bold">от 115 000 &#8381/мес.</p>
                                 </div>
-                                <div class="probeg__cards-item__price">
-                                    <p>от 1 615 000 ₽ </p>
-                                    <span>от 115 000 ₽/мес. </span>
+                            </div>
+                            <div class="card__flex card__option-list">
+                                <div class="card__option-item i-engine i-engine--m">
+                                    115 л.с.
                                 </div>
-                                <div class="auto__card-btns">
-                                    <button class="auto__card-btns__btn">
-                                        Резерв онлайн
-                                    </button>
-                                    <button class="auto__card-btns__btn">
-                                        Купить
-                                    </button>
-                                    <button class="auto__card-btns__btn">
-                                        Подробнее
-                                    </button>
+                                <div class="card__option-item i-gas i-gas--m">
+                                    5.3 л/км
+                                </div>
+                                <div class="card__option-item i-speed i-speed--m">
+                                    189 км/ч
+                                </div>
+                                <div class="card__option-item i-timer i-timer--m">
+                                    10,3 c.
                                 </div>
                             </div>
                         </div>
-                    </a>
-                    <a href="{% url 'used_cars' %}">
-                        <div class="probeg__cards-item">
-                            <div class="probeg__cards-item__top">
-                                <img src="{% static 'img/auto-probeg-1920/camry.png' %}" alt="">
-                                <div class="slider-photos">
-                                    <div class="slide"></div>
-                                    <div class="slide"></div>
-                                    <div class="slide"></div>
-                                    <div class="slide"></div>
+                    </div>
+                    <div class="auto__item">
+                        <div class="card">
+                            <div class="card__flex">
+                                <div class="card__title">
+                                    Skoda Octavia
+                                </div>
+                                <div class="card__icons">
+                                    <i class="card__likes likes-icon"></i>
                                 </div>
                             </div>
-                            <div class="probeg__cards-item__content">
-                                <p class="probeg__cards-item__title">
-                                    Toyota Camry 2013
-                                </p>
-                                <div class="probeg__cards-item__params">
-                                    <div class="">
-                                        <p class="probeg__cards-item__params-item">
-                                            Мощность:
-                                            <span>115 л.с.</span>
-                                        </p>
-                                        <p class="probeg__cards-item__params-item">
-                                            Объем двигателя:
-                                            <span>1.2 л.</span>
-                                        </p>
-                                        <p class="probeg__cards-item__params-item">
-                                            Привод:
-                                            <span>передний</span>
-                                        </p>
-                                    </div>
-                                    <div class="">
-                                        <p class="probeg__cards-item__params-item">
-                                            Кузов:
-                                            <span>внедорожник</span>
-                                        </p>
-                                        <p class="probeg__cards-item__params-item">
-                                            КПП:
-                                            <span>механика</span>
-                                        </p>
-                                        <p class="probeg__cards-item__params-item">
-                                            Пробег:
-                                            <span>123456 км.</span>
-                                        </p>
-                                    </div>
+
+                            <div class="card__flex">
+                                <a href="{% url 'detail' %}">
+                                    <img src="{% static 'img/octavia.png' %}" alt="">
+                                </a>
+                            </div>
+                            <div class="card__price card__flex">
+                                <span class=" -bold">от 1 615 000 &#8381</span>
+                                <div class="card__payment">
+                                    Кредит
+                                    <p class="-bold">от 115 000 &#8381/мес.</p>
                                 </div>
-                                <div class="probeg__cards-item__price">
-                                    <p>от 1 615 000 ₽ </p>
-                                    <span>от 115 000 ₽/мес. </span>
+                            </div>
+                            <div class="card__flex card__option-list">
+                                <div class="card__option-item i-engine i-engine--m">
+                                    115 л.с.
                                 </div>
-                                <div class="auto__card-btns">
-                                    <button class="auto__card-btns__btn">
-                                        Резерв онлайн
-                                    </button>
-                                    <button class="auto__card-btns__btn">
-                                        Купить
-                                    </button>
-                                    <button class="auto__card-btns__btn">
-                                        Подробнее
-                                    </button>
+                                <div class="card__option-item i-gas i-gas--m">
+                                    5.3 л/км
+                                </div>
+                                <div class="card__option-item i-speed i-speed--m">
+                                    189 км/ч
+                                </div>
+                                <div class="card__option-item i-timer i-timer--m">
+                                    10,3 c.
                                 </div>
                             </div>
                         </div>
-                    </a>
-                    <a href="{% url 'used_cars' %}">
-                        <div class="probeg__cards-item">
-                            <div class="probeg__cards-item__top">
-                                <img src="{% static 'img/auto-probeg-1920/camry.png' %}" alt="">
-                                <div class="slider-photos">
-                                    <div class="slide"></div>
-                                    <div class="slide"></div>
-                                    <div class="slide"></div>
-                                    <div class="slide"></div>
-                                </div>
-                            </div>
-                            <div class="probeg__cards-item__content">
-                                <p class="probeg__cards-item__title">
-                                    Toyota Camry 2013
-                                </p>
-                                <div class="probeg__cards-item__params">
-                                    <div class="">
-                                        <p class="probeg__cards-item__params-item">
-                                            Мощность:
-                                            <span>115 л.с.</span>
-                                        </p>
-                                        <p class="probeg__cards-item__params-item">
-                                            Объем двигателя:
-                                            <span>1.2 л.</span>
-                                        </p>
-                                        <p class="probeg__cards-item__params-item">
-                                            Привод:
-                                            <span>передний</span>
-                                        </p>
-                                    </div>
-                                    <div class="">
-                                        <p class="probeg__cards-item__params-item">
-                                            Кузов:
-                                            <span>внедорожник</span>
-                                        </p>
-                                        <p class="probeg__cards-item__params-item">
-                                            КПП:
-                                            <span>механика</span>
-                                        </p>
-                                        <p class="probeg__cards-item__params-item">
-                                            Пробег:
-                                            <span>123456 км.</span>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="probeg__cards-item__price">
-                                    <p>от 1 615 000 ₽ </p>
-                                    <span>от 115 000 ₽/мес. </span>
-                                </div>
-                                <div class="auto__card-btns">
-                                    <button class="auto__card-btns__btn">
-                                        Резерв онлайн
-                                    </button>
-                                    <button class="auto__card-btns__btn">
-                                        Купить
-                                    </button>
-                                    <button class="auto__card-btns__btn">
-                                        Подробнее
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="{% url 'used_cars' %}">
-                        <div class="probeg__cards-item">
-                            <div class="probeg__cards-item__top">
-                                <img src="{% static 'img/auto-probeg-1920/camry.png' %}" alt="">
-                                <div class="slider-photos">
-                                    <div class="slide"></div>
-                                    <div class="slide"></div>
-                                    <div class="slide"></div>
-                                    <div class="slide"></div>
-                                </div>
-                            </div>
-                            <div class="probeg__cards-item__content">
-                                <p class="probeg__cards-item__title">
-                                    Toyota Camry 2013
-                                </p>
-                                <div class="probeg__cards-item__params">
-                                    <div class="">
-                                        <p class="probeg__cards-item__params-item">
-                                            Мощность:
-                                            <span>115 л.с.</span>
-                                        </p>
-                                        <p class="probeg__cards-item__params-item">
-                                            Объем двигателя:
-                                            <span>1.2 л.</span>
-                                        </p>
-                                        <p class="probeg__cards-item__params-item">
-                                            Привод:
-                                            <span>передний</span>
-                                        </p>
-                                    </div>
-                                    <div class="">
-                                        <p class="probeg__cards-item__params-item">
-                                            Кузов:
-                                            <span>внедорожник</span>
-                                        </p>
-                                        <p class="probeg__cards-item__params-item">
-                                            КПП:
-                                            <span>механика</span>
-                                        </p>
-                                        <p class="probeg__cards-item__params-item">
-                                            Пробег:
-                                            <span>123456 км.</span>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="probeg__cards-item__price">
-                                    <p>от 1 615 000 ₽ </p>
-                                    <span>от 115 000 ₽/мес. </span>
-                                </div>
-                                <div class="auto__card-btns">
-                                    <button class="auto__card-btns__btn">
-                                        Резерв онлайн
-                                    </button>
-                                    <button class="auto__card-btns__btn">
-                                        Купить
-                                    </button>
-                                    <button class="auto__card-btns__btn">
-                                        Подробнее
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="{% url 'used_cars' %}">
-                        <div class="probeg__cards-item">
-                            <div class="probeg__cards-item__top">
-                                <img src="{% static 'img/auto-probeg-1920/camry.png' %}" alt="">
-                                <div class="slider-photos">
-                                    <div class="slide"></div>
-                                    <div class="slide"></div>
-                                    <div class="slide"></div>
-                                    <div class="slide"></div>
-                                </div>
-                            </div>
-                            <div class="probeg__cards-item__content">
-                                <p class="probeg__cards-item__title">
-                                    Toyota Camry 2013
-                                </p>
-                                <div class="probeg__cards-item__params">
-                                    <div class="">
-                                        <p class="probeg__cards-item__params-item">
-                                            Мощность:
-                                            <span>115 л.с.</span>
-                                        </p>
-                                        <p class="probeg__cards-item__params-item">
-                                            Объем двигателя:
-                                            <span>1.2 л.</span>
-                                        </p>
-                                        <p class="probeg__cards-item__params-item">
-                                            Привод:
-                                            <span>передний</span>
-                                        </p>
-                                    </div>
-                                    <div class="">
-                                        <p class="probeg__cards-item__params-item">
-                                            Кузов:
-                                            <span>внедорожник</span>
-                                        </p>
-                                        <p class="probeg__cards-item__params-item">
-                                            КПП:
-                                            <span>механика</span>
-                                        </p>
-                                        <p class="probeg__cards-item__params-item">
-                                            Пробег:
-                                            <span>123456 км.</span>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="probeg__cards-item__price">
-                                    <p>от 1 615 000 ₽ </p>
-                                    <span>от 115 000 ₽/мес. </span>
-                                </div>
-                                <div class="auto__card-btns">
-                                    <button class="auto__card-btns__btn">
-                                        Резерв онлайн
-                                    </button>
-                                    <button class="auto__card-btns__btn">
-                                        Купить
-                                    </button>
-                                    <button class="auto__card-btns__btn">
-                                        Подробнее
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="{% url 'used_cars' %}">
-                        <div class="probeg__cards-item">
-                            <div class="probeg__cards-item__top">
-                                <img src="{% static 'img/auto-probeg-1920/camry.png' %}" alt="">
-                                <div class="slider-photos">
-                                    <div class="slide"></div>
-                                    <div class="slide"></div>
-                                    <div class="slide"></div>
-                                    <div class="slide"></div>
-                                </div>
-                            </div>
-                            <div class="probeg__cards-item__content">
-                                <p class="probeg__cards-item__title">
-                                    Toyota Camry 2013
-                                </p>
-                                <div class="probeg__cards-item__params">
-                                    <div class="">
-                                        <p class="probeg__cards-item__params-item">
-                                            Мощность:
-                                            <span>115 л.с.</span>
-                                        </p>
-                                        <p class="probeg__cards-item__params-item">
-                                            Объем двигателя:
-                                            <span>1.2 л.</span>
-                                        </p>
-                                        <p class="probeg__cards-item__params-item">
-                                            Привод:
-                                            <span>передний</span>
-                                        </p>
-                                    </div>
-                                    <div class="">
-                                        <p class="probeg__cards-item__params-item">
-                                            Кузов:
-                                            <span>внедорожник</span>
-                                        </p>
-                                        <p class="probeg__cards-item__params-item">
-                                            КПП:
-                                            <span>механика</span>
-                                        </p>
-                                        <p class="probeg__cards-item__params-item">
-                                            Пробег:
-                                            <span>123456 км.</span>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="probeg__cards-item__price">
-                                    <p>от 1 615 000 ₽ </p>
-                                    <span>от 115 000 ₽/мес. </span>
-                                </div>
-                                <div class="auto__card-btns">
-                                    <button class="auto__card-btns__btn">
-                                        Резерв онлайн
-                                    </button>
-                                    <button class="auto__card-btns__btn">
-                                        Купить
-                                    </button>
-                                    <button class="auto__card-btns__btn">
-                                        Подробнее
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="probeg__btn-cont">
-                    <button class="probeg__more red-btn">
-                        показать ещё
-                    </button>
+                    </div>
                 </div>
             </div>
+
+
+            <button class="auto__show-more button" id="auto__show-more" hidden>Показать еще</button>
+
         </section>
         <section class="comp">
             <div class="comp__top _container">
@@ -1145,39 +592,11 @@
                 </div>
             </div>
         </section>
-        <section style="margin-bottom: 90px;">
-            <div class="container">
-                <h3 class="title" style="margin-bottom: 30px;">
-                    Заголовок
-                </h3>
-                <p class="desc" style="margin-bottom: 25px;">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga excepturi molestias iusto eaque
-                    aperiam quae exercitationem odio vel doloremque. Voluptatum hic harum sed blanditiis rem similique
-                    unde laboriosam dolor nulla?Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id suscipit
-                    illo enim ipsum, quae rerum nihil minus porro repudiandae vitae sit libero ratione voluptatibus
-                    placeat perferendis quia laborum doloribus numquam.
-                </p>
-                <h4 class="subtitle" style="margin-bottom: 20px;">
-                    Подзаголовок
-                </h4>
-                <p class="desc" style="margin-bottom: 25px;">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga excepturi molestias iusto eaque
-                    aperiam quae exercitationem odio vel doloremque. Voluptatum hic harum sed blanditiis rem similique
-                    unde laboriosam dolor nulla?Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id suscipit
-                    illo enim ipsum, quae rerum nihil minus porro repudiandae vitae sit libero ratione voluptatibus
-                    placeat perferendis quia laborum doloribus numquam.
-                </p>
-                <h4 class="subtitle" style="margin-bottom: 20px;">
-                    Подзаголовок
-                </h4>
-                <p class="desc">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga excepturi molestias iusto eaque
-                    aperiam quae exercitationem odio vel doloremque. Voluptatum hic harum sed blanditiis rem similique
-                    unde laboriosam dolor nulla?Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id suscipit
-                    illo enim ipsum, quae rerum nihil minus porro repudiandae vitae sit libero ratione voluptatibus
-                    placeat perferendis quia laborum doloribus numquam.
-                </p>
-            </div>
-        </section>
     </main>
+    <script>
+        // если auto__item больше 3, то убираем атрибут hidden у кнопки
+        if ($('.auto__item').length > 3) {
+            $('#auto__show-more').removeAttr('hidden');
+        }
+    </script>
 {% endblock content %}

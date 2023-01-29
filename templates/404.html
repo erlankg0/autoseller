@@ -34,3 +34,27 @@
 </main>
 </body>
 </html>
+<script>
+    window.onload = function () {
+        var box = document.getElementsByClassName('probeg__cards-item');
+        var btn = document.getElementById('probeg__more');
+        for (let i = 3; i < box.length; i++) {
+            box[i].style.display = "none";
+        }
+
+        var countD = 3;
+        btn.addEventListener("click", function () {
+            var box = document.getElementsByClassName('probeg__cards-item');
+            countD += 3;
+            if (countD <= box.length) {
+                for (let i = 0; i < countD; i++) {
+                    box[i].style.display = "block";
+                }
+            }
+            if (countD >= box.length) {
+                btn.style.display = "none";
+            }
+
+        })
+    }
+</script>

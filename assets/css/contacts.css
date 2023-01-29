@@ -49,6 +49,16 @@
     color: var(--light-gray);
 }
 
+@media screen and (max-width: 1441px) {
+    #main_img {
+        margin: 30px auto;
+    }
+
+    .contacts__about-left {
+        max-width: 100%;
+    }
+}
+
 @media screen and (max-width: 768px) {
     .contacts__about-left {
         max-width: 100%;

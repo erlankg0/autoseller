@@ -4,20 +4,8 @@
     <section class="pick-up">
         <div class="pick-up__container _container">
             <div class="pick-up__content-wrapper">
-                <ul class="pick-up__list js-resizable-list">
-                    {% for brand in brands %}
-                        {% if brand.icon %}
-                            <li><img src="{{ brand.icon.url }}" alt=""><a href="">{{ brand.title }}</a></li>
-                        {% else %}
-                            <li><img src="{% static 'img/logo/skoda.png' %}" alt=""><a href="">{{ brand.title }}</a>
-                            </li>
-                        {% endif %}
-                    {% endfor %}
-                </ul>
-
-                <form action="" class="pick-up__form">
+                <form>
                     <div class="pick-up__form-inner">
-                        <h4>Быстрый подбор авто</h4>
                         <div class="pick-up__slider-inscription">
                             <div>
                                 Цена
@@ -30,43 +18,66 @@
                         </div>
                         <input type="text" class="js-range-slider" name="my_range" value=""/>
                         <div class="pick-up__flex">
-                            <div class="pick-up__body-type select" data-state="">
-                                <div class="select__title">Тип кузова</div>
-                                <div class="select__content">
-                                    <input type="radio" class="select__input">
-                                    <label for="" class="select__label">Седан</label>
-                                    <input type="radio" class="select__input">
-                                    <label for="" class="select__label">Универсал</label>
-                                    <input type="radio" class="select__input">
-                                    <label for="" class="select__label">Хэтчбэк</label>
-                                    <input type="radio" class="select__input">
-                                    <label for="" class="select__label">Лифтбэк</label>
-                                    <input type="radio" class="select__input">
-                                    <label for="" class="select__label">Минивен</label>
-                                    <input type="radio" class="select__input">
-                                    <label for="" class="select__label">Купе</label>
-                                    <input type="radio" class="select__input">
-                                    <label for="" class="select__label">Кроссовер</label>
-                                    <input type="radio" class="select__input">
-                                    <label for="" class="select__label">Внедорожник</label>
-                                </div>
-                            </div>
-                            <div class="pick-up__transmission select" data-state="">
-                                <div class="select__title">Коробка</div>
-                                <div class="select__content">
-                                    <input type="radio" class="select__input">
-                                    <label for="" class="select__label">МКПП</label>
-                                    <input type="radio" class="select__input">
-                                    <label for="" class="select__label">АКПП</label>
-                                    <input type="radio" class="select__input">
-                                    <label for="" class="select__label">АКПП - робот</label>
-                                    <input type="radio" class="select__input">
-                                    <label for="" class="select__label">АКПП - вариатор</label>
-                                </div>
-                            </div>
-                            <button class="pick-up__button button">Показать&nbsp;<span>73</span></button>
+                            <select class="pick-up__list">
+                                {% for brand in brands %}
+                                    <option value="{{ brand.pk }}">{{ brand }}</option>
+                                {% endfor %}
+                            </select>
+                            <select class="pick-up__list" data-state="">
+                                <option value="1">Модель</option>
+                                <option value="1">X5</option>
+                                <option value="2">X6</option>
+                            </select>
+                            <select class="pick-up__body-type select">
+                                <option value="1" selected>Поколение</option>
+                                <option value="2">E70</option>
+                                <option value="3">E71</option>
+                            </select>
+                            <select class="pick-up__transmission">
+                                <option value="1" selected>Год выпуска</option>
+                                <option value="2">2010</option>
+                                <option value="3">2011</option>
+                                <option value="4">2012</option>
+                                <option value="5">2013</option>
+                                <option value="6">2014</option>
+                                <option value="7">2015</option>
+                                <option value="8">2016</option>
+                                <option value="9">2017</option>
+                                <option value="10">2018</option>
+                                <option value="11">2019</option>
+                                <option value="12">2020</option>
+                            </select>
                         </div>
-
+                        <div class="pick-up__flex">
+                            <select class="pick-up__body-type">
+                                <option value="1" selected>Привод</option>
+                                <option value="2">Передний</option>
+                                <option value="3">Задний</option>
+                                <option value="4">Полный</option>
+                            </select>
+                            <select class="pick-up__transmission">
+                                <option value="1" selected>Коробка передач</option>
+                                <option value="2">Механическая</option>
+                                <option value="3">Автоматическая</option>
+                                <option value="4">Роботизированная</option>
+                                <option value="5">Вариатор</option>
+                            </select>
+                            <select class="pick-up__body-type select">
+                                <option value="1" selected>Седан</option>
+                                <option value="2">Универсал</option>
+                                <option value="3">Хэтчбэк</option>
+                                <option value="4">Лифтбэк</option>
+                                <option value="5">Минивен</option>
+                                <option value="6">Купе</option>
+                                <option value="7">Кроссовер</option>
+                                <option value="8">Внедорожник</option>
+                                <option value="9">Кабриолет</option>
+                                <option value="10">Пикап</option>
+                                <option value="11">Фургон</option>
+                            </select>
+                            <button class="pick-up__list button" style="height: auto;">Показать&nbsp;<span>73</span>
+                            </button>
+                        </div>
                     </div>
                 </form>
             </div>
@@ -726,10 +737,658 @@
                         </div>
                     </div>
                 </div>
+                <div class="auto__item">
+                    <div class="card">
+                        <div class="card__flex">
+                            <div class="card__title">
+                                Skoda Octavia
+                                <nobr>1.6 MPI MT</nobr>
+                                Active
+                            </div>
+                            <div class="card__icons">
+                                <i class="card__likes likes-icon"></i>
+                                <i class="card__compare compare-icon"></i>
+                            </div>
+                        </div>
+
+                        <div class="card__offer card__polygon">Предложение дня</div>
+                        <div class="card__offer-desc -accent">Выгода
+                            <nobr>до 300 000 &#8381</nobr>
+                        </div>
+
+                        <div class=" card__flex">
+                            <div class="card__benefits">
+                                <div class="gift gift--l">
+                                    Оборудование
+                                    <p class="-accent">в подарок</p>
+                                </div>
+
+                                <div class="gift gift--l">
+                                    КАСКО
+                                    <p class="-accent">в подарок</p>
+                                </div>
+
+                                <div class="gift gift--l">
+                                    Комплект резины
+                                    <p class="-accent">в подарок</p>
+                                </div>
+                            </div>
+                            <img src="{% static 'img/octavia.png' %}" alt="">
+                        </div>
+                        <div class="card__price card__flex">
+                            <span class=" -bold">от 1 615 000 &#8381</span>
+                            <div class="card__payment">
+                                Кредит
+                                <p class="-bold">от 115 000 &#8381/мес.</p>
+                            </div>
+                        </div>
+                        <div class="card__flex card__option-list">
+                            <div class="card__option-item i-engine i-engine--m">
+                                115 л.с.
+                            </div>
+                            <div class="card__option-item i-gas i-gas--m">
+                                5.3 л/км
+                            </div>
+                            <div class="card__option-item i-speed i-speed--m">
+                                189 км/ч
+                            </div>
+                            <div class="card__option-item i-timer i-timer--m">
+                                10,3 c.
+                            </div>
+                        </div>
+                        <div class="card__nav nav">
+                            <div class="card__polygon nav__reserve">
+                                Резерв онлайн
+                            </div>
+                            <div class="card__polygon nav__buy">
+                                Купить
+                            </div>
+                            <div class="card__polygon nav__more">
+                                Подробнее
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="auto__item">
+                    <div class="card">
+                        <div class="card__flex">
+                            <div class="card__title">
+                                Skoda Octavia
+                                <nobr>1.6 MPI MT</nobr>
+                                Active
+                            </div>
+                            <div class="card__icons">
+                                <i class="card__likes likes-icon"></i>
+                                <i class="card__compare compare-icon"></i>
+                            </div>
+                        </div>
+
+                        <div class="card__offer card__polygon">Предложение дня</div>
+                        <div class="card__offer-desc -accent">Выгода
+                            <nobr>до 300 000 &#8381</nobr>
+                        </div>
+
+                        <div class=" card__flex">
+                            <div class="card__benefits">
+                                <div class="gift gift--l">
+                                    Оборудование
+                                    <p class="-accent">в подарок</p>
+                                </div>
+
+                                <div class="gift gift--l">
+                                    КАСКО
+                                    <p class="-accent">в подарок</p>
+                                </div>
+
+                                <div class="gift gift--l">
+                                    Комплект резины
+                                    <p class="-accent">в подарок</p>
+                                </div>
+                            </div>
+                            <img src="{% static 'img/octavia.png' %}" alt="">
+                        </div>
+                        <div class="card__price card__flex">
+                            <span class=" -bold">от 1 615 000 &#8381</span>
+                            <div class="card__payment">
+                                Кредит
+                                <p class="-bold">от 115 000 &#8381/мес.</p>
+                            </div>
+                        </div>
+                        <div class="card__flex card__option-list">
+                            <div class="card__option-item i-engine i-engine--m">
+                                115 л.с.
+                            </div>
+                            <div class="card__option-item i-gas i-gas--m">
+                                5.3 л/км
+                            </div>
+                            <div class="card__option-item i-speed i-speed--m">
+                                189 км/ч
+                            </div>
+                            <div class="card__option-item i-timer i-timer--m">
+                                10,3 c.
+                            </div>
+                        </div>
+                        <div class="card__nav nav">
+                            <div class="card__polygon nav__reserve">
+                                Резерв онлайн
+                            </div>
+                            <div class="card__polygon nav__buy">
+                                Купить
+                            </div>
+                            <div class="card__polygon nav__more">
+                                Подробнее
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="auto__item">
+                    <div class="card">
+                        <div class="card__flex">
+                            <div class="card__title">
+                                Skoda Octavia
+                                <nobr>1.6 MPI MT</nobr>
+                                Active
+                            </div>
+                            <div class="card__icons">
+                                <i class="card__likes likes-icon"></i>
+                                <i class="card__compare compare-icon"></i>
+                            </div>
+                        </div>
+
+                        <div class="card__offer card__polygon">Предложение дня</div>
+                        <div class="card__offer-desc -accent">Выгода
+                            <nobr>до 300 000 &#8381</nobr>
+                        </div>
+
+                        <div class=" card__flex">
+                            <div class="card__benefits">
+                                <div class="gift gift--l">
+                                    Оборудование
+                                    <p class="-accent">в подарок</p>
+                                </div>
+
+                                <div class="gift gift--l">
+                                    КАСКО
+                                    <p class="-accent">в подарок</p>
+                                </div>
+
+                                <div class="gift gift--l">
+                                    Комплект резины
+                                    <p class="-accent">в подарок</p>
+                                </div>
+                            </div>
+                            <img src="{% static 'img/octavia.png' %}" alt="">
+                        </div>
+                        <div class="card__price card__flex">
+                            <span class=" -bold">от 1 615 000 &#8381</span>
+                            <div class="card__payment">
+                                Кредит
+                                <p class="-bold">от 115 000 &#8381/мес.</p>
+                            </div>
+                        </div>
+                        <div class="card__flex card__option-list">
+                            <div class="card__option-item i-engine i-engine--m">
+                                115 л.с.
+                            </div>
+                            <div class="card__option-item i-gas i-gas--m">
+                                5.3 л/км
+                            </div>
+                            <div class="card__option-item i-speed i-speed--m">
+                                189 км/ч
+                            </div>
+                            <div class="card__option-item i-timer i-timer--m">
+                                10,3 c.
+                            </div>
+                        </div>
+                        <div class="card__nav nav">
+                            <div class="card__polygon nav__reserve">
+                                Резерв онлайн
+                            </div>
+                            <div class="card__polygon nav__buy">
+                                Купить
+                            </div>
+                            <div class="card__polygon nav__more">
+                                Подробнее
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="auto__item">
+                    <div class="card">
+                        <div class="card__flex">
+                            <div class="card__title">
+                                Skoda Octavia
+                                <nobr>1.6 MPI MT</nobr>
+                                Active
+                            </div>
+                            <div class="card__icons">
+                                <i class="card__likes likes-icon"></i>
+                                <i class="card__compare compare-icon"></i>
+                            </div>
+                        </div>
+
+                        <div class="card__offer card__polygon">Предложение дня</div>
+                        <div class="card__offer-desc -accent">Выгода
+                            <nobr>до 300 000 &#8381</nobr>
+                        </div>
+
+                        <div class=" card__flex">
+                            <div class="card__benefits">
+                                <div class="gift gift--l">
+                                    Оборудование
+                                    <p class="-accent">в подарок</p>
+                                </div>
+
+                                <div class="gift gift--l">
+                                    КАСКО
+                                    <p class="-accent">в подарок</p>
+                                </div>
+
+                                <div class="gift gift--l">
+                                    Комплект резины
+                                    <p class="-accent">в подарок</p>
+                                </div>
+                            </div>
+                            <img src="{% static 'img/octavia.png' %}" alt="">
+                        </div>
+                        <div class="card__price card__flex">
+                            <span class=" -bold">от 1 615 000 &#8381</span>
+                            <div class="card__payment">
+                                Кредит
+                                <p class="-bold">от 115 000 &#8381/мес.</p>
+                            </div>
+                        </div>
+                        <div class="card__flex card__option-list">
+                            <div class="card__option-item i-engine i-engine--m">
+                                115 л.с.
+                            </div>
+                            <div class="card__option-item i-gas i-gas--m">
+                                5.3 л/км
+                            </div>
+                            <div class="card__option-item i-speed i-speed--m">
+                                189 км/ч
+                            </div>
+                            <div class="card__option-item i-timer i-timer--m">
+                                10,3 c.
+                            </div>
+                        </div>
+                        <div class="card__nav nav">
+                            <div class="card__polygon nav__reserve">
+                                Резерв онлайн
+                            </div>
+                            <div class="card__polygon nav__buy">
+                                Купить
+                            </div>
+                            <div class="card__polygon nav__more">
+                                Подробнее
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="auto__item">
+                    <div class="card">
+                        <div class="card__flex">
+                            <div class="card__title">
+                                Skoda Octavia
+                                <nobr>1.6 MPI MT</nobr>
+                                Active
+                            </div>
+                            <div class="card__icons">
+                                <i class="card__likes likes-icon"></i>
+                                <i class="card__compare compare-icon"></i>
+                            </div>
+                        </div>
+
+                        <div class="card__offer card__polygon">Предложение дня</div>
+                        <div class="card__offer-desc -accent">Выгода
+                            <nobr>до 300 000 &#8381</nobr>
+                        </div>
+
+                        <div class=" card__flex">
+                            <div class="card__benefits">
+                                <div class="gift gift--l">
+                                    Оборудование
+                                    <p class="-accent">в подарок</p>
+                                </div>
+
+                                <div class="gift gift--l">
+                                    КАСКО
+                                    <p class="-accent">в подарок</p>
+                                </div>
+
+                                <div class="gift gift--l">
+                                    Комплект резины
+                                    <p class="-accent">в подарок</p>
+                                </div>
+                            </div>
+                            <img src="{% static 'img/octavia.png' %}" alt="">
+                        </div>
+                        <div class="card__price card__flex">
+                            <span class=" -bold">от 1 615 000 &#8381</span>
+                            <div class="card__payment">
+                                Кредит
+                                <p class="-bold">от 115 000 &#8381/мес.</p>
+                            </div>
+                        </div>
+                        <div class="card__flex card__option-list">
+                            <div class="card__option-item i-engine i-engine--m">
+                                115 л.с.
+                            </div>
+                            <div class="card__option-item i-gas i-gas--m">
+                                5.3 л/км
+                            </div>
+                            <div class="card__option-item i-speed i-speed--m">
+                                189 км/ч
+                            </div>
+                            <div class="card__option-item i-timer i-timer--m">
+                                10,3 c.
+                            </div>
+                        </div>
+                        <div class="card__nav nav">
+                            <div class="card__polygon nav__reserve">
+                                Резерв онлайн
+                            </div>
+                            <div class="card__polygon nav__buy">
+                                Купить
+                            </div>
+                            <div class="card__polygon nav__more">
+                                Подробнее
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="auto__item">
+                    <div class="card">
+                        <div class="card__flex">
+                            <div class="card__title">
+                                Skoda Octavia
+                                <nobr>1.6 MPI MT</nobr>
+                                Active
+                            </div>
+                            <div class="card__icons">
+                                <i class="card__likes likes-icon"></i>
+                                <i class="card__compare compare-icon"></i>
+                            </div>
+                        </div>
+
+                        <div class="card__offer card__polygon">Предложение дня</div>
+                        <div class="card__offer-desc -accent">Выгода
+                            <nobr>до 300 000 &#8381</nobr>
+                        </div>
+
+                        <div class=" card__flex">
+                            <div class="card__benefits">
+                                <div class="gift gift--l">
+                                    Оборудование
+                                    <p class="-accent">в подарок</p>
+                                </div>
+
+                                <div class="gift gift--l">
+                                    КАСКО
+                                    <p class="-accent">в подарок</p>
+                                </div>
+
+                                <div class="gift gift--l">
+                                    Комплект резины
+                                    <p class="-accent">в подарок</p>
+                                </div>
+                            </div>
+                            <img src="{% static 'img/octavia.png' %}" alt="">
+                        </div>
+                        <div class="card__price card__flex">
+                            <span class=" -bold">от 1 615 000 &#8381</span>
+                            <div class="card__payment">
+                                Кредит
+                                <p class="-bold">от 115 000 &#8381/мес.</p>
+                            </div>
+                        </div>
+                        <div class="card__flex card__option-list">
+                            <div class="card__option-item i-engine i-engine--m">
+                                115 л.с.
+                            </div>
+                            <div class="card__option-item i-gas i-gas--m">
+                                5.3 л/км
+                            </div>
+                            <div class="card__option-item i-speed i-speed--m">
+                                189 км/ч
+                            </div>
+                            <div class="card__option-item i-timer i-timer--m">
+                                10,3 c.
+                            </div>
+                        </div>
+                        <div class="card__nav nav">
+                            <div class="card__polygon nav__reserve">
+                                Резерв онлайн
+                            </div>
+                            <div class="card__polygon nav__buy">
+                                Купить
+                            </div>
+                            <div class="card__polygon nav__more">
+                                Подробнее
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="auto__item">
+                    <div class="card">
+                        <div class="card__flex">
+                            <div class="card__title">
+                                Skoda Octavia
+                                <nobr>1.6 MPI MT</nobr>
+                                Active
+                            </div>
+                            <div class="card__icons">
+                                <i class="card__likes likes-icon"></i>
+                                <i class="card__compare compare-icon"></i>
+                            </div>
+                        </div>
+
+                        <div class="card__offer card__polygon">Предложение дня</div>
+                        <div class="card__offer-desc -accent">Выгода
+                            <nobr>до 300 000 &#8381</nobr>
+                        </div>
+
+                        <div class=" card__flex">
+                            <div class="card__benefits">
+                                <div class="gift gift--l">
+                                    Оборудование
+                                    <p class="-accent">в подарок</p>
+                                </div>
+
+                                <div class="gift gift--l">
+                                    КАСКО
+                                    <p class="-accent">в подарок</p>
+                                </div>
+
+                                <div class="gift gift--l">
+                                    Комплект резины
+                                    <p class="-accent">в подарок</p>
+                                </div>
+                            </div>
+                            <img src="{% static 'img/octavia.png' %}" alt="">
+                        </div>
+                        <div class="card__price card__flex">
+                            <span class=" -bold">от 1 615 000 &#8381</span>
+                            <div class="card__payment">
+                                Кредит
+                                <p class="-bold">от 115 000 &#8381/мес.</p>
+                            </div>
+                        </div>
+                        <div class="card__flex card__option-list">
+                            <div class="card__option-item i-engine i-engine--m">
+                                115 л.с.
+                            </div>
+                            <div class="card__option-item i-gas i-gas--m">
+                                5.3 л/км
+                            </div>
+                            <div class="card__option-item i-speed i-speed--m">
+                                189 км/ч
+                            </div>
+                            <div class="card__option-item i-timer i-timer--m">
+                                10,3 c.
+                            </div>
+                        </div>
+                        <div class="card__nav nav">
+                            <div class="card__polygon nav__reserve">
+                                Резерв онлайн
+                            </div>
+                            <div class="card__polygon nav__buy">
+                                Купить
+                            </div>
+                            <div class="card__polygon nav__more">
+                                Подробнее
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="auto__item">
+                    <div class="card">
+                        <div class="card__flex">
+                            <div class="card__title">
+                                Skoda Octavia
+                                <nobr>1.6 MPI MT</nobr>
+                                Active
+                            </div>
+                            <div class="card__icons">
+                                <i class="card__likes likes-icon"></i>
+                                <i class="card__compare compare-icon"></i>
+                            </div>
+                        </div>
+
+                        <div class="card__offer card__polygon">Предложение дня</div>
+                        <div class="card__offer-desc -accent">Выгода
+                            <nobr>до 300 000 &#8381</nobr>
+                        </div>
+
+                        <div class=" card__flex">
+                            <div class="card__benefits">
+                                <div class="gift gift--l">
+                                    Оборудование
+                                    <p class="-accent">в подарок</p>
+                                </div>
+
+                                <div class="gift gift--l">
+                                    КАСКО
+                                    <p class="-accent">в подарок</p>
+                                </div>
+
+                                <div class="gift gift--l">
+                                    Комплект резины
+                                    <p class="-accent">в подарок</p>
+                                </div>
+                            </div>
+                            <img src="{% static 'img/octavia.png' %}" alt="">
+                        </div>
+                        <div class="card__price card__flex">
+                            <span class=" -bold">от 1 615 000 &#8381</span>
+                            <div class="card__payment">
+                                Кредит
+                                <p class="-bold">от 115 000 &#8381/мес.</p>
+                            </div>
+                        </div>
+                        <div class="card__flex card__option-list">
+                            <div class="card__option-item i-engine i-engine--m">
+                                115 л.с.
+                            </div>
+                            <div class="card__option-item i-gas i-gas--m">
+                                5.3 л/км
+                            </div>
+                            <div class="card__option-item i-speed i-speed--m">
+                                189 км/ч
+                            </div>
+                            <div class="card__option-item i-timer i-timer--m">
+                                10,3 c.
+                            </div>
+                        </div>
+                        <div class="card__nav nav">
+                            <div class="card__polygon nav__reserve">
+                                Резерв онлайн
+                            </div>
+                            <div class="card__polygon nav__buy">
+                                Купить
+                            </div>
+                            <div class="card__polygon nav__more">
+                                Подробнее
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="auto__item">
+                    <div class="card">
+                        <div class="card__flex">
+                            <div class="card__title">
+                                Skoda Octavia
+                                <nobr>1.6 MPI MT</nobr>
+                                Active
+                            </div>
+                            <div class="card__icons">
+                                <i class="card__likes likes-icon"></i>
+                                <i class="card__compare compare-icon"></i>
+                            </div>
+                        </div>
+
+                        <div class="card__offer card__polygon">Предложение дня</div>
+                        <div class="card__offer-desc -accent">Выгода
+                            <nobr>до 300 000 &#8381</nobr>
+                        </div>
+
+                        <div class=" card__flex">
+                            <div class="card__benefits">
+                                <div class="gift gift--l">
+                                    Оборудование
+                                    <p class="-accent">в подарок</p>
+                                </div>
+
+                                <div class="gift gift--l">
+                                    КАСКО
+                                    <p class="-accent">в подарок</p>
+                                </div>
+
+                                <div class="gift gift--l">
+                                    Комплект резины
+                                    <p class="-accent">в подарок</p>
+                                </div>
+                            </div>
+                            <img src="{% static 'img/octavia.png' %}" alt="">
+                        </div>
+                        <div class="card__price card__flex">
+                            <span class=" -bold">от 1 615 000 &#8381</span>
+                            <div class="card__payment">
+                                Кредит
+                                <p class="-bold">от 115 000 &#8381/мес.</p>
+                            </div>
+                        </div>
+                        <div class="card__flex card__option-list">
+                            <div class="card__option-item i-engine i-engine--m">
+                                115 л.с.
+                            </div>
+                            <div class="card__option-item i-gas i-gas--m">
+                                5.3 л/км
+                            </div>
+                            <div class="card__option-item i-speed i-speed--m">
+                                189 км/ч
+                            </div>
+                            <div class="card__option-item i-timer i-timer--m">
+                                10,3 c.
+                            </div>
+                        </div>
+                        <div class="card__nav nav">
+                            <div class="card__polygon nav__reserve">
+                                Резерв онлайн
+                            </div>
+                            <div class="card__polygon nav__buy">
+                                Купить
+                            </div>
+                            <div class="card__polygon nav__more">
+                                Подробнее
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <button class="auto__show-more button">Показать еще</button>
+        <button class="auto__show-more button" id="auto__show-more">Показать еще</button>
 
     </section>
     <section class="comp">
@@ -998,94 +1657,7 @@
             </div>
         </div>
     </section>
-    <section class="credit">
-        <div class="credit__wrapper">
-            <div class="_container">
-                <form action="" class="credit__form">
-                    <h2 class="credit__top-heading">Заявка на автокредит</h2>
-                    <div class="credit__main">
-                        <div class="credit__select-group">
-                            <div class="credit__select select" data-state="">
-                                <div class="select__title">Марка</div>
-                                <div class="select__content">
-                                </div>
-                            </div>
-                            <div class="credit__select select" data-state="">
-                                <div class="select__title">Модель</div>
-                                <div class="select__content">
-                                </div>
-                            </div>
-                            <div class="credit__select select" data-state="">
-                                <div class="select__title">Комплектация</div>
-                                <div class="select__content">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="credit__auto">
-                            <div class="jc-spb">
-                                <span class="credit__price -bold">1 615 000&nbsp;&#8381</span>
-                                <span class="credit__benefit -accent -bold">Выгода 300 000&nbsp;&#8381</span>
-                            </div>
 
-                            <p class="credit__last-price">1 915 000&nbsp;&#8381</p>
-                            <img src="{% static 'img/secret-car.png' %}" alt="">
-
-                            <!-- Сделать когда не введен взнос, то серый бг -->
-                            <div class="pb jc-spb">
-                                <span class="pb__first-fee -highlighted">50 000</span>
-                                <span class="pb__balance -highlighted">50 000</span>
-
-                                <div class="pb__wrap">
-                                    <span class="pb__line"></span>
-                                    <span class="pb__bar"></span>
-                                </div>
-
-                                <!-- Сделать когда не введен взнос, то серый текст -->
-                                <span class="pb__text">Первоначальный взнос</span>
-                                <span class="pb__text">Остаток по кредиту</span>
-                            </div>
-                        </div>
-
-                        <span class="credit__line credit__first-line"></span>
-
-                        <div class="credit__params">
-                            <div class="credit__slider-term">
-                                <div class="jc-spb">
-                                    <p>Срок кредита, мес.</p>
-                                    <span id="term-irs-from"></span>
-                                </div>
-                                <input type="text" class="js-range-slider-term" name="my_range" value=""/>
-                            </div>
-
-                            <div class="credit__slider-sum">
-                                <div class="jc-spb">
-                                    <p>Первоначальный взнос</p>
-                                    <span id="fee-irs-from"></span>
-                                </div>
-                                <input type="text" class="js-range-slider-fee" name="my_range" value=""/>
-                            </div>
-
-                            <span class="fee-text">Ручной ввод, руб</span>
-                            <input type="number" placeholder="0" class="fee-input input" id="">
-                        </div>
-                    </div>
-
-                    <span class="credit__line"></span>
-
-                    <div class="credit__send">
-                        <h3>Получить выгоду <span class="-accent">300 000&nbsp;&#8381</span></h3>
-                        <input type="text" placeholder="Ваше имя" class="input" id="">
-                        <input type="text" placeholder="Ваш телефон" class="input" id="">
-                        <button class="button">Получить предложение</button>
-                        <span class="credit__note">
-								Нажимая кнопку “Отправить” Вы даете согласие на обработку своих
-								<a>персональных данных</a>
-							</span>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </section>
     <section class="partners">
         <div class="_container">
             <h2 class="partners__heading">Банки-партнеры</h2>
@@ -1289,71 +1861,6 @@
             </div>
         </div>
     </section>
-    <section>
-        <div class="container">
-            <h2 class="sec-title">
-                Отзывы
-            </h2>
-            <div class="peoples__list">
-                <div class="peoples__list-item">
-                    <p class="peoples__list-item__author">
-                        Сергей Васильев
-                    </p>
-                    <p class="peoples__list-item__desc">
-                        «Я нахожусь в салоне ALTERA, всем советую, хороший коллектив, добрые люди, приветствуют, это не
-                        обман, вам гарантия 100 % точно, чисто от меня, приезжайте! Мы приехали приобрести автомобиль в
-                        салон ALTERA...
-                    </p>
-                    <button class="peoples__list-item__btn">
-                        Подробнее <img src="{% static 'img/main-1920/peoples-arrow.svg' %}" alt="">
-                    </button>
-                </div>
-                <div class="peoples__list-item">
-                    <p class="peoples__list-item__author">
-                        Сергей Васильев
-                    </p>
-                    <p class="peoples__list-item__desc">
-                        «Я нахожусь в салоне ALTERA, всем советую, хороший коллектив, добрые люди, приветствуют, это не
-                        обман, вам гарантия 100 % точно, чисто от меня, приезжайте! Мы приехали приобрести автомобиль в
-                        салон ALTERA...
-                    </p>
-                    <button class="peoples__list-item__btn">
-                        Подробнее <img src="{% static 'img/main-1920/peoples-arrow.svg' %}" alt="">
-                    </button>
-                </div>
-                <div class="peoples__list-item">
-                    <p class="peoples__list-item__author">
-                        Сергей Васильев
-                    </p>
-                    <p class="peoples__list-item__desc">
-                        «Я нахожусь в салоне ALTERA, всем советую, хороший коллектив, добрые люди, приветствуют, это не
-                        обман, вам гарантия 100 % точно, чисто от меня, приезжайте! Мы приехали приобрести автомобиль в
-                        салон ALTERA...
-                    </p>
-                    <button class="peoples__list-item__btn">
-                        Подробнее <img src="{% static 'img/main-1920/peoples-arrow.svg' %}" alt="">
-                    </button>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="about">
-        <div class="container">
-            <div class="about__item">
-                <div class="about__video" style="max-width: 768px">
-                    <div id="poster">
-                        <a href="{% static 'video/desert_villa_-_architecture_visualization (720p).mp4' %}"
-                           data-fslightbox="video">
-                            <img src="{% static 'img/main-1920/about-back.png' %}" alt="play" id="video_poster">
-                            <div class="centered">
-                                <img src="{% static 'img/main-1920/about-play.png' %}" alt="play">
-                            </div>
-                        </a>
-                    </div>
-                </div> <!-- /.about__video -->
-            </div> <!-- /.about__item -->
-        </div>
-    </section>
     <section class="comp">
         <div class="comp__top _container">
             <h2 class="comp__heading">Блог</h2>
@@ -1520,28 +2027,28 @@
             </div>
         </div>
     </section>
-    <section class="autosalon">
-        <div class="container">
-            <div class="autosalon-top">
-                <a href="" class="autosalon-top__item">Автосалон</a>
-                <a href="" class="autosalon-top__item">Трейд-ин</a>
-                <a href="" class="autosalon-top__item">Покупка</a>
-            </div>
-            <div class="autosalon__content">
-                <h2 class="sec-title">
-                    Об автосалоне ABC
-                </h2>
-                <p class="autosalon__content-desc">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse pulvinar auctor tellus, id
-                    volutpat dui dictum vitae. Sed ac mauris nisi. Maecenas quis sollicitudin dolor, eget molestie
-                    dolor. Vivamus sed magna euismod, iaculis eros vitae, vehicula justo. Ut id consequat risus, vitae
-                    accumsan ligula. Proin egestas odio sit amet laoreet vulputate. Suspendisse vitae vestibulum quam.
-                    Vivamus lectus justo, bibendum at laoreet vel, rhoncus nec sem. Phasellus at mollis magna, in
-                    bibendum massa. Praesent malesuada sit amet nibh ut vestibulum. Interdum et malesuada fames ac ante
-                    ipsum primis in faucibus. Nulla iaculis a orci sit amet iaculis. Nulla in magna posuere nunc
-                    pharetra faucibus. Phasellus id enim libero.
-                </p>
-            </div>
-        </div>
-    </section>
+    <script>
+        window.onload = function () {
+            var box = document.getElementsByClassName('auto__item');
+            var btn = document.getElementById('auto__show-more');
+            for (let i = 3; i < box.length; i++) {
+                box[i].style.display = "none";
+            }
+
+            var countD = 3;
+            btn.addEventListener("click", function () {
+                var box = document.getElementsByClassName('auto__item');
+                countD += 3;
+                if (countD <= box.length) {
+                    for (let i = 0; i < countD; i++) {
+                        box[i].style.display = "block";
+                    }
+                }
+                if (countD >= box.length) {
+                    btn.style.display = "none";
+                }
+
+            })
+        }
+    </script>
 {% endblock content %}

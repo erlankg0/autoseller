@@ -76,14 +76,12 @@
 
                     <nav class="navigation__menu" id="large_menu">
                         <div class="header-bottom__list">
-                            <a href="#" class="header-bottom__list-link catalog-auto-h ">
-                                каталог авто
+                            <a href="{% url 'index' %}" class="header-bottom__list-link">
+                                новые автомобили
                             </a>
-                            <a href="/used_cars/" class="header-bottom__list-link">авто с пробегом</a>
-                            <a class="header-bottom__list-link credit-h">кредит и рассрочка</a>
+                            <a href="{% url 'used_cars' %}" class="header-bottom__list-link">авто с пробегом</a>
+                            <a href="{% url 'credit' %}" class="header-bottom__list-link">кредит и рассрочка</a>
                             <a class="header-bottom__list-link special-h">спецпредложения</a>
-                            <a href="{% url 'taxi_cars' %}" class="header-bottom__list-link">такси в кредит</a>
-                            <a href="{% url 'insurance' %}" class="header-bottom__list-link">страхование</a>
                         </div>
                         <div class="katalog-auto__list ">
                             <div class="katalog-auto__list-marks">

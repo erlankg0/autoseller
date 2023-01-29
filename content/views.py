@@ -23,3 +23,7 @@ def services(request):
 
 def feedback(request):
     return render(request, 'content/feedback.html')
+
+
+def credit(request):
+    return render(request, 'content/credit.html')
