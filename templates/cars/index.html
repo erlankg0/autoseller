@@ -20,7 +20,7 @@
                         <div class="pick-up__flex">
                             <select class="pick-up__list">
                                 {% for brand in brands %}
-                                    <option value="{{ brand.pk }}">{{ brand }}</option>
+                                    <option value="{{ brand.pk }}">{{ brand.title }}</option>
                                 {% endfor %}
                             </select>
                             <select class="pick-up__list" data-state="">

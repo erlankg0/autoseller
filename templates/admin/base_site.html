@@ -1,0 +1,48 @@
+{% extends "admin/base.html" %}
+
+{% block title %}{% if subtitle %}{{ subtitle }} | {% endif %}{{ title }} |
+    {{ site_title|default:_('Django site admin') }}{% endblock %}
+
+{% block branding %}
+    <h1 id="site-name"><a href="{% url 'admin:index' %}">{{ site_header|default:_('Django administration') }}</a></h1>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}
+{% block footer %}
+    <div id="footer"></div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#id_brand').change(function () {
+                var brand_id = $(this).val();
+                $.ajax({
+                    url: '/cars/get_models/',
+                    data: {
+                        'brand_id': brand_id
+                    },
+                    success: function (data) {
+                        for (var i = 0; i < data["models"].length; i++) {
+                            $('#id_model').append('<option value="' + data["models"][i]["id"] + '">' + data["models"][i]["title"] + '</option>');
+                        }
+                    }
+                });
+            }); // end brand change
+            $('#id_model').change(function () {
+                var model_id = $(this).val();
+                $.ajax({
+                    url: '/cars/get_generations/',
+                    data: {
+                        'model': model_id
+                    },
+                    success: function (data) {
+                        for (var i = 0; i < data["generations"].length; i++) {
+                            $('#id_generation').append('<option value="' + data["generations"][i]["id"] + '">' + data["generations"][i]["title"] + '</option>');
+                        }
+                    }
+                });
+            }); // end model change
+        });
+    </script>
+
+{% endblock footer %}

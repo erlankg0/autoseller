@@ -65,13 +65,6 @@ class Model(models.Model):
         help_text='Марка автомобиля',
         related_name='models',
     )
-    body = models.ForeignKey(
-        Vehicle,
-        on_delete=models.CASCADE,
-        verbose_name='Тип транспорта',
-        help_text='Тип транспорта (например, Седан.)',
-        related_name='models',
-    )
 
     def __str__(self):
         return self.title
@@ -99,13 +92,9 @@ class Generation(models.Model):
         related_name='generations',
         # related_name='generations' - это имя для обратной связи
     )
-    image = models.ImageField(
-        upload_to=directory_image_path_generation,
-        verbose_name="Изображения поколения",
-    )
 
     def __str__(self):
-        return self.title
+        return f"{self.model} {self.title}"
 
     class Meta:
         verbose_name = 'Поколение'
@@ -137,17 +126,16 @@ class TechnicalCharacteristics(models.Model):
         ('Задний', 'Задний'),
         ('Полный', 'Полный'),
     )
-    generation = models.ForeignKey(
-        Generation,
-        on_delete=models.CASCADE,
-        verbose_name='Поколение',
-        help_text='Поколение автомобиля (например, 2019) ',
-        related_name='technical_characteristics',
-    )
     engine = models.CharField(
         max_length=50,
         verbose_name='Двигатель',
         help_text='Двигатель автомобиля (например, M57)',
+    )
+    fuel = models.CharField(
+        max_length=50,
+        verbose_name='Топливо',
+        help_text='Топливо автомобиля (например, Бензин)',
+        choices=FUEL,
     )
     transmission = models.CharField(
         max_length=50,
@@ -170,7 +158,6 @@ class TechnicalCharacteristics(models.Model):
         max_length=50,
         verbose_name='Объем',
         help_text='Объем автомобиля (например, 2.0)',
-        choices=engine_volume(),
     )
     fuel_consumption = models.CharField(
         max_length=50,
@@ -194,7 +181,24 @@ class TechnicalCharacteristics(models.Model):
     )
 
     def __str__(self):
-        return f'{self.generation} - {self.engine}'
+        return f'{1} - {self.engine}'
+
+
+class CarImages(models.Model):
+    image = models.ImageField(
+        verbose_name='Изображение',
+        help_text='Изображение автомобиля',
+    )
+    used = models.BooleanField(
+        verbose_name='Использовано или нет',
+        help_text='Истина, если изображение использовано, иначе не использовано. По умолчанию не использовано',
+        default=True,
+    )
+
+    class Meta:
+        verbose_name = 'Изображение'
+        verbose_name_plural = 'Изображения'
+        db_table = 'car_images'
 
 
 # Автомобиль на продажу
@@ -204,23 +208,65 @@ class Car(models.Model):
         help_text='Истина, если автомобиль новый, иначе Б/У. По умолчанию Б/У',
         default=False,
     )
+    brand = models.ForeignKey(
+        Brand,
+        on_delete=models.CASCADE,
+        verbose_name='Марка',
+        help_text='Марка автомобиля (например, BMW)',
+        related_name='car_brand',
+    )
+    model = models.ForeignKey(
+        Model,
+        on_delete=models.CASCADE,
+        verbose_name='Модель',
+        help_text='Модель автомобиля (например, 5)',
+        related_name='car_model',
+    )
     generation = models.ForeignKey(
         Generation,
         on_delete=models.CASCADE,
         verbose_name='Поколение',
         help_text='Поколение автомобиля (например, 2019) ',
-
+        related_name='car_generation',
     )
     technical_characteristics = models.ForeignKey(
         TechnicalCharacteristics,
         on_delete=models.CASCADE,
         verbose_name='Технические характеристики',
         help_text='Технические характеристики автомобиля',
-
+        related_name='car_technical_characteristics',
+    )
+    color = models.CharField(
+        max_length=50,
+        verbose_name='Цвет',
+        help_text='Цвет автомобиля (например, Черный)',
+    )
+    price = models.PositiveIntegerField(
+        verbose_name='Цена',
+        help_text='Цена автомобиля (например, 1000000 рублей)',
+    )
+    mileage = models.PositiveIntegerField(
+        verbose_name='Пробег',
+        help_text='Пробег автомобиля (например, 1000000 км)',
+    )
+    description = models.TextField(
+        verbose_name='Описание',
+        help_text='Описание автомобиля',
+    )
+    image = models.ManyToManyField(
+        CarImages,
+        verbose_name='Изображения',
+        help_text='Изображения автомобиля',
+        related_name='car_image',
+    )
+    date = models.DateTimeField(
+        verbose_name='Дата',
+        help_text='Дата добавления автомобиля',
+        auto_now_add=True,
     )
 
     def __str__(self):
-        return self.generation.title
+        return f'Марка: {self.brand}-Модельный ряд:{self.model}-Поколение:{self.generation}-Цвет:{self.color}-Цена:{self.price}'
 
     class Meta:
         verbose_name = 'Автомобиль'

@@ -1,5 +1,6 @@
 from django.contrib import admin
-from cars.models import Brand, Vehicle, Car, Generation, Model
+from cars.models import Brand, Vehicle, Car, Generation, Model, TechnicalCharacteristics, CarImages
+from cars.forms import CarForm
 
 
 @admin.register(Brand)
@@ -27,4 +28,37 @@ class GenerationAdmin(admin.ModelAdmin):
 
 @admin.register(Car)
 class CarAdmin(admin.ModelAdmin):
+    form = CarForm
+
+    def get_brand(self, obj):
+        return obj.model.brand.title
+
+    def get_model(self, obj):
+        return obj.model.title
+
+    def get_generation(self, obj):
+        return obj.generation.title
+
+    get_brand.short_description = 'Бренд'
+    get_model.short_description = 'Модель'
+    get_generation.short_description = 'Поколение'
+
+    list_display = (
+        'get_brand',
+        'get_model',
+        'get_generation',
+        'price',
+        "new",
+    )
+    list_display_links = list_display
+
+
+
+@admin.register(TechnicalCharacteristics)
+class TechnicalCharacteristicsAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(CarImages)
+class CarImagesAdmin(admin.ModelAdmin):
     pass
