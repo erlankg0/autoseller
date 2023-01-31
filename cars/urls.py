@@ -1,6 +1,7 @@
 from django.urls import path
+
+from cars.views import get_models, get_generations, get_modifications, get_all_cars
 from cars.views import used_cars, taxi_cars, detail
-from cars.views import get_models, get_generations
 
 urlpatterns = [
     path('used_cars/', used_cars, name='used_cars'),  # used cars page
@@ -9,4 +10,6 @@ urlpatterns = [
     # AJAX requests
     path('get_models/', get_models, name='get_models'),
     path('get_generations/', get_generations, name='get_generations'),
+    path('get_modifications/', get_modifications, name='get_modifications'),
+    path('get_all_cars/', get_all_cars, name='get_all_cars'),
 ]

@@ -1,6 +1,6 @@
 from django.forms import ModelForm
 
-from cars.models import Car, Generation, Model, TechnicalCharacteristics, Vehicle
+from cars.models import Car, Generation, Model, Modification
 
 
 class CarForm(ModelForm):
@@ -9,7 +9,7 @@ class CarForm(ModelForm):
         super(CarForm, self).__init__(*args, **kwargs)
         self.fields['model'].queryset = Model.objects.none()
 
-        if 'brand' in self.data:
+        if 'brand' in self.data:  # если в форме выбрана марка авто (поле brand)
             try:
                 brand_id = int(self.data.get('brand'))
                 self.fields['model'].queryset = Model.objects.filter(brand_id=brand_id).order_by('title')
@@ -29,18 +29,18 @@ class CarForm(ModelForm):
                 pass
         elif self.instance.pk:
             self.fields['generation'].queryset = self.instance.model.generations.order_by('title')
+        self.fields['modification'].queryset = Modification.objects.none()
+
+        if 'generation' in self.data:
+            try:
+                generation_id = int(self.data.get('generation'))
+                self.fields['modification'].queryset = Modification.objects.filter(
+                    generation_id=generation_id).order_by('title')
+            except (ValueError, TypeError):
+                pass
+        elif self.instance.pk:
+            self.fields['modification'].queryset = self.instance.generation.modifications.order_by('title')
 
     class Meta:
         model = Car
-        fields = (
-            'brand',
-            'model',
-            'generation',
-            'technical_characteristics',
-            'color',
-            'price',
-            'mileage',
-            'description',
-            'image',
-            'new',
-        )
+        fields = '__all__'

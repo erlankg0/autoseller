@@ -55,6 +55,8 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'cars.context_processors.get_all_brands',  # context processor for getting all brands
                 'cars.context_processors.get_all_vehicle_types',  # context processor for getting all vehicles types
+                'cars.context_processors.get_all_years',  # context processor for getting all years
+                'cars.context_processors.get_all_transmissions',  # context processor for getting all transmissions
             ],
         },
     },

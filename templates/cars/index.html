@@ -1,5 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
+{% block css %}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+{% endblock %}
 {% block content %}
     <section class="pick-up">
         <div class="pick-up__container _container">
@@ -18,64 +21,45 @@
                         </div>
                         <input type="text" class="js-range-slider" name="my_range" value=""/>
                         <div class="pick-up__flex">
-                            <select class="pick-up__list">
+                            <select class="pick-up__body-type select" id="brand_id">
                                 {% for brand in brands %}
                                     <option value="{{ brand.pk }}">{{ brand.title }}</option>
                                 {% endfor %}
                             </select>
-                            <select class="pick-up__list" data-state="">
+                            <select class="pick-up__body-type select" id="model_id">
                                 <option value="1">Модель</option>
-                                <option value="1">X5</option>
-                                <option value="2">X6</option>
                             </select>
-                            <select class="pick-up__body-type select">
+                            <select class="pick-up__body-type select" id="generation_id">
                                 <option value="1" selected>Поколение</option>
-                                <option value="2">E70</option>
-                                <option value="3">E71</option>
                             </select>
-                            <select class="pick-up__transmission">
-                                <option value="1" selected>Год выпуска</option>
-                                <option value="2">2010</option>
-                                <option value="3">2011</option>
-                                <option value="4">2012</option>
-                                <option value="5">2013</option>
-                                <option value="6">2014</option>
-                                <option value="7">2015</option>
-                                <option value="8">2016</option>
-                                <option value="9">2017</option>
-                                <option value="10">2018</option>
-                                <option value="11">2019</option>
-                                <option value="12">2020</option>
+                            <select class="pick-up__body-type select" id="year_id">
+                                <option value="year" selected>Год выпуска</option>
+                                {% for year in years %}
+                                    <option value="{{ year.pk }}">{{ year.title.year }}</option>
+                                {% endfor %}
                             </select>
                         </div>
                         <div class="pick-up__flex">
-                            <select class="pick-up__body-type">
+                            <select class="pick-up__body-type select" id="drive_unit_id">
                                 <option value="1" selected>Привод</option>
-                                <option value="2">Передний</option>
-                                <option value="3">Задний</option>
-                                <option value="4">Полный</option>
+                                {% for drive_unit in drive_units %}
+                                    <option value="{{ drive_unit }}">{{ drive_unit }}</option>
+                                {% endfor %}
                             </select>
-                            <select class="pick-up__transmission">
-                                <option value="1" selected>Коробка передач</option>
-                                <option value="2">Механическая</option>
-                                <option value="3">Автоматическая</option>
-                                <option value="4">Роботизированная</option>
-                                <option value="5">Вариатор</option>
+                            <select class="pick-up__body-type select" id="transmission_id">
+                                <option value="KPP" selected>КПП</option>
+                                {% for transmission in transmissions %}
+                                    <option value="{{ transmission }}">{{ transmission }}</option>
+                                {% endfor %}
                             </select>
-                            <select class="pick-up__body-type select">
-                                <option value="1" selected>Седан</option>
-                                <option value="2">Универсал</option>
-                                <option value="3">Хэтчбэк</option>
-                                <option value="4">Лифтбэк</option>
-                                <option value="5">Минивен</option>
-                                <option value="6">Купе</option>
-                                <option value="7">Кроссовер</option>
-                                <option value="8">Внедорожник</option>
-                                <option value="9">Кабриолет</option>
-                                <option value="10">Пикап</option>
-                                <option value="11">Фургон</option>
+                            <select class="pick-up__body-type select" id="body_type">
+                                <option value="body">Кузов</option>
+                                {% for body in bodies %}
+                                    <option value="{{ body.pk }}">{{ body }}</option>
+                                {% endfor %}
                             </select>
-                            <button class="pick-up__list button" style="height: auto;">Показать&nbsp;<span>73</span>
+                            <button id="btn_new_car" class="pick-up__list button">
+                                Показать&nbsp;<span>{{ cars.count }}</span>
                             </button>
                         </div>
                     </div>
@@ -2027,6 +2011,8 @@
             </div>
         </div>
     </section>
+    <script type="text/javascript" charset="utf-8" async
+            src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A97c80d85d882095b934e5118ca84dde7fb30cc104f79dbab45b848d4b4b4e092&amp;width=100%25&amp;height=400&amp;lang=ru_RU&amp;"></script>
     <script>
         window.onload = function () {
             var box = document.getElementsByClassName('auto__item');
@@ -2050,5 +2036,58 @@
 
             })
         }
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('#brand_id').click(function () {
+                var brand_id = $(this).val();
+                $.ajax({
+                    url: '/cars/get_models/',
+                    data: {
+                        'brand_id': brand_id
+                    },
+                    success: function (data) {
+                        // clear model select
+                        $('#model_id').empty(); // remove old options if any present in select
+                        // add new options
+                        for (var i = 0; i < data["models"].length; i++) {
+                            $('#model_id').append('<option value="' + data["models"][i]["id"] + '">' + data["models"][i]["title"] + '</option>');
+                        }
+                    }
+
+                });
+            }); // end brand change
+            $('#model_id').click(function () {
+                var model_id = $(this).val();
+                $.ajax({
+                    url: '/cars/get_generations/',
+                    data: {
+                        'model': model_id
+                    },
+                    success: function (data) {
+                        $('#generation_id').empty(); // remove old options if any present in select
+                        for (var i = 0; i < data["generations"].length; i++) {
+                            $('#generation_id').append('<option value="' + data["generations"][i]["id"] + '">' + data["generations"][i]["title"] + '</option>');
+                        }
+                    }
+                });
+            }); // end model change
+        });
+        $('#btn_new_car').click(function () {
+            var brand_id = $('#brand_id').val();
+            var model_id = $('#model_id').val();
+            var generation_id = $('#generation_id').val();
+            $.ajax({
+                url: '/cars/get_new_car/',
+                data: {
+                    'brand_id': brand_id,
+                    'model_id': model_id,
+                    'generation_id': generation_id
+                },
+                success: function (data) {
+                    console.log(data);
+                }
+            });
+        });
     </script>
 {% endblock content %}

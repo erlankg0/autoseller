@@ -6,7 +6,11 @@
 {% block branding %}
     <h1 id="site-name"><a href="{% url 'admin:index' %}">{{ site_header|default:_('Django administration') }}</a></h1>
 {% endblock %}
+{% block extrastyle %}
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"/>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
+{% endblock %}
 {% block nav-global %}{% endblock %}
 {% block footer %}
     <div id="footer"></div>
@@ -22,10 +26,14 @@
                         'brand_id': brand_id
                     },
                     success: function (data) {
+                        $('#id_model').empty();
                         for (var i = 0; i < data["models"].length; i++) {
                             $('#id_model').append('<option value="' + data["models"][i]["id"] + '">' + data["models"][i]["title"] + '</option>');
                         }
+                        count++;
+                        console.log(count);
                     }
+
                 });
             }); // end brand change
             $('#id_model').change(function () {
@@ -36,6 +44,7 @@
                         'model': model_id
                     },
                     success: function (data) {
+                        $('#id_generation').empty();
                         for (var i = 0; i < data["generations"].length; i++) {
                             $('#id_generation').append('<option value="' + data["generations"][i]["id"] + '">' + data["generations"][i]["title"] + '</option>');
                         }
@@ -43,6 +52,22 @@
                 });
             }); // end model change
         });
+        $('#id_generations').change(function () {
+            var generation_id = $(this).val();
+            $.ajax({
+                url: '/cars/get_modifications/',
+                data: {
+                    'generation': generation_id
+                },
+                success: function (data) {
+                    $('#id_modification').empty();
+                    for (var i = 0; i < data["modifications"].length; i++) {
+                        $('#id_modification').append('<option value="' + data["modifications"][i]["id"] + '">' + data["modifications"][i]["title"] + '</option>');
+                    }
+                }
+            });
+        }); // end generation change
+
     </script>
 
 {% endblock footer %}

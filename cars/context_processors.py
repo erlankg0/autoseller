@@ -1,4 +1,5 @@
-from cars.models import Brand, Vehicle
+from cars.models import Brand, BodyType, Transmissions, DriveUnit, Fuel, Years
+import datetime
 
 
 def get_all_brands(request):
@@ -7,5 +8,25 @@ def get_all_brands(request):
 
 
 def get_all_vehicle_types(request):
-    vehicles = Vehicle.objects.all()
-    return {"vehicles": vehicles}
+    vehicles = BodyType.objects.all()
+    return {"bodies": vehicles}
+
+
+def get_all_years(request):
+    years = Years.objects.all()
+    return {"years": years}
+
+
+def get_all_transmissions(request):
+    transmissions = Transmissions.objects.all()
+    return {"transmissions": transmissions}
+
+
+def get_all_drive_units(request):
+    drive_units = DriveUnit.objects.all()
+    return {"drive_units": drive_units}
+
+
+def get_all_fuels(request):
+    fuels = Fuel.objects.all()
+    return {"fuels": fuels}

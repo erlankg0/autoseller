@@ -1,19 +1,43 @@
 from django.contrib import admin
-from cars.models import Brand, Vehicle, Car, Generation, Model, TechnicalCharacteristics, CarImages
+from cars.models import Engine, Transmissions, DriveUnit, Fuel, BodyType, Years
+from cars.models import Brand, Model, Generation, Modification
+from cars.models import Car, CarImages
 from cars.forms import CarForm
+
+
+@admin.register(Years)
+class YearsAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(Engine)
+class EngineAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(Transmissions)
+class TransmissionsAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(DriveUnit)
+class DriveUnitAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(Fuel)
+class FuelAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(BodyType)
+class BodyTypeAdmin(admin.ModelAdmin):
+    pass
 
 
 @admin.register(Brand)
 class BrandAdmin(admin.ModelAdmin):
-    list_display = ('title', 'icon')
-    list_display_links = ('title', 'icon')
-    search_fields = ('title',)
-
-
-@admin.register(Vehicle)
-class VehicleAdmin(admin.ModelAdmin):
-    list_display = ('title',)
-    list_display_links = list_display
+    pass
 
 
 @admin.register(Model)
@@ -26,39 +50,17 @@ class GenerationAdmin(admin.ModelAdmin):
     pass
 
 
+@admin.register(Modification)
+class ModificationAdmin(admin.ModelAdmin):
+    pass
+
+
+class CarImagesAdmin(admin.StackedInline):
+    model = CarImages
+    extra = 1
+
+
 @admin.register(Car)
 class CarAdmin(admin.ModelAdmin):
     form = CarForm
-
-    def get_brand(self, obj):
-        return obj.model.brand.title
-
-    def get_model(self, obj):
-        return obj.model.title
-
-    def get_generation(self, obj):
-        return obj.generation.title
-
-    get_brand.short_description = 'Бренд'
-    get_model.short_description = 'Модель'
-    get_generation.short_description = 'Поколение'
-
-    list_display = (
-        'get_brand',
-        'get_model',
-        'get_generation',
-        'price',
-        "new",
-    )
-    list_display_links = list_display
-
-
-
-@admin.register(TechnicalCharacteristics)
-class TechnicalCharacteristicsAdmin(admin.ModelAdmin):
-    pass
-
-
-@admin.register(CarImages)
-class CarImagesAdmin(admin.ModelAdmin):
-    pass
+    inlines = [CarImagesAdmin]

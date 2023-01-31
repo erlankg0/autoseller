@@ -540,13 +540,20 @@ h6 {
 }
 
 .button {
-    height: 50px;
+    height: auto;
     font-family: "Roboto-Bold";
     font-size: 1rem;
     text-transform: uppercase;
     color: #fff;
     background-color: #CA0100;
     border-radius: 6px;
+}
+@media screen and (max-width: 426px) {
+    #btn_new_car{
+        font-size: 12px;
+        padding: 10px 20px;
+        height: 50px;
+    }
 }
 
 .input {
