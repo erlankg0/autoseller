@@ -18,7 +18,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script>
         $(document).ready(function () {
-            $('#id_brand').change(function () {
+            $('#id_brand').click(function () {
                 var brand_id = $(this).val();
                 $.ajax({
                     url: '/cars/get_models/',
@@ -36,7 +36,7 @@
 
                 });
             }); // end brand change
-            $('#id_model').change(function () {
+            $('#id_model').click(function () {
                 var model_id = $(this).val();
                 $.ajax({
                     url: '/cars/get_generations/',
@@ -52,7 +52,7 @@
                 });
             }); // end model change
         });
-        $('#id_generations').change(function () {
+        $('#id_generations').click(function () {
             var generation_id = $(this).val();
             $.ajax({
                 url: '/cars/get_modifications/',

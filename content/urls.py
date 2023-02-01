@@ -1,8 +1,9 @@
 from django.urls import path
-from content.views import about, contacts, services, insurance, index, feedback, credit
+from content.views import about, contacts, services, insurance, feedback, credit
+from cars.views import NewCarsListView
 
 urlpatterns = [
-    path('', index, name='index'),  # main page
+    path('', NewCarsListView.as_view(), name='index'),  # main page
     path('about/', about, name='about'),
     path('contacts/', contacts, name='contacts'),
     path('services/', services, name='services'),

@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 from cars.utils import directory_image_path, directory_image_path_vehicle, directory_image_path_cars
 from cars.utils import engine_volume, car_year
@@ -103,7 +104,7 @@ class Years(models.Model):
     )
 
     def __str__(self):
-        return self.title.year
+        return f'{self.title.year}'
 
     class Meta:
         verbose_name = 'Год выпуска'
@@ -270,7 +271,7 @@ class Modification(models.Model):
     )
 
     def __str__(self):
-        return self.title
+        return f"{self.model} {self.title}"
 
     class Meta:
         verbose_name = 'Модификация'
@@ -322,12 +323,11 @@ class Car(models.Model):
         help_text='Пробег автомобиля',
     )
 
-    def save(self, *args, **kwargs):
-        self.mileage = f'{self.mileage} км'
-        super().save(*args, **kwargs)
+    def get_absolute_url(self):
+        return reverse('car_detail', kwargs={'pk': self.pk})
 
     def __str__(self):
-        return self.modification.title
+        return f"{self.brand} {self.model} {self.generation} {self.modification}"
 
     class Meta:
         verbose_name = 'Автомобиль'

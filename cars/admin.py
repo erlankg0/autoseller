@@ -1,5 +1,5 @@
 from django.contrib import admin
-from cars.models import Engine, Transmissions, DriveUnit, Fuel, BodyType, Years
+from cars.models import Engine, Transmissions, DriveUnit, Fuel, BodyType, Years, Volume
 from cars.models import Brand, Model, Generation, Modification
 from cars.models import Car, CarImages
 from cars.forms import CarForm
@@ -7,6 +7,11 @@ from cars.forms import CarForm
 
 @admin.register(Years)
 class YearsAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(Volume)
+class VolumeAdmin(admin.ModelAdmin):
     pass
 
 

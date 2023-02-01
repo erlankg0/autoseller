@@ -2,10 +2,6 @@ from django.shortcuts import render
 from cars.models import Car
 
 
-def index(request):
-    cars = Car.objects.filter(new=True)
-    return render(request, 'cars/index.html', {'cars': cars})
-
 
 def about(request):
     return render(request, 'content/about.html')

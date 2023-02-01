@@ -14,75 +14,61 @@
             <div class="container">
                 <p class="backlink-p">
                     <a href="{% url 'index' %}" class="back-link">Главная / </a>
-                    <a href="{% url 'used_cars' %}"> Авто с пробегом / </a>
-                    Toyota Camry 2013
+                    {% if car.new %}
+                        <a href="{% url 'index' %}"> Новые авто / </a>
+                    {% else %}
+                        <a href="{% url 'used_cars' %}">Авто с пробегом</a>
+                    {% endif %}
+                    {{ car.brand }} {{ car.model }} {{ car.generation.title }}
+
                 </p>
                 <div class="main-item">
                     <div class="main-item__imgs">
                         <div class="main-item__imgs-big">
                             <div class="stats-btns">
                                 <div class="owl-carousel owl-theme">
-                                    <div class="item">
-                                        <img src="{% static 'img/auto-probeg-page-1920/main-camry.png' %}"
-                                             alt="The Last of us">
-                                    </div>
-                                    <div class="item">
-                                        <img src="{% static 'img/auto-probeg-page-1920/main-camry.png' %}"
-                                             alt="The Last of us">
-                                    </div>
-                                    <div class="item">
-                                        <img src="{% static 'img/auto-probeg-page-1920/main-camry.png' %}"
-                                             alt="The Last of us">
-                                    </div>
-                                    <div class="item">
-                                        <img src="{% static 'img/auto-probeg-page-1920/main-camry.png' %}"
-                                             alt="The Last of us">
-                                    </div>
-                                    <div class="item">
-                                        <img src="{% static 'img/auto-probeg-page-1920/main-camry.png' %}"
-                                             alt="The Last of us">
-                                    </div>
-                                    <div class="item">
-                                        <img src="{% static 'img/auto-probeg-page-1920/main-camry.png' %}"
-                                             alt="The Last of us">
-                                    </div>
-                                    <div class="item">
-                                        <img src="{% static 'img/auto-probeg-page-1920/main-camry.png' %}"
-                                             alt="The Last of us">
-                                    </div>
-                                    <div class="item">
-                                        <img src="{% static 'img/auto-probeg-page-1920/main-camry.png' %}"
-                                             alt="The Last of us">
-                                    </div>
+                                    {% if car.car_images.all %}
+                                        {% for image in car.car_images.all %}
+                                            <div class="item">
+                                                <img src="{{ image.image.url }}"
+                                                     alt="{{ car.brand.title }} {{ car.model.title }} {{ car.generation.title }}">
+                                            </div>
+                                        {% endfor %}
+                                    {% endif %}
+
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="main-item__info">
                         <h1 class="main-item__info-title">
-                            Toyota Camry 2013
+                            {{ car.brand.title }} {{ car.model.title }} {{ car.generation.title }}
                         </h1>
                         <div class="main-item__info-params">
                             <div class="main-item__info-params__item">
                                 <img src="{% static 'img/auto-probeg-page-1920/bak.png' %}" alt="">
-                                <p style="margin: 0 auto;">1.2 л</p>
+                                <p style="margin: 0 auto;">{{ car.modification.volume }} л</p>
                             </div>
                             <div class="main-item__info-params__item">
                                 <img src="{% static 'img/auto-probeg-page-1920/car-ls.png' %}" alt="">
-                                <p style="margin: 0 auto;"> 115 л.с.</p>
+                                <p style="margin: 0 auto;"> {{ car.modification.power }} л.с.</p>
                             </div>
                             <div class="main-item__info-params__item">
                                 <img src="{% static 'img/auto-probeg-page-1920/kpp.png' %}" alt="">
-                                <p style="margin: 0 auto;">Механика</p>
+                                <p style="margin: 0 auto;">{{ car.modification.transmission.title }}</p>
                             </div>
                             <div class="main-item__info-params__item">
                                 <img src="{% static 'img/auto-probeg-page-1920/privod.png' %}" alt="">
-                                <p style="margin: 0 auto;">Передний</p>
+                                {% if car.modification.drive_unit %}
+                                    {% for drive in car.modification.drive_unit.all %}
+                                        <p style="margin: 0 auto;">{{ drive }}</p>
+                                    {% endfor %}
+                                {% endif %}
                             </div>
                         </div>
                         <div class="main-item__info-price">
                             <p class="main-item__info-price__main">
-                                850 000 ₽
+                                {{ car.price }} ₽
                             </p>
                             <p class="main-item__info-price__credit">
                                 В кредит от 12 000 ₽/мес
@@ -113,16 +99,24 @@
                             </div>
                             <div class="main-item__info-total__desc">
                                 <p class="main-item__info-total__desc-item">
-                                    Привод: <span>передний</span>
+                                    Привод: {% if car.modification.drive_unit %}
+                                    {% for drive in car.modification.drive_unit.all %}
+                                        <span>{{ drive }}</span>
+                                    {% endfor %}
+                                {% endif %}
                                 </p>
                                 <p class="main-item__info-total__desc-item">
-                                    Кузов: <span>седан</span>
+                                    Кузов: {% if car.modification.body_type %}
+                                    {% for body in car.modification.body_type.all %}
+                                        <span>{{ body }}</span>
+                                    {% endfor %}
+                                {% endif %}
                                 </p>
                                 <p class="main-item__info-total__desc-item">
-                                    Год: <span>2013</span>
+                                    Год: <span>{{ car.modification.year }}</span>
                                 </p>
                                 <p class="main-item__info-total__desc-item">
-                                    Пробег: <span>1000 км</span>
+                                    Пробег: <span>{{ car.mileage }} км.</span>
                                 </p>
                             </div>
                         </div>
@@ -132,48 +126,24 @@
                     <div>
                         <div>
                             <h1 class="main-item__info-title">
-                                Toyota Camry 2013
+                                {{ car.brand }} {{ car.model }} {{ car.modification.title }}
                             </h1>
                             <div class="stats-btns" style="margin-bottom: 25px;">
                                 <div class="owl-carousel owl-theme">
-                                    <div class="item">
-                                        <img src="{% static 'img/auto-probeg-page-1920/main-camry.png' %}"
-                                             alt="The Last of us">
-                                    </div>
-                                    <div class="item">
-                                        <img src="{% static 'img/auto-probeg-page-1920/main-camry.png' %}"
-                                             alt="The Last of us">
-                                    </div>
-                                    <div class="item">
-                                        <img src="{% static 'img/auto-probeg-page-1920/main-camry.png' %}"
-                                             alt="The Last of us">
-                                    </div>
-                                    <div class="item">
-                                        <img src="{% static 'img/auto-probeg-page-1920/main-camry.png' %}"
-                                             alt="The Last of us">
-                                    </div>
-                                    <div class="item">
-                                        <img src="{% static 'img/auto-probeg-page-1920/main-camry.png' %}"
-                                             alt="The Last of us">
-                                    </div>
-                                    <div class="item">
-                                        <img src="{% static 'img/auto-probeg-page-1920/main-camry.png' %}"
-                                             alt="The Last of us">
-                                    </div>
-                                    <div class="item">
-                                        <img src="{% static 'img/auto-probeg-page-1920/main-camry.png' %}"
-                                             alt="The Last of us">
-                                    </div>
-                                    <div class="item">
-                                        <img src="{% static 'img/auto-probeg-page-1920/main-camry.png' %}"
-                                             alt="The Last of us">
-                                    </div>
+                                    {% if car.car_images.all %}
+                                        {% for image in car.car_images.all %}
+                                            <div class="item">
+                                                <img src="{{ image.image.url }}"
+                                                     alt="{{ car.brand.title }} {{ car.model.title }} {{ car.generation.title }}">
+                                            </div>
+                                        {% endfor %}
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>
                         <div class="main-item__info-price">
                             <p class="main-item__info-price__main">
-                                850 000 ₽
+                                {{ car.price }} ₽
                             </p>
                             <p class="main-item__info-price__credit">
                                 В кредит от 12 000 ₽/мес
@@ -184,19 +154,23 @@
                             <div class="main-item__info-params">
                                 <div class="main-item__info-params__item">
                                     <img src="{% static 'img/auto-probeg-page-1920/bak.png' %}" alt="">
-                                    <p style="margin: 0 auto;">1.2 л</p>
+                                    <p style="margin: 0 auto;">{{ car.modification.volume }} л</p>
                                 </div>
                                 <div class="main-item__info-params__item">
                                     <img src="{% static 'img/auto-probeg-page-1920/car-ls.png' %}" alt="">
-                                    <p style="margin: 0 auto;"> 115 л.с.</p>
+                                    <p style="margin: 0 auto;"> {{ car.modification.power }} л.с.</p>
                                 </div>
                                 <div class="main-item__info-params__item">
                                     <img src="{% static 'img/auto-probeg-page-1920/kpp.png' %}" alt="">
-                                    <p style="margin: 0 auto;">Механика</p>
+                                    <p style="margin: 0 auto;">{{ car.modification.transmission.title }}</p>
                                 </div>
                                 <div class="main-item__info-params__item">
                                     <img src="{% static 'img/auto-probeg-page-1920/privod.png' %}" alt="">
-                                    <p style="margin: 0 auto;">Передний</p>
+                                    {% if car.modification.drive_unit %}
+                                        {% for drive in car.modification.drive_unit.all %}
+                                            <p style="margin: 0 auto;">{{ drive }}</p>
+                                        {% endfor %}
+                                    {% endif %}
                                 </div>
                             </div>
                             <div class="main-item__info-btns">
@@ -224,16 +198,24 @@
                                 </div>
                                 <div class="main-item__info-total__desc">
                                     <p class="main-item__info-total__desc-item">
-                                        Привод: <span>передний</span>
+                                        Привод: {% if car.modification.drive_unit %}
+                                        {% for drive in car.modification.drive_unit.all %}
+                                            <span>{{ drive }}</span>
+                                        {% endfor %}
+                                    {% endif %}
                                     </p>
                                     <p class="main-item__info-total__desc-item">
-                                        Кузов: <span>седан</span>
+                                        Кузов: {% if car.modification.body_type %}
+                                        {% for body in car.modification.body_type.all %}
+                                            <span>{{ body }}</span>
+                                        {% endfor %}
+                                    {% endif %}
                                     </p>
                                     <p class="main-item__info-total__desc-item">
-                                        Год: <span>2013</span>
+                                        Год: <span>{{ car.modification.year }}</span>
                                     </p>
                                     <p class="main-item__info-total__desc-item">
-                                        Пробег: <span>1000 км</span>
+                                        Пробег: <span>{{ car.mileage }} км.</span>
                                     </p>
                                 </div>
                             </div>
@@ -299,9 +281,6 @@
                                 </div>
                             </div>
                         </div>
-                        <button class="main-complect__btn red-btn">
-                            Показать еще
-                        </button>
                     </div>
                 </div>
             </div>
