@@ -72,9 +72,9 @@
             <h2 class="auto__heading">Автомобили в наличии с ПТС</h2>
         </div>
         <div class="auto__container _container">
-            <div>
+            <div class="auto__list">
                 {% for car in cars %}
-                    <div data-price="{{ car.price }}">
+                    <div class="auto__item" data-price="{{ car.price }}">
                         <div class="card" style="background-image: none;">
                             <a href="{{ car.get_absolute_url }}" class="card__flex">
                                 <div class="card__title">
@@ -84,7 +84,6 @@
                                 </div>
                                 <div class="card__icons">
                                     <i class="card__likes likes-icon"></i>
-                                    <i class="card__compare compare-icon"></i>
                                 </div>
                             </a>
 
@@ -111,30 +110,30 @@
                                     </div>
                                 </div>
                                 {% if car.car_images %}
-                                    {% for car_image in car.car_images.all|slice:"1:" %}
+                                    {% for car_image in car.car_images.all|slice:"1:2" %}
                                         <img src="{{ car_image.image.url }}" alt="{{ car.car_images.count }}">
                                     {% endfor %}
                                 {% endif %}
                             </a>
                             <div class="card__price card__flex">
-                                <span class=" -bold">от {{ car.price }} &#8381</span>
-                                <div class="card__payment">
+                                <span class=" -bold" style="max-width: 50%; width: 50%; align-self: flex-start;">от {{ car.price }} &#8381</span>
+                                <div class="card__payment" style="width: 50%; max-width: 50%;">
                                     Кредит
                                     <p class="-bold bold_price">от {{ car.price }} &#8381/мес.</p>
                                 </div>
                             </div>
                             <div class="card__flex card__option-list">
                                 <div class="card__option-item i-engine i-engine--m">
-                                    115 л.с.
+                                    {{ car.modification.power }} л.с.
                                 </div>
                                 <div class="card__option-item i-gas i-gas--m">
-                                    5.3 л/км
+                                    {{ car.modification.fuel_consumption }} л/км
                                 </div>
                                 <div class="card__option-item i-speed i-speed--m">
-                                    189 км/ч
+                                    {{ car.modification.max_speed }} км/ч
                                 </div>
                                 <div class="card__option-item i-timer i-timer--m">
-                                    10,3 c.
+                                    {{ car.modification.acceleration }}c.
                                 </div>
                             </div>
                             <div class="card__nav nav">

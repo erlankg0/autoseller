@@ -236,6 +236,28 @@ class Modification(models.Model):
         verbose_name='Мощность',
         help_text='Мощность двигателя автомобиля',
     )
+    fuel_consumption = models.DecimalField(
+        max_digits=5,
+        decimal_places=2,
+        verbose_name='Расход топлива',
+        help_text='Расход топлива автомобиля (5.3)',
+        blank=True,
+        null=True,
+    )
+    max_speed = models.PositiveIntegerField(
+        verbose_name='Максимальная скорость',
+        help_text='Максимальная скорость автомобиля (250)',
+        blank=True,
+        null=True,
+    )
+    acceleration = models.DecimalField(
+        max_digits=5,
+        decimal_places=2,
+        verbose_name='Разгон до 100 км/ч',
+        help_text='Разгон до 100 км/ч автомобиля (5.3)',
+        blank=True,
+        null=True,
+    )
     volume = models.ForeignKey(
         Volume,
         on_delete=models.CASCADE,
@@ -321,6 +343,13 @@ class Car(models.Model):
     mileage = models.PositiveIntegerField(
         verbose_name='Пробег',
         help_text='Пробег автомобиля',
+    )
+    vin = models.CharField(
+        max_length=17,
+        verbose_name='VIN',
+        help_text='VIN автомобиля',
+        blank=True,
+        null=True,
     )
 
     def get_absolute_url(self):

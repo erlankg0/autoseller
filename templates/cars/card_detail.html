@@ -224,7 +224,7 @@
                 </div>
                 <div class="main-desc">
                     <h2 class="sec-title">
-                        Описание Toyota Camry 2013 2.0 AT Стандарт
+                        Описание {{ car.brand.title }} {{ car.model.title }} {{ car.generation.title }} {{ car.modification.title }}
                     </h2>
                     <p class="main-desc__desc">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus et lorem elit. Nam nisi
@@ -240,7 +240,7 @@
                 </div>
                 <div class="main-complect">
                     <h2 class="sec-title">
-                        Комплектация Toyota Camry 2013 2.0 AT Стандарт
+                        Комплектация {{ car.brand.title }} {{ car.model.title }} {{ car.generation.title }} {{ car.modification.title }}
                     </h2>
                     <div class="main-complect__content">
                         <div class="main-complect__list">
@@ -250,15 +250,19 @@
                                         Максимальная мощность двигателя(кВт) при об./мин.
                                     </p>
                                     <p class="main-complect__list-item__row-desc">
-                                        110 л.с.
+                                        {{ car.modification.power }} л.с.
                                     </p>
                                 </div>
                                 <div class="main-complect__list-item__row">
                                     <p class="main-complect__list-item__row-title">
-                                        Тип привода
+                                        Тип привода:
                                     </p>
                                     <p class="main-complect__list-item__row-desc">
-                                        Передний
+                                        {% if car.modification.drive_unit %}
+                                            {% for drive in car.modification.drive_unit.all %}
+                                                <span>{{ drive }}</span>
+                                            {% endfor %}
+                                        {% endif %}
                                     </p>
                                 </div>
                             </div>
@@ -268,15 +272,15 @@
                                         Тип трансмиссии
                                     </p>
                                     <p class="main-complect__list-item__row-desc">
-                                        МКПП
+                                        {{ car.modification.transmission.title }}
                                     </p>
                                 </div>
                                 <div class="main-complect__list-item__row">
                                     <p class="main-complect__list-item__row-title">
-                                        Объем двигателя, куб.см
+                                        Объем двигателя
                                     </p>
                                     <p class="main-complect__list-item__row-desc">
-                                        100
+                                        {{ car.modification.volume.title }}
                                     </p>
                                 </div>
                             </div>
@@ -287,268 +291,63 @@
         </section>
         <section class="probeg">
             <div class="container">
-                <h2 class="sec-title probeg-title">
-                    Автомобили с пробегом за эти же деньги
-                </h2>
-                <div class="probeg__cards">
-                    <a href="{% url 'detail' %}">
-                        <div class="probeg__cards-item">
-                            <div class="probeg__cards-item__top">
-                                <img src="{% static 'img/auto-probeg-1920/camry.png' %}" alt="">
-                                <div class="slider-photos">
-                                    <div class="slide"></div>
-                                    <div class="slide"></div>
-                                    <div class="slide"></div>
-                                    <div class="slide"></div>
-                                </div>
-                            </div>
-                            <div class="probeg__cards-item__content">
-                                <p class="probeg__cards-item__title">
-                                    Toyota Camry 2013
-                                </p>
-                                <div class="probeg__cards-item__params">
-                                    <div class="">
-                                        <p class="probeg__cards-item__params-item">
-                                            Мощность:
-                                            <span>115 л.с.</span>
-                                        </p>
-                                        <p class="probeg__cards-item__params-item">
-                                            Объем двигателя:
-                                            <span>1.2 л.</span>
-                                        </p>
-                                        <p class="probeg__cards-item__params-item">
-                                            Привод:
-                                            <span>передний</span>
-                                        </p>
+                {% if cars.count %}
+                    <h2 class="sec-title probeg-title">
+                        Автомобили с пробегом за эти же деньги
+                    </h2>
+                {% endif %}
+                <div class="auto__list">
+                    {% for car_ in cars %}
+                        <div class="auto__item">
+                            <div class="card" style="background-image: none;">
+                                <div class="card__flex">
+                                    <div class="card__title">
+                                        {{ car_.brand.title }} {{ car_.model.title }} {{ car_.generation.title }} {{ car_.modification.title }}
                                     </div>
-                                    <div class="">
-                                        <p class="probeg__cards-item__params-item">
-                                            Кузов:
-                                            <span>внедорожник</span>
-                                        </p>
-                                        <p class="probeg__cards-item__params-item">
-                                            КПП:
-                                            <span>механика</span>
-                                        </p>
-                                        <p class="probeg__cards-item__params-item">
-                                            Пробег:
-                                            <span>123456 км.</span>
-                                        </p>
+                                    <div class="card__icons">
+                                        <i class="card__likes likes-icon"></i>
                                     </div>
                                 </div>
-                                <div class="probeg__cards-item__price">
-                                    <p>от 1 615 000 ₽ </p>
-                                    <span>от 115 000 ₽/мес. </span>
+
+                                <div class="card__flex">
+                                    <a href="{% url 'detail' %}" class="owl-carousel owl-theme">
+                                        {% for car_image in car_.car_images.all %}
+                                            <img src="{{ car_image.image.url }}" alt="">
+                                        {% endfor %}
+                                    </a>
                                 </div>
-                                <div class="auto__card-btns">
-                                    <button class="auto__card-btns__btn">
-                                        Резерв онлайн
-                                    </button>
-                                    <button class="auto__card-btns__btn">
-                                        Купить
-                                    </button>
-                                    <button class="auto__card-btns__btn">
-                                        Подробнее
-                                    </button>
+                                <div class="card__price card__flex">
+                                    <span class=" -bold">от {{ car_.price }} &#8381</span>
+                                    <div class="card__payment">
+                                        Кредит
+                                        <p class="-bold">от 12000 &#8381/мес.</p>
+                                    </div>
+                                </div>
+                                <div class="card__flex card__option-list">
+                                    <div class="card__option-item i-engine i-engine--m">
+                                        {{ car_.modification.power }} л.с.
+                                    </div>
+                                    <div class="card__option-item i-gas i-gas--m">
+                                        {{ car_.modification.fuel_consumption }} л/км
+                                    </div>
+                                    <div class="card__option-item i-speed i-speed--m">
+                                        {{ car_.modification.max_speed }} км/ч
+                                    </div>
+                                    <div class="card__option-item i-timer i-timer--m">
+                                        {{ car_.modification.acceleration }} c.
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </a>
-                    <a href="{% url 'detail' %}">
-                        <div class="probeg__cards-item">
-                            <div class="probeg__cards-item__top">
-                                <img src="{% static 'img/auto-probeg-1920/camry.png' %}" alt="">
-                                <div class="slider-photos">
-                                    <div class="slide"></div>
-                                    <div class="slide"></div>
-                                    <div class="slide"></div>
-                                    <div class="slide"></div>
-                                </div>
-                            </div>
-                            <div class="probeg__cards-item__content">
-                                <p class="probeg__cards-item__title">
-                                    Toyota Camry 2013
-                                </p>
-                                <div class="probeg__cards-item__params">
-                                    <div class="">
-                                        <p class="probeg__cards-item__params-item">
-                                            Мощность:
-                                            <span>115 л.с.</span>
-                                        </p>
-                                        <p class="probeg__cards-item__params-item">
-                                            Объем двигателя:
-                                            <span>1.2 л.</span>
-                                        </p>
-                                        <p class="probeg__cards-item__params-item">
-                                            Привод:
-                                            <span>передний</span>
-                                        </p>
-                                    </div>
-                                    <div class="">
-                                        <p class="probeg__cards-item__params-item">
-                                            Кузов:
-                                            <span>внедорожник</span>
-                                        </p>
-                                        <p class="probeg__cards-item__params-item">
-                                            КПП:
-                                            <span>механика</span>
-                                        </p>
-                                        <p class="probeg__cards-item__params-item">
-                                            Пробег:
-                                            <span>123456 км.</span>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="probeg__cards-item__price">
-                                    <p>от 1 615 000 ₽ </p>
-                                    <span>от 115 000 ₽/мес. </span>
-                                </div>
-                                <div class="auto__card-btns">
-                                    <button class="auto__card-btns__btn">
-                                        Резерв онлайн
-                                    </button>
-                                    <button class="auto__card-btns__btn">
-                                        Купить
-                                    </button>
-                                    <button class="auto__card-btns__btn">
-                                        Подробнее
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="{% url 'detail' %}">
-                        <div class="probeg__cards-item">
-                            <div class="probeg__cards-item__top">
-                                <img src="{% static 'img/auto-probeg-1920/camry.png' %}" alt="">
-                                <div class="slider-photos">
-                                    <div class="slide"></div>
-                                    <div class="slide"></div>
-                                    <div class="slide"></div>
-                                    <div class="slide"></div>
-                                </div>
-                            </div>
-                            <div class="probeg__cards-item__content">
-                                <p class="probeg__cards-item__title">
-                                    Toyota Camry 2013
-                                </p>
-                                <div class="probeg__cards-item__params">
-                                    <div class="">
-                                        <p class="probeg__cards-item__params-item">
-                                            Мощность:
-                                            <span>115 л.с.</span>
-                                        </p>
-                                        <p class="probeg__cards-item__params-item">
-                                            Объем двигателя:
-                                            <span>1.2 л.</span>
-                                        </p>
-                                        <p class="probeg__cards-item__params-item">
-                                            Привод:
-                                            <span>передний</span>
-                                        </p>
-                                    </div>
-                                    <div class="">
-                                        <p class="probeg__cards-item__params-item">
-                                            Кузов:
-                                            <span>внедорожник</span>
-                                        </p>
-                                        <p class="probeg__cards-item__params-item">
-                                            КПП:
-                                            <span>механика</span>
-                                        </p>
-                                        <p class="probeg__cards-item__params-item">
-                                            Пробег:
-                                            <span>123456 км.</span>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="probeg__cards-item__price">
-                                    <p>от 1 615 000 ₽ </p>
-                                    <span>от 115 000 ₽/мес. </span>
-                                </div>
-                                <div class="auto__card-btns">
-                                    <button class="auto__card-btns__btn">
-                                        Резерв онлайн
-                                    </button>
-                                    <button class="auto__card-btns__btn">
-                                        Купить
-                                    </button>
-                                    <button class="auto__card-btns__btn">
-                                        Подробнее
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="{% url 'detail' %}">
-                        <div class="probeg__cards-item">
-                            <div class="probeg__cards-item__top">
-                                <img src="{% static 'img/auto-probeg-1920/camry.png' %}" alt="">
-                                <div class="slider-photos">
-                                    <div class="slide"></div>
-                                    <div class="slide"></div>
-                                    <div class="slide"></div>
-                                    <div class="slide"></div>
-                                </div>
-                            </div>
-                            <div class="probeg__cards-item__content">
-                                <p class="probeg__cards-item__title">
-                                    Toyota Camry 2013
-                                </p>
-                                <div class="probeg__cards-item__params">
-                                    <div class="">
-                                        <p class="probeg__cards-item__params-item">
-                                            Мощность:
-                                            <span>115 л.с.</span>
-                                        </p>
-                                        <p class="probeg__cards-item__params-item">
-                                            Объем двигателя:
-                                            <span>1.2 л.</span>
-                                        </p>
-                                        <p class="probeg__cards-item__params-item">
-                                            Привод:
-                                            <span>передний</span>
-                                        </p>
-                                    </div>
-                                    <div class="">
-                                        <p class="probeg__cards-item__params-item">
-                                            Кузов:
-                                            <span>внедорожник</span>
-                                        </p>
-                                        <p class="probeg__cards-item__params-item">
-                                            КПП:
-                                            <span>механика</span>
-                                        </p>
-                                        <p class="probeg__cards-item__params-item">
-                                            Пробег:
-                                            <span>123456 км.</span>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="probeg__cards-item__price">
-                                    <p>от 1 615 000 ₽ </p>
-                                    <span>от 115 000 ₽/мес. </span>
-                                </div>
-                                <div class="auto__card-btns">
-                                    <button class="auto__card-btns__btn">
-                                        Резерв онлайн
-                                    </button>
-                                    <button class="auto__card-btns__btn">
-                                        Купить
-                                    </button>
-                                    <button class="auto__card-btns__btn">
-                                        Подробнее
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
+                    {% endfor %}
                 </div>
-                <div class="probeg__btn-cont">
-                    <button class="probeg__more red-btn">
-                        показать ещё
-                    </button>
-                </div>
+                {% if cars.count > 8 %}
+                    <div class="probeg__btn-cont">
+                        <button class="probeg__more red-btn">
+                            показать ещё
+                        </button>
+                    </div>
+                {% endif %}
             </div>
         </section>
     </main>

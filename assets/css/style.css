@@ -548,8 +548,9 @@ h6 {
     background-color: #CA0100;
     border-radius: 6px;
 }
+
 @media screen and (max-width: 426px) {
-    #btn_new_car{
+    #btn_new_car {
         font-size: 12px;
         padding: 10px 20px;
         height: 50px;
@@ -958,7 +959,7 @@ input[type=search]::-webkit-search-cancel-button {
     flex: 1;
     display: flex;
     align-items: center;
-    height: 24px;
+    height: auto;
     border: 1px solid #C2C2C4;
     border-radius: 12px;
     padding-left: 20px;
@@ -1030,7 +1031,7 @@ input[type=search]::-webkit-search-cancel-button {
     }
 
     .card__offer, .card__benefits {
-        font-size: 0.813rem;
+        font-size: 10px;
     }
 
     .card__offer {
@@ -1078,14 +1079,14 @@ input[type=search]::-webkit-search-cancel-button {
     }
 
     .card__option-item {
-        height: 31px;
+        height: auto;
         border-radius: 16px;
         padding-left: 30px;
     }
 
     .card__option-item::before {
         background-size: 70%;
-        left: 7px;
+        left: 0px;
     }
 }
 
@@ -1103,16 +1104,16 @@ input[type=search]::-webkit-search-cancel-button {
     }
 
     .card__option-list {
-        font-size: 0.75rem;
+        font-size: 8px;
     }
 
     .card__option-item {
-        padding-left: 40px;
+        padding-left: 30px;
     }
 
     .card__option-item::before {
-        background-size: 90%;
-        left: 10px;
+        background-size: 70%;
+        left: 0px;
     }
 }
 
@@ -2586,8 +2587,8 @@ input:-webkit-autofill:active {
     }
 
     .auto__item {
-        flex-basis: calc(33.3333% - 22px);
-        min-width: calc(33.3333% - 22px);
+        flex-basis: calc(23.3333% - 22px);
+        min-width: calc(23.3333% - 22px);
     }
 
     .auto__show-more {
@@ -3313,7 +3314,7 @@ input:-webkit-autofill:active {
 
 @media screen and (min-width: 1200px) {
     .credit__form {
-        padding: 61px 35px 155px;
+        padding: 61px 35px 30px;
         border-radius: 25px;
         display: flex;
         flex-flow: row wrap;

@@ -83,52 +83,54 @@
             </div>
             <div class="auto__container _container">
                 <div class="auto__list">
-                    <div class="auto__item">
-                        <div class="card">
-                            <div class="card__flex">
-                                <div class="card__title">
-                                    Skoda Octavia
+                    {% for car in cars %}
+                        <div class="auto__item">
+                            <div class="card" style="background-image: none;">
+                                <div class="card__flex">
+                                    <div class="card__title">
+                                        Skoda Octavia
+                                    </div>
+                                    <div class="card__icons">
+                                        <i class="card__likes likes-icon"></i>
+                                    </div>
                                 </div>
-                                <div class="card__icons">
-                                    <i class="card__likes likes-icon"></i>
-                                </div>
-                            </div>
 
-                            <div class="card__flex">
-                                <a href="{% url 'detail' %}" class="owl-carousel owl-theme">
-                                    <img src="{% static 'img/auto-probeg-1920/camry.png' %}" alt="">
-                                    <img src="{% static 'img/auto-probeg-1920/camry.png' %}" alt="">
-                                    <img src="{% static 'img/auto-probeg-1920/camry.png' %}" alt="">
-                                    <img src="{% static 'img/auto-probeg-1920/camry.png' %}" alt="">
-                                    <img src="{% static 'img/auto-probeg-1920/camry.png' %}" alt="">
-                                    <img src="{% static 'img/auto-probeg-1920/camry.png' %}" alt="">
-                                </a>
-                            </div>
-                            <div class="card__price card__flex">
-                                <span class=" -bold">от 1 615 000 &#8381</span>
-                                <div class="card__payment">
-                                    Кредит
-                                    <p class="-bold">от 115 000 &#8381/мес.</p>
+                                <div class="card__flex">
+                                    <a href="{% url 'detail' %}" class="owl-carousel owl-theme">
+                                        <img src="{% static 'img/auto-probeg-1920/camry.png' %}" alt="">
+                                        <img src="{% static 'img/auto-probeg-1920/camry.png' %}" alt="">
+                                        <img src="{% static 'img/auto-probeg-1920/camry.png' %}" alt="">
+                                        <img src="{% static 'img/auto-probeg-1920/camry.png' %}" alt="">
+                                        <img src="{% static 'img/auto-probeg-1920/camry.png' %}" alt="">
+                                        <img src="{% static 'img/auto-probeg-1920/camry.png' %}" alt="">
+                                    </a>
                                 </div>
-                            </div>
-                            <div class="card__flex card__option-list">
-                                <div class="card__option-item i-engine i-engine--m">
-                                    115 л.с.
+                                <div class="card__price card__flex">
+                                    <span class=" -bold">от 1 615 000 &#8381</span>
+                                    <div class="card__payment">
+                                        Кредит
+                                        <p class="-bold">от 115 000 &#8381/мес.</p>
+                                    </div>
                                 </div>
-                                <div class="card__option-item i-gas i-gas--m">
-                                    5.3 л/км
-                                </div>
-                                <div class="card__option-item i-speed i-speed--m">
-                                    189 км/ч
-                                </div>
-                                <div class="card__option-item i-timer i-timer--m">
-                                    10,3 c.
+                                <div class="card__flex card__option-list">
+                                    <div class="card__option-item i-engine i-engine--m">
+                                        115 л.с.
+                                    </div>
+                                    <div class="card__option-item i-gas i-gas--m">
+                                        5.3 л/км
+                                    </div>
+                                    <div class="card__option-item i-speed i-speed--m">
+                                        189 км/ч
+                                    </div>
+                                    <div class="card__option-item i-timer i-timer--m">
+                                        10,3 c.
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    </div>
+                    {% endfor %}
                 </div>
+            </div>
             <button class="auto__show-more button" id="auto__show-more" hidden>Показать еще</button>
 
         </section>

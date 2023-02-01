@@ -15,49 +15,35 @@
                     <p class="page__title">
                         Кредит и рассрочка
                     </p>
-                    <form action="" class="credit__form">
+
+                    <form method="post" class="credit__form">
+                        {% csrf_token %}
                         <h2 class="credit__top-heading">Заявка на автокредит</h2>
                         <div class="credit__main">
                             <div class="credit__select-group">
-                                <div class="credit__select select" data-state="">
-                                    <div class="select__title">Марка</div>
-                                    <div class="select__content">
-                                    </div>
-                                </div>
-                                <div class="credit__select select" data-state="">
-                                    <div class="select__title">Модель</div>
-                                    <div class="select__content">
-                                    </div>
-                                </div>
-                                <div class="credit__select select" data-state="">
-                                    <div class="select__title">Комплектация</div>
-                                    <div class="select__content">
-                                    </div>
-                                </div>
+                                <select class="credit__select select" data-state="" name="brand" id="brand_id">
+                                    <option value="0">Марка</option>
+                                    {% for brand in brands %}
+                                        <option value="{{ brand.id }}">{{ brand.title }}</option>
+                                    {% endfor %}
+                                </select>
+                                <select class="credit__select select" data-state="" disabled name="model" id="model_id">
+                                    <option value="0">Модель</option>
+                                </select>
+                                <select class="credit__select select" data-state="" disabled name="car"
+                                        id="auto_id">
+                                    <option value="0">Авто</option>
+                                </select>
                             </div>
                             <div class="credit__auto">
                                 <div class="jc-spb">
-                                    <span class="credit__price -bold">1 615 000&nbsp;&#8381</span>
+                                    <span class="credit__price -bold" id="current_price">1 615 000&nbsp;&#8381</span>
                                     <span class="credit__benefit -accent -bold">Выгода 300 000&nbsp;&#8381</span>
                                 </div>
 
-                                <p class="credit__last-price">1 915 000&nbsp;&#8381</p>
-                                <img src="{% static 'img/secret-car.png' %}" alt="">
-
-                                <!-- Сделать когда не введен взнос, то серый бг -->
-                                <div class="pb jc-spb">
-                                    <span class="pb__first-fee -highlighted">50 000</span>
-                                    <span class="pb__balance -highlighted">50 000</span>
-
-                                    <div class="pb__wrap">
-                                        <span class="pb__line"></span>
-                                        <span class="pb__bar"></span>
-                                    </div>
-
-                                    <!-- Сделать когда не введен взнос, то серый текст -->
-                                    <span class="pb__text">Первоначальный взнос</span>
-                                    <span class="pb__text">Остаток по кредиту</span>
-                                </div>
+                                <p class="credit__last-price" id="old_price">1 915 000&nbsp;&#8381</p>
+                                <img src="{% static 'img/secret-car.png' %}" alt="" id="image"
+                                     style="margin-top: 30px; max-width: 400px;">
                             </div>
 
                             <span class="credit__line credit__first-line"></span>
@@ -68,7 +54,7 @@
                                         <p>Срок кредита, мес.</p>
                                         <span id="term-irs-from"></span>
                                     </div>
-                                    <input type="text" class="js-range-slider-term" name="my_range" value=""/>
+                                    <input type="text" class="js-range-slider-term" name="credit_term" value=""/>
                                 </div>
 
                                 <div class="credit__slider-sum">
@@ -76,11 +62,15 @@
                                         <p>Первоначальный взнос</p>
                                         <span id="fee-irs-from"></span>
                                     </div>
-                                    <input type="text" class="js-range-slider-fee" name="my_range" value=""/>
+                                    <input type="text" class="js-range-slider-fee" value=""/>
                                 </div>
 
                                 <span class="fee-text">Ручной ввод, руб</span>
-                                <input type="number" placeholder="0" class="fee-input input" id="">
+                                <input type="number" placeholder="0" class="fee-input input" id=""
+                                       name="initial_payment">
+                                <select name="is_checked" hidden>
+                                    <option value="false">false</option>
+                                </select>
                             </div>
                         </div>
 
@@ -88,8 +78,8 @@
 
                         <div class="credit__send">
                             <h3>Получить выгоду <span class="-accent">300 000&nbsp;&#8381</span></h3>
-                            <input type="text" placeholder="Ваше имя" class="input" id="">
-                            <input type="text" placeholder="Ваш телефон" class="input" id="">
+                            <input type="text" placeholder="Ваше имя" class="input" id="" name="name">
+                            <input type="text" placeholder="Ваш телефон" class="input" id="" name="phone">
                             <button class="button">Получить предложение</button>
                             <span class="credit__note">
 								Нажимая кнопку “Отправить” Вы даете согласие на обработку своих
@@ -300,4 +290,79 @@
             </div>
         </section>
     </main>
+    <script>
+        $(document).ready(function () {
+            $('#brand_id').click(function () {
+                var brand_id = $(this).val();
+                $.ajax({
+                    url: '/cars/get_models/',
+                    data: {
+                        'brand_id': brand_id
+                    },
+                    success: function (data) {
+                        // clear model select
+                        $('#model_id').empty(); // remove old options if any present in select
+                        $('#model_id').append('<option value="">Выберите модель</option>');
+                        // delete disabled
+                        $('#model_id').removeAttr('disabled');
+                        $('#generation_id').empty(); // remove old options if any present in select
+                        $('#generation_id').append('<option value="">Выберите поколение</option>');
+                        // add new options
+                        for (var i = 0; i < data["models"].length; i++) {
+                            $('#model_id').append('<option value="' + data["models"][i]["id"] + '">' + data["models"][i]["title"] + '</option>');
+                        }
+                    }
+
+                });
+            }); // end brand change
+            $('#model_id').click(function () {
+                var model_id = $(this).val();
+                $.ajax({
+                    url: '/cars/get_cars_by_model/',
+                    data: {
+                        'model': model_id
+                    },
+                    success: function (data) {
+                        $('#auto_id').empty(); // remove old options if any present in select
+                        $('#auto_id').append('<option value="">Выберите автомобиль</option>');
+                        // delete disabled
+                        $('#auto_id').removeAttr('disabled');
+                        for (var i = 0; i < data["cars"].length; i++) {
+                            $('#auto_id').append('<option value="' + data["cars"][i]["id"] + '">' + data["cars"][i]["brand__title"] + ' ' + data["cars"][i]["model__title"] + ' ' + data["cars"][i]["generation__title"] + ' ' + data["cars"][i]["modification__title"] + '</option>');
+                        }
+                    }
+                });
+            }); // end model change
+        });
+        $('#auto_id').click(function () {
+            var auto_id = $(this).val();
+            $.ajax({
+                url: '/cars/get_car/',
+                data: {
+                    'car': auto_id
+                },
+                success: function (data) {
+                    $('#old_price').text(data["car"][0]["price"] + 300000 + ' ₽');
+                    $('#current_price').text(data["car"][0]["price"] + ' ₽');
+                    $('#image').attr('src', data["car"][0]["image"]);
+                }
+            });
+        });
+        $('#btn_new_car').click(function () {
+            var brand_id = $('#brand_id').val();
+            var model_id = $('#model_id').val();
+            var generation_id = $('#generation_id').val();
+            $.ajax({
+                url: '/cars/get_new_car/',
+                data: {
+                    'brand_id': brand_id,
+                    'model_id': model_id,
+                    'generation_id': generation_id
+                },
+                success: function (data) {
+                    console.log(data);
+                }
+            });
+        });
+    </script>
 {% endblock %}

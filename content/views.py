@@ -24,4 +24,4 @@ def feedback(request):
 
 
 def credit(request):
-    return render(request, 'content/credit.html')
+    return render(request, 'content/../templates/credit/credit.html')

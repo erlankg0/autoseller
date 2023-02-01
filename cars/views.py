@@ -3,7 +3,7 @@ from django.http import JsonResponse
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 
-from cars.models import Model, Generation, Modification, Car, BodyType, Transmissions, Brand
+from cars.models import Model, Generation, Modification, Car, BodyType, Transmissions, Brand, CarImages
 
 
 class NewCarsListView(ListView):
@@ -29,9 +29,24 @@ class DetailCarView(DetailView):
         queryset = queryset.filter(id=self.kwargs['pk'])
         return queryset
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        price = Car.objects.get(id=self.kwargs['pk']).price
+        context['cars'] = Car.objects.filter(price__lte=price).exclude(id=self.kwargs['pk']).order_by(
+            '-price')  # будут показаны все машины с ценой ниже текущей и не будут показаны текущая машина
+        return context
 
-def used_cars(request):
-    return render(request, 'cars/used_cars.html')
+
+class UsedCarsListView(ListView):
+    model = Car
+    template_name = 'cars/used_cars.html'
+    context_object_name = 'cars'
+    paginate_by = 12
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        queryset = queryset.filter(new=False)
+        return queryset
 
 
 def taxi_cars(request):
@@ -86,6 +101,39 @@ def get_modifications(request):
     generation_id = request.GET.get('generation')
     modifications = Modification.objects.filter(generation_id=generation_id).order_by('title').values('id', 'title')
     return JsonResponse({'modifications': list(modifications)})
+
+
+def get_cars_by_model(request):
+    model = request.GET.get('model')
+    cars = Car.objects.filter(model_id=model).order_by('price').values(
+        'brand__title',
+        'model__title',
+        'generation__title',
+        'modification__title',
+        'price',
+        'id',
+
+    )
+    return JsonResponse({'cars': list(cars)})
+
+
+def get_car(request):
+    car_id = request.GET.get('car')
+    if car_id != '':
+        car = Car.objects.filter(id=car_id).values(
+            'brand__title',
+            'model__title',
+            'generation__title',
+            'modification__title',
+            'price',
+            'id',
+        )
+        image = CarImages.objects.filter(car_id=car_id)
+        image = [i.image.url for i in image[:1]]
+        # добавить картинки в словарь
+        result = list(car)
+        result[0]['image'] = image[0]
+        return JsonResponse({'car': result})
 
 
 # показать все модели автомобилей фильрации по марке, модели, поколению,

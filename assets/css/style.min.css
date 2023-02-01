@@ -2236,8 +2236,8 @@ input:-webkit-autofill:active {
     padding: 60px 0 32px;
   }
   .auto__item {
-    flex-basis: calc(33.3333% - 22px);
-    min-width: calc(33.3333% - 22px);
+    flex-basis: calc(23.3333% - 22px);
+    min-width: calc(23.3333% - 22px);
   }
   .auto__show-more {
     display: block;

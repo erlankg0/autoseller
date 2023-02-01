@@ -1,2 +1,8 @@
 User-agent: *
 Disallow: /admin/
+Disallow: /get_models/
+Disallow: /get_generations/
+Disallow: /get_modifications/
+Disallow: /get_all_cars/
+Disallow: /get_cars_by_model/
+Disallow: /get_car/

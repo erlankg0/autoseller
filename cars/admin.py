@@ -69,3 +69,23 @@ class CarImagesAdmin(admin.StackedInline):
 class CarAdmin(admin.ModelAdmin):
     form = CarForm
     inlines = [CarImagesAdmin]
+
+    def get_brand(self, obj):
+        return obj.brand.title
+
+    def get_model(self, obj):
+        return obj.model.title
+
+    def get_generation(self, obj):
+        return obj.generation.title
+
+    def get_year(self, obj):
+        return obj.modification.year
+
+    def get_modification(self, obj):
+        return obj.modification.title
+
+    list_display = ('new', 'get_brand', 'get_model', 'get_generation', 'price', 'get_year', 'get_modification')
+    list_display_links = ('get_brand', 'get_model', 'get_generation', 'get_year', 'get_modification')
+    list_editable = ('price', 'new',)
+    list_filter = ('price', 'mileage',)
