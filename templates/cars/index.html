@@ -151,8 +151,34 @@
                 {% endfor %}
             </div>
         </div>
-
-        <button class="auto__show-more button" id="auto__show-more">Показать еще</button>
+        <nav class="mt-4" aria-label="Page navigation sample">
+            <ul class="pagination">
+                {% if page_obj.has_other_pages %}
+                    {% if page_obj.has_previous %}
+                        <li class="page-item disabled">
+                            <a class="page-link"
+                               href="?page={{ page_obj.previous_page_number }}">Previous</a>
+                        </li>
+                    {% endif %}
+                    {% for page in paginator.page_range %}
+                        {% if page_obj.number == page %}
+                            <li class="page-item active"><a class="page-link"
+                                                            href="?page={{ page }}">{{ page }}</a>
+                            </li>
+                        {% elif page >= page_obj.number|add:-2 and page <= page_obj.number|add:2 %}
+                            <li class="page-item"><a class="page-link"
+                                                     href="?page={{ page }}">{{ page }}</a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                    {% if page_obj.has_next %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+                        </li>
+                    {% endif %}
+                {% endif %}
+            </ul>
+        </nav>
 
     </section>
     <section class="comp">
@@ -794,29 +820,29 @@
     <script type="text/javascript" charset="utf-8" async
             src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A97c80d85d882095b934e5118ca84dde7fb30cc104f79dbab45b848d4b4b4e092&amp;width=100%25&amp;height=400&amp;lang=ru_RU&amp;"></script>
     <script>
-        window.onload = function () {
-            var box = document.getElementsByClassName('auto__item');
-            var btn = document.getElementById('auto__show-more');
-            for (let i = 3; i < box.length; i++) {
-                box[i].style.display = "none";
-            }
-
-            var countD = 3;
-            btn.addEventListener("click", function () {
+        /*    window.onload = function () {
                 var box = document.getElementsByClassName('auto__item');
-                countD += 3;
-                if (countD <= box.length) {
-                    for (let i = 0; i < countD; i++) {
-                        box[i].style.display = "block";
-                    }
-                }
-                if (countD >= box.length) {
-                    btn.style.display = "none";
+                var btn = document.getElementById('auto__show-more');
+                for (let i = 3; i < box.length; i++) {
+                    box[i].style.display = "none";
                 }
 
-            })
-        }
-    </script>
+                var countD = 3;
+                btn.addEventListener("click", function () {
+                    var box = document.getElementsByClassName('auto__item');
+                    countD += 3;
+                    if (countD <= box.length) {
+                        for (let i = 0; i < countD; i++) {
+                            box[i].style.display = "block";
+                        }
+                    }
+                    if (countD >= box.length) {
+                        btn.style.display = "none";
+                    }
+
+                })
+            } * /
+</script>
     <script>
         $(document).ready(function () {
             $('#brand_id').click(function () {

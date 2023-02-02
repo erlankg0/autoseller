@@ -19,113 +19,19 @@
                 Все работы проводятся в соответствии с рекомендациями производителей.
             </p>
             <div class="tehcenter__list">
-                <div class="tehcenter__list-item">
-                    <div class="tehcenter__list-item__top">
-                        <img src="{% static 'img/tehcenter-1920/list-style.png' %}" alt="">
-                        <p class="tehcenter__list-item__top-title">
-                            Кузовной ремонт
+                {% for service in services %}
+                    <div class="tehcenter__list-item">
+                        <div class="tehcenter__list-item__top">
+                            <img src="{% static 'img/tehcenter-1920/list-style.png' %}" alt="">
+                            <p class="tehcenter__list-item__top-title">
+                                {{ service.title}}
+                            </p>
+                        </div>
+                        <p class="tehcenter__list-item__desc">
+                            {{ service.description }}
                         </p>
                     </div>
-                    <p class="tehcenter__list-item__desc">
-                        Современное оборудование позволяет осуществлять кузовной ремонт любой сложности. Работаем только
-                        с качественными материалами от проверенных поставщиков.
-                    </p>
-                </div>
-                <div class="tehcenter__list-item">
-                    <div class="tehcenter__list-item__top">
-                        <img src="{% static 'img/tehcenter-1920/list-style.png' %}" alt="">
-                        <p class="tehcenter__list-item__top-title">
-                            Слесарный ремонт
-                        </p>
-                    </div>
-                    <p class="tehcenter__list-item__desc">
-                        Выполняем как текущий, так и капитальный слесарный ремонт, в том числе обслуживание силовой
-                        установки.
-                    </p>
-                </div>
-                <div class="tehcenter__list-item">
-                    <div class="tehcenter__list-item__top">
-                        <img src="{% static 'img/tehcenter-1920/list-style.png' %}" alt="">
-                        <p class="tehcenter__list-item__top-title">
-                            Шиномонтаж
-                        </p>
-                    </div>
-                    <p class="tehcenter__list-item__desc">
-                        Своевременная замена резины необходима для безаварийной езды. Ориентируемся на пробег, состояние
-                        резины и время года.
-                    </p>
-                </div>
-                <div class="tehcenter__list-item">
-                    <div class="tehcenter__list-item__top">
-                        <img src="{% static 'img/tehcenter-1920/list-style.png' %}" alt="">
-                        <p class="tehcenter__list-item__top-title">
-                            Диагностика
-                        </p>
-                    </div>
-                    <p class="tehcenter__list-item__desc">
-                        Качественная диагностика позволяет выявить не только имеющиеся проблемы, но и предупредить
-                        возможные, поэтому процедура проводится в плановом порядке.
-                    </p>
-                </div>
-                <div class="tehcenter__list-item">
-                    <div class="tehcenter__list-item__top">
-                        <img src="{% static 'img/tehcenter-1920/list-style.png' %}" alt="">
-                        <p class="tehcenter__list-item__top-title">
-                            Замена масла
-                        </p>
-                    </div>
-                    <p class="tehcenter__list-item__desc">
-                        Это необходимая процедура, значительно увеличивающая ресурс двигателя, а также позволяющая
-                        минимизировать негативные последствия использования некачественного топлива.
-                    </p>
-                </div>
-                <div class="tehcenter__list-item">
-                    <div class="tehcenter__list-item__top">
-                        <img src="{% static 'img/tehcenter-1920/list-style.png' %}" alt="">
-                        <p class="tehcenter__list-item__top-title">
-                            Техническое обслуживание
-                        </p>
-                    </div>
-                    <p class="tehcenter__list-item__desc">
-                        Это обеспечивают бесперебойную работу основных узлов и агрегатов ТС.
-                    </p>
-                </div>
-                <div class="tehcenter__list-item">
-                    <div class="tehcenter__list-item__top">
-                        <img src="{% static 'img/tehcenter-1920/list-style.png' %}" alt="">
-                        <p class="tehcenter__list-item__top-title">
-                            Сход-развал
-                        </p>
-                    </div>
-                    <p class="tehcenter__list-item__desc">
-                        Процедура обеспечивает устойчивость автомобиля на дороге. Проводится планово или в связи с
-                        нарушениями управляемости.
-                    </p>
-                </div>
-                <div class="tehcenter__list-item">
-                    <div class="tehcenter__list-item__top">
-                        <img src="{% static 'img/tehcenter-1920/list-style.png' %}" alt="">
-                        <p class="tehcenter__list-item__top-title">
-                            Подбор запчастей
-                        </p>
-                    </div>
-                    <p class="tehcenter__list-item__desc">
-                        Надёжность автомобиля напрямую зависит от качества запчастей. Услуга позволяет подобрать
-                        качественную деталь, подходящую к конкретному автомобилю.
-                    </p>
-                </div>
-                <div class="tehcenter__list-item">
-                    <div class="tehcenter__list-item__top">
-                        <img src="{% static 'img/tehcenter-1920/list-style.png' %}" alt="">
-                        <p class="tehcenter__list-item__top-title">
-                            Продление страховых полисов
-                        </p>
-                    </div>
-                    <p class="tehcenter__list-item__desc">
-                        Мы подберём честную компанию, предлагающую страховку по адекватным ценам. Это позволит избежать
-                        попадания в мошеннические схемы.
-                    </p>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </main>

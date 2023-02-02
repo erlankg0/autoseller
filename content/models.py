@@ -25,7 +25,6 @@ class Phone(models.Model):
         ordering = ['number']
 
 
-
 class Address(models.Model):
     address = models.CharField(
         max_length=255,
@@ -65,9 +64,57 @@ class Logo(models.Model):
     )  # логотип компании
 
     def __str__(self):
-        return self.logo
+        return f'Логотип {self.pk}'
+
+    # singelton pattern
+    def save(self, *args, **kwargs):
+        if Logo.objects.exists() and not self.pk:  # если логотип уже существует и это не редактирование
+            raise ValidationError('Логотип уже существует')  # то выкидываем ошибку валидации (происходит в админке)
+        return super().save(*args, **kwargs)
 
     class Meta:
         verbose_name = 'Логотип'
         verbose_name_plural = 'Логотипы'
 
+
+class WorkTime(models.Model):
+    time = models.CharField(
+        max_length=255,
+        verbose_name='Время работы',
+        help_text='Время работы компании',
+        unique=True
+    )  # время работы компании
+
+    def __str__(self):
+        return self.time
+
+    def save(self, *args, **kwargs):
+        if WorkTime.objects.exists() and not self.pk:  # если время работы уже существует и это не редактирование
+            raise ValidationError('Логотип уже существует')  # то выкидываем ошибку валидации (происходит в админке)
+        return super().save(*args, **kwargs)
+
+    class Meta:
+        verbose_name = 'Время работы'
+        verbose_name_plural = 'Время работы'
+
+
+class TechCenter(models.Model):
+    title = models.CharField(
+        max_length=255,
+        verbose_name='Название',
+        help_text='Название услуги (например: "Ремонт техники кузова")',
+        unique=True,
+    )  # название услуги (например: "Ремонт техники кузова")
+    description = models.TextField(
+        verbose_name='Описание',
+        help_text='Описание услуги',
+    )  # описание услуги
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = 'Услуга'
+        verbose_name_plural = 'Услуги'
+        ordering = ['title']
+        db_table = 'tech_center'

@@ -60,6 +60,12 @@ TEMPLATES = [
                 'cars.context_processors.get_all_transmissions',  # context processor for getting all transmissions
                 'cars.context_processors.trade_in',  # context processor for getting trade in form
                 'cars.context_processors.get_all_drive_units',  # context processor for getting all drive units
+                'content.context_processors.get_phone_numbers',  # context processor for getting phone numbers
+                'content.context_processors.get_email',  # context processor for getting email
+                'content.context_processors.get_address',  # context processor for getting address
+                'content.context_processors.get_logo',  # context processor for getting logo
+                'content.context_processors.get_work_time',  # context processor for getting work time
+                'content.context_processors.get_all_tech_centers',  # context processor for getting all tech centers
             ],
         },
     },

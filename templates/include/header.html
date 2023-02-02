@@ -4,18 +4,19 @@
     <div class="contact-line">
         <div class="_container">
             <div class="contact-line__inner contact-line__mobile">
-                <a href="tel:+78005519431" class="contact-line__phone -bold">+7(800)551-94-31</a>
+                <a href="tel:{{ phone_numbers.first }}" class="contact-line__phone -bold">{{ phone_numbers.first }}</a>
                 <a href="" class="contact-line__call -bold">Обратный звонок</a>
             </div>
             <div class="contact-line__inner contact-line__desktop">
 				<span class="contact-line__address address address--s" id="address">
-					Россия, Москва, 38КМ МКАД, 6Бс1
+					{{ address }}
 				</span>
                 <span class="contact-line__worktime worktime worktime--s">
-					Время работы: c 08:00 до 21:00
+					{{ work_time }}
 				</span>
                 <div class=" contact-line__push -push"></div>
-                <a href="" class="contact-line__whatsapp whatsapp whatsapp--s">Whatsapp</a>
+                <a href="https://web.whatsapp.com/send/?phone=905357699576"
+                   class="contact-line__whatsapp whatsapp whatsapp--s" target="_blank">Whatsapp</a>
             </div>
         </div>
     </div>
@@ -30,7 +31,7 @@
 
                 <div class="navigation__logo logo">
                     <a href="{% url 'index' %}" class="logo__link">
-                        <img src="{% static 'img/abc-auto_logo.svg' %}" alt="" class="logo__img">
+                        <img src="{{ logo.logo.url }}" alt="" class="logo__img" style="max-height: 40px; width: 100%;">
                     </a>
                     <div class="logo__tagline">
                         <span class="-highlighted">10 лет</span>
@@ -41,8 +42,8 @@
                 <div class="navigation__push -push"></div>
 
                 <div class="navigation__phone phone phone--l">
-                    <a href="tel:+78005519431" class="-bold">
-                        +7(800)551-94-31
+                    <a href="tel:{{ phone_numbers.first }}" class="-bold">
+                        {{ phone_numbers.first }}
                     </a>
                 </div>
 
@@ -51,7 +52,6 @@
                         <ul class="navbar nav">
                             <li class="navbar__item"><a href="{% url 'about' %}">О компании</a></li>
                             <li class="navbar__item"><a href="{% url 'services' %}">Техцентр</a></li>
-                            <li class="navbar__item"><a href="{% url 'feedback' %}">Отзывы</a></li>
                             <li class="navbar__item"><a href="{% url 'contacts' %}">Контакты</a></li>
                             <li class="navbar__item"><a data-toggle="modal"
                                                         data-target="#callbackModal">
@@ -62,22 +62,19 @@
 
                     <div class="navigation__contacts">
                         <div class="phone phone--l">
-                            <a href="tel:+78005519431" class="navigation__contacts__phone -bold">
-                                +7(800)551-94-31
-                            </a>
-                            <a href="tel:+74952921867" class="navigation__contacts__phone -bold js-phone">
-                                +7(495)292-18-67
-                            </a>
+                            {% for phone_number in phone_numbers %}
+                                <a href="tel:{{ phone_number }}" class="navigation__contacts__phone -bold">
+                                    {{ phone_number }}
+                                </a>
+                            {% endfor %}
                         </div>
                         <div class="navigation__contacts__worktime worktime worktime--l">
                             c 08:00 до 21:00
                         </div>
                         <div class="navigation__contacts__address address address--l">
-                            <p class="js-address">Россия, Москва, 38КМ МКАД, 6Бс1</p>
+                            <p class="js-address">{{ address }}</p>
                         </div>
                     </div>
-                    <button class="navigation__button button">Обратный звонок</button>
-
                     <nav class="navigation__menu" id="large_menu">
                         <div class="header-bottom__list">
                             <a href="{% url 'index' %}" class="header-bottom__list-link">
@@ -507,86 +504,16 @@
     </div>
 
     <div class="fullmenu" id="fullmenu">
-        <div class="search" id="search">
-            <div class="search__container _container">
-                <i class="search__back back-icon" id="backBtn"></i>
-                <form class="search__form" action="" method="get">
-                    <i class="search__icon search-icon"></i>
-                    <input class="search__input" name="s" placeholder="Поиск автомобилей" type="search">
-                    <button class="search__button" type="submit">Найти</button>
-                </form>
-            </div>
-        </div>
         <div class="_container">
             <nav class="fullmenu__nav" id="nav">
-                <div class="fullmenu__credit">
-                    <a href="">
-                        <h3>Кредит и рассрочка</h3>
-                    </a>
-                    <ul class="">
-                        <li><a href="">Первый автомобиль</a></li>
-                        <li><a href="">Семейный автомобиль</a></li>
-                        <li><a href="">Экспресс-кредит</a></li>
-                        <li><a href="">Работникам медицины</a></li>
-                        <li><a href="">Рассрочка</a></li>
-                        <li><a href="">Госпрограмма Trade-in</a></li>
-                    </ul>
-                </div>
-                <div class="fullmenu__special">
-                    <a href="">
-                        <h3>Спецпредложения</h3>
-                    </a>
-                    <ul class="">
-                        <li><a href="">Trade-in</a></li>
-                        <li><a href="">Рассрочка</a></li>
-                    </ul>
-                </div>
-                <div class="fullmenu__taxi">
-                    <a href="{% url 'taxi_cars' %}">
-                        <h3>Такси в кредит</h3>
-                    </a>
-                </div>
                 <div class="fullmenu__catalog">
                     <a href="">
                         <h3>Каталог автомобилей</h3>
                     </a>
                     <ul class="">
-                        <li><a href="">Kia</a></li>
-                        <li><a href="">Hyundai</a></li>
-                        <li><a href="">Skoda</a></li>
-                        <li><a href="">Volkswagen</a></li>
-                        <li><a href="">Toyota</a></li>
-                        <li><a href="">Brilliance</a></li>
-                        <li><a href="">Changan</a></li>
-                        <li><a href="">Chery</a></li>
-                        <li><a href="">CheryExeed</a></li>
-                        <li><a href="">Chevrolet</a></li>
-                        <li><a href="">Citroen</a></li>
-                        <li><a href="">Datsun</a></li>
-                        <li><a href="">Dongfeng</a></li>
-                        <li><a href="">DW Hower</a></li>
-                        <li><a href="">FAW</a></li>
-                        <li><a href="">Ford</a></li>
-                        <li><a href="">Foton</a></li>
-                        <li><a href="">Geely</a></li>
-                        <li><a href="">Great Wall</a></li>
-                        <li><a href="">Haima</a></li>
-                        <li><a href="">Haval</a></li>
-                        <li><a href="">Honda</a></li>
-                        <li><a href="">JAC</a></li>
-                        <li><a href="">Lada</a></li>
-                        <li><a href="">Lifan</a></li>
-                        <li><a href="">Mazda</a></li>
-                        <li><a href="">Mitsubishi</a></li>
-                        <li><a href="">Nissan</a></li>
-                        <li><a href="">Opel</a></li>
-                        <li><a href="">Peugeot</a></li>
-                        <li><a href="">Ravon</a></li>
-                        <li><a href="">Renault</a></li>
-                        <li><a href="">SsangYong</a></li>
-                        <li><a href="">Suzuki</a></li>
-                        <li><a href="">UAZ</a></li>
-                        <li><a href="">Zotye</a></li>
+                        {% for brand in brands %}
+                            <li><a href="">{{ brand }}</a></li>
+                        {% endfor %}
                     </ul>
                 </div>
                 <div class="fullmenu__used">
@@ -594,48 +521,9 @@
                         <h3>Авто с пробегом</h3>
                     </a>
                     <ul class="">
-                        <li><a href="">Audi</a></li>
-                        <li><a href="">BMW</a></li>
-                        <li><a href="">Brilliance</a></li>
-                        <li><a href="">Changan</a></li>
-                        <li><a href="">Chery</a></li>
-                        <li><a href="">Chevrolet</a></li>
-                        <li><a href="">Citroen</a></li>
-                        <li><a href="">Daewoo</a></li>
-                        <li><a href="">Datsun</a></li>
-                        <li><a href="">Dongfeng</a></li>
-                        <li><a href="">FAW</a></li>
-                        <li><a href="">Ford</a></li>
-                        <li><a href="">Geely</a></li>
-                        <li><a href="">Genesis</a></li>
-                        <li><a href="">Great Wall</a></li>
-                        <li><a href="">Haval</a></li>
-                        <li><a href="">Honda</a></li>
-                        <li><a href="">Hyundai</a></li>
-                        <li><a href="">Jeep</a></li>
-                        <li><a href="">Kia</a></li>
-                        <li><a href="">Lada</a></li>
-                        <li><a href="">Land Rover</a></li>
-                        <li><a href="">Lexus</a></li>
-                        <li><a href="">Lifan</a></li>
-                        <li><a href="">Mazda</a></li>
-                        <li><a href="">Mercedes-Benz</a></li>
-                        <li><a href="">Mitsubishi</a></li>
-                        <li><a href="">Nissan</a></li>
-                        <li><a href="">Opel</a></li>
-                        <li><a href="">Peugeot</a></li>
-                        <li><a href="">Ravon</a></li>
-                        <li><a href="">Renault</a></li>
-                        <li><a href="">Skoda</a></li>
-                        <li><a href="">SsangYong</a></li>
-                        <li><a href="">Suzuki</a></li>
-                        <li><a href="">Toyota</a></li>
-                        <li><a href="">Volkswagen</a></li>
-                        <li><a href="">Volvo</a></li>
-                        <li><a href="">Vortex</a></li>
-                        <li><a href="">Zotye</a></li>
-                        <li><a href="">ЗАЗ</a></li>
-                        <li><a href="">ТагАЗ</a></li>
+                        {% for brand in brands %}
+                            <li><a href="">{{ brand }}</a></li>
+                        {% endfor %}
                     </ul>
                 </div>
             </nav>

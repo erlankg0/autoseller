@@ -18,25 +18,18 @@
                     <img src="{% static 'img/contacts-1920/call.png' %}" alt="">
                     <div class="contacts__list-item__content">
                         <p class="contacts__list-item__content-title">Телефон</p>
-                        <p class="contacts__list-item__content-desc">+7 (800) 551-94-31</p>
-                        <p class="contacts__list-item__content-desc">+7 (495) 292-18-67</p>
+                        {% for phone_number in phone_numbers %}
+                            <p class="contacts__list-item__content-desc">{{ phone_number }}</p>
+                        {% endfor %}
+
                     </div>
                 </div>
                 <div class="contacts__list-item">
                     <img src="{% static 'img/contacts-1920/gps.png' %}" alt="">
                     <div class="contacts__list-item__content">
                         <p class="contacts__list-item__content-title">Адрес</p>
-                        <p class="contacts__list-item__content-desc">Россия, Москва, 38КМ МКАД, 6Бс1</p>
+                        <p class="contacts__list-item__content-desc">{{ address }}</p>
                         <p class="contacts__list-item__content-desc">GPS: 55.597068, 37.511805</p>
-                    </div>
-                </div>
-                <div class="contacts__list-item">
-                    <img src="{% static 'img/contacts-1920/nav.png' %}" alt="">
-                    <div class="contacts__list-item__content">
-                        <p class="contacts__list-item__content-title">Как проехать</p>
-                        <p class="contacts__list-item__content-desc">от МКАД (внутренняя сторона)</p>
-                        <p class="contacts__list-item__content-desc">от МКАД (внешняя сторона)</p>
-                        <p class="contacts__list-item__content-desc">из области, из центра</p>
                     </div>
                 </div>
             </div>
