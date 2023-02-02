@@ -60,3 +60,25 @@ class CreditRequest(models.Model):
         verbose_name_plural = 'Заявки на кредит'
         ordering = ['-id']
         db_table = 'credit_requests'
+
+
+class TradeIn(models.Model):
+    name = models.CharField(
+        max_length=250,
+        verbose_name='Имя клиента',
+        help_text='Иванов Иван Иванович',
+    )
+    phone = models.CharField(
+        max_length=100,
+        verbose_name='Телефон клиента',
+        help_text='+7 (999) 999-99-99',
+    )
+
+    def __str__(self):
+        return f'{self.name} - {self.phone}'
+
+    class Meta:
+        verbose_name = 'Заявка на trade-in'
+        verbose_name_plural = 'Заявки на trade-in'
+        ordering = ['-id']
+        db_table = 'trade_in_requests'

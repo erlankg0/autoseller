@@ -1,5 +1,5 @@
 from django import forms
-from credit.models import CreditRequest
+from credit.models import CreditRequest, TradeIn
 
 
 class CreditRequestForm(forms.ModelForm):
@@ -14,4 +14,13 @@ class CreditRequestForm(forms.ModelForm):
             'credit_term',
             'phone',
             'is_checked',
+        )
+
+
+class TradeInForm(forms.ModelForm):
+    class Meta:
+        model = TradeIn
+        fields = (
+            "name",
+            "phone",
         )

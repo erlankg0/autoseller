@@ -272,14 +272,16 @@ class Modification(models.Model):
         help_text='Коробка передач автомобиля',
         related_name='transmission_modifications',
     )
-    drive_unit = models.ManyToManyField(
+    drive_unit = models.ForeignKey(
         DriveUnit,
+        on_delete=models.CASCADE,
         verbose_name='Привод',
         help_text='Привод автомобиля',
         related_name='drive_unit_modifications',
     )
-    body_type = models.ManyToManyField(
+    body_type = models.ForeignKey(
         BodyType,
+        on_delete=models.CASCADE,
         verbose_name='Тип кузова',
         help_text='Тип кузова автомобиля',
         related_name='body_type_modifications',
@@ -335,6 +337,11 @@ class Car(models.Model):
         verbose_name='Модификация',
         help_text='Модификация автомобиля (например, 320i)',
         related_name='car_modification',
+    )
+    description = models.TextField(
+        verbose_name="Описание автомобиля",
+        blank=True,
+        null=True,
     )
     price = models.PositiveIntegerField(
         verbose_name='Цена',

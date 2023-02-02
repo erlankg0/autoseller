@@ -1,10 +1,11 @@
 from django.urls import path
 
-from cars.views import DetailCarView, NewCarsListView, UsedCarsListView
+from cars.views import DetailCarView, UsedCarsListView, CarFilterView
 from cars.views import get_models, get_generations, get_modifications, get_all_cars, get_cars_by_model, get_car
 from cars.views import taxi_cars, detail
 
 urlpatterns = [
+    path('cars/filter/', CarFilterView.as_view(), name='cars_filter'),
     path('cars/detailed/<int:pk>/', DetailCarView.as_view(), name='car_detail'),
     path('used_cars/', UsedCarsListView.as_view(), name='used_cars'),  # used cars page
     path('taxi_cars/', taxi_cars, name='taxi_cars'),  # taxi cars page

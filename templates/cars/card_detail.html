@@ -28,7 +28,7 @@
                             <div class="stats-btns">
                                 <div class="owl-carousel owl-theme">
                                     {% if car.car_images.all %}
-                                        {% for image in car.car_images.all %}
+                                        {% for image in car.car_images.all|slice:'1:'%}
                                             <div class="item">
                                                 <img src="{{ image.image.url }}"
                                                      alt="{{ car.brand.title }} {{ car.model.title }} {{ car.generation.title }}">
@@ -222,22 +222,16 @@
                         </div>
                     </div>
                 </div>
-                <div class="main-desc">
-                    <h2 class="sec-title">
-                        Описание {{ car.brand.title }} {{ car.model.title }} {{ car.generation.title }} {{ car.modification.title }}
-                    </h2>
-                    <p class="main-desc__desc">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus et lorem elit. Nam nisi
-                        nulla, fringilla vel pharetra ac, luctus in est. Pellentesque faucibus interdum arcu, non
-                        molestie leo malesuada in. Donec quam turpis, hendrerit nec ante id, tincidunt convallis sapien.
-                        In molestie dignissim elit non mollis. Donec at dapibus nisl, sed aliquam ipsum. Mauris mi
-                        libero, congue ut feugiat sit amet, cursus eget orci. Aenean vel fermentum dui. Aenean dictum
-                        diam in augue porttitor luctus.Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Phasellus et lorem elit. Nam nisi nulla, fringilla vel pharetra ac, luctus in est. Pellentesque
-                        faucibus interdum arcu, non molestie leo malesuada in. Donec quam turpis, hendrerit nec ante id,
-                        tincidunt convallis sapien. In molestie dignissim elit non mollis.
-                    </p>
-                </div>
+                {% if car.description %}
+                    <div class="main-desc">
+                        <h2 class="sec-title">
+                            Описание {{ car.brand.title }} {{ car.model.title }} {{ car.generation.title }} {{ car.modification.title }}
+                        </h2>
+                        <p class="main-desc__desc">
+                            {{ car.description }}
+                        </p>
+                    </div>
+                {% endif %}
                 <div class="main-complect">
                     <h2 class="sec-title">
                         Комплектация {{ car.brand.title }} {{ car.model.title }} {{ car.generation.title }} {{ car.modification.title }}

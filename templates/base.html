@@ -45,6 +45,14 @@
 {% endblock header %}
 <!-- end header -->
 <!--top banner -->
+{% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
 {% block top-banner %}
     {% include 'include/top-banner.html' %}
 {% endblock top-banner %}
@@ -70,12 +78,19 @@
 <script type="text/javascript" src="{% static 'js/app.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/fslightbox.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/owl.carousel.min.js' %}"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
 <script>
     $(document).ready(function () {
         $('.owl-carousel').owlCarousel({
             loop: true,
             responsiveClass: true,
-            dots : false,
+            dots: false,
             responsive: {
                 0: {
                     items: 1,
@@ -98,6 +113,26 @@
         })
     })
 </script>
+<script>
+    $('#trade_in_send').click(function () {
+        var csrf = $('input[name="csrfmiddlewaretoken"]').val();
+        var name = $('#name').val();
+        var phone = $('#phone').val();
+        $.ajax({
+            url: '{% url 'trade_in_create' %}',
+            type: 'GET',
+            data: {
+                'name': name,
+                'phone': phone
+            },
+            success: function (data) {
+                // click on the button id trade_close
+                $('#trade_close').click();
+            }
+        });
+    });
+</script>
+
 </body>
 
 </html>

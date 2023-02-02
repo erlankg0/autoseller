@@ -24,6 +24,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_filters',  # django filters
     'cars.apps.CarsConfig',  # application for selling cars
     'credit.apps.CreditConfig',  # application for credit calculation
     'content.apps.ContentConfig',  # application for content
@@ -57,6 +58,8 @@ TEMPLATES = [
                 'cars.context_processors.get_all_vehicle_types',  # context processor for getting all vehicles types
                 'cars.context_processors.get_all_years',  # context processor for getting all years
                 'cars.context_processors.get_all_transmissions',  # context processor for getting all transmissions
+                'cars.context_processors.trade_in',  # context processor for getting trade in form
+                'cars.context_processors.get_all_drive_units',  # context processor for getting all drive units
             ],
         },
     },

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from credit.models import CreditRequest
+from credit.models import CreditRequest, TradeIn
 
 
 @admin.register(CreditRequest)
@@ -47,3 +47,26 @@ class CreditRequestAdmin(admin.ModelAdmin):
         'is_checked',
     )
     list_per_page = 20
+
+
+@admin.register(TradeIn)
+class TradeInAdmin(admin.ModelAdmin):
+    list_display = (
+        'id',
+        'name',
+        'phone',
+    )
+    list_display_links = (
+        'id',
+        'name',
+        'phone',
+    )
+    list_filter = (
+        'name',
+        'phone',
+    )
+    search_fields = (
+        'name',
+        'phone',
+    )
+    list_per_page = 20 # пагинация по 20 записей на странице

@@ -17,7 +17,7 @@
         <section class="pick-up">
             <div class="pick-up__container _container">
                 <div class="pick-up__content-wrapper">
-                    <form>
+                    <form action="{% url 'cars_filter' %}">
                         <div class="pick-up__form-inner">
                             <div class="pick-up__slider-inscription">
                                 <div>
@@ -31,45 +31,46 @@
                             </div>
                             <input type="text" class="js-range-slider" name="my_range" value=""/>
                             <div class="pick-up__flex">
-                                <select class="pick-up__body-type select" id="brand_id">
+                                <select class="pick-up__body-type select" name="brand" id="brand_id">
+                                    <option value="">Марка</option>
                                     {% for brand in brands %}
                                         <option value="{{ brand.pk }}">{{ brand.title }}</option>
                                     {% endfor %}
                                 </select>
-                                <select class="pick-up__body-type select" id="model_id">
+                                <select class="pick-up__body-type select" name="model" id="model_id">
                                     <option value="1">Модель</option>
                                 </select>
-                                <select class="pick-up__body-type select" id="generation_id">
+                                <select class="pick-up__body-type select" name="generation" id="generation_id">
                                     <option value="1" selected>Поколение</option>
                                 </select>
-                                <select class="pick-up__body-type select" id="year_id">
-                                    <option value="year" selected>Год выпуска</option>
+                                <select class="pick-up__body-type select" name="year" id="year_id">
+                                    <option value="" selected>Год выпуска</option>
                                     {% for year in years %}
                                         <option value="{{ year.pk }}">{{ year.title.year }}</option>
                                     {% endfor %}
                                 </select>
                             </div>
                             <div class="pick-up__flex">
-                                <select class="pick-up__body-type select" id="drive_unit_id">
-                                    <option value="1" selected>Привод</option>
+                                <select class="pick-up__body-type select" name="drive_until" id="drive_unit_id">
+                                    <option value="" selected>Привод</option>
                                     {% for drive_unit in drive_units %}
-                                        <option value="{{ drive_unit }}">{{ drive_unit }}</option>
+                                        <option value="{{ drive_unit.pk }}">{{ drive_unit.title }}</option>
                                     {% endfor %}
                                 </select>
-                                <select class="pick-up__body-type select" id="transmission_id">
-                                    <option value="KPP" selected>КПП</option>
+                                <select class="pick-up__body-type select" name="transmission" id="transmission_id">
+                                    <option value="">КПП</option>
                                     {% for transmission in transmissions %}
-                                        <option value="{{ transmission }}">{{ transmission }}</option>
+                                        <option value="{{ transmission.pk }}">{{ transmission }}</option>
                                     {% endfor %}
                                 </select>
-                                <select class="pick-up__body-type select" id="body_type">
-                                    <option value="body">Кузов</option>
+                                <select class="pick-up__body-type select" name="body" id="body_type">
+                                    <option value="">Кузов</option>
                                     {% for body in bodies %}
                                         <option value="{{ body.pk }}">{{ body }}</option>
                                     {% endfor %}
                                 </select>
                                 <button id="btn_new_car" class="pick-up__list button">
-                                    Показать&nbsp;<span>{{ cars.count }}</span>
+                                    Показать&nbsp
                                 </button>
                             </div>
                         </div>
@@ -88,7 +89,7 @@
                             <div class="card" style="background-image: none;">
                                 <div class="card__flex">
                                     <div class="card__title">
-                                        Skoda Octavia
+                                        {{ car.brand.title }} {{ car.model.title }} {{ car.generation.title }} {{ car.modification.title }}
                                     </div>
                                     <div class="card__icons">
                                         <i class="card__likes likes-icon"></i>
@@ -96,17 +97,14 @@
                                 </div>
 
                                 <div class="card__flex">
-                                    <a href="{% url 'detail' %}" class="owl-carousel owl-theme">
-                                        <img src="{% static 'img/auto-probeg-1920/camry.png' %}" alt="">
-                                        <img src="{% static 'img/auto-probeg-1920/camry.png' %}" alt="">
-                                        <img src="{% static 'img/auto-probeg-1920/camry.png' %}" alt="">
-                                        <img src="{% static 'img/auto-probeg-1920/camry.png' %}" alt="">
-                                        <img src="{% static 'img/auto-probeg-1920/camry.png' %}" alt="">
-                                        <img src="{% static 'img/auto-probeg-1920/camry.png' %}" alt="">
+                                    <a href="{{ car.get_absolute_url }}" class="owl-carousel owl-theme">
+                                        {% for car_image in car.car_images.all %}
+                                            <img src="{{ car_image.image.url }}" alt="">
+                                        {% endfor %}
                                     </a>
                                 </div>
                                 <div class="card__price card__flex">
-                                    <span class=" -bold">от 1 615 000 &#8381</span>
+                                    <span class=" -bold">от {{ car.price }} &#8381</span>
                                     <div class="card__payment">
                                         Кредит
                                         <p class="-bold">от 115 000 &#8381/мес.</p>
@@ -114,16 +112,16 @@
                                 </div>
                                 <div class="card__flex card__option-list">
                                     <div class="card__option-item i-engine i-engine--m">
-                                        115 л.с.
+                                        {{ car.modification.power }} л.с.
                                     </div>
                                     <div class="card__option-item i-gas i-gas--m">
-                                        5.3 л/км
+                                        {{ car.modification.fuel_consumption }} л/км
                                     </div>
                                     <div class="card__option-item i-speed i-speed--m">
-                                        189 км/ч
+                                        {{ car.modification.max_speed }} км/ч
                                     </div>
                                     <div class="card__option-item i-timer i-timer--m">
-                                        10,3 c.
+                                        {{ car.modification.acceleration }} c.
                                     </div>
                                 </div>
                             </div>

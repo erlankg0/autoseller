@@ -1,5 +1,6 @@
 from cars.models import Brand, BodyType, Transmissions, DriveUnit, Fuel, Years
 import datetime
+from credit.forms import TradeInForm
 
 
 def get_all_brands(request):
@@ -30,3 +31,8 @@ def get_all_drive_units(request):
 def get_all_fuels(request):
     fuels = Fuel.objects.all()
     return {"fuels": fuels}
+
+
+def trade_in(request):
+    form = TradeInForm()
+    return {'trade': form}

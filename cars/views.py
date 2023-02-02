@@ -59,28 +59,64 @@ def detail(request):
 
 class CarFilterView(ListView):
     model = Car
-    template_name = 'cars_filter.html'
+    template_name = 'cars/index.html'
+    context_object_name = 'cars'
 
     def get_queryset(self):
         queryset = super().get_queryset()
+        queryset = queryset.filter(new=True)  # фильтруем по новым машинам (по умолчанию)
 
-        brand = self.request.GET.get('brand')
-        if brand:
-            queryset = queryset.filter(brand__name=brand)
+        my_range = self.request.GET.get('my_range')  # получаем значение из фильтра цены
+        if not my_range:  # если не получили, то возвращаем все машины
+            return queryset
 
-        model = self.request.GET.get('model')
-        if model:
-            queryset = queryset.filter(model__name=model)
+        from_price, to_price = map(int, my_range.split(';'))  # разбиваем строку на два значения и приводим к int
+        queryset = queryset.filter(price__gte=from_price, price__lte=to_price)  # фильтруем по цене
 
-        generation = self.request.GET.get('generation')
-        if generation:
-            queryset = queryset.filter(generation__name=generation)
+        brand = self.request.GET.get('brand')  # получаем значение из фильтра марки
+        if brand:  # если получили, то фильтруем по марке и по цене &= queryset.filter(brand_id=brand)
+            queryset &= queryset.filter(brand_id=brand)  # фильтруем по марке и по цене (получаем пересечение)
 
-        year = self.request.GET.get('year')
-        if year:
-            queryset = queryset.filter(year__name=year)
+        model = self.request.GET.get('model')  # получаем значение из фильтра модели
+        if model:  # если получили, то фильтруем по модели и по цене и по марке
+            queryset &= queryset.filter(
+                model_id=model)  # фильтруем по модели и по цене и по марке (получаем пересечение)
 
-        return queryset
+        generation = self.request.GET.get('generation')  # получаем значение из фильтра поколения
+        if generation:  # если получили, то фильтруем по поколению и по цене и по марке и по модели
+            queryset &= queryset.filter(
+                generation_id=generation
+            )  # фильтруем по поколению и по цене и по марке и по модели (получаем пересечение)
+
+        modification = self.request.GET.get('modification')  # получаем значение из фильтра модификации
+        if modification:  # если получили, то фильтруем по модификации и по цене и по марке и по модели и по поколению
+            queryset &= queryset.filter(
+                modification_id=modification
+            )  # фильтруем по модификации и по цене и по марке и по модели и по поколению (получаем пересечение)
+
+        year = self.request.GET.get('year')  # получаем значение из фильтра года
+        if year:  # если получили, то фильтруем по году и по цене и по марке и по модели и по поколению и по модификации
+            queryset &= queryset.filter(
+                modification__year_id=year  # заходим в модель модификации и фильтруем по году
+            )
+        drive_unit = self.request.GET.get('drive_unit')  # получаем значение из фильтра привода
+        if drive_unit:  # если получили, то фильтруем по приводу и по цене и по марке и по модели и по поколению и по модификации и по году
+            queryset &= queryset.filter(
+                modification__drive_unit_id=drive_unit  # заходим в модель модификации и фильтруем по приводу
+            )
+        transmission = self.request.GET.get('transmission')  # получаем значение из фильтра трансмиссии
+        if transmission:  # если получили, то фильтруем по трансмиссии и по цене и по марке и по модели и по поколению и по модификации и по году и по приводу
+            queryset &= queryset.filter(
+                modification__transmission_id=transmission  # заходим в модель модификации и фильтруем по трансмиссии
+            )
+
+        body = self.request.GET.get('body')  # получаем значение из фильтра кузова
+        if body:  # если получили, то фильтруем по кузову и по цене и по марке и по модели и по поколению и по модификации и по году и по приводу и по трансмиссии
+            queryset &= queryset.filter(
+                modification__body_id=body  # заходим в модель модификации и фильтруем по кузову
+            )
+
+        return queryset  # возвращаем отфильтрованный queryset (по цене, по марке, по модели, по поколению, по модификации)
 
 
 # AJAX

@@ -53,6 +53,10 @@
                             <li class="navbar__item"><a href="{% url 'services' %}">Техцентр</a></li>
                             <li class="navbar__item"><a href="{% url 'feedback' %}">Отзывы</a></li>
                             <li class="navbar__item"><a href="{% url 'contacts' %}">Контакты</a></li>
+                            <li class="navbar__item"><a data-toggle="modal"
+                                                        data-target="#callbackModal">
+                                Trade-in
+                            </a></li>
                         </ul>
                     </nav>
 
@@ -80,8 +84,9 @@
                                 новые автомобили
                             </a>
                             <a href="{% url 'used_cars' %}" class="header-bottom__list-link">авто с пробегом</a>
-                            <a href="{% url 'credit_request_create' %}" class="header-bottom__list-link">кредит и рассрочка</a>
-                            <a class="header-bottom__list-link special-h">спецпредложения</a>
+                            <a href="{% url 'credit_request_create' %}" class="header-bottom__list-link">кредит и
+                                рассрочка</a>
+                            <!-- <a class="header-bottom__list-link special-h">спецпредложения</a> -->
                         </div>
                         <div class="katalog-auto__list ">
                             <div class="katalog-auto__list-marks">
@@ -486,53 +491,13 @@
                     <nav class="navigation__menu" id="small_menu">
                         <ul class="menu nav">
                             <li class="menu__item dropdown">
-                                <span class="ar">Каталог авто</span>
-                                <div class="test">
-                                    <div class="_container">
-                                        <ul class="menu"
-                                            style="display: flex; flex-direction: column; overflow: scroll;">
-                                            {% for brand in brands %}
-                                                <li class="menu__item">
-                                                    {{ brand.title }}
-                                                </li>
-                                            {% endfor %}
-                                        </ul>
-                                    </div>
-                                </div>
+                                <a href="{% url 'index' %}" class="ar">Новые авто</a>
                             </li>
                             <li class="menu__item dropdown">
-                                <span class="ar">Авто с пробегом</span>
-                                <div class="test">
-                                    <div class="_container">
-                                        <ul class="menu"
-                                            style="display: flex; flex-direction: column; overflow: hidden;">
-                                            {% for brand in brands %}
-                                                <li class="menu__item">
-                                                    {{ brand.title }}
-                                                </li>
-                                            {% endfor %}
-                                        </ul>
-                                    </div>
-                                </div>
+                                <a href="{% url 'used_cars' %}" class="ar">Авто с пробегом</a>
                             </li>
                             <li class="menu__item dropdown">
-                                <span class="ar">Кредит и расрочка</span>
-                                <div class="test">
-                                    <div class="_container">
-                                        Кредит и рассрочка
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="menu__item dropdown">
-                                <span class="ar">Спецпредложения</span>
-                                <div class="test">
-                                    <div class="_container">
-                                        Спецпредложения
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="menu__item">
-                                <span class="ar">Такси в кредит</span>
+                                <a href="{% url 'credit_request_create' %}" class="ar">Кредит и расрочка</a>
                             </li>
                         </ul>
                     </nav>
@@ -677,3 +642,34 @@
         </div>
     </div>
 </header>
+<div class="modal fade" id="callbackModal" tabindex="-1" role="dialog" aria-labelledby="callbackModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="callbackModalLabel">Программа Trade-in</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Form starts here -->
+
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="name">Имя Фамилия</label>
+                    <input type="text" name="name" class="form-control" id="name" placeholder="Иван Иванович">
+                </div>
+                <div class="form-group">
+                    <label for="phone">Номер телефона</label>
+                    <input type="tel" name="phone" class="form-control" id="phone" placeholder="+7 (777) 777-77-77">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" id="trade_close">Закрыть
+                    </button>
+                    <button type="submit" class="btn btn-danger" id="trade_in_send">Отправить</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

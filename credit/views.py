@@ -1,6 +1,9 @@
-from django.shortcuts import render
+from django.contrib import messages
+from django.shortcuts import redirect
 from django.views.generic import CreateView
+
 from credit.forms import CreditRequestForm
+from credit.models import TradeIn
 
 
 class CreditRequestCreateView(CreateView):
@@ -12,3 +15,14 @@ class CreditRequestCreateView(CreateView):
         form.save()
         return super().form_valid(form)
 
+
+def trade_in(request):
+    trade_in, created = TradeIn.objects.get_or_create(
+        name=request.GET.get('name'),
+        phone=request.GET.get('phone'),
+    )
+    if created:
+        messages.success(request, "Ваша заявка принята на Trade-in успешно отправлена")
+    else:
+        messages.warning(request, "Вы уже отправляли заявку на Trade-in")
+    return redirect('/')
