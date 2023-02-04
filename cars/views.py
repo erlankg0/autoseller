@@ -6,15 +6,56 @@ from django.views.generic import ListView, DetailView
 from cars.models import Model, Generation, Modification, Car, BodyType, Transmissions, Brand, CarImages
 
 
-class NewCarsListView(ListView):
+class CarsListView(ListView):
     model = Car
     template_name = 'cars/index.html'
+    context_object_name = 'cars'
+    paginate_by = 1
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        queryset = queryset.all()[0:12]
+        return queryset
+
+
+class NewCarsListView(ListView):
+    model = Car
+    template_name = 'cars/new_cars.html'
     context_object_name = 'cars'
     paginate_by = 12
 
     def get_queryset(self):
         queryset = super().get_queryset()
         queryset = queryset.filter(new=True)
+        queryset = queryset.filter(
+
+        )
+        return queryset
+
+
+class NewCarsByBrandListView(ListView):
+    model = Car
+    template_name = 'cars/new_cars.html'
+    context_object_name = 'cars'
+    paginate_by = 12
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        queryset = queryset.filter(new=True)
+        queryset = queryset.filter(brand__id=self.kwargs['brand_id'])
+        return queryset
+
+
+class UsedCarsByBrandListView(ListView):
+    model = Car
+    template_name = 'cars/used_cars.html'
+    context_object_name = 'cars'
+    paginate_by = 12
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        queryset = queryset.filter(new=False)
+        queryset = queryset.filter(brand__id=self.kwargs['brand_id'])
         return queryset
 
 
@@ -47,10 +88,6 @@ class UsedCarsListView(ListView):
         queryset = super().get_queryset()
         queryset = queryset.filter(new=False)
         return queryset
-
-
-def taxi_cars(request):
-    return render(request, 'cars/taxi.html')
 
 
 def detail(request):

@@ -118,3 +118,48 @@ class TechCenter(models.Model):
         verbose_name_plural = 'Услуги'
         ordering = ['title']
         db_table = 'tech_center'
+
+
+class Title(models.Model):
+    name = models.CharField(
+        max_length=255,
+        verbose_name="Заголовок",
+        help_text="Заголовок страницы",
+        unique=True
+    )  # заголовок страницы
+
+    # singelton pattern
+    def save(self, *args, **kwargs):
+        if Title.objects.exists() and not self.pk:
+            raise ValidationError('Заголовок уже существует')
+        return super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'Заголовок'
+        verbose_name_plural = 'Заголовки'
+        db_table = 'title'
+
+
+class Whatsapp(models.Model):
+    number = models.CharField(
+        max_length=14,
+        verbose_name='Номер',
+        unique=True,
+        help_text='Номер телефона для WhatsApp (например: 79999999999) без +7 Максимум можно добавить только один номер'
+    )  # номер телефона для WhatsApp
+
+    def __str__(self):
+        return self.number
+
+    def save(self, *args, **kwargs):
+        if Whatsapp.objects.exists() and not self.pk:
+            return
+        return super().save(*args, **kwargs)
+
+    class Meta:
+        verbose_name = 'Номер WhatsApp'
+        verbose_name_plural = 'Номера WhatsApp'
+        db_table = 'whatsapp'

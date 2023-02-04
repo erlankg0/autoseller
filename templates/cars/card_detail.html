@@ -26,12 +26,13 @@
                     <div class="main-item__imgs">
                         <div class="main-item__imgs-big">
                             <div class="stats-btns">
-                                <div class="owl-carousel owl-theme">
+                                <div class="brazzer-dady">
                                     {% if car.car_images.all %}
-                                        {% for image in car.car_images.all|slice:'1:'%}
+                                        {% for image in car.car_images.all %}
                                             <div class="item">
                                                 <img src="{{ image.image.url }}"
-                                                     alt="{{ car.brand.title }} {{ car.model.title }} {{ car.generation.title }}">
+                                                     alt="{{ car.brand.title }} {{ car.model.title }} {{ car.generation.title }}"
+                                                     style="min-height: 500px; min-width: 800px;">
                                             </div>
                                         {% endfor %}
                                     {% endif %}
@@ -292,44 +293,54 @@
                 {% endif %}
                 <div class="auto__list">
                     {% for car_ in cars %}
-                        <div class="auto__item">
-                            <div class="card" style="background-image: none;">
-                                <div class="card__flex">
-                                    <div class="card__title">
-                                        {{ car_.brand.title }} {{ car_.model.title }} {{ car_.generation.title }} {{ car_.modification.title }}
+                        <div class="auto__item" data-price="{{ car.price }}">
+                            <div class="card" style="background-image: none; max-height: 440px; min-height: 440px;">
+                                <a href="{{ car.get_absolute_url }}" class="card__flex">
+                                    <div class="card__title" style='min-height: 70px; max-height:70px;'>
+                                        {{ car.brand.title }}
+                                        <nobr>{{ car.modification.volume }}</nobr>
+                                        {{ car.modification }}
                                     </div>
-                                    <div class="card__icons">
-                                        <i class="card__likes likes-icon"></i>
-                                    </div>
-                                </div>
+                                </a>
 
-                                <div class="card__flex">
-                                    <a href="{% url 'detail' %}" class="owl-carousel owl-theme">
-                                        {% for car_image in car_.car_images.all %}
-                                            <img src="{{ car_image.image.url }}" alt="">
+                                <a href="{{ car.get_absolute_url }}" class="brazzer-dady"
+                                   style="margin-top: 10px;">
+                                    {% if car.car_images %}
+                                        {% for car_image in car.car_images.all %}
+                                            <img src="{{ car_image.image.url }}"
+                                                 alt="{{ car.brand.title }}" class="image">
                                         {% endfor %}
-                                    </a>
-                                </div>
-                                <div class="card__price card__flex">
-                                    <span class=" -bold">от {{ car_.price }} &#8381</span>
-                                    <div class="card__payment">
+                                    {% endif %}
+                                </a>
+                                <div class="card__price card__flex" style='min-height: 60px;'>
+                                <span class=" -bold"
+                                      style="max-width: 50%; width: 50%; align-self: end;">от {{ car.price }} &#8381</span>
+                                    <div class="card__payment" style="width: 50%; max-width: 50%;">
                                         Кредит
-                                        <p class="-bold">от 12000 &#8381/мес.</p>
+                                        <p class="-bold bold_price">от {{ car.price }} &#8381/мес.</p>
                                     </div>
                                 </div>
-                                <div class="card__flex card__option-list">
+                                <div class="card__flex card__option-list" style="flex-direction: row;">
                                     <div class="card__option-item i-engine i-engine--m">
-                                        {{ car_.modification.power }} л.с.
+                                        {{ car.modification.power }} л.с.
                                     </div>
                                     <div class="card__option-item i-gas i-gas--m">
-                                        {{ car_.modification.fuel_consumption }} л/км
+                                        {{ car.modification.fuel_consumption }} л/км
                                     </div>
                                     <div class="card__option-item i-speed i-speed--m">
-                                        {{ car_.modification.max_speed }} км/ч
+                                        {{ car.modification.max_speed }} км/ч
                                     </div>
                                     <div class="card__option-item i-timer i-timer--m">
-                                        {{ car_.modification.acceleration }} c.
+                                        {{ car.modification.acceleration }}c.
                                     </div>
+                                </div>
+                                <div class="card__nav nav">
+                                    <div class="card__polygon nav__reserve">
+                                        Резервировать
+                                    </div>
+                                    <a href="{{ car.get_absolute_url }}" class="card__polygon nav__more">
+                                        Подробнее
+                                    </a>
                                 </div>
                             </div>
                         </div>

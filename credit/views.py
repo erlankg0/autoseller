@@ -26,3 +26,14 @@ def trade_in(request):
     else:
         messages.warning(request, "Вы уже отправляли заявку на Trade-in")
     return redirect('/')
+
+
+class TradeInCreateView(CreateView):
+    model = TradeIn
+    fields = ['name', 'phone']
+    success_url = '/'
+    template_name = 'credit/taxi.html'
+
+    def form_valid(self, form):
+        form.save()
+        return super().form_valid(form)

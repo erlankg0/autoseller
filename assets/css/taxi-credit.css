@@ -26,17 +26,60 @@
 
 .hero-title {
     font-size: 60px;
-    color: var(--dark-gray);
+    color: rgba(255, 255, 255, 1);
     font-weight: 700;
     max-width: 60%;
     margin-top: 65px;
     margin-bottom: 35px;
+    line-height: 70px;
+}
+
+.discount {
+    font-weight: 900;
+    font-size: 130px;
+    line-height: 152px;
+    color: #FFFFFF;
+}
+
+.up-to {
+    transform: translateY(-120px);
+}
+
+.go-right {
+    color: rgba(255, 255, 255, 1);
+    font-size: 16px;
+    line-height: 19px;
+    font-weight: 400;
+    transform: translateY(-160px) translateX(300px);
+    width: 140px;
+}
+
+@media screen and (max-width: 426px) {
+    .hero-title {
+        font-weight: 700;
+        font-size: 30px;
+        line-height: 35px;
+        margin: 0;
+    }
+
+    .go-right {
+        transform: translateY(0px) translateX(0px);
+    }
+
+    .up-to {
+        transform: translateY(0px);
+    }
+
+    .hero-adv__item img {
+        width: 60px;
+        height: 60px;
+    }
 }
 
 .hero-adv {
     display: flex;
     flex-wrap: wrap;
-    max-width: 45%;
+    max-width: 100%;
     justify-content: space-between;
 }
 
@@ -56,14 +99,17 @@
 }
 
 .hero__special {
-    top: 70px;
+    top: 25px;
+    padding: 20px 50px;
 }
 
 @media screen and (max-width: 426px) {
     .hero__special {
         display: flex;
         flex-direction: column;
+        padding: 0;
     }
+
     .hero-adv__item {
         margin-bottom: 10px;
     }
@@ -71,6 +117,7 @@
     .hero__special-right__top input[type="text"], input[type="tel"] {
         width: 100%;
         font-size: 10px;
+        flex-direction: column;
     }
 
     .hero__special-right__btn {
@@ -101,16 +148,19 @@
     }
 
     .hero__special-right__top input[type="text"], input[type="tel"] {
-        width: 30%;
+        width: 85%;
+        margin: inherit;
     }
 
     .hero__special-right__btn {
-        max-width: 25%;
+        max-width: 85%;
+        margin: inherit;
     }
 
     .hero__special-right__top {
         margin-top: 20px;
         justify-content: flex-start;
+        flex-direction: column;
     }
 }
 
@@ -120,6 +170,7 @@
     margin-top: 130px;
     text-align: center;
 }
+
 
 .advantages-desc {
     max-width: 50%;
@@ -142,7 +193,7 @@
 .advantages-list__item {
     align-items: center;
     text-align: center;
-    width: 200px;
+    width: 30%;
 }
 
 .advantages-list__item p {
@@ -160,6 +211,10 @@
 @media screen and (max-width: 426px) {
     .autos-top__img {
         display: none;
+    }
+
+    .advantages {
+        margin-top: 500px;
     }
 
     .work-cont {
@@ -492,9 +547,11 @@
     .card-title {
         font-size: 13px;
     }
+
     .card-price__main {
         font-size: 12px;
     }
+
     .card-price__credit {
         font-size: 14px;
     }
@@ -568,3 +625,270 @@
         padding-left: 25%;
     }
 }
+
+/* ADVANTAGES */
+
+/* Benefits */
+
+.benefits {
+    padding: 50px 0;
+}
+
+.benefits__list {
+    display: flex;
+    flex-direction: row;
+    gap: 20px; /* gap - расстояние между элементами */
+    flex-wrap: wrap; /* wrap - перенос элементов на новую строку */
+}
+
+.benefits__item {
+    background: #F7F8F8;
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 32.333%;
+}
+
+.benefits__card {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+}
+
+.benefits__card__img img {
+    background: no-repeat center center;
+
+}
+
+.line {
+    border: 1px solid #E1E1E1;
+    width: 100%;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+/* terms */
+
+.terms {
+    padding: 50px 0;
+}
+
+.terms__list {
+    display: flex;
+    flex-direction: row;
+    gap: 20px; /* gap - расстояние между элементами */
+    flex-wrap: wrap; /* wrap - перенос элементов на новую строку */
+    justify-content: space-between;
+
+}
+
+.doc {
+    width: 40%;
+}
+
+.terms_buy {
+    width: 55%;
+    border-right: 1px solid #E1E1E1;
+}
+
+.buy {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+}
+
+.buy__terms__list {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 200%;
+    /* or 32px */
+
+    /* gray */
+
+    color: #737373;
+
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.buy__terms__list li {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+
+}
+
+.main__list {
+    display: flex;
+    flex-direction: row;
+
+}
+
+@media screen and (max-width: 426px) {
+    .main__list {
+        flex-direction: column;
+    }
+
+}
+
+/* trade in  */
+
+.future_auto {
+    background: #EFF0F0;
+    border-radius: 25px;
+    padding: 50px 130px;
+    width: 100%;
+}
+
+.future_auto__list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap; /* wrap - перенос элементов на новую строку */
+    justify-content: space-between;
+}
+
+.future_auto__item {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+.future_select {
+    width: 80%;
+    margin-bottom: 10px;
+}
+
+.price__list {
+    min-width: 250px;
+    padding-top: 50px;
+}
+
+.red_price {
+    background: rgba(202, 1, 0, 1);
+    border-radius: 11px;
+    max-width: 150px;
+    text-align: end;
+    color: rgba(255, 255, 255, 1);
+    padding: 5px 10px 0 0;
+}
+
+/* credit section  */
+.content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.row_ {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.row_.future_select {
+    width: 40%;
+}
+
+.future__content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.credit_btn {
+    max-height: 30px;
+    padding: 5px 20px;
+    transform: translateY(12px);
+    margin-left: 15px;
+}
+
+.left-X-100 {
+    transform: translateX(-100px);
+}
+
+.discount_auto {
+    color: rgba(194, 194, 196, 1);
+    transform: translateY(18px);
+}
+
+.opacity_0 {
+    opacity: 0;
+}
+
+.input_ {
+    width: 80%;
+    padding: 10px;
+}
+
+@media screen and (max-width: 426px) {
+    .future_auto {
+        padding: 20px 10px;
+    }
+
+    .future_auto__list {
+        flex-direction: column;
+    }
+
+    .future_auto__item {
+        width: 100%;
+    }
+
+    .future_select {
+        width: 100%;
+    }
+
+    .future__content {
+        flex-direction: column-reverse;
+    }
+
+    .left-X-100 {
+        transform: translateX(0px);
+    }
+
+    .price__list {
+        padding-top: 0;
+        text-align: -webkit-center;
+    }
+
+    .content {
+        flex-direction: column;
+    }
+
+    .credit_btn {
+        transform: translateY(0px);
+        margin: 50px;
+    }
+
+    .discount_auto {
+        transform: translateY(8px);
+    }
+
+    .opacity_0 {
+        display: none;
+    }
+
+    .input_ {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .benefits__list {
+        flex-direction: column;
+    }
+
+    .benefits__item {
+        max-width: 100%;
+    }
+
+    .terms__list {
+        flex-direction: column;
+    }
+    .terms_buy {
+        border-right: none;
+        width: 100%;
+    }
+}
+

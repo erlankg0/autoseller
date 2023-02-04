@@ -885,6 +885,7 @@ input[type=search]::-webkit-search-cancel-button {
 
 .card__flex {
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
 }
 
@@ -2470,7 +2471,7 @@ input:-webkit-autofill:active {
     }
 
     .pick-up__list li {
-        width: 138px;
+        width: 150px;
         line-height: 2.5rem;
     }
 
@@ -3318,6 +3319,7 @@ input:-webkit-autofill:active {
         border-radius: 25px;
         display: flex;
         flex-flow: row wrap;
+        flex-direction: row-reverse;
     }
 
     .credit__top-heading {
@@ -4134,5 +4136,44 @@ input:-webkit-autofill:active {
 }
 
 .main {
-    padding: 30px;
+    padding: 0px 30px;
+}
+
+.auto__item .card {
+    background-image: none;
+    max-height: 440px;
+    min-height: 440px;
+}
+
+.auto__item .card__title {
+    min-height: 70px;
+    max-height: 70px;
+}
+
+.auto__item .card__price {
+    min-height: 60px;
+}
+
+.auto__item .card__payment {
+    width: 50%;
+    max-width: 50%;
+}
+
+.auto__item .card__option-list {
+    flex-direction: row;
+}
+
+.auto__item .-bold {
+    max-width: 50%;
+    width: 50%;
+    align-self: end;
+}
+
+.image {
+    width: 250px;
+    height: 160px;
+    max-width: 250px;
+    max-height: 160px;
+    min-width: 250px;
+    min-height: 160px;
 }

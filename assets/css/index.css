@@ -31,7 +31,7 @@
 .header-bottom__list-stats,
 .header-bottom__callback {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
 }
 

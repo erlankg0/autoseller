@@ -1,5 +1,5 @@
 from django.contrib import admin
-from content.models import Phone, Address, Email, Logo, WorkTime, TechCenter
+from content.models import Phone, Address, Email, Logo, WorkTime, TechCenter, Whatsapp, Title
 
 
 @admin.register(Phone)
@@ -42,3 +42,20 @@ class TechCenterAdmin(admin.ModelAdmin):
     search_fields = ('title',)
     list_filter = ('title',)
     ordering = ('title',)
+
+
+@admin.register(Whatsapp)
+class WhatsappAdmin(admin.ModelAdmin):
+    list_display = ('number',)
+    search_fields = ('number',)
+    list_filter = ('number',)
+    ordering = ('number',)
+
+
+@admin.register(Title)
+class TitleAdmin(admin.ModelAdmin):
+    list_display = ('name',)
+    search_fields = ('name',)
+    list_filter = ('name',)
+    ordering = ('name',)
+

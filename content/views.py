@@ -1,6 +1,10 @@
 from django.shortcuts import render
-from cars.models import Car
+from django.views import View
 
+
+class PrivacyPolicyView(View):
+    def get(self, request):
+        return render(request, 'content/privacy.html')
 
 
 def about(request):

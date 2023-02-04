@@ -7,20 +7,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Авто Салон</title>
+    <title>{{ title }}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
     <script src="{% static 'js/burger+catalog.js' %}" defer></script>
     <script src="{% static 'js/slider.js' %}" defer></script>
-    <link rel="icon" href="{% static 'img/favicon.ico' %}">
+    <link rel="icon" href="{{ logo }}">
     <link rel="stylesheet" href="{% static 'files/range/ion.rangeSlider.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.min.css' %}">
     <link rel="stylesheet" href="{% static 'files/slick/slick.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
-
+    <link rel="stylesheet" href="{% static 'css/jQuery.Brazzers-Carousel.css' %}">
+    <link rel="stylesheet" href="{% static 'css/jQuery.Brazzers-Carousel.min.css' %}">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
@@ -54,7 +55,7 @@
 {% endif %}
 
 {% block top-banner %}
-    {% include 'include/top-banner.html' %}
+
 {% endblock top-banner %}
 <!-- end top banner -->
 <!-- content -->
@@ -78,6 +79,8 @@
 <script type="text/javascript" src="{% static 'js/app.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/fslightbox.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/owl.carousel.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/jQuery.Brazzers-Carousel.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/jQuery.Brazzers-Carousel.min.js' %}"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
         integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
@@ -114,23 +117,11 @@
     })
 </script>
 <script>
-    $('#trade_in_send').click(function () {
-        var csrf = $('input[name="csrfmiddlewaretoken"]').val();
-        var name = $('#name').val();
-        var phone = $('#phone').val();
-        $.ajax({
-            url: '{% url 'trade_in_create' %}',
-            type: 'GET',
-            data: {
-                'name': name,
-                'phone': phone
-            },
-            success: function (data) {
-                // click on the button id trade_close
-                $('#trade_close').click();
-            }
-        });
+
+    $(document).ready(function () {
+        $(".brazzer-dady").brazzersCarousel();
     });
+
 </script>
 
 </body>

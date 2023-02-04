@@ -66,6 +66,8 @@ TEMPLATES = [
                 'content.context_processors.get_logo',  # context processor for getting logo
                 'content.context_processors.get_work_time',  # context processor for getting work time
                 'content.context_processors.get_all_tech_centers',  # context processor for getting all tech centers
+                'content.context_processors.get_whatsapp',  # context processor for getting whatsapp
+                'content.context_processors.get_title',  # context processor for getting title
             ],
         },
     },

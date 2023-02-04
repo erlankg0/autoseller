@@ -15,7 +15,7 @@
 					{{ work_time }}
 				</span>
                 <div class=" contact-line__push -push"></div>
-                <a href="https://web.whatsapp.com/send/?phone=905357699576"
+                <a href="https://web.whatsapp.com/send/?phone={{ whatsapp }}"
                    class="contact-line__whatsapp whatsapp whatsapp--s" target="_blank">Whatsapp</a>
             </div>
         </div>
@@ -53,10 +53,6 @@
                             <li class="navbar__item"><a href="{% url 'about' %}">О компании</a></li>
                             <li class="navbar__item"><a href="{% url 'services' %}">Техцентр</a></li>
                             <li class="navbar__item"><a href="{% url 'contacts' %}">Контакты</a></li>
-                            <li class="navbar__item"><a data-toggle="modal"
-                                                        data-target="#callbackModal">
-                                Trade-in
-                            </a></li>
                         </ul>
                     </nav>
 
@@ -78,12 +74,15 @@
                     <nav class="navigation__menu" id="large_menu">
                         <div class="header-bottom__list">
                             <a href="{% url 'index' %}" class="header-bottom__list-link">
+                                Главная
+                            </a>
+                            <a href="{% url 'new_cars' %}" class="header-bottom__list-link">
                                 новые автомобили
                             </a>
                             <a href="{% url 'used_cars' %}" class="header-bottom__list-link">авто с пробегом</a>
                             <a href="{% url 'credit_request_create' %}" class="header-bottom__list-link">кредит и
                                 рассрочка</a>
-                            <!-- <a class="header-bottom__list-link special-h">спецпредложения</a> -->
+                            <a class="header-bottom__list-link" href="{% url 'trade_in_create' %}">Trade-in</a>
                         </div>
                         <div class="katalog-auto__list ">
                             <div class="katalog-auto__list-marks">
@@ -420,70 +419,6 @@
 
                             </div>
                         </div>
-                        <div class="header-kredit">
-                            <div class="kredit__list">
-                                <div class="header-kredit-item">
-                                    <div class="">
-                                        <p class="special__cards-item__title">Первый автомобиль</p>
-                                        <p class="special__cards-item__subtitle">1,9% по льготной ставке</p>
-                                    </div>
-                                    <button class="special__cards-item__btn">Узнать больше</button>
-                                </div>
-                                <div class="header-kredit-item">
-                                    <div class="">
-                                        <p class="special__cards-item__title">Семейный автомобиль</p>
-                                        <p class="special__cards-item__subtitle">1,9% по льготной ставке</p>
-                                    </div>
-                                    <button class="special__cards-item__btn">Узнать больше</button>
-                                </div>
-                                <div class="header-kredit-item">
-                                    <div class="">
-                                        <p class="special__cards-item__title">Экспресс-кредит</p>
-                                        <p class="special__cards-item__subtitle">1,9% по льготной ставке</p>
-                                    </div>
-                                    <button class="special__cards-item__btn">Узнать больше</button>
-                                </div>
-                                <div class="header-kredit-item">
-                                    <div class="">
-                                        <p class="special__cards-item__title">Работникам медицины</p>
-                                        <p class="special__cards-item__subtitle">1,9% по льготной ставке</p>
-                                    </div>
-                                    <button class="special__cards-item__btn">Узнать больше</button>
-                                </div>
-                                <div class="header-kredit-item">
-                                    <div class="">
-                                        <p class="special__cards-item__title">Рассрочка</p>
-                                        <p class="special__cards-item__subtitle">1,9% по льготной ставке</p>
-                                    </div>
-                                    <button class="special__cards-item__btn">Узнать больше</button>
-                                </div>
-                                <div class="header-kredit-item">
-                                    <div class="">
-                                        <p class="special__cards-item__title">Госпрограмма Trade-in</p>
-                                        <p class="special__cards-item__subtitle">1,9% по льготной ставке</p>
-                                    </div>
-                                    <button class="special__cards-item__btn">Узнать больше</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="header-spec">
-                            <div class="header-spec-cont">
-                                <div class="special__cards-item spec-util">
-                                    <div class="">
-                                        <p class="special__cards-item__title">Утилизация</p>
-                                        <p class="special__cards-item__subtitle">1,9% по льготной ставке</p>
-                                    </div>
-                                    <button class="special__cards-item__btn">Узнать больше</button>
-                                </div>
-                                <div class="special__cards-item spec-tradeIn">
-                                    <div class="">
-                                        <p class="special__cards-item__title">Trade-in</p>
-                                        <p class="special__cards-item__subtitle">1,9% по льготной ставке</p>
-                                    </div>
-                                    <button class="special__cards-item__btn">Узнать больше</button>
-                                </div>
-                            </div>
-                        </div>
                     </nav>
                     <nav class="navigation__menu" id="small_menu">
                         <ul class="menu nav">
@@ -495,6 +430,9 @@
                             </li>
                             <li class="menu__item dropdown">
                                 <a href="{% url 'credit_request_create' %}" class="ar">Кредит и расрочка</a>
+                            </li>
+                            <li class="menu__item dropdown">
+                                <a href="{% url 'credit_request_create' %}" class="ar">Trade-in</a>
                             </li>
                         </ul>
                     </nav>

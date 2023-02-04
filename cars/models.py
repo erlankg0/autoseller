@@ -1,8 +1,7 @@
 from django.db import models
 from django.urls import reverse
 
-from cars.utils import directory_image_path, directory_image_path_vehicle, directory_image_path_cars
-from cars.utils import engine_volume, car_year
+from cars.utils import directory_image_path, directory_image_path_vehicle
 
 
 class Engine(models.Model):
@@ -148,6 +147,14 @@ class Brand(models.Model):
         blank=True,
         null=True,
     )
+
+    # get all cars of this brand which new=True
+    def get_new_cars(self):
+        # which new=True
+        return reverse('brand_new', kwargs={'brand_id': self.id})
+
+    def get_old_cars(self):
+        return reverse('brand_old', kwargs={'brand_id': self.id})
 
     def __str__(self):
         return self.title

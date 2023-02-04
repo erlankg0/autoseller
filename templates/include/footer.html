@@ -1,17 +1,23 @@
 <footer class="footer">
-    <div class="footer__container _container">
+    <div class="footer__container">
         <div class="footer__bg footer__bg--gray">
             <div class="footer__inner">
                 <nav class="footer__menu footer-menu">
                     <ul class="footer-menu__list nav -bold">
                         <li class="">
-                            <a class="footer-menu__link" href="{% url 'index' %}">Новые авто</a>
+                            <a class="footer-menu__link" href="{% url 'index' %}">Главная</a>
+                        </li>
+                        <li class="">
+                            <a class="footer-menu__link" href="{% url 'new_cars' %}">Новые авто</a>
                         </li>
                         <li class="">
                             <a class="footer-menu__link" href="{% url 'used_cars' %}">Авто с пробегом</a>
                         </li>
                         <li class="">
                             <a class="footer-menu__link" href="{% url 'credit_request_create' %}">Кредит и рассрочка</a>
+                        </li>
+                        <li class="">
+                            <a class="footer-menu__link" href="{% url 'trade_in_create' %}">Trade-in</a>
                         </li>
                     </ul>
                 </nav>
@@ -22,7 +28,6 @@
                 <div class="footer__full-menu">
                     <div class="footer__catalog footer-catalog">
                         <h6 class="footer-heading">Каталог авто</h6>
-                        <a href="" class="footer-catalog__more -bold">Подробнее</a>
                         <ul class="footer-catalog__list js-resizable-list">
                             {% for brand in brands %}
                                 <li><a href="">{{ brand }}</a></li>
@@ -54,12 +59,12 @@
                 <div class="footer-disclaimer">
                     <div class="footer-disclaimer__docs">
                         <h6>
-                            2021 Автосалок "ABC AUTO". Официальный диллер
+                            202e Автосалон "{{ title }}". Официальный диллер
                         </h6>
-                        <a href="" class="footer-disclaimer__privacy">
+                        <a href="{% url 'privacy' %}" class="footer-disclaimer__privacy">
                             Политика конфиденциальности
                         </a>
-                        <a href="" class="footer-disclaimer__terms">
+                        <a href="{% url 'privacy' %}" class="footer-disclaimer__terms">
                             Пользовательское соглашение
                         </a>
                     </div>
@@ -69,37 +74,82 @@
                             характер и ни при каких условиях не является публичной офертой, определяемой положениями ч.
                             2 ст. 437 Гражданского кодекса Российской Федерации. Для получения подробной информации о
                             стоимости автомобилей, пожалуйста, обратитесь к менеджерам автосалона.
-
-                            Условия кредитования Основные условия кредитования ПАО Сбербанк (Лицензия №1481 от
-                            11.08.2015) на покупку нового автомобиля по продукту «Кредит на приобретение нового
-                            автомобиля» валюта кредита – рубли РФ; сумма кредита от 200 000 до 4 500 000 руб.
-                            Первоначальный взнос по кредиту до 70%. Сумма ежемесячного платежа от 1 437 руб. до 762 077
-                            руб., без комиссий. Срок кредита от 6 мес. до 7 лет. Обеспечение по кредиту – залог
-                            приобретаемого автомобиля. Условия кредита действительны на 15.04.2022 и могут быть изменены
-                            Банком.
-
-                            Маркетинговая ставка от 4.9% не является фактической процентной ставкой по договору
-                            автомобильного кредитования и означает выраженный в процентах размер трат физического лица
-                            на покупку автомобиля, далее — ТС, в кредит. Автоцентр компенсирует разницу между
-                            маркетинговой ставкой и процентной ставкой посредством соразмерного снижения дилером цены на
-                            ТС, установки дополнительного оборудования. КАСКО по рискам хищение (угон), утраты (гибели)
-                            обязательно на весь срок кредитования и только в страховых компаниях, соответствующих
-                            требованиям Банка.
-
-                            Валютой кредита является рубль Российской Федерации. Первоначальный взнос составляет от 0%
-                            стоимости ТС. Сумма автокредитования — от 100 000 ₽. Срок кредитования — от 2 до 84 месяцев.
-                            Процентная ставка — от 4.9% и зависит от конкретного банка, суммы займа и кредитной
-                            программы. В качестве обеспечения по кредиту выступает залог приобретаемого ТС. Возврат
-                            кредита осуществляется через ежемесячный — аннуитетные — платежи. При обязательном условии
-                            страхования жизни, КАСКО в страховых компаниях-партнерах на весь срок действия кредитного
-                            договора, а также покупки дополнительного оборудования. Для получения автокредита необходимо
-                            предоставить паспорт гражданина РФ. Залоговое обеспечение – залог приобретаемого автомобиля.
-                            Для получения подробной информации об условиях автокредита, пожалуйста, обращайтесь к
-                            менеджерам автосалона.
-
-                            ООО «ПАМ» Москва, Котляковская ул., д.3 стр.6 ИНН: 7724539858/772401001 ОГРН: 1057746566492
                         </p>
                     </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer__bg footer__bg--gray" style="display: none;">
+            <div class="container">
+                <div class="footer__catalog footer-catalog">
+                    <ul class="footer-catalog__list js-resizable-list">
+                        <li style="display: flex; flex-direction: column; width: 20%;">
+                            <a href="" style="color: #FFFFFF;">KİA</a>
+                            <div style="width: 100%; color: #737373; font-size: 16px;">
+                                Picanto (2020), Sorento 2019, Sorento Prime, Sportage New, Rio 2019, Pro Ceed,
+                                Mohave
+                                2019, Rio X-Line, Stringer (2020), Optima NEW, Ceed 2020, Cerato 2020, K900, Ceed SW
+                                2020, Soul, Seltos, XCeed, K5, Rio, Sorento, Mohave, Rio X, Carnival, Picanto,
+                                Stinger,
+                                Cerato, Ceed, Ceed SW
+                            </div>
+                        </li>
+                        <li style="display: flex; flex-direction: column; width: 20%;">
+                            <a href="" style="color: #FFFFFF;">Hyundai</a>
+                            <div style="width: 100%; color: #737373; font-size: 16px;">
+                                i30, Solaris 2019, Santa Fe 2020, Tucson 2020, H1, Elantra 2019, Sonata, Solaris,
+                                Creta 2020, Tucson N Line, Elantra, Palisade, Santa Fe, Tucson, Creta
+                            </div>
+                        </li>
+                        <li style="display: flex; flex-direction: column;width: 20%;">
+                            <a href="" style="color: #FFFFFF;">Skoda</a>
+                            <div style="width: 100%; color: #737373; font-size: 16px;">
+                                Octavia 2019, Kodiaq 2020, Rapid 2019, Kodiaq Scout, Kodiaq Sportline, Superb New,
+                                Superb Combi New, Superb Sportline, Karoq, Rapid, Octavia A8, Kodiaq
+                            </div>
+                        </li>
+                        <li style="display: flex; flex-direction: column; width: 20%;">
+                            <a href="" style="color: #FFFFFF;">Volkswagen</a>
+                            <div style="width: 100%; color: #737373; font-size: 16px;">
+                                Golf (2020), Polo 2019, Passat 2019, Tiguan 2019, Jetta 2019, Touareg, Teramont
+                                (2020), Amarok, Passat, Jetta, Polo, Arteon
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="footer-catalog__list js-resizable-list">
+                        <li style="display: flex; flex-direction: column; width: 20%;">
+                            <a href="" style="color: #FFFFFF;">KİA</a>
+                            <div style="width: 100%; color: #737373; font-size: 16px;">
+                                Picanto (2020), Sorento 2019, Sorento Prime, Sportage New, Rio 2019, Pro Ceed,
+                                Mohave
+                                2019, Rio X-Line, Stringer (2020), Optima NEW, Ceed 2020, Cerato 2020, K900, Ceed SW
+                                2020, Soul, Seltos, XCeed, K5, Rio, Sorento, Mohave, Rio X, Carnival, Picanto,
+                                Stinger,
+                                Cerato, Ceed, Ceed SW
+                            </div>
+                        </li>
+                        <li style="display: flex; flex-direction: column; width: 20%;">
+                            <a href="" style="color: #FFFFFF;">Hyundai</a>
+                            <div style="width: 100%; color: #737373; font-size: 16px;">
+                                i30, Solaris 2019, Santa Fe 2020, Tucson 2020, H1, Elantra 2019, Sonata, Solaris,
+                                Creta 2020, Tucson N Line, Elantra, Palisade, Santa Fe, Tucson, Creta
+                            </div>
+                        </li>
+                        <li style="display: flex; flex-direction: column;width: 20%;">
+                            <a href="" style="color: #FFFFFF;">Skoda</a>
+                            <div style="width: 100%; color: #737373; font-size: 16px;">
+                                Octavia 2019, Kodiaq 2020, Rapid 2019, Kodiaq Scout, Kodiaq Sportline, Superb New,
+                                Superb Combi New, Superb Sportline, Karoq, Rapid, Octavia A8, Kodiaq
+                            </div>
+                        </li>
+                        <li style="display: flex; flex-direction: column; width: 20%;">
+                            <a href="" style="color: #FFFFFF;">Volkswagen</a>
+                            <div style="width: 100%; color: #737373; font-size: 16px;">
+                                Golf (2020), Polo 2019, Passat 2019, Tiguan 2019, Jetta 2019, Touareg, Teramont
+                                (2020), Amarok, Passat, Jetta, Polo, Arteon
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
