@@ -24,7 +24,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django_filters',  # django filters
     'cars.apps.CarsConfig',  # application for selling cars
     'credit.apps.CreditConfig',  # application for credit calculation
     'content.apps.ContentConfig',  # application for content
