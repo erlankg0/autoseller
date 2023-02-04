@@ -10,7 +10,7 @@ class CarsListView(ListView):
     model = Car
     template_name = 'cars/index.html'
     context_object_name = 'cars'
-    paginate_by = 1
+    paginate_by = 12
 
     def get_queryset(self):
         queryset = super().get_queryset()
