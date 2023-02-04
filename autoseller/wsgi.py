@@ -1,16 +1,14 @@
-"""
-WSGI config for autoseller project.
-
-It exposes the WSGI callable as a module-level variable named ``application``.
-
-For more information on this file, see
-https://docs.djangoproject.com/en/4.1/howto/deployment/wsgi/
-"""
+# /var/www/erlankg1_pythonanywhere_com_wsgi.py
 
 import os
+import sys
+
+path = '/home/erlankg1/autoseller'
+if path not in sys.path:
+    sys.path.insert(0, path)
+
+os.environ['DJANGO_SETTINGS_MODULE'] = 'autoseller.settings'
 
 from django.core.wsgi import get_wsgi_application
-
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'autoseller.settings')
 
 application = get_wsgi_application()
