@@ -52,7 +52,43 @@ class CreditRequestAdmin(admin.ModelAdmin):
 
 @admin.register(TradeInRequest)
 class TradeInRequestAdmin(admin.ModelAdmin):
-    pass
+    def get_future_car(self, obj):
+        return obj.future_car
+
+    get_future_car.short_description = 'Автомобиль на который хочет'
+
+    def current_car(self, obj):
+        text = f'{obj.current_car_brand} {obj.current_car_model} {obj.current_car_year} {obj.current_car_year} {obj.current_car_transmission}'
+        return text
+
+    current_car.short_description = 'Автомобиль который хочет продать'
+
+    def price(self, obj):
+        return f'{obj.customer_price}₽'
+
+    price.short_description = 'Предложенная цена'
+
+    def credit(self, obj):
+        return f'{obj.credit}'
+
+    credit.short_description = 'Кредит'
+
+    list_display = (
+        'id',
+        'name',
+        'phone',
+        'get_future_car',
+        'current_car',
+        'price',
+        'credit',
+
+    )
+    list_display_links = list_display
+    list_filter = (
+        'credit',
+    )
+
+
 
 
 @admin.register(Gift)
