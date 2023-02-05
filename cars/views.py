@@ -1,9 +1,9 @@
-from django.db.models import Q
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render
+from django.template.loader import get_template
 from django.views.generic import ListView, DetailView
 
-from cars.models import Model, Generation, Modification, Car, BodyType, Transmissions, Brand, CarImages
+from cars.models import Model, Generation, Modification, Car, CarImages
 
 
 class CarsListView(ListView):
@@ -154,6 +154,20 @@ class CarFilterView(ListView):
             )
 
         return queryset  # возвращаем отфильтрованный queryset (по цене, по марке, по модели, по поколению, по модификации)
+
+
+def car_xml_feed(request):
+    cars = Car.objects.all()
+    template = get_template('cars/xml/car_xml_feed.xml')
+    xml = template.render({'cars': cars})
+    return HttpResponse(xml, content_type='application/xml')
+
+
+def car_xml_feed_detail(request, pk):
+    car = Car.objects.get(pk=pk)
+    template = get_template('cars/xml/car_id_xml_feed.xml')
+    xml = template.render({'car': car})
+    return HttpResponse(xml, content_type='application/xml')
 
 
 # AJAX

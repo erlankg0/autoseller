@@ -1,0 +1,26 @@
+<car>
+    <brand>{{ car.brand }}</brand>
+    <model>{{ car.model }}</model>
+    <generation>{{ car.generation }}</generation>
+    <modification>{{ car.modification }}</modification>
+    <body_type>{{ car.modification.body_type }}</body_type>
+    <year>{{ car.modification.year }}</year>
+    <description>{{ car.description }}</description>
+    <price>{{ car.price }}</price>
+    <credit_from>{{ car.credit_from }}</credit_from>
+    <credit>{{ car.credit }}</credit>
+    <mileage>{{ car.mileage }}</mileage>
+    <engine>{{ car.modification.engine }}</engine>
+    <volume>{{ car.modification.volume }}</volume>
+    <power>{{ car.modification.power }}</power>
+    <fuel>{{ car.modification.engine.fuel }}</fuel>
+    <fuel_consumption>{{ car.modification.fuel_consumption }}</fuel_consumption>
+    <acceleration>{{ car.modification.acceleration }}</acceleration>
+    <max_speed>{{ car.modification.max_speed }}</max_speed>
+    <transmission>{{ car.modification.transmission }}</transmission>
+    <drive_unit>{{ car.modification.drive_unit }}</drive_unit>
+    {% for car_image in car.car_images.all %}
+        <image>{{ car_image.image.url }}</image>
+    {% endfor %}
+
+</car>

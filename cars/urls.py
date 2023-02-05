@@ -1,8 +1,10 @@
 from django.urls import path
 
-from cars.views import DetailCarView, UsedCarsListView, NewCarsByBrandListView, UsedCarsByBrandListView, NewCarsListView
+from cars.views import DetailCarView, UsedCarsListView, NewCarsByBrandListView, UsedCarsByBrandListView, \
+    NewCarsListView, car_xml_feed, car_xml_feed_detail
 from cars.views import detail
 from cars.views import get_models, get_generations, get_modifications, get_cars_by_model, get_car
+from cars.feed import CarFeed, CarDetailFeed
 
 urlpatterns = [
     path('new/brand/<int:brand_id>/', NewCarsByBrandListView.as_view(), name='brand_new'),
@@ -17,4 +19,10 @@ urlpatterns = [
     path('get_modifications/', get_modifications, name='get_modifications'),
     path('get_cars_by_model/', get_cars_by_model, name='get_cars_by_model'),
     path('get_car/', get_car, name='get_car'),
+    # FEED
+    path('feed/', CarFeed(), name='car_feed'),
+    path('car_xml_feed/', car_xml_feed, name='car_xml_feed'),
+    path('car_xml_feed_detail/<int:pk>/', car_xml_feed_detail, name='car_xml_feed_detail'),
+    path('<int:pk>/feed/', CarDetailFeed(), name='car_detail_feed')
+
 ]

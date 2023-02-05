@@ -411,7 +411,6 @@ class Car(models.Model):
         verbose_name = 'Автомобиль'
         verbose_name_plural = 'Автомобили'
 
-
 class CarImages(models.Model):
     image = models.ImageField(
         verbose_name='Изображение',
