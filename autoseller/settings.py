@@ -24,7 +24,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'ckeditor', # ckeditor
+    'ckeditor',  # ckeditor
     'cars.apps.CarsConfig',  # application for selling cars
     'credit.apps.CreditConfig',  # application for credit calculation
     'content.apps.ContentConfig',  # application for content
@@ -69,7 +69,9 @@ TEMPLATES = [
                 'content.context_processors.get_whatsapp',  # context processor for getting whatsapp
                 'content.context_processors.get_title',  # context processor for getting title
                 'content.context_processors.get_dns',  # context processor for getting dns
+                'content.context_processors.get_banners',  # context processor for getting banners
                 'credit.context_processors.get_all_gifts',  # context processor for getting all gifts
+
             ],
         },
     },

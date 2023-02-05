@@ -185,3 +185,46 @@ class DNS(models.Model):
         verbose_name = 'URL сайта'
         verbose_name_plural = 'URL сайта'
         db_table = 'dns'
+
+
+class Banner(models.Model):
+    title = models.CharField(
+        max_length=255,
+        verbose_name='Заголовок',
+        help_text='Заголовок баннера',
+        unique=True
+    )  # заголовок баннера
+    subtitle = models.CharField(
+        max_length=255,
+        verbose_name='Подзаголовок',
+        help_text='Подзаголовок баннера',
+        unique=True
+    )  # подзаголовок баннера
+
+    description = models.TextField(
+        verbose_name='Описание',
+        help_text='Описание баннера',
+    )  # описание баннера
+    car_image = models.ImageField(
+        upload_to='banners/',
+        verbose_name='Изображение',
+        help_text='Изображение баннера',
+    )  # изображение баннера
+    car_image_2 = models.ImageField(
+        upload_to='banners/',
+        verbose_name='Изображение 2',
+        help_text='Изображение баннера 2',
+    )  # изображение баннера 2
+    car_image_3 = models.ImageField(
+        upload_to='banners/',
+        verbose_name='Изображение 3',
+        help_text='Изображение баннера 3',
+    )  # изображение баннера 3
+
+    def __str__(self):
+        return f'{self.title} - {self.description}'
+
+    class Meta:
+        verbose_name = 'Баннер'
+        verbose_name_plural = 'Баннеры'
+        db_table = 'banner'

@@ -1,5 +1,10 @@
 from django.contrib import admin
-from content.models import Phone, Address, Email, Logo, WorkTime, TechCenter, Whatsapp, Title
+from content.models import Phone, Address, Email, Logo, WorkTime, TechCenter, Whatsapp, Title, Banner
+
+
+@admin.register(Banner)
+class BannerAdmin(admin.ModelAdmin):
+    pass
 
 
 @admin.register(Phone)
@@ -58,4 +63,3 @@ class TitleAdmin(admin.ModelAdmin):
     search_fields = ('name',)
     list_filter = ('name',)
     ordering = ('name',)
-
