@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
     <script src="{% static 'js/burger+catalog.js' %}" defer></script>
     <script src="{% static 'js/slider.js' %}" defer></script>
-    <link rel="icon" href="{{ logo }}">
+    <link rel="icon" href="{{ logo.logo.url }}">
     <link rel="stylesheet" href="{% static 'files/range/ion.rangeSlider.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.min.css' %}">
     <link rel="stylesheet" href="{% static 'files/slick/slick.css' %}">
@@ -46,13 +46,6 @@
 {% endblock header %}
 <!-- end header -->
 <!--top banner -->
-{% if messages %}
-    <ul class="messages">
-        {% for message in messages %}
-            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-        {% endfor %}
-    </ul>
-{% endif %}
 
 {% block top-banner %}
 

@@ -1,4 +1,4 @@
-from content.models import Phone, Address, Email, Logo, WorkTime, TechCenter, Whatsapp, Title
+from content.models import Phone, Address, Email, Logo, WorkTime, TechCenter, Whatsapp, Title, DNS
 
 
 def get_phone_numbers(request):
@@ -39,3 +39,8 @@ def get_whatsapp(request):
 def get_title(request):
     title = Title.objects.first()
     return {'title': title}
+
+
+def get_dns(request):
+    dns = DNS.objects.first()
+    return {'dns': dns}

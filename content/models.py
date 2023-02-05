@@ -163,3 +163,25 @@ class Whatsapp(models.Model):
         verbose_name = 'Номер WhatsApp'
         verbose_name_plural = 'Номера WhatsApp'
         db_table = 'whatsapp'
+
+
+class DNS(models.Model):
+    title = models.CharField(
+        max_length=255,
+        verbose_name='URL сайта',
+        help_text='URL сайта (например: "https://example.com")',
+        unique=True
+    )  # URL сайта
+
+    def save(self, *args, **kwargs):
+        if DNS.objects.exists() and not self.pk:
+            return
+        return super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = 'URL сайта'
+        verbose_name_plural = 'URL сайта'
+        db_table = 'dns'

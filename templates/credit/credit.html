@@ -4,6 +4,31 @@
     <link rel="stylesheet" href="{% static 'css/kredit-rassr.css' %}">
 {% endblock %}
 {% block content %}
+    <style>
+        .messages {
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        .messages .success {
+            background-color: #dff0d8;
+            border-color: #d0e9c6;
+            color: #3c763d;
+            padding: 15px;
+            width: 250px;
+            border-radius: 15px;
+        }
+
+        .messages .warning {
+            background-color: #fcf8e3;
+            border-color: #faebcc;
+            color: #8a6d3b;
+            padding: 15px;
+            width: 250px;
+            border-radius: 15px;
+        }
+    </style>
+
     <main class="main">
         <section class="credit">
             <div class="credit__wrapper">
@@ -15,7 +40,14 @@
                     <p class="page__title">
                         Кредит и рассрочка
                     </p>
+                    {% if messages %}
+                        <ul class="messages">
+                            {% for message in messages %}
+                                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                            {% endfor %}
+                        </ul>
 
+                    {% endif %}
                     <form method="post" class="credit__form">
                         {% csrf_token %}
                         <h2 class="credit__top-heading">Заявка на автокредит</h2>

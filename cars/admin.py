@@ -1,12 +1,18 @@
 from django.contrib import admin
-from cars.models import Engine, Transmissions, DriveUnit, Fuel, BodyType, Years, Volume
-from cars.models import Brand, Model, Generation, Modification
-from cars.models import Car, CarImages
+
 from cars.forms import CarForm
+from cars.models import Brand, Model, Generation, Modification, Kitting
+from cars.models import Car, CarImages
+from cars.models import Engine, Transmissions, DriveUnit, Fuel, BodyType, Years, Volume
 
 
 @admin.register(Years)
 class YearsAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(Kitting)
+class KittingAdmin(admin.ModelAdmin):
     pass
 
 

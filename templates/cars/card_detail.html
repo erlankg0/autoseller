@@ -6,8 +6,6 @@
     <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
 {% endblock %}
-{% block top-banner %}
-{% endblock top-banner %}
 {% block content %}
     <main class="main" style="padding: 0px 30px;">
         <section class="main-main">
@@ -32,7 +30,7 @@
                                             <div class="item">
                                                 <img src="{{ image.image.url }}"
                                                      alt="{{ car.brand.title }} {{ car.model.title }} {{ car.generation.title }}"
-                                                     style="min-height: 500px; min-width: 800px; width: 800px; height: 500px; max-width: 800px; max-height: 500px;">
+                                                     style="min-width: 800px; width: 800px; max-width: 100%;">
                                             </div>
                                         {% endfor %}
                                     {% endif %}
@@ -229,59 +227,33 @@
                             Описание {{ car.brand.title }} {{ car.model.title }} {{ car.generation.title }} {{ car.modification.title }}
                         </h2>
                         <p class="main-desc__desc">
-                            {{ car.description }}
+                            {{ car.description|safe }}
                         </p>
                     </div>
                 {% endif %}
-                <div class="main-complect">
-                    <h2 class="sec-title">
-                        Комплектация {{ car.brand.title }} {{ car.model.title }} {{ car.generation.title }} {{ car.modification.title }}
-                    </h2>
-                    <div class="main-complect__content">
-                        <div class="main-complect__list">
-                            <div class="main-complect__list-item">
-                                <div class="main-complect__list-item__row">
-                                    <p class="main-complect__list-item__row-title">
-                                        Максимальная мощность двигателя(кВт) при об./мин.
-                                    </p>
-                                    <p class="main-complect__list-item__row-desc">
-                                        {{ car.modification.power }} л.с.
-                                    </p>
-                                </div>
-                                <div class="main-complect__list-item__row">
-                                    <p class="main-complect__list-item__row-title">
-                                        Тип привода:
-                                    </p>
-                                    <p class="main-complect__list-item__row-desc">
-                                        {% if car.modification.drive_unit %}
-                                            {% for drive in car.modification.drive_unit.all %}
-                                                <span>{{ drive }}</span>
-                                            {% endfor %}
-                                        {% endif %}
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="main-complect__list-item">
-                                <div class="main-complect__list-item__row">
-                                    <p class="main-complect__list-item__row-title">
-                                        Тип трансмиссии
-                                    </p>
-                                    <p class="main-complect__list-item__row-desc">
-                                        {{ car.modification.transmission.title }}
-                                    </p>
-                                </div>
-                                <div class="main-complect__list-item__row">
-                                    <p class="main-complect__list-item__row-title">
-                                        Объем двигателя
-                                    </p>
-                                    <p class="main-complect__list-item__row-desc">
-                                        {{ car.modification.volume.title }}
-                                    </p>
+                {% if car.kitting.count %}
+                    <div class="main-complect">
+                        <h2 class="sec-title">
+                            Комплектация {{ car.brand.title }} {{ car.model.title }} {{ car.generation.title }} {{ car.modification.title }}
+                        </h2>
+                        <div class="main-complect__content">
+                            <div class="main-complect__list">
+                                <div class="main-complect__list-item">
+                                    {% for kitting in car.kitting.all %}
+                                        <div class="main-complect__list-item__row">
+                                            <p class="main-complect__list-item__row-title">
+                                                {{ kitting.title }}.
+                                            </p>
+                                            <p class="main-complect__list-item__row-desc">
+                                                {{ kitting.description }}
+                                            </p>
+                                        </div>
+                                    {% endfor %}
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                {% endif %}
             </div>
         </section>
         <section class="probeg">

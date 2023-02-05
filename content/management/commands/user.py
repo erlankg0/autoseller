@@ -6,5 +6,5 @@ class Command(BaseCommand):
     help = 'Создание пользователя'
 
     def handle(self, *args, **options):
-        User.objects.create_superuser(username='admin', password='123321era', email='era@mail.com')
+        User.objects.create_superuser(username='admin', password='0000', email='era@mail.com')
         self.stdout.write(self.style.SUCCESS('Пользователь создан: %s' % 'admin'))

@@ -123,6 +123,12 @@ button a {
     color: var(--dark-gray);
 }
 
+@media screen and (max-width: 768px) {
+    .page__title {
+        font-size: 40px;
+    }
+}
+
 .backlink-p {
     color: var(--light-gray);
     font-size: 12px;

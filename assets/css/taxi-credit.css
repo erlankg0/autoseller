@@ -107,7 +107,7 @@
     .hero__special {
         display: flex;
         flex-direction: column;
-        padding: 0;
+        padding: 20px;
     }
 
     .hero-adv__item {
@@ -807,6 +807,10 @@
 
 .left-X-100 {
     transform: translateX(-100px);
+    max-width: 440px;
+    width: 440px;
+    max-height: 270px;
+    height: 270px;
 }
 
 .discount_auto {
@@ -846,6 +850,9 @@
 
     .left-X-100 {
         transform: translateX(0px);
+        max-width: 320px;
+        max-height: 200px;
+        border-radius: 15px;
     }
 
     .price__list {

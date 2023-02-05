@@ -1,5 +1,6 @@
 from django import forms
-from credit.models import CreditRequest, TradeIn
+
+from credit.models import CreditRequest, TradeIn, CallBack, TradeInRequest
 
 
 class CreditRequestForm(forms.ModelForm):
@@ -20,6 +21,21 @@ class CreditRequestForm(forms.ModelForm):
 class TradeInForm(forms.ModelForm):
     class Meta:
         model = TradeIn
+        fields = (
+            "name",
+            "phone",
+        )
+
+
+class TradeInRequestForm(forms.ModelForm):
+    class Meta:
+        model = TradeInRequest
+        fields = '__all__'
+
+
+class CallBackForm(forms.ModelForm):
+    class Meta:
+        model = CallBack
         fields = (
             "name",
             "phone",

@@ -172,6 +172,7 @@ def get_generations(request):
 
 def get_modifications(request):
     generation_id = request.GET.get('generation')
+    print(generation_id)
     modifications = Modification.objects.filter(generation_id=generation_id).order_by('title').values('id', 'title')
     return JsonResponse({'modifications': list(modifications)})
 
@@ -207,23 +208,3 @@ def get_car(request):
         result = list(car)
         result[0]['image'] = image[0]
         return JsonResponse({'car': result})
-
-
-# показать все модели автомобилей фильрации по марке, модели, поколению,
-# кузову, трансмиссии, приводу, топливу, году выпуска, цене и т.д. (все поля) через Q
-
-def get_all_cars(request):
-    brand_id = Brand.objects.filter(pk=request.GET.get('brand_id'))
-    model_id = Model.objects.filter(pk=request.GET.get('model_id'))
-    generation_id = Generation.objects.filter(pk=request.GET.get('generation_id'))
-    body_id = BodyType.objects.filter(pk=request.GET.get('body_id'))
-    transmission_id = Transmissions.objects.filter(pk=request.GET.get('transmission_id'))
-    drive_id = request.GET.get('drive_id')
-    fuel_id = request.GET.get('fuel_id')
-    year = request.GET.get('year')
-    price = request.GET.get('price')
-    cars = Car.objects.filter(
-        Q(brand_id=brand_id) | Q(model_id=model_id) | Q(generation_id=generation_id) | Q(body_id=body_id) | Q(
-            transmission_id=transmission_id) | Q(drive_id=drive_id) | Q(fuel_id=fuel_id) | Q(year=year) | Q(price=price)
-    ).order_by('title').values()
-    return JsonResponse({'cars': list(cars)})

@@ -23,12 +23,19 @@
                         'brand_id': brand_id
                     },
                     success: function (data) {
-                        $('#id_model').empty();
+                        // clear model select
+                        $('#id_model').empty(); // remove old options if any present in select
+                        $('#id_model').append('<option value="">Выберите модель</option>');
+                        // delete disabled
+                        $('#id_model').removeAttr('disabled');
+                        $('#id_generation').empty(); // remove old options if any present in select
+                        $('#id_generation').append('<option value="">Выберите поколение</option>');
+                        $('#auto_id').empty(); // remove old options if any present in select
+                        $('#auto_id').append('<option value="">Выберите автомобиль</option>');
+                        // add new options
                         for (var i = 0; i < data["models"].length; i++) {
                             $('#id_model').append('<option value="' + data["models"][i]["id"] + '">' + data["models"][i]["title"] + '</option>');
                         }
-                        count++;
-                        console.log(count);
                     }
 
                 });
@@ -36,35 +43,20 @@
             $('#id_model').click(function () {
                 var model_id = $(this).val();
                 $.ajax({
-                    url: '/cars/get_generations/',
+                    url: '{% url 'get_generations' %}',
                     data: {
                         'model': model_id
                     },
                     success: function (data) {
-                        $('#id_generation').empty();
+                        $('#id_generation').empty(); // remove old options if any present in select
+                        $('#id_generation').append('<option value="">Выберите поколение</option>');
                         for (var i = 0; i < data["generations"].length; i++) {
-                            $('#id_generation').append('<option value="' + data["generations"][i]["id"] + '">' + data["generations"][i]["title"] + '</option>');
+                            $('#id_generation').append('<option value="' + data["generations"][i]["id"] + '">' + data["generations"][i]["title"] + ' </option>');
                         }
                     }
                 });
             }); // end model change
         });
-        $('#id_generations').click(function () {
-            var generation_id = $(this).val();
-            $.ajax({
-                url: '/cars/get_modifications/',
-                data: {
-                    'generation': generation_id
-                },
-                success: function (data) {
-                    $('#id_modification').empty();
-                    for (var i = 0; i < data["modifications"].length; i++) {
-                        $('#id_modification').append('<option value="' + data["modifications"][i]["id"] + '">' + data["modifications"][i]["title"] + '</option>');
-                    }
-                }
-            });
-        }); // end generation change
-
     </script>
 
 {% endblock footer %}

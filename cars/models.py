@@ -1,6 +1,6 @@
 from django.db import models
 from django.urls import reverse
-
+from ckeditor.fields import RichTextField
 from cars.utils import directory_image_path, directory_image_path_vehicle
 
 
@@ -310,6 +310,27 @@ class Modification(models.Model):
         db_table = 'modification'
 
 
+class Kitting(models.Model):  # Комплектация автомобиля
+    name = models.CharField(
+        max_length=50,
+        verbose_name='Опция',
+        help_text='Название опции (салон)',
+    )
+    description = models.CharField(
+        max_length=50,
+        verbose_name='Описание опция',
+        help_text='Описание опции (кожа)',
+    )
+
+    def __str__(self):
+        return f"{self.name} {self.description}"
+
+    class Meta:
+        verbose_name = 'Комплектация'
+        verbose_name_plural = 'Комплектации'
+        db_table = 'kitting'
+
+
 # Автомобиль на продажу
 class Car(models.Model):
     new = models.BooleanField(
@@ -345,7 +366,7 @@ class Car(models.Model):
         help_text='Модификация автомобиля (например, 320i)',
         related_name='car_modification',
     )
-    description = models.TextField(
+    description = RichTextField(
         verbose_name="Описание автомобиля",
         blank=True,
         null=True,
@@ -362,6 +383,20 @@ class Car(models.Model):
         max_length=17,
         verbose_name='VIN',
         help_text='VIN автомобиля',
+        blank=True,
+        null=True,
+    )
+    kitting = models.ManyToManyField(
+        Kitting,
+        verbose_name='Комплектация',
+        help_text='Комплектация автомобиля',
+        related_name='car_kitting',
+        blank=True,
+        null=True,
+    )
+    credit_from = models.PositiveIntegerField(
+        verbose_name='Кредит от',
+        help_text='Кредит от',
         blank=True,
         null=True,
     )

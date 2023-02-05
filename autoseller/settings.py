@@ -24,6 +24,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'ckeditor', # ckeditor
     'cars.apps.CarsConfig',  # application for selling cars
     'credit.apps.CreditConfig',  # application for credit calculation
     'content.apps.ContentConfig',  # application for content
@@ -67,6 +68,8 @@ TEMPLATES = [
                 'content.context_processors.get_all_tech_centers',  # context processor for getting all tech centers
                 'content.context_processors.get_whatsapp',  # context processor for getting whatsapp
                 'content.context_processors.get_title',  # context processor for getting title
+                'content.context_processors.get_dns',  # context processor for getting dns
+                'credit.context_processors.get_all_gifts',  # context processor for getting all gifts
             ],
         },
     },
@@ -117,7 +120,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'assets/'  # path to static files
-STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
+# collect static files in wgsi.py
 STATICFILES_DIRS = [
     BASE_DIR / 'assets',
 ]  # for development server only (manage.py runserver)

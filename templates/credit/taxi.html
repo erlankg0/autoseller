@@ -9,6 +9,30 @@
 
 {% endblock %}
 {% block content %}
+    <style>
+        .messages {
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        .messages .success {
+            background-color: #dff0d8;
+            border-color: #d0e9c6;
+            color: #3c763d;
+            padding: 15px;
+            width: 250px;
+            border-radius: 15px;
+        }
+
+        .messages .warning {
+            background-color: #fcf8e3;
+            border-color: #faebcc;
+            color: #8a6d3b;
+            padding: 15px;
+            width: 250px;
+            border-radius: 15px;
+        }
+    </style>
     <main class="main">
         <section class="hero" style="background-image: url('{% static "img/pics/trade-in.jpg" %}')">
             <div class="container">
@@ -59,17 +83,21 @@
                             обслуживание</p>
                     </div>
                 </div>
-                <div class="hero__special">
+                <div class="hero__special" style="display: none;">
                     <div class="hero__special-left">
                         <p>Получите специальную цену</p>
                     </div>
                     <div class="hero__special-right">
                         <div class="hero__special-right__top">
-                            <input type="text" placeholder="Ваше имя">
-                            <input type="tel" placeholder="Ваш телефон">
-                            <button type="submit" class="hero__special-right__btn red-btn">получить предложение</button>
+                            {% csrf_token %}
+                            <input type="text" name="name" id="name" placeholder="Ваше имя">
+                            <input type="tel" name="phone" id="phone" placeholder="Ваш телефон">
+                            <button type="button" class="hero__special-right__btn red-btn" id="btn_callback">получить
+                                предложение
+                            </button>
                         </div>
-                        <p>Нажимая кнопку “Получить предложение” Вы даете согласие на обработку своих персональных данных</p>
+                        <p>Нажимая кнопку “Получить предложение” Вы даете согласие на обработку своих персональных
+                            данных</p>
                     </div>
                 </div>
             </div>
@@ -145,46 +173,57 @@
 
         <section class="trade">
             <div class="container">
-                <form class="trade__form">
+                <form method="post" class="trade__form">
+                    {% csrf_token %}
+                    {% if messages %}
+                        <ul class="messages">
+                            {% for message in messages %}
+                                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
                     <section class="future_auto">
                         <div class="future_auto__list">
                             <div class="future_auto__item">
                                 <p class="title -bold">Ваш будущий автомобиль</p>
-                                <select class="select future_select">
+                                <select class="select future_select" id="brand_id">
                                     <option class="select2-results__option" value="">Марка</option>
                                     {% for brand in brands %}
                                         <option class="select2-results__option"
                                                 value="{{ brand.pk }}"> {{ brand }}</option>
                                     {% endfor %}
                                 </select>
-                                <select class="select future_select">
+                                <select class="select future_select" id="model_id" disabled>
                                     <option value="" class="select2-results__option">Модель</option>
                                 </select>
-                                <select class="select future_select">
-                                    <option value="" class="select2-results__option">Комплектация</option>
+                                <select class="select future_select" id="auto_id" name="future_car" disabled>
+                                    <option value="" class="select2-results__option">Автомобиль</option>
                                 </select>
                             </div>
                             <div class="future_auto__item">
                                 <div>
-                                    <p class="title"
+                                    <p id="autoname" class="title"
                                        style="font-size: 16px; vertical-align: bottom; direction: rtl; margin-top: 20px; color: #262626;">
                                         Kia Comfort 1.4 100
                                         л.с. 6MT 2WD (2020)
                                     </p>
                                     <div class="future__content">
-                                        <img src="{% static 'img/traid/kia.svg' %}" alt="kia" class="left-X-100"
+                                        <img id="image" src="{% static 'img/traid/kia.svg' %}" alt="kia"
+                                             class="left-X-100"
                                         >
                                         <div class="price__list">
                                             <div class="price__item">
                                                 <p style="font-size: 14px; font-weight: 400; line-height: 13px; color: #737373;">
                                                     Цена со скидками</p>
-                                                <p style="font-weight: bold; color: #262626; font-size: 24px; line-height: 24px;">
+                                                <p id="current_price"
+                                                   style="font-weight: bold; color: #262626; font-size: 24px; line-height: 24px;">
                                                     2 200 000 ₽</p>
                                             </div>
                                             <div class="price__item">
                                                 <p style="font-size: 14px;line-height: 13px; color: #737373;">Базовая
                                                     цена</p>
-                                                <p style="font-size: 18px;line-height: 18px;color: #737373;">
+                                                <p id="old_price"
+                                                   style="font-size: 18px;line-height: 18px;color: #737373;">
                                                     2 500 000 ₽
                                                 </p>
                                             </div>
@@ -207,12 +246,12 @@
 
                                 <div style="display: flex;">
                                     <h3 class="title -bold" style="color: rgba(173, 173, 176, 1);">Купить в кредит</h3>
-                                    <div class="button credit_btn">
+                                    <div class="button credit_btn" id="credit_btn">
                                         Добавить
                                     </div>
                                 </div>
                                 <div style="display: flex;">
-                                    <input type="checkbox" checked>
+                                    <input type="checkbox" name="credit" id="credit_checkbox">
                                     <p class="discount_auto">Скидка от 70
                                         000 ₽</p>
                                 </div>
@@ -224,32 +263,38 @@
                         <div class="future_auto__list">
                             <div class="future_auto__item">
                                 <p class="title -bold">Программа Trade-in</p>
-                                <select class="select future_select">
+                                <select class="select future_select" name="current_car_brand" id="brand_id_">
                                     <option class="select2-results__option" value="">Марка</option>
                                     {% for brand in brands %}
                                         <option class="select2-results__option"
                                                 value="{{ brand.pk }}"> {{ brand }}</option>
                                     {% endfor %}
                                 </select>
-                                <select class="select future_select">
+                                <select class="select future_select" id="model_id_" name="current_car_model">
                                     <option value="" class="select2-results__option">Модель</option>
                                 </select>
                             </div>
                             <div class="future_auto__item">
                                 <p class="title" style="color: #CA0100;">Скидка от 120 000 ₽ </p>
                                 <div class="row_">
-                                    <select class="select future_select">
-                                        <option class="select2-results__option" value="">Марка</option>
-                                        {% for brand in brands %}
+                                    <select class="select future_select" name="current_car_year">
+                                        <option class="select2-results__option" value="">Год выпуска</option>
+                                        {% for brand in years %}
                                             <option class="select2-results__option"
-                                                    value="{{ brand.pk }}"> {{ brand }}</option>
+                                                    value="{{ brand }}"> {{ brand }}</option>
                                         {% endfor %}
                                     </select>
-                                    <select class="select future_select">
-                                        <option value="" class="select2-results__option">Модель</option>
+                                    <select class="select future_select" name="current_car_transmission">
+                                        <option value="" class="select2-results__option">Трансмисия</option>
+                                        {% for transmission in transmissions %}
+                                            <option class="select2-results__option"
+                                                    value="{{ transmission.pk }}"> {{ transmission }}
+                                            </option>
+                                        {% endfor %}
                                     </select>
                                 </div>
-                                <input type="number" placeholder="Ваша Цена" class="input" style="width: 100%;">
+                                <input type="number" name="customer_price" placeholder="Ваша Цена" class="input"
+                                       style="width: 100%;">
                             </div>
                         </div>
                     </section>
@@ -258,16 +303,23 @@
                         <div class="future_auto__list">
                             <div class="future_auto__item">
                                 <p class="title -bold">Персональные данные</p>
-                                <input type="number" placeholder="Ваша ФИО" class="input_ input">
-                                <input type="number" placeholder="Ваш номер телефона" class="input_ input">
+                                <input type="text" name="name" placeholder="Ваша ФИО" class="input_ input">
+                                <input type="text" name="phone" placeholder="Ваш номер телефона" class="input_ input"
+                                       style="margin-top: 10px">
                             </div>
                             <div class="future_auto__item">
                                 <p class="title opacity_0">Скидка от 120 000 ₽ </p>
                                 <div class="row_">
-                                    <input type="number" placeholder="Ваш номер телефона" class="input"
-                                           style="width: 100%; margin-bottom: 10px;">
+                                    <select class="select future_select" style="width: 100%;" name="git">
+                                        <option value="" class="select2-results__option">Выберите подарок</option>
+                                        {% for transmission in gifts %}
+                                            <option class="select2-results__option"
+                                                    value="{{ transmission.pk }}"> {{ transmission }}
+                                            </option>
+                                        {% endfor %}
+                                    </select>
                                 </div>
-                                <button style="background-color: #CA0100; border-radius: 5px; padding: 20px 0; color: #FFFFFF;">
+                                <button style="margin-top: 10px; background-color: #CA0100; border-radius: 5px; padding: 20px 0; color: #FFFFFF;">
                                     Получить лучшие условия
                                 </button>
                             </div>
@@ -456,4 +508,159 @@
         </section>
         <div class="line"></div> <!-- line -->
     </main> <!-- main -->
+
+    <script>
+        $('#btn_callback').click(function () {
+            // get data
+            let name = document.getElementById('name').value; // get name from input field with id="elem1"
+            let phone = document.getElementById('phone').value; // get phone from input field with id="elem2"
+
+            if (!name || !phone) {
+                alert('Заполните все поля!');
+                return;
+            }
+
+            // ajax request
+            $.ajax({
+                url: '/{% url 'callback' %}/',
+                type: 'GET',
+                data: {
+                    'name': name,
+                    'phone': phone
+                },
+                success: function (data) {
+                    alert('Спасибо за заявку! Мы свяжемся с вами в ближайшее время.')
+                }
+            });
+        });
+
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('#brand_id').click(function () {
+                var brand_id = $(this).val();
+                $.ajax({
+                    url: '/cars/get_models/',
+                    data: {
+                        'brand_id': brand_id
+                    },
+                    success: function (data) {
+                        // clear model select
+                        $('#model_id').empty(); // remove old options if any present in select
+                        $('#model_id').append('<option value="">Выберите модель</option>');
+                        // delete disabled
+                        $('#model_id').removeAttr('disabled');
+                        $('#generation_id').empty(); // remove old options if any present in select
+                        $('#generation_id').append('<option value="">Выберите поколение</option>');
+                        $('#auto_id').empty(); // remove old options if any present in select
+                        $('#auto_id').append('<option value="">Выберите автомобиль</option>');
+                        // add new options
+                        for (var i = 0; i < data["models"].length; i++) {
+                            $('#model_id').append('<option value="' + data["models"][i]["id"] + '">' + data["models"][i]["title"] + '</option>');
+                        }
+                    }
+
+                });
+            }); // end brand change
+            $('#model_id').click(function () {
+                var model_id = $(this).val();
+                $.ajax({
+                    url: '/cars/get_cars_by_model/',
+                    data: {
+                        'model': model_id
+                    },
+                    success: function (data) {
+                        $('#auto_id').empty(); // remove old options if any present in select
+                        $('#auto_id').append('<option value="">Выберите автомобиль</option>');
+                        // delete disabled
+                        $('#auto_id').removeAttr('disabled');
+                        for (var i = 0; i < data["cars"].length; i++) {
+                            $('#auto_id').append('<option value="' + data["cars"][i]["id"] + '">' + data["cars"][i]["brand__title"] + ' ' + data["cars"][i]["model__title"] + ' ' + data["cars"][i]["generation__title"] + ' ' + data["cars"][i]["modification__title"] + '</option>');
+                        }
+                    }
+                });
+            }); // end model change
+        });
+        $('#auto_id').click(function () {
+            var auto_id = $(this).val();
+            $.ajax({
+                url: '/cars/get_car/',
+                data: {
+                    'car': auto_id
+                },
+                success: function (data) {
+                    $('#autoname').text(data["car"][0]["brand__title"] + ' ' + data["car"][0]["model__title"] + ' ' + data["car"][0]["generation__title"] + ' ' + data["car"][0]["modification__title"]);
+                    $('#old_price').text(data["car"][0]["price"] + 300000 + ' ₽');
+                    $('#current_price').text(data["car"][0]["price"] + ' ₽');
+                    $('#image').attr('src', '/assets/img/secret-car.png');
+                }
+            });
+        });
+        $('#btn_new_car').click(function () {
+            var brand_id = $('#brand_id').val();
+            var model_id = $('#model_id').val();
+            var generation_id = $('#generation_id').val();
+            $.ajax({
+                url: '/cars/get_new_car/',
+                data: {
+                    'brand_id': brand_id,
+                    'model_id': model_id,
+                    'generation_id': generation_id
+                },
+                success: function (data) {
+                    console.log(data);
+                }
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('#brand_id_').click(function () {
+                var brand_id = $(this).val();
+                $.ajax({
+                    url: '/cars/get_models/',
+                    data: {
+                        'brand_id': brand_id
+                    },
+                    success: function (data) {
+                        // clear model select
+                        $('#model_id_').empty(); // remove old options if any present in select
+                        $('#model_id_').append('<option value="">Выберите модель</option>');
+                        // delete disabled
+                        $('#model_id_').removeAttr('disabled');
+                        $('#generation_id').empty(); // remove old options if any present in select
+                        $('#generation_id').append('<option value="">Выберите поколение</option>');
+                        // add new options
+                        for (var i = 0; i < data["models"].length; i++) {
+                            $('#model_id_').append('<option value="' + data["models"][i]["id"] + '">' + data["models"][i]["title"] + '</option>');
+                        }
+                    }
+
+                });
+            }); // end brand change
+            $('#model_id_').click(function () {
+                var model_id = $(this).val();
+                $.ajax({
+                    url: '/cars/get_cars_by_model/',
+                    data: {
+                        'model': model_id
+                    },
+                    success: function (data) {
+                        for (var i = 0; i < data["cars"].length; i++) {
+                            $('#auto_id').append('<option value="' + data["cars"][i]["id"] + '">' + data["cars"][i]["brand__title"] + ' ' + data["cars"][i]["model__title"] + ' ' + data["cars"][i]["generation__title"] + ' ' + data["cars"][i]["modification__title"] + '</option>');
+                        }
+                    }
+                });
+            }); // end model change
+        });
+        $('#credit_btn').click(function () {
+            var checkbox = $('#credit_checkbox').attr('checked');
+            if (checkbox === 'checked') {
+                $('#credit_checkbox').removeAttr('checked');
+            } else {
+                $('#credit_checkbox').attr('checked', 'checked');
+            }
+        });
+    </script>
+
 {% endblock content %}

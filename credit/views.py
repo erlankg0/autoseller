@@ -1,19 +1,25 @@
 from django.contrib import messages
 from django.shortcuts import redirect
+from django.urls import reverse_lazy
 from django.views.generic import CreateView
 
 from credit.forms import CreditRequestForm
-from credit.models import TradeIn
+from credit.models import TradeIn, CallBack, TradeInRequest
 
 
 class CreditRequestCreateView(CreateView):
     form_class = CreditRequestForm
     template_name = 'credit/credit.html'
-    success_url = '/'
+    success_url = reverse_lazy('credit_request_create')
 
     def form_valid(self, form):
         form.save()
+        messages.success(self.request, "Ваша заявка на кредит успешно отправлена")
         return super().form_valid(form)
+
+    def form_invalid(self, form):
+        messages.warning(self.request, "Ваша заявка на кредит не отправлена")
+        return super().form_invalid(form)
 
 
 def trade_in(request):
@@ -29,11 +35,28 @@ def trade_in(request):
 
 
 class TradeInCreateView(CreateView):
-    model = TradeIn
-    fields = ['name', 'phone']
-    success_url = '/'
+    model = TradeInRequest
+    fields = '__all__'
+    success_url = reverse_lazy('trade_in_create')
     template_name = 'credit/taxi.html'
 
     def form_valid(self, form):
         form.save()
+        messages.success(self.request, "Ваша заявка на Trade-in успешно отправлена")
+        print(
+            f"Заявка на Trade-in от {form.cleaned_data['name']} с номером телефона {form.cleaned_data['phone']}"
+        )
         return super().form_valid(form)
+
+    def form_invalid(self, form):
+        messages.warning(self.request, "Ваша заявка на Trade-in не отправлена")
+        return super().form_invalid(form)
+
+
+def callback(request):
+    CallBack.objects.create(
+        name=request.GET.get('name'),
+        phone=request.GET.get('phone'),
+    )
+    messages.success(request, "Ваша заявка на обратный звонок успешно отправлена")
+    return redirect('trade_in_create')

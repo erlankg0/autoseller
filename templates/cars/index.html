@@ -66,10 +66,12 @@
                             <div class="card__price card__flex" style='min-height: 60px;'>
                                 <span class=" -bold"
                                       style="max-width: 50%; width: 50%; align-self: end;">от {{ car.price }} &#8381</span>
-                                <div class="card__payment" style="width: 50%; max-width: 50%;">
-                                    Кредит
-                                    <p class="-bold bold_price">от {{ car.price }} &#8381/мес.</p>
-                                </div>
+                                {% if car.credit_from %}
+                                    <div class="card__payment" style="width: 50%; max-width: 50%;">
+                                        Кредит
+                                        <p class="-bold bold_price">от {{ car.credit_from }} &#8381/мес.</p>
+                                    </div>
+                                {% endif %}
                             </div>
                             <div class="card__flex card__option-list" style="flex-direction: row;">
                                 <div class="card__option-item i-engine i-engine--m">
