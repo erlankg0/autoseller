@@ -129,9 +129,7 @@ USE_TZ = True
 
 STATIC_URL = 'assets/'  # path to static files
 # collect static files in wgsi.py
-STATICFILES_DIRS = [
-    BASE_DIR / 'assets',
-]  # for development server only (manage.py runserver)
+STATIC_ROOT = 'home/django/autoseller/assets'
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
