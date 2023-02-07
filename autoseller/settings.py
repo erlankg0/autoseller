@@ -1,12 +1,24 @@
-from pathlib import Path
 import os
+from pathlib import Path
+from pathlib import Path
+
+import psycopg2
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = 'django1-insecure-c*k5o_86df1bafuusv*y^v2a71znfb=*vx!kim%p)s(0be83lb'
+
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = True
+
+ALLOWED_HOSTS = ['89.108.79.196']
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 # Application definition
+
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -83,7 +95,16 @@ WSGI_APPLICATION = 'autoseller.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
-
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'autoseller',
+        'USER': 'userdb',
+        'PASSWORD': '12345',
+        'HOST': 'localhost',
+        'PORT': '',
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -117,7 +138,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 STATIC_URL = 'static/'  # path to static files
-# Media files (user uploaded files)
+STATIC_ROOT = 'home/django/autoseller/static'
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+]  # for development server only (manage.py runserver)
+# for development server only (manage.py runserver)
 
 MEDIA_URL = 'media/'
 MEDIA_ROOT = 'home/django/autoseller/media'
@@ -126,8 +152,3 @@ MEDIA_ROOT = 'home/django/autoseller/media'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-try:
-    from .localsetting import *
-except ImportError:
-    from .prod_settings import *

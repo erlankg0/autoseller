@@ -10,7 +10,7 @@ SECRET_KEY = 'django1-insecure-c*k5o_86df1bafuusv*y^v2a71znfb=*vx!kim%p)s(0be83l
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['89.108.79.196']
 
 STATIC_URL = 'static/'  # path to static files
 STATIC_ROOT = 'home/django/autoseller/static'
