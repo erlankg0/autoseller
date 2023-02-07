@@ -430,76 +430,76 @@ h6 {
 }
 
 .address--l::before {
-    background-image: url("/assets/img/location-big.svg");
+    background-image: url("/static/img/location-big.svg");
 }
 
 .address--s::before {
-    background-image: url("/assets/img/location.svg");
+    background-image: url("/static/img/location.svg");
 }
 
 .worktime--l::before {
-    background-image: url("/assets/img/watch-big.svg");
+    background-image: url("/static/img/watch-big.svg");
 }
 
 .worktime--s::before {
-    background-image: url("/assets/img/watch.svg");
+    background-image: url("/static/img/watch.svg");
 }
 
 .phone--l::before {
-    background-image: url("/assets/img/phone-w.svg");
+    background-image: url("/static/img/phone-w.svg");
 }
 
 .phone--s::before {
-    background-image: url("/assets/img/phone-w.svg");
+    background-image: url("/static/img/phone-w.svg");
 }
 
 .gift--l::before {
-    background-image: url("/assets/img/gift.svg");
+    background-image: url("/static/img/gift.svg");
     background-size: 55%;
 }
 
 .gift--s::before {
-    background-image: url("/assets/img/watch.svg");
+    background-image: url("/static/img/watch.svg");
 }
 
 .whatsapp--l::before {
-    background-image: url("/assets/img/whatsapp.svg");
+    background-image: url("/static/img/whatsapp.svg");
 }
 
 .whatsapp--s::before {
-    background-image: url("/assets/img/whatsapp.svg");
+    background-image: url("/static/img/whatsapp.svg");
 }
 
 .i-engine--l::before {
-    background-image: url("/assets/img/engine.svg");
+    background-image: url("/static/img/engine.svg");
 }
 
 .i-engine--m::before {
-    background-image: url("/assets/img/engine.svg");
+    background-image: url("/static/img/engine.svg");
 }
 
 .i-gas--l::before {
-    background-image: url("/assets/img/gas.svg");
+    background-image: url("/static/img/gas.svg");
 }
 
 .i-gas--m::before {
-    background-image: url("/assets/img/gas.svg");
+    background-image: url("/static/img/gas.svg");
 }
 
 .i-speed--l::before {
-    background-image: url("/assets/img/speed.svg");
+    background-image: url("/static/img/speed.svg");
 }
 
 .i-speed--m::before {
-    background-image: url("/assets/img/speed.svg");
+    background-image: url("/static/img/speed.svg");
 }
 
 .i-timer--l::before {
-    background-image: url("/assets/img/timer.svg");
+    background-image: url("/static/img/timer.svg");
 }
 
 .i-timer--m::before {
-    background-image: url("/assets/img/timer.svg");
+    background-image: url("/static/img/timer.svg");
 }
 
 .likes-icon {
@@ -508,7 +508,7 @@ h6 {
     height: 20px;
     background-size: contain;
     background-repeat: no-repeat;
-    background-image: url("/assets/img/like.svg");
+    background-image: url("/static/img/like.svg");
 }
 
 .compare-icon {
@@ -517,7 +517,7 @@ h6 {
     height: 20px;
     background-size: contain;
     background-repeat: no-repeat;
-    background-image: url("/assets/img/compare.svg");
+    background-image: url("/static/img/compare.svg");
 }
 
 .search-icon {
@@ -526,7 +526,7 @@ h6 {
     height: 20px;
     background-size: contain;
     background-repeat: no-repeat;
-    background-image: url("/assets/img/search.svg");
+    background-image: url("/static/img/search.svg");
 }
 
 .back-icon {
@@ -536,7 +536,7 @@ h6 {
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    background-image: url("/assets/img/arrow-toleft.svg");
+    background-image: url("/static/img/arrow-toleft.svg");
 }
 
 .button {
@@ -684,7 +684,7 @@ h6 {
 
 input[type=search]::-webkit-search-cancel-button {
     -webkit-appearance: none;
-    background-image: url("/assets/img/search-close-btn.svg");
+    background-image: url("/static/img/search-close-btn.svg");
     background-size: contain;
     width: 10px;
     height: 10px;
@@ -832,7 +832,7 @@ input[type=search]::-webkit-search-cancel-button {
     background-color: #fff;
     border-radius: 25px;
     overflow: hidden;
-    background-image: url("/assets/img/slide01_city--flip.jpg");
+    background-image: url("/static/img/slide01_city--flip.jpg");
     background-repeat: no-repeat;
     background-position: right 55px;
     background-size: 90%;
@@ -1398,7 +1398,7 @@ input:-webkit-autofill:active {
     float: left;
     display: block;
     margin-right: 2px;
-    background: url("/assets/img/phone-r.svg") no-repeat;
+    background: url("/static/img/phone-r.svg") no-repeat;
     background-size: contain;
 }
 
@@ -1573,7 +1573,7 @@ input:-webkit-autofill:active {
 }
 
 .navigation__menu .ar::before {
-    background-image: url("/assets/img/arrow-red.svg");
+    background-image: url("/static/img/arrow-red.svg");
     margin-right: 18px;
     margin-bottom: 2px;
 }
@@ -1822,7 +1822,7 @@ input:-webkit-autofill:active {
 
     .navigation__menu .dropdown .ar::after {
         margin: 0 0px 4px 10px;
-        background-image: url("/assets/img/arrow-gray.svg");
+        background-image: url("/static/img/arrow-gray.svg");
         transform: rotate(90deg);
     }
 
@@ -2119,7 +2119,7 @@ input:-webkit-autofill:active {
     display: block;
     width: 100%;
     height: 100%;
-    background: url("/assets/img/arrow.svg") no-repeat;
+    background: url("/static/img/arrow.svg") no-repeat;
 }
 
 .top-banner .slick-prev {
@@ -2147,7 +2147,7 @@ input:-webkit-autofill:active {
 
 .top-banner__bg {
     width: 100%;
-    background-image: url("/assets/img/slide01_city--m.jpg");
+    background-image: url("/static/img/slide01_city--m.jpg");
     background-color: #EFF0F0;
     background-position: right 80px;
     background-repeat: no-repeat;
@@ -2177,7 +2177,7 @@ input:-webkit-autofill:active {
     }
 
     .top-banner__bg {
-        background-image: url("/assets/img/slide01_city--l.jpg");
+        background-image: url("/static/img/slide01_city--l.jpg");
     }
 }
 
@@ -3562,7 +3562,7 @@ input:-webkit-autofill:active {
 
 .trust__stars li {
     display: inline-block;
-    background-image: url("/assets/img/star.svg");
+    background-image: url("/static/img/star.svg");
     background-repeat: no-repeat;
     background-position: center;
     width: 19px;
@@ -3625,7 +3625,7 @@ input:-webkit-autofill:active {
 }
 
 .y-logo {
-    background-image: url("/assets/img/yandex-maps-logo.png");
+    background-image: url("/static/img/yandex-maps-logo.png");
     width: 224px;
 }
 

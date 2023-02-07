@@ -9,7 +9,7 @@ media
 cars/migrations
 content/migrations
 credit/migrations
-assets/video
+static/video
 
 # Backup files #
 *.bak

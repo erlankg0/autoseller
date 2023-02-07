@@ -117,7 +117,7 @@
     border-radius: 25px;
     border: 1px solid var(--medium-gray);
     height: 600px;
-    background-image: url('/assets/img/main-1920/kia-hero-back.png'), url('/assets/img/main-1920/toyota-hero-back.png'), url('/assets/img/main-1920/rapid-hero-back.png'), url('/assets/img/main-1920/hero-back.png');
+    background-image: url('/static/img/main-1920/kia-hero-back.png'), url('/static/img/main-1920/toyota-hero-back.png'), url('/static/img/main-1920/rapid-hero-back.png'), url('/static/img/main-1920/hero-back.png');
     background-repeat: no-repeat;
     background-position: 65% 83%, 80% 65%, 90% 50%, right;
     background-size: 35%, 30%, 25%, contain;
@@ -279,7 +279,7 @@
     border-radius: 25px;
     background-color: var(--white);
     box-shadow: 0px 0px 30px rgba(133, 147, 159, 0.3);
-    background-image: url('/assets/img/main-1920/auto-skoda-back.png'), url('/assets/img/main-1920/auto-back.png');
+    background-image: url('/static/img/main-1920/auto-skoda-back.png'), url('/static/img/main-1920/auto-back.png');
     background-repeat: no-repeat;
     background-size: 60%, 85%;
     background-position: 85% center, 100% 30%;
@@ -303,7 +303,7 @@
 }
 
 .auto__card-promo span {
-    background-image: url('/assets/img/main-1920/auto-span.png');
+    background-image: url('/static/img/main-1920/auto-span.png');
     background-size: contain;
     background-repeat: no-repeat;
     color: var(--white);
@@ -361,7 +361,7 @@
 }
 
 .auto__card-gifts__item {
-    background-image: url('/assets/img/main-1920/auto-gift-back.png');
+    background-image: url('/static/img/main-1920/auto-gift-back.png');
     background-repeat: no-repeat;
     padding-left: 42px;
 }
@@ -517,27 +517,27 @@
 }
 
 .our-ideas__bottomside-card:nth-child(1) {
-    background-image: url('/assets/img/main-1920/our-ideas-1.png');
+    background-image: url('/static/img/main-1920/our-ideas-1.png');
 }
 
 .our-ideas__bottomside-card:nth-child(2) {
-    background-image: url('/assets/img/main-1920/our-ideas-2.png');
+    background-image: url('/static/img/main-1920/our-ideas-2.png');
 }
 
 .our-ideas__bottomside-card:nth-child(3) {
-    background-image: url('/assets/img/main-1920/our-ideas-3.png');
+    background-image: url('/static/img/main-1920/our-ideas-3.png');
 }
 
 .our-ideas__bottomside-card:nth-child(4) {
-    background-image: url('/assets/img/main-1920/our-ideas-1.png');
+    background-image: url('/static/img/main-1920/our-ideas-1.png');
 }
 
 .our-ideas__bottomside-card:nth-child(6) {
-    background-image: url('/assets/img/main-1920/our-ideas-2.png');
+    background-image: url('/static/img/main-1920/our-ideas-2.png');
 }
 
 .our-ideas__bottomside-card:nth-child(5) {
-    background-image: url('/assets/img/main-1920/our-ideas-3.png');
+    background-image: url('/static/img/main-1920/our-ideas-3.png');
 }
 
 .our-ideas__sale {
@@ -545,7 +545,7 @@
     background-color: var(--dark-gray);
     width: 100%;
     min-height: 328px;
-    background-image: url('/assets/img/main-1920/our-ideas-bottom2.png'), url('/assets/img/main-1920/our-ideas-bottom1.png');
+    background-image: url('/static/img/main-1920/our-ideas-bottom2.png'), url('/static/img/main-1920/our-ideas-bottom1.png');
     background-repeat: no-repeat;
     background-position: left center;
     border-radius: 25px;
@@ -645,23 +645,23 @@
 }
 
 .special__cards-item:nth-child(1) {
-    background-image: url('/assets/img/main-1920/special-1.png');
+    background-image: url('/static/img/main-1920/special-1.png');
 }
 
 .special__cards-item:nth-child(2) {
-    background-image: url('/assets/img/main-1920/special-2.png');
+    background-image: url('/static/img/main-1920/special-2.png');
 }
 
 .special__cards-item:nth-child(3) {
-    background-image: url('/assets/img/main-1920/special-3.png');
+    background-image: url('/static/img/main-1920/special-3.png');
 }
 
 .special__cards-item:nth-child(4) {
-    background-image: url('/assets/img/main-1920/credit-med.png');
+    background-image: url('/static/img/main-1920/credit-med.png');
 }
 
 .special__cards-item:nth-child(5) {
-    background-image: url('/assets/img/main-1920/credit-rass.png');
+    background-image: url('/static/img/main-1920/credit-rass.png');
 }
 
 .special__cards-item__title {
@@ -860,19 +860,19 @@
 }
 
 .banks__bottom-item:nth-child(1) {
-    background-image: url('/assets/img/main-1920/banks-1.png');
+    background-image: url('/static/img/main-1920/banks-1.png');
 }
 
 .banks__bottom-item:nth-child(2) {
-    background-image: url('/assets/img/main-1920/banks-2.png');
+    background-image: url('/static/img/main-1920/banks-2.png');
 }
 
 .banks__bottom-item:nth-child(3) {
-    background-image: url('/assets/img/main-1920/banks-3.png');
+    background-image: url('/static/img/main-1920/banks-3.png');
 }
 
 .banks__bottom-item:nth-child(4) {
-    background-image: url('/assets/img/main-1920/banks-4.png');
+    background-image: url('/static/img/main-1920/banks-4.png');
 }
 
 /* Feedback */
@@ -967,7 +967,7 @@
     height: 585px;
     border-radius: 25px;
     background-color: #F2F2F2;
-    background-image: url('/assets/img/main-1920/peoples-play-btn.png'), url('/assets/img/main-1920/peoples-back-logo.png'), url('/assets/img/main-1920/peoples-back.png');
+    background-image: url('/static/img/main-1920/peoples-play-btn.png'), url('/static/img/main-1920/peoples-back-logo.png'), url('/static/img/main-1920/peoples-back.png');
     background-position: center 20%, center 15%, center top;
     background-repeat: no-repeat;
     padding: 330px 30px 40px 30px;
