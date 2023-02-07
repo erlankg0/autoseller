@@ -1,6 +1,5 @@
 from django.db import models
 from django.urls import reverse
-from ckeditor.fields import RichTextField
 from cars.utils import directory_image_path, directory_image_path_vehicle
 
 
@@ -366,7 +365,7 @@ class Car(models.Model):
         help_text='Модификация автомобиля (например, 320i)',
         related_name='car_modification',
     )
-    description = RichTextField(
+    description = models.TextField(
         verbose_name="Описание автомобиля",
         blank=True,
         null=True,
