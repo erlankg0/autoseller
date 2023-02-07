@@ -138,7 +138,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 STATIC_URL = 'static/'  # path to static files
-STATIC_ROOT = 'home/django/autoseller/static'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')  # path to static files
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
@@ -146,7 +146,7 @@ STATICFILES_FINDERS = [
 # for development server only (manage.py runserver)
 
 MEDIA_URL = 'media/'
-MEDIA_ROOT = 'home/django/autoseller/media'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
