@@ -5,6 +5,7 @@ from cars.views import DetailCarView, UsedCarsListView, NewCarsByBrandListView, 
 from cars.views import detail
 from cars.views import get_models, get_generations, get_modifications, get_cars_by_model, get_car
 from cars.feed import CarFeed, CarDetailFeed
+from cars.views import CarsAPIView, Car_imagesAPIView
 
 urlpatterns = [
     path('new/brand/<int:brand_id>/', NewCarsByBrandListView.as_view(), name='brand_new'),
@@ -23,6 +24,9 @@ urlpatterns = [
     path('feed/', CarFeed(), name='car_feed'),
     path('car_xml_feed/', car_xml_feed, name='car_xml_feed'),
     path('car_xml_feed_detail/<int:pk>/', car_xml_feed_detail, name='car_xml_feed_detail'),
-    path('<int:pk>/feed/', CarDetailFeed(), name='car_detail_feed')
+    path('<int:pk>/feed/', CarDetailFeed(), name='car_detail_feed'),
+    # API
+    path('api/<int:id>/', CarsAPIView.as_view(), name='api'),
+    path('api/img/<int:id>/', Car_imagesAPIView.as_view(), name='api2'),
 
 ]

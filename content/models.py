@@ -1,3 +1,4 @@
+from PIL import Image
 from django.core.exceptions import ValidationError
 from django.db import models
 
@@ -228,3 +229,57 @@ class Banner(models.Model):
         verbose_name = 'Баннер'
         verbose_name_plural = 'Баннеры'
         db_table = 'banner'
+
+
+class Banks(models.Model):
+    title = models.CharField(
+        max_length=255,
+        verbose_name='Название банка',
+        help_text='Название банка',
+        unique=True
+    )  # название банка
+    image = models.ImageField(
+        upload_to='banks/',
+        verbose_name='Изображение',
+        help_text='Размер изображения должен быть минимум 200px по ширине и максимум 100px по высоте',
+    )  # изображение банка
+
+    def __str__(self):
+        return self.title
+
+    def clean(self):
+        # Валидация размера изображения мин и макс ширина 200px и высота максимум 100px
+        if self.image:
+            img = Image.open(self.image)
+            width, height = img.size
+            if width < 200 or height > 100:
+                raise ValidationError(
+                    'Размер изображения должен быть минимум 200px по ширине и максимум 100px по высоте')
+
+    class Meta:
+        verbose_name = 'Банк'
+        verbose_name_plural = 'Банки'
+        db_table = 'banks'
+
+
+class Color(models.Model):
+    title = models.CharField(
+        max_length=255,
+        verbose_name='Название цвета',
+        help_text='Название цвета',
+        unique=True
+    )  # название цвета
+    color = models.CharField(
+        max_length=255,
+        verbose_name='Цвет',
+        help_text='Цвет',
+        unique=True
+    )  # цвет
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = 'Цвет'
+        verbose_name_plural = 'Цвета'
+        db_table = 'color'

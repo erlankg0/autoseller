@@ -4,6 +4,37 @@ from cars.forms import CarForm
 from cars.models import Brand, Model, Generation, Modification, Kitting
 from cars.models import Car, CarImages
 from cars.models import Engine, Transmissions, DriveUnit, Fuel, BodyType, Years, Volume
+from cars.models import Exterior, Interior, Secure, Comfort, Multimedia, Other
+
+
+@admin.register(Exterior)
+class ExteriorAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(Interior)
+class InteriorAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(Secure)
+class SecureAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(Comfort)
+class ComfortAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(Multimedia)
+class MultimediaAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(Other)
+class OtherAdmin(admin.ModelAdmin):
+    pass
 
 
 @admin.register(Years)
@@ -90,6 +121,12 @@ class CarAdmin(admin.ModelAdmin):
 
     def get_modification(self, obj):
         return obj.modification.title
+
+    get_year.short_description = 'Год'
+    get_brand.short_description = 'Марка'
+    get_model.short_description = 'Модель'
+    get_generation.short_description = 'Поколение'
+    get_modification.short_description = 'Модификация'
 
     list_display = ('new', 'get_brand', 'get_model', 'get_generation', 'price', 'get_year', 'get_modification')
     list_display_links = ('get_brand', 'get_model', 'get_generation', 'get_year', 'get_modification')

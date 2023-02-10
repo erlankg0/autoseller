@@ -2,8 +2,22 @@ from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render
 from django.template.loader import get_template
 from django.views.generic import ListView, DetailView
+from rest_framework.response import Response
+from rest_framework.views import APIView
 
 from cars.models import Model, Generation, Modification, Car, CarImages
+
+
+class CarsAPIView(APIView):
+    def get(self, request, id):
+        car = Car.objects.filter(id=id).values()
+        return Response({'car': car})
+
+
+class Car_imagesAPIView(APIView):
+    def get(self, request, id):
+        car = CarImages.objects.filter(car_id=id).values()
+        return Response({'car': car})
 
 
 class CarsListView(ListView):

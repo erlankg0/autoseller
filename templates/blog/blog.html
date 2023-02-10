@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Блог{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+    <link rel="stylesheet" href="{% static 'css/blogs.css' %}">
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <p class="backlink-p">
+            <a href="{% url 'index' %}" class="back-link">Главная / </a>
+            <a href="{% url 'blogs' %}" class="back-link">Блоги</a> / Блог
+        </p>
+    </div>
+    <section class="blog_">
+        <div class="container">
+            <div class="blog__content">
+                <div class="page__title">
+                    {{ blog.title }}
+                </div>
+                <div class="blog__date">{{ blog.pub_date_pretty }}</div>
+                <div class="blog__img">
+                    <img src="{{ blog.image_url }}" alt="{{ blog.title }}">
+                </div>
+                <div class="description">
+                    {{ blog.body }}
+                </div>
+                {% if blog.middle_title %}
+                    <div class="title" style="font-weight: 600; margin: 30px 0;">
+                        {{ blog.middle_title }}
+                    </div>
+                {% endif %}
+                {% if blog.middle_body %}
+                    <div class="description">
+                        {{ blog.middle_body }}
+                    </div>
+                {% endif %}
+                {% if blog.middle_image %}
+                    <div class="blog__img">
+                        <img src="{{ blog.middle_image.url }}" alt="{{ blog.middle_title }}">
+                    </div>
+                {% endif %}
+                {% if blog.last_title %}
+                    <div class="title" style="font-weight: 600; margin: 30px 0;">
+                        {{ blog.last_title }}
+                    </div>
+                {% endif %}
+                {% if blog.last_body %}
+                    <div class="description">
+                        {{ blog.last_body }}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+    <section class="sale">
+        <div class="container">
+            <div class="_container">
+                <div class="blog__content">
+                    <div class="sale__inner">
+                        <div class="sale__content">
+                            <h3 class="sale__title">Остались вопросы? Закажите звонок</h3>
+                            <form action="" class="sale__form">
+                                <input type="text" placeholder="Ваше имя" class="input" id="name">
+                                <input type="tel" placeholder="Ваш телефон" class="input" id="phone">
+                                <button class="button">Отправить</button>
+                            </form>
+                            <p class="sale__note">
+                                Нажимая кнопку “Отправить” Вы даете согласие на обработку своих
+                                <a href="" class="">персональных данных</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

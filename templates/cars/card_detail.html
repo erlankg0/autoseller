@@ -5,7 +5,9 @@
     <link rel="stylesheet" href="{% static 'css/lightbox.css' %}">
     <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/taxi-credit.css' %}">
 {% endblock %}
+
 {% block content %}
     <main class="main" style="padding: 0px 30px;">
         <section class="main-main">
@@ -30,7 +32,8 @@
                                             <div class="item">
                                                 <img src="{{ image.image.url }}"
                                                      alt="{{ car.brand.title }} {{ car.model.title }} {{ car.generation.title }}"
-                                                     style="min-width: 800px; width: 800px; max-width: 100%;">
+                                                     style="min-width: 800px; width: 800px; max-width: 100%; height: 560px;
+                                                      max-height: 560px; max-height: 560px; object-fit: fill;">
                                             </div>
                                         {% endfor %}
                                     {% endif %}
@@ -59,9 +62,9 @@
                             <div class="main-item__info-params__item">
                                 <img src="{% static 'img/auto-probeg-page-1920/privod.png' %}" alt="">
                                 {% if car.modification.drive_unit %}
-                                    {% for drive in car.modification.drive_unit.all %}
-                                        <p style="margin: 0 auto;">{{ drive }}</p>
-                                    {% endfor %}
+
+                                    <p style="margin: 0 auto;">{{ car.modification.drive_unit }}</p>
+
                                 {% endif %}
                             </div>
                         </div>
@@ -70,7 +73,7 @@
                                 {{ car.price }} ₽
                             </p>
                             <p class="main-item__info-price__credit">
-                                В кредит от 12 000 ₽/мес
+                                От {{ car.credit_from }} месяцев.
                             </p>
                         </div>
                         <div class="main-item__info-btns">
@@ -78,7 +81,7 @@
                                 Забронировать онлайн
                             </button>
                             <button class="main-item__info-credit">
-                                Купить в кредит
+                                <a href="{% url 'credit_request_create' %}" style="color: black;"> Рассчитать кредит</a>
                             </button>
                         </div>
                         <div class="main-item__info-total">
@@ -99,16 +102,16 @@
                             <div class="main-item__info-total__desc">
                                 <p class="main-item__info-total__desc-item">
                                     Привод: {% if car.modification.drive_unit %}
-                                    {% for drive in car.modification.drive_unit.all %}
-                                        <span>{{ drive }}</span>
-                                    {% endfor %}
+
+                                    <span>{{ car.modification.drive_unit }}</span>
+
                                 {% endif %}
                                 </p>
                                 <p class="main-item__info-total__desc-item">
                                     Кузов: {% if car.modification.body_type %}
-                                    {% for body in car.modification.body_type.all %}
-                                        <span>{{ body }}</span>
-                                    {% endfor %}
+
+                                    <span>{{ car.modification.body_type }}</span>
+
                                 {% endif %}
                                 </p>
                                 <p class="main-item__info-total__desc-item">
@@ -231,29 +234,125 @@
                         </p>
                     </div>
                 {% endif %}
-                {% if car.kitting.count %}
-                    <div class="main-complect">
-                        <h2 class="sec-title">
-                            Комплектация {{ car.brand.title }} {{ car.model.title }} {{ car.generation.title }} {{ car.modification.title }}
-                        </h2>
-                        <div class="main-complect__content">
-                            <div class="main-complect__list">
-                                <div class="main-complect__list-item">
-                                    {% for kitting in car.kitting.all %}
-                                        <div class="main-complect__list-item__row">
-                                            <p class="main-complect__list-item__row-title">
-                                                {{ kitting.name }}.
+
+                <div class="main-complect">
+                    <h2 class="sec-title">
+                        Опции {{ car.brand.title }} {{ car.model.title }} {{ car.generation.title }} {{ car.modification.title }}
+                    </h2>
+                    {% if car.secure.count and car.exterior.count %}
+                        <section class="terms">
+                            <div class="container">
+                                <div class="terms__list">
+                                    {% if car.secure.all %}
+                                        <div class="terms__item terms_buy" style="width: 50%;">
+                                            <p class="title">
+                                                Безопасность
                                             </p>
-                                            <p class="main-complect__list-item__row-desc">
-                                                {{ kitting.description }}
-                                            </p>
+                                            <div class="buy">
+                                                <ul class="buy__terms__list">
+                                                    {% for secure in car.secure.all %}
+                                                        <li>
+                                                            <img src="{% static 'img/traid/accept.svg' %}" alt="img">
+                                                            <span>{{ secure }}</span>
+                                                        </li>
+                                                    {% endfor %}
+                                                </ul>
+                                            </div>
                                         </div>
-                                    {% endfor %}
+                                        <div class="vertical_line"></div>
+                                    {% endif %}
+                                    {% if car.exterior.all %}
+                                        <div class="terms__item doc">
+                                            <p class="title">
+                                                Экстерьер
+                                            </p>
+
+                                            <div class="buy">
+                                                <ul class="buy__terms__list">
+                                                    {% for exterior in car.exterior.all %}
+                                                        <li>
+                                                            <img src="{% static 'img/traid/accept.svg' %}" alt="img">
+                                                            <span>{{ exterior }}</span>
+                                                        </li>
+                                                    {% endfor %}
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    {% endif %}
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                {% endif %}
+                        </section>
+                    {% endif %}
+                    {% if car.interior.count and car.multimedia.count %}
+                        <section class="terms">
+                            <div class="container">
+                                <div class="terms__list">
+                                    {% if car.interior.all %}
+                                        <div class="terms__item terms_buy" style="width: 50%;">
+                                            <p class="title">
+                                                Интерьер
+                                            </p>
+                                            <div class="buy">
+                                                <ul class="buy__terms__list">
+                                                    {% for secure in car.interior.all %}
+                                                        <li>
+                                                            <img src="{% static 'img/traid/accept.svg' %}" alt="img">
+                                                            <span>{{ secure }}</span>
+                                                        </li>
+                                                    {% endfor %}
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="vertical_line"></div>
+                                    {% endif %}
+                                    {% if car.multimedia.all %}
+                                        <div class="terms__item doc">
+                                            <p class="title">
+                                                Мультимедиа
+                                            </p>
+
+                                            <div class="buy">
+                                                <ul class="buy__terms__list">
+                                                    {% for exterior in car.multimedia.all %}
+                                                        <li>
+                                                            <img src="{% static 'img/traid/accept.svg' %}" alt="img">
+                                                            <span>{{ exterior }}</span>
+                                                        </li>
+                                                    {% endfor %}
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </section>
+                    {% endif %}
+                    {% if car.other.count %}
+                        <section class="terms">
+                            <div class="container">
+                                <div class="terms__list">
+                                    {% if car.other.all %}
+                                        <div class="terms__item terms_buy" style="width: 100%;">
+                                            <p class="title">
+                                                Другое
+                                            </p>
+                                            <div class="buy">
+                                                <ul class="buy__terms__list">
+                                                    {% for secure in car.other.all %}
+                                                        <li>
+                                                            <img src="{% static 'img/traid/accept.svg' %}" alt="img">
+                                                            <span>{{ secure }}</span>
+                                                        </li>
+                                                    {% endfor %}
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </section>
+                    {% endif %}
+                </div>
             </div>
         </section>
         <section class="probeg">
@@ -266,9 +365,9 @@
                 <div class="auto__list">
                     {% for car_ in cars %}
                         <div class="auto__item" data-price="{{ car.price }}">
-                            <div class="card" style="background-image: none; max-height: 440px; min-height: 440px;">
+                            <div class="card" style="background-image: none; max-height: 390px; min-height: 390px;">
                                 <a href="{{ car.get_absolute_url }}" class="card__flex">
-                                    <div class="card__title" style='min-height: 70px; max-height:70px;'>
+                                    <div class="card__title">
                                         {{ car.brand.title }}
                                         <nobr>{{ car.modification.volume }}</nobr>
                                         {{ car.modification }}
@@ -284,13 +383,15 @@
                                         {% endfor %}
                                     {% endif %}
                                 </a>
-                                <div class="card__price card__flex" style='min-height: 60px;'>
+                                <div class="card__price card__flex">
                                 <span class=" -bold"
-                                      style="max-width: 50%; width: 50%; align-self: end;">от {{ car.price }} &#8381</span>
-                                    <div class="card__payment" style="width: 50%; max-width: 50%;">
-                                        Кредит
-                                        <p class="-bold bold_price">от {{ car.price }} &#8381/мес.</p>
-                                    </div>
+                                      style="max-width: 54%; width: 50%; align-self: end;font-size: 16px; transform: translateY(3px);">от {{ car.price }} &#8381</span>
+                                    {% if car.credit_from %}
+                                        <div class="card__payment" style="width: 50%; max-width: 50%;font-size: 14px;">
+                                            Кредит
+                                            <p class="-bold bold_price">от {{ car.credit_from }}/мес.</p>
+                                        </div>
+                                    {% endif %}
                                 </div>
                                 <div class="card__flex card__option-list" style="flex-direction: row;">
                                     <div class="card__option-item i-engine i-engine--m">
@@ -307,9 +408,9 @@
                                     </div>
                                 </div>
                                 <div class="card__nav nav">
-                                    <div class="card__polygon nav__reserve">
+                                    <a class="card__polygon nav__buy" style="background: #CA0100; cursor: pointer;">
                                         Резервировать
-                                    </div>
+                                    </a>
                                     <a href="{{ car.get_absolute_url }}" class="card__polygon nav__more">
                                         Подробнее
                                     </a>

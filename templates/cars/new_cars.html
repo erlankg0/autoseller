@@ -14,10 +14,12 @@
                     {% for brand in brands %}
                         <li>
                             {% if brand.icon %}
-                                <img src="{{ brand.icon.url }}" alt="">
+                                <img src="{{ brand.icon.url }}" alt=""
+                                     style="max-width: 38px; min-height: 38px; max-height: 38px;">
                                 <a href="{{ brand.get_new_cars }}">{{ brand.title }}</a>
                             {% else %}
-                                <img src="{% static 'img/logo/skoda.png' %}" alt="">
+                                <img src="{% static 'img/logo/skoda.png' %}" alt=""
+                                     style="max-width: 38px; min-height: 38px; max-height: 38px;">
                                 <a href="{{ brand.get_new_cars }}">{{ brand.title }}</a>
                             {% endif %}
                         </li>
@@ -34,9 +36,9 @@
             <div class="auto__list">
                 {% for car in cars %}
                     <div class="auto__item" data-price="{{ car.price }}">
-                        <div class="card" style="background-image: none; max-height: 440px; min-height: 440px;">
+                        <div class="card" style="background-image: none; max-height: 390px; min-height: 390px;">
                             <a href="{{ car.get_absolute_url }}" class="card__flex">
-                                <div class="card__title" style='min-height: 70px; max-height:70px;'>
+                                <div class="card__title">
                                     {{ car.brand.title }}
                                     <nobr>{{ car.modification.volume }}</nobr>
                                     {{ car.modification }}
@@ -52,13 +54,15 @@
                                     {% endfor %}
                                 {% endif %}
                             </a>
-                            <div class="card__price card__flex" style='min-height: 60px;'>
+                            <div class="card__price card__flex">
                                 <span class=" -bold"
-                                      style="max-width: 50%; width: 50%; align-self: end;">от {{ car.price }} &#8381</span>
-                                <div class="card__payment" style="width: 50%; max-width: 50%;">
-                                    Кредит
-                                    <p class="-bold bold_price">от {{ car.price }} &#8381/мес.</p>
-                                </div>
+                                      style="max-width: 54%; width: 50%; align-self: end;font-size: 16px; transform: translateY(3px);">от {{ car.price }} &#8381</span>
+                                {% if car.credit_from %}
+                                    <div class="card__payment" style="width: 50%; max-width: 50%;font-size: 14px;">
+                                        Кредит
+                                        <p class="-bold bold_price">от {{ car.credit_from }}/мес.</p>
+                                    </div>
+                                {% endif %}
                             </div>
                             <div class="card__flex card__option-list" style="flex-direction: row;">
                                 <div class="card__option-item i-engine i-engine--m">
@@ -75,9 +79,9 @@
                                 </div>
                             </div>
                             <div class="card__nav nav">
-                                <div class="card__polygon nav__reserve">
+                                <a class="card__polygon nav__buy" style="background: #CA0100; cursor: pointer;">
                                     Резервировать
-                                </div>
+                                </a>
                                 <a href="{{ car.get_absolute_url }}" class="card__polygon nav__more">
                                     Подробнее
                                 </a>
@@ -141,166 +145,24 @@
     <section class="comp">
         <div class="comp__top _container">
             <h2 class="comp__heading">Блог</h2>
-            <a href="" class="comp__link-all -highlighted">Смотреть блоги</a>
+            <a href="{% url 'blogs' %}" class="comp__link-all -highlighted">Смотреть блоги</a>
         </div>
         <div class="comp__container _container">
             <div class="slider-swiper">
-                <div class="slider-swiper__item">
-                    <div class="comp__slide">
-                        <img src="{% static 'img/pics/family.jpg' %}" alt="" class="comp__img">
-                        <div class="comp__over">
-								<span>Это короткое описание к содержанию подборки. Просто нужно написать какой нибудь
-									текст.</span>
-                        </div>
-                        <div class="comp__content">
-                            <h6 class="comp__title">Семейные автомобили</h6>
-                            <a href="" class="comp__link-view -highlighted">Посмотреть</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="slider-swiper__item">
-                    <div class="comp__slide">
-                        <img src="{% static 'img/pics/family.jpg' %}" alt="" class="comp__img">
-                        <div class="comp__over">
-								<span>Это короткое описание к содержанию подборки. Просто нужно написать какой нибудь
-									текст.</span>
-                        </div>
-                        <div class="comp__content">
-                            <h6 class="comp__title">Семейные автомобили</h6>
-                            <a href="" class="comp__link-view -highlighted">Посмотреть</a>
+                {% for blog in blogs %}
+                    <div class="slider-swiper__item">
+                        <div class="comp__slide">
+                            <img src="{{ blog.image.url }}" alt="" class="comp__img">
+                            <div class="comp__over">
+                                <span>{{ blog.title }}</span>
+                            </div>
+                            <div class="comp__content">
+                                <a href="{{ blog.get_absolute_url }}"
+                                   class="comp__link-view -highlighted">Посмотреть</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="slider-swiper__item">
-                    <div class="comp__slide">
-                        <img src="{% static 'img/pics/family.jpg' %}" alt="" class="comp__img">
-                        <div class="comp__over">
-								<span>Это короткое описание к содержанию подборки. Просто нужно написать какой нибудь
-									текст.</span>
-                        </div>
-                        <div class="comp__content">
-                            <h6 class="comp__title">Семейные автомобили</h6>
-                            <a href="" class="comp__link-view -highlighted">Посмотреть</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="slider-swiper__item">
-                    <div class="comp__slide">
-                        <img src="{% static 'img/pics/family.jpg' %}" alt="" class="comp__img">
-                        <div class="comp__over">
-								<span>Это короткое описание к содержанию подборки. Просто нужно написать какой нибудь
-									текст.</span>
-                        </div>
-                        <div class="comp__content">
-                            <h6 class="comp__title">Семейные автомобили</h6>
-                            <a href="" class="comp__link-view -highlighted">Посмотреть</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="slider-swiper__item">
-                    <div class="comp__slide">
-                        <img src="{% static 'img/pics/family.jpg' %}" alt="" class="comp__img">
-                        <div class="comp__over">
-								<span>Это короткое описание к содержанию подборки. Просто нужно написать какой нибудь
-									текст.</span>
-                        </div>
-                        <div class="comp__content">
-                            <h6 class="comp__title">Семейные автомобили</h6>
-                            <a href="" class="comp__link-view -highlighted">Посмотреть</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="slider-swiper__item">
-                    <div class="comp__slide">
-                        <img src="{% static 'img/pics/family.jpg' %}" alt="" class="comp__img">
-                        <div class="comp__over">
-								<span>Это короткое описание к содержанию подборки. Просто нужно написать какой нибудь
-									текст.</span>
-                        </div>
-                        <div class="comp__content">
-                            <h6 class="comp__title">Семейные автомобили</h6>
-                            <a href="" class="comp__link-view -highlighted">Посмотреть</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="slider-swiper__item">
-                    <div class="comp__slide">
-                        <img src="{% static 'img/pics/family.jpg' %}" alt="" class="comp__img">
-                        <div class="comp__over">
-								<span>Это короткое описание к содержанию подборки. Просто нужно написать какой нибудь
-									текст.</span>
-                        </div>
-                        <div class="comp__content">
-                            <h6 class="comp__title">Семейные автомобили</h6>
-                            <a href="" class="comp__link-view -highlighted">Посмотреть</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="slider-swiper__item">
-                    <div class="comp__slide">
-                        <img src="{% static 'img/pics/family.jpg' %}" alt="" class="comp__img">
-                        <div class="comp__over">
-								<span>Это короткое описание к содержанию подборки. Просто нужно написать какой нибудь
-									текст.</span>
-                        </div>
-                        <div class="comp__content">
-                            <h6 class="comp__title">Семейные автомобили</h6>
-                            <a href="" class="comp__link-view -highlighted">Посмотреть</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="slider-swiper__item">
-                    <div class="comp__slide">
-                        <img src="{% static 'img/pics/family.jpg' %}" alt="" class="comp__img">
-                        <div class="comp__over">
-								<span>Это короткое описание к содержанию подборки. Просто нужно написать какой нибудь
-									текст.</span>
-                        </div>
-                        <div class="comp__content">
-                            <h6 class="comp__title">Семейные автомобили</h6>
-                            <a href="" class="comp__link-view -highlighted">Посмотреть</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="slider-swiper__item">
-                    <div class="comp__slide">
-                        <img src="{% static 'img/pics/family.jpg' %}" alt="" class="comp__img">
-                        <div class="comp__over">
-								<span>Это короткое описание к содержанию подборки. Просто нужно написать какой нибудь
-									текст.</span>
-                        </div>
-                        <div class="comp__content">
-                            <h6 class="comp__title">Семейные автомобили</h6>
-                            <a href="" class="comp__link-view -highlighted">Посмотреть</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="slider-swiper__item">
-                    <div class="comp__slide">
-                        <img src="{% static 'img/pics/family.jpg' %}" alt="" class="comp__img">
-                        <div class="comp__over">
-								<span>Это короткое описание к содержанию подборки. Просто нужно написать какой нибудь
-									текст.</span>
-                        </div>
-                        <div class="comp__content">
-                            <h6 class="comp__title">Семейные автомобили</h6>
-                            <a href="" class="comp__link-view -highlighted">Посмотреть</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="slider-swiper__item">
-                    <div class="comp__slide">
-                        <img src="{% static 'img/pics/family.jpg' %}" alt="" class="comp__img">
-                        <div class="comp__over">
-								<span>Это короткое описание к содержанию подборки. Просто нужно написать какой нибудь
-									текст.</span>
-                        </div>
-                        <div class="comp__content">
-                            <h6 class="comp__title">Семейные автомобили</h6>
-                            <a href="" class="comp__link-view -highlighted">Посмотреть</a>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </section>

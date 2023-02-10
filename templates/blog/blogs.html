@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+    <link href="{% static 'css/blogs.css' %}" rel="stylesheet">
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <p class="backlink-p">
+            <a href="{% url 'index' %}" class="back-link">Главная / </a>
+            Блоги
+        </p>
+        <h1 class="page__title">
+            Блоги
+        </h1>
+    </div>
+    <section class="blogs">
+        <div class="container">
+            <div class="blogs__list">
+                {% for blog in blog_list %}
+                    <div class="blog__item">
+                        <a href="{{ blog.get_absolute_url }}" class="blog__item__img">
+                            <img src="{{ blog.image_url }}" alt="{{ blog.title }}">
+                        </a>
+                        <div class="blog__item_body">
+                            <div class="blog__date">{{ blog.pub_date_pretty }}</div>
+                            <div class="blog__title">{{ blog.title }} скаут</div>
+                            <div class="blog__text">{{ blog.summary }}</div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}

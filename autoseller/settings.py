@@ -13,7 +13,7 @@ SECRET_KEY = 'django1-insecure-c*k5o_86df1bafuusv*y^v2a71znfb=*vx!kim%p)s(0be83l
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['89.108.79.196']
+ALLOWED_HOSTS = []
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
@@ -27,9 +27,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',  # rest framework
     'cars.apps.CarsConfig',  # application for selling cars
     'credit.apps.CreditConfig',  # application for credit calculation
     'content.apps.ContentConfig',  # application for content
+    'blog.apps.BlogConfig',  # application for blog
 ]
 
 MIDDLEWARE = [
@@ -85,6 +87,7 @@ TEMPLATES = [
                 'content.context_processors.get_banners',
                 # context processor for getting all gifts
                 'credit.context_processors.get_all_gifts',
+                'blog.context.blogs',  # context processor for getting all blogs
 
             ],
         },
@@ -97,12 +100,9 @@ WSGI_APPLICATION = 'autoseller.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'autoseller',
-        'USER': 'userdb',
-        'PASSWORD': '12345',
-        'HOST': 'localhost',
-        'PORT': '',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+
     }
 }
 
@@ -138,7 +138,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 STATIC_URL = 'static/'  # path to static files
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')  # path to static files
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')  # path to static files
+STATICFILES_DIRS = [os.path.join(BASE_DIR / 'static')]  # path to static files
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',

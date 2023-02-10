@@ -23,15 +23,10 @@
     <link rel="stylesheet" href="{% static 'css/jQuery.Brazzers-Carousel.css' %}">
     <link rel="stylesheet" href="{% static 'css/jQuery.Brazzers-Carousel.min.css' %}">
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
-
     <!-- Latest compiled and minified JavaScript -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
-
-    <!-- (Optional) Latest compiled and minified JavaScript translation files -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/i18n/defaults-*.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/modal.css' %}">
     <script src="{% static 'js/vendors/jquery.min.js' %}"></script>
+
     <script src="{% static 'js/owl.carousel.js' %}"></script>
     {% block css %}
 
@@ -52,6 +47,63 @@
 {% endblock top-banner %}
 <!-- end top banner -->
 <!-- content -->
+<!-- Модальное окно -->
+<div class="modal_views modal" id="myModal">
+    <div class="container_modal" style="border-radius: 25px;">
+        <span class="close">&times;</span>
+        <div class="modal-content" style="border-radius: 25px; height: 400px;">
+            <div class="content_modal" style="background: url('{% static "img/city.svg" %}'); border-radius: 25px;">
+                <div class="left_">
+                    <p class="title -bold title_modal">Обратный звонок</p>
+                    {% csrf_token %}
+                    <label>
+                        <input type="text" name="name" class="input space-10" placeholder="Ваше Имя Фамилия">
+                    </label>
+                    <label>
+                        <input type="text" name="phone" class="input space-10" placeholder="Номер телефона">
+                    </label>
+                    <button type="submit" class="button padding-20" id="send_callback">Перезвоните мне</button>
+                    <p class="info_text">
+                        Нажимая кнопку “Перезвоните мне” Вы даете согласие на обработку своих персональных данных
+                    </p>
+                </div>
+                <div class="right_">
+                    <div class="img_girl">
+                        <img src="{% static 'img/girl.png' %}" alt="Тёлка">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="success_modal" class="modal modal_views">
+    <div class="container_modal" style="border-radius: 25px;">
+        <div class="modal-content success_modal" style="border-radius: 25px;">
+            <div class="content_modal"
+                 style="display: flex; flex-direction: column;text-align: center; align-items: center; padding: 60px; max-height: 250px;">
+                <div class="left_">
+                    <div class="top_success">
+                        <img src="{% static 'img/rio_new--l.png' %}" alt="kia rio new"
+                             style="max-width: 330px; transform: translateX(45px); z-index: 2;">
+                        <img src="{% static 'img/ext-front_tcm--l.png' %}" alt="car2"
+                             style="max-width: 150px; transform: translateX(-65px);">
+                    </div>
+                </div>
+                <div class="right_success">
+                    <p class="title -bold title_modal">Спасибо за обращение!</p>
+                    <p class="info_text">
+                        Наш менеджер свяжется с Вами в ближайшее время
+                    </p>
+                    <button type="submit" class="button padding-20" id="close_success_btn"
+                            style="min-width: 75%; margin: 0 auto;">OK
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 {% block content %}
 
 {% endblock content %}
@@ -74,10 +126,8 @@
 <script type="text/javascript" src="{% static 'js/owl.carousel.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/jQuery.Brazzers-Carousel.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/jQuery.Brazzers-Carousel.min.js' %}"></script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
+<script type="text/javascript" src="{% static 'js/fslightbox.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/index.js' %}"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
@@ -114,6 +164,11 @@
     $(document).ready(function () {
         $(".brazzer-dady").brazzersCarousel();
     });
+
+</script>
+
+<script>
+
 
 </script>
 

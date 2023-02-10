@@ -1,5 +1,4 @@
 from cars.models import Brand, BodyType, Transmissions, DriveUnit, Fuel, Years
-import datetime
 from credit.forms import TradeInForm
 
 

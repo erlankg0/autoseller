@@ -1,3 +1,5 @@
+from PIL import Image
+from django.core.exceptions import ValidationError
 from django.db import models
 from django.urls import reverse
 from cars.utils import directory_image_path, directory_image_path_vehicle
@@ -330,6 +332,108 @@ class Kitting(models.Model):  # Комплектация автомобиля
         db_table = 'kitting'
 
 
+class Secure(models.Model):  # Безопасность автомобиля
+    name = models.CharField(
+        max_length=50,
+        verbose_name='Опция',
+        help_text='Пример (система помощи при парковке)',
+        unique=True,
+    )
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'Безопасность'
+        verbose_name_plural = 'Безопасности'
+        db_table = 'secure'
+
+
+class Exterior(models.Model):
+    name = models.CharField(
+        max_length=50,
+        verbose_name='Опция',
+        help_text='Пример (система помощи при парковке)',
+        unique=True,
+    )
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'Экстерьер'
+        verbose_name_plural = 'Экстерьеры'
+        db_table = 'exterior'
+
+
+class Interior(models.Model):
+    name = models.CharField(
+        max_length=50,
+        verbose_name='Опция',
+        help_text='Пример (система помощи при парковке)',
+        unique=True,
+    )
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'Интерьер'
+        verbose_name_plural = 'Интерьеры'
+        db_table = 'interior'
+
+
+class Comfort(models.Model):
+    name = models.CharField(
+        max_length=50,
+        verbose_name='Опция',
+        help_text='Пример (система помощи при парковке)',
+        unique=True,
+    )
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'Комфорт'
+        verbose_name_plural = 'Комфорты'
+        db_table = 'comfort'
+
+
+class Multimedia(models.Model):
+    name = models.CharField(
+        max_length=50,
+        verbose_name='Опция',
+        help_text='Пример (система помощи при парковке)',
+        unique=True,
+    )
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'Мультимедиа'
+        verbose_name_plural = 'Мультимедиа'
+        db_table = 'multimedia'
+
+
+class Other(models.Model):
+    name = models.CharField(
+        max_length=50,
+        verbose_name='Опция',
+        help_text='Пример (система помощи при парковке)',
+        unique=True,
+    )
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'Прочее'
+        verbose_name_plural = 'Прочее'
+        db_table = 'other'
+
+
 # Автомобиль на продажу
 class Car(models.Model):
     new = models.BooleanField(
@@ -385,17 +489,47 @@ class Car(models.Model):
         blank=True,
         null=True,
     )
-    kitting = models.ManyToManyField(
-        Kitting,
-        verbose_name='Комплектация',
-        help_text='Комплектация автомобиля',
-        related_name='car_kitting',
-        blank=True,
-        null=True,
-    )
     credit_from = models.PositiveIntegerField(
         verbose_name='Кредит от',
         help_text='Кредит от',
+        blank=True,
+        null=True,
+    )
+    secure = models.ManyToManyField(
+        Secure,
+        verbose_name='Безопасность',
+        help_text='Безопасность автомобиля',
+        related_name='car_secure',
+    )
+    exterior = models.ManyToManyField(
+        Exterior,
+        verbose_name='Экстерьер',
+        help_text='Экстерьер автомобиля',
+        related_name='car_exterior',
+    )
+    interior = models.ManyToManyField(
+        Interior,
+        verbose_name='Интерьер',
+        help_text='Интерьер автомобиля',
+        related_name='car_interior',
+    )
+    comfort = models.ManyToManyField(
+        Comfort,
+        verbose_name='Комфорт',
+        help_text='Комфорт автомобиля',
+        related_name='car_comfort',
+    )
+    multimedia = models.ManyToManyField(
+        Multimedia,
+        verbose_name='Мультимедиа',
+        help_text='Мультимедиа автомобиля',
+        related_name='car_multimedia',
+    )
+    other = models.ManyToManyField(
+        Other,
+        verbose_name='Прочее',
+        help_text='Прочее автомобиля можно не заполнять',
+        related_name='car_other',
         blank=True,
         null=True,
     )
@@ -410,10 +544,11 @@ class Car(models.Model):
         verbose_name = 'Автомобиль'
         verbose_name_plural = 'Автомобили'
 
+
 class CarImages(models.Model):
     image = models.ImageField(
         verbose_name='Изображение',
-        help_text='Изображение автомобиля',
+        help_text='Разрешение изображения должно быть 1920x1080',
     )
     car = models.ForeignKey(
         Car,
@@ -422,6 +557,14 @@ class CarImages(models.Model):
         help_text='Автомобиль, к которому относится изображение',
         related_name='car_images',
     )
+
+    # валидация на разрешение изображения
+    def clean(self):
+        img = Image.open(self.image)
+        width, height = img.size  # (width, height)
+        # разрешение изображения должно быть больше 1920x1080 пикселей
+        if width < 1920 or height < 1080:
+            raise ValidationError('Разрешение изображения должно быть 1920x1080')
 
     class Meta:
         verbose_name = 'Изображение'
