@@ -5,6 +5,7 @@ from pathlib import Path
 import psycopg2
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
@@ -13,8 +14,7 @@ SECRET_KEY = 'django1-insecure-c*k5o_86df1bafuusv*y^v2a71znfb=*vx!kim%p)s(0be83l
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['127.0.0.1', '89.108.79.196', 'avtomirmsk.ru']
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 # Application definition
@@ -98,11 +98,15 @@ WSGI_APPLICATION = 'autoseller.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'autoseller',
+        'USER': 'userdb',
+        'PASSWORD': '12345',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
 
@@ -134,18 +138,12 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 STATIC_URL = 'static/'  # path to static files
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static')  # path to static files
-STATICFILES_DIRS = [os.path.join(BASE_DIR / 'static')]  # path to static files
-STATICFILES_FINDERS = [
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-]  # for development server only (manage.py runserver)
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')  # path to static file
 # for development server only (manage.py runserver)
-
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'autoseller/assets')]  # path to static files
 MEDIA_URL = 'media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
