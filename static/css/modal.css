@@ -34,7 +34,7 @@
 
 .close {
     position: absolute;
-    top: 150px;
+    top: 130px;
     right: 0;
     padding: 10px 10px 0 0;
     cursor: pointer;
@@ -73,7 +73,7 @@
 
 .padding-20 {
     padding: 20px;
-    max-width: 250px;
+    max-width: 300px;
 }
 
 .success_modal {
@@ -92,6 +92,17 @@
 .right_success {
     transform: translateY(-80px);
 }
+.right_reserve{
+    max-width: 50%;
+}
+.flex_right{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.input{
+    width: 90%;
+}
 
 @media screen and (max-width: 768px) {
     .container_modal {
@@ -103,8 +114,17 @@
         flex-direction: column;
         max-height: 100%;
     }
+    .input{
+        width: 300px;
+    }
+    .padding-20{
+        padding: 20px 85px;
+    }
 
     .right_ {
+        display: none;
+    }
+    .right_reserve{
         display: none;
     }
     .left_{

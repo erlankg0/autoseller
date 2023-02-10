@@ -4151,9 +4151,8 @@ input:-webkit-autofill:active {
 }
 
 .auto__item .-bold {
-    max-width: 50%;
-    width: 50%;
-    align-self: end;
+    max-width: 100%;
+    width: 100%;
 }
 
 .image {

@@ -185,3 +185,36 @@ class TradeInRequest(models.Model):
         verbose_name = 'Заявка на trade-in'
         verbose_name_plural = 'Заявки на trade-in'
         db_table = 'trade_in'
+
+
+class CarReservation(models.Model):
+    car = models.ForeignKey(
+        Car,
+        on_delete=models.CASCADE,
+        verbose_name='Автомобиль',
+        help_text='Забронированный автомобиль',
+    )  # автомобиль
+    name = models.CharField(
+        max_length=255,
+        verbose_name='Имя',
+        help_text='Имя клиента',
+    )  # имя клиента
+
+    phone = models.CharField(
+        max_length=14,
+        verbose_name='Номер телефона',
+        help_text='Номер телефона клиента',
+    )  # номер телефона клиента
+    date = models.DateField(
+        verbose_name='Дата',
+        help_text='Дата бронирования',
+        auto_now_add=True,  # автоматически добавляет текущую дату
+    )  # дата бронирования
+
+    def __str__(self):
+        return f'{self.name} - {self.phone}'
+
+    class Meta:
+        verbose_name = 'Бронирование автомобиля'
+        verbose_name_plural = 'Бронирования автомобилей'
+        db_table = 'car_reservation'

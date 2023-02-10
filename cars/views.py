@@ -1,23 +1,8 @@
 from django.http import JsonResponse, HttpResponse
-from django.shortcuts import render
 from django.template.loader import get_template
 from django.views.generic import ListView, DetailView
-from rest_framework.response import Response
-from rest_framework.views import APIView
 
 from cars.models import Model, Generation, Modification, Car, CarImages
-
-
-class CarsAPIView(APIView):
-    def get(self, request, id):
-        car = Car.objects.filter(id=id).values()
-        return Response({'car': car})
-
-
-class Car_imagesAPIView(APIView):
-    def get(self, request, id):
-        car = CarImages.objects.filter(car_id=id).values()
-        return Response({'car': car})
 
 
 class CarsListView(ListView):
@@ -104,10 +89,6 @@ class UsedCarsListView(ListView):
         return queryset
 
 
-def detail(request):
-    return render(request, 'cars/card_detail.html')
-
-
 class CarFilterView(ListView):
     model = Car
     template_name = 'cars/index.html'
@@ -185,6 +166,19 @@ def car_xml_feed_detail(request, pk):
 
 
 # AJAX
+
+def get_car_by_pk(request):
+    car = Car.objects.get(pk=request.GET.get('pk'))
+    image = [image.image.url for image in car.car_images.all()[:1]]
+    return JsonResponse({
+        'brand': car.brand.title,
+        'model': car.model.title,
+        'generation': car.generation.title,
+        'modification': car.modification.title,
+        'price': car.price,
+        'image': image,
+    })
+
 
 def get_models(request):
     brand_id = request.GET.get('brand_id')

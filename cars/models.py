@@ -534,6 +534,10 @@ class Car(models.Model):
         null=True,
     )
 
+    def get_first_image(self):
+        image = self.car_images.first()
+        return image.image.url
+
     def get_absolute_url(self):
         return reverse('car_detail', kwargs={'pk': self.pk})
 

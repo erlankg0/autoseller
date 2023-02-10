@@ -3,8 +3,9 @@ from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views.generic import CreateView
 
+from cars.models import Car
 from credit.forms import CreditRequestForm
-from credit.models import TradeIn, CallBack, TradeInRequest
+from credit.models import TradeIn, CallBack, TradeInRequest, CarReservation
 
 
 class CreditRequestCreateView(CreateView):
@@ -54,9 +55,21 @@ class TradeInCreateView(CreateView):
 
 
 def callback(request):
-    CallBack.objects.create(
-        name=request.GET.get('name'),
-        phone=request.GET.get('phone'),
-    )
-    messages.success(request, "Ваша заявка на обратный звонок успешно отправлена")
-    return redirect('trade_in_create')
+    if request.method == 'GET':
+        CallBack.objects.create(
+            name=request.GET.get('name'),
+            phone=request.GET.get('phone'),
+        )
+    return redirect('index')
+
+
+def car_reservation(request):
+    if request.method == 'GET':
+        car = Car.objects.get(id=request.GET.get('pk'))
+        CarReservation.objects.create(
+            car=car,
+            name=request.GET.get('name'),
+            phone=request.GET.get('phone'),
+
+        )
+    return redirect('index')

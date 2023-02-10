@@ -57,12 +57,14 @@
                     <p class="title -bold title_modal">Обратный звонок</p>
                     {% csrf_token %}
                     <label>
-                        <input type="text" name="name" class="input space-10" placeholder="Ваше Имя Фамилия">
+                        <input type="text" id="name_callback" name="name" class="input space-10" style="min-width: 300px;"
+                               placeholder="Ваше Имя Фамилия">
                     </label>
                     <label>
-                        <input type="text" name="phone" class="input space-10" placeholder="Номер телефона">
+                        <input type="text" id="phone_callback" name="phone" class="input space-10"
+                               placeholder="Номер телефона" style="min-width: 300px;">
                     </label>
-                    <button type="submit" class="button padding-20" id="send_callback">Перезвоните мне</button>
+                    <button type="submit" class="button padding-20" id="send_callback" style="min-width: 300px;">Перезвоните мне</button>
                     <p class="info_text">
                         Нажимая кнопку “Перезвоните мне” Вы даете согласие на обработку своих персональных данных
                     </p>
@@ -104,6 +106,33 @@
     </div>
 </div>
 
+<div class="modal_views modal">
+    <div class="container_modal" style="border-radius: 25px;">
+        <span class="close">&times;</span>
+        <div class="modal-content" style="border-radius: 25px; height: 400px;">
+            <div class="content_modal" style="background: url('{% static "img/city.svg" %}'); border-radius: 25px;">
+                <div class="left_">
+                    <p class="title -bold title_modal">Обратный звонок</p>
+                    <label>
+                        <input type="text" name="name" class="input space-10" placeholder="Ваше Имя Фамилия">
+                    </label>
+                    <label>
+                        <input type="text" name="phone" class="input space-10" placeholder="Номер телефона">
+                    </label>
+                    <button type="submit" class="button padding-20" id="send_callback">Перезвоните мне</button>
+                    <p class="info_text">
+                        Нажимая кнопку “Перезвоните мне” Вы даете согласие на обработку своих персональных данных
+                    </p>
+                </div>
+                <div class="right_">
+                    <div class="img_girl">
+                        <img src="{% static 'img/girl.png' %}" alt="Тёлка">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% block content %}
 
 {% endblock content %}
