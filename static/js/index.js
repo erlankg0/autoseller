@@ -156,3 +156,35 @@ $('#send_callback').click(function () {
     });
 });
 
+const send_competitively = document.getElementById("send_competitively");
+
+send_competitively.onclick = function () {
+    var phone = $('#competitively_phone').val();
+    $.ajax({
+        url: '/credit/competitively',
+        type: 'GET',
+        data: {
+            phone: phone
+        },
+        success: function (data) {
+            location.reload();
+        }
+    });
+}
+
+const question_btn = document.getElementById("question_btn");
+question_btn.onclick = function () {
+    var phone = $('#phone_question').val();
+    var name = $('#name_question').val();
+    $.ajax({
+        url: '/credit/question',
+        type: 'GET',
+        data: {
+            phone: phone,
+            name: name
+        },
+        success: function (data) {
+            location.reload();
+        }
+    });
+}

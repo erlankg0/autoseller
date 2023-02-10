@@ -166,6 +166,95 @@ class Whatsapp(models.Model):
         db_table = 'whatsapp'
 
 
+class HowToGo(models.Model):
+    title = models.CharField(
+        max_length=255,
+        verbose_name='Название',
+        help_text='Название (например: "Как добраться")',
+        unique=True
+    )  # название (например: "Как добраться")
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = 'Как добраться'
+        verbose_name_plural = 'Как добраться'
+        ordering = ['title']
+        db_table = 'how_to_go'
+
+
+class Best(models.Model):
+    title = models.CharField(
+        max_length=255,
+        verbose_name='Заголовок',
+        help_text='Заголовок (например: "Лучший")',
+        unique=True
+    )  # заголовок (например: "Лучший")
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = 'Лучший'
+        verbose_name_plural = 'Лучший'
+        ordering = ['title']
+        db_table = 'best'
+
+
+class About(models.Model):
+    title = models.CharField(
+        max_length=255,
+        verbose_name='Заголовок',
+        help_text='Заголовок (например: "О нас")',
+        unique=True
+    )  # заголовок (например: "О нас")
+    description = models.TextField(
+        verbose_name='Описание',
+        help_text='Описание',
+    )  # описание
+    best_title = models.CharField(
+        max_length=255,
+        verbose_name='Заголовок лучшего',
+        help_text='Заголовок лучшего (например: "Лучший")',
+    )  # заголовок лучшего (например: "Лучший")
+    best_item = models.ManyToManyField(
+        Best,
+        verbose_name='Лучший',
+        help_text='Лучший',
+    )  # лучший
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = 'О нас'
+        verbose_name_plural = 'О нас'
+        ordering = ['title']
+        db_table = 'about'
+
+
+class Images(models.Model):
+    image = models.ImageField(
+        upload_to='images/',
+        verbose_name='Изображение',
+        help_text='Изображение',
+    )  # изображение
+    about = models.ForeignKey(
+        About,
+        on_delete=models.CASCADE,
+        verbose_name='О нас',
+        help_text='О нас',
+        related_name='images'
+    )  # о нас
+
+    class Meta:
+        verbose_name = 'Изображение'
+        verbose_name_plural = 'Изображения'
+        ordering = ['image']
+        db_table = 'images'
+
+
 class DNS(models.Model):
     title = models.CharField(
         max_length=255,

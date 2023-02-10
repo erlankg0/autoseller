@@ -218,3 +218,41 @@ class CarReservation(models.Model):
         verbose_name = 'Бронирование автомобиля'
         verbose_name_plural = 'Бронирования автомобилей'
         db_table = 'car_reservation'
+
+
+class Competitively(models.Model):
+    phone = models.CharField(
+        max_length=14,
+        verbose_name='Номер телефона',
+        help_text='Номер телефона клиента',
+    )  # номер телефона клиента
+
+    def __str__(self):
+        return f'{self.phone}'
+
+    class Meta:
+        verbose_name = 'Конкурентность'
+        verbose_name_plural = 'Конкурентность'
+        db_table = 'competitively'
+
+
+# модель вопроса и номера телефона
+class Question(models.Model):
+    name = models.CharField(
+        max_length=255,
+        verbose_name='Имя',
+        help_text='Имя клиента',
+    )  # имя клиента
+    phone = models.CharField(
+        max_length=14,
+        verbose_name='Номер телефона',
+        help_text='Номер телефона клиента',
+    )  # номер телефона клиента
+
+    def __str__(self):
+        return f'{self.phone}'
+
+    class Meta:
+        verbose_name = 'Вопрос'
+        verbose_name_plural = 'Вопросы'
+        db_table = 'question'

@@ -1,4 +1,4 @@
-from content.models import Phone, Address, Email, Logo, WorkTime, TechCenter, Whatsapp, Title, DNS, Banner
+from content.models import Phone, Address, Email, Logo, WorkTime, TechCenter, Whatsapp, Title, DNS, Banner, HowToGo
 
 
 def get_phone_numbers(request):
@@ -49,3 +49,8 @@ def get_dns(request):
 def get_banners(request):
     banners = Banner.objects.all()
     return {'banners': banners}
+
+
+def how_to_go(request):
+    walks = HowToGo.objects.all()
+    return {'walks': walks}

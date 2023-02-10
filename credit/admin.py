@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from credit.models import CreditRequest, TradeInRequest, Gift, CallBack
+from credit.models import CreditRequest, TradeInRequest, Gift, CallBack, Competitively
 
 
 @admin.register(CreditRequest)
@@ -96,4 +96,9 @@ class GiftAdmin(admin.ModelAdmin):
 
 @admin.register(CallBack)
 class CallBackAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(Competitively)
+class CompetitivelyAdmin(admin.ModelAdmin):
     pass

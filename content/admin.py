@@ -1,5 +1,6 @@
 from django.contrib import admin
 from content.models import Phone, Address, Email, Logo, WorkTime, TechCenter, Whatsapp, Title, Banner
+from content.models import About, Images, Best
 
 
 @admin.register(Banner)
@@ -63,3 +64,18 @@ class TitleAdmin(admin.ModelAdmin):
     search_fields = ('name',)
     list_filter = ('name',)
     ordering = ('name',)
+
+
+@admin.register(Best)
+class BestAdmin(admin.ModelAdmin):
+    pass
+
+
+class ImagesInline(admin.TabularInline):
+    model = Images
+    extra = 1
+
+
+@admin.register(About)
+class AboutAdmin(admin.ModelAdmin):
+    inlines = [ImagesInline]

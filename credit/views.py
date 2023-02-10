@@ -5,7 +5,8 @@ from django.views.generic import CreateView
 
 from cars.models import Car
 from credit.forms import CreditRequestForm
-from credit.models import TradeIn, CallBack, TradeInRequest, CarReservation
+from credit.models import TradeIn, CallBack, TradeInRequest, CarReservation, Competitively
+from credit.models import Question
 
 
 class CreditRequestCreateView(CreateView):
@@ -71,5 +72,23 @@ def car_reservation(request):
             name=request.GET.get('name'),
             phone=request.GET.get('phone'),
 
+        )
+    return redirect('index')
+
+
+def competitively(request):
+    if request.method == 'GET':
+        print(request.GET.get('phone'))
+        Competitively.objects.create(
+            phone=request.GET.get('phone'),
+        )
+    return redirect('index')
+
+
+def question(request):
+    if request.method == 'GET':
+        Question.objects.create(
+            phone=request.GET.get('phone'),
+            name=request.GET.get('name'),
         )
     return redirect('index')

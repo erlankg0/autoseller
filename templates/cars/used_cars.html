@@ -43,7 +43,7 @@
             <div class="auto__container _container">
                 <div class="auto__list">
                     {% for car in cars %}
-                        <div class="auto__item" data-price="{{ car.price }}">
+                        <div class="auto__item" data-pk="{{ car.pk }}">
                             <div class="card" style="background-image: none; max-height: 390px; min-height: 390px;">
                                 <a href="{{ car.get_absolute_url }}" class="card__flex">
                                     <div class="card__title">
@@ -53,8 +53,7 @@
                                     </div>
                                 </a>
 
-                                <a href="{{ car.get_absolute_url }}" class="brazzer-dady"
-                                   style="margin-top: 10px;">
+                                <a href="{{ car.get_absolute_url }}" class="brazzer-dady">
                                     {% if car.car_images %}
                                         {% for car_image in car.car_images.all %}
                                             <img src="{{ car_image.image.url }}"
@@ -66,9 +65,10 @@
                                 <span class=" -bold"
                                       style="max-width: 54%; width: 50%; align-self: end;font-size: 16px; transform: translateY(3px);">от {{ car.price }} &#8381</span>
                                     {% if car.credit_from %}
-                                        <div class="card__payment" style="width: 50%; max-width: 50%;font-size: 14px;">
-                                            Кредит
-                                            <p class="-bold bold_price">от {{ car.credit_from }}/мес.</p>
+                                        <div class=""
+                                             style="width: 50%; max-width: 50%;font-size: 14px; display: flex; flex-direction: column;">
+                                            <span>Кредит</span>
+                                            <span class="-bold bold_price">от {{ car.credit_from }} &#8381 мес.</span>
                                         </div>
                                     {% endif %}
                                 </div>
@@ -87,7 +87,8 @@
                                     </div>
                                 </div>
                                 <div class="card__nav nav">
-                                    <a class="card__polygon nav__buy" style="background: #CA0100; cursor: pointer;">
+                                    <a class="card__polygon nav__buy" style="background: #CA0100; cursor: pointer;"
+                                       onclick="showModal('{{ car.get_first_image }}', '{{ car.price }}', '{{ car.pk }}')">
                                         Резервировать
                                     </a>
                                     <a href="{{ car.get_absolute_url }}" class="card__polygon nav__more">
