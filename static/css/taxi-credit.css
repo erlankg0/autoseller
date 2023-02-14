@@ -646,6 +646,7 @@
     border-radius: 10px;
     padding: 20px;
     max-width: 32.333%;
+    min-width: 32.333%;
 }
 
 .benefits__card {
@@ -653,6 +654,8 @@
     flex-direction: row;
     gap: 20px;
     align-items: center;
+    max-width: 32.333%;
+    min-width: 32.333%;
 }
 
 .benefits__card__img img {
@@ -827,6 +830,21 @@
     padding: 10px;
 }
 
+@media screen and (max-width: 770px) {
+    .terms__list {
+        flex-direction: column;
+    }
+
+    .terms_buy {
+        width: 100%;
+        border-right: none;
+    }
+
+    .doc {
+        width: 100%;
+    }
+}
+
 @media screen and (max-width: 426px) {
     .future_auto {
         padding: 20px 10px;
@@ -893,9 +911,14 @@
     .terms__list {
         flex-direction: column;
     }
+
     .terms_buy {
         border-right: none;
         width: 100%;
+    }
+
+    .buy {
+        flex-direction: column;
     }
 }
 

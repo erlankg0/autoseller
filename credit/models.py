@@ -173,10 +173,6 @@ class TradeInRequest(models.Model):
         verbose_name='Цена клиента',
         help_text='Цена клиента',
     )  # цена клиента
-    credit = models.BooleanField(
-        verbose_name='Кредит',
-        help_text='Кредит',
-    )  # кредит
 
     def __str__(self):
         return f'{self.name} - {self.phone}'
@@ -256,3 +252,179 @@ class Question(models.Model):
         verbose_name = 'Вопрос'
         verbose_name_plural = 'Вопросы'
         db_table = 'question'
+
+
+class Benefits(models.Model):
+    image = models.FileField(
+        upload_to='benefits/',
+        verbose_name='Изображение',
+        help_text='Изображение преимущества',
+    )  # изображение преимущества
+    title = models.CharField(
+        max_length=100,
+        verbose_name='Заголовок',
+        help_text='Заголовок преимущества',
+    )  # заголовок преимущества
+
+    description = models.CharField(
+        max_length=100,
+        verbose_name='Описание',
+        help_text='Описание преимущества',
+    )  # описание преимущества
+
+    def __str__(self):
+        return f'{self.title}'
+
+    class Meta:
+        verbose_name = 'Преимущество'
+        verbose_name_plural = 'Преимущества'
+        db_table = 'benefits'
+
+
+class Advantages(models.Model):
+    title = models.CharField(
+        max_length=100,
+        verbose_name='Заголовок',
+        help_text='Заголовок преимущества',
+    )  # заголовок преимущества
+
+    description = models.CharField(
+        max_length=100,
+        verbose_name='Описание',
+        help_text='Описание преимущества',
+    )  # описание преимущества
+
+    image = models.FileField(
+        upload_to='advantages/',
+        verbose_name='Изображение',
+        help_text='Изображение преимущества',
+    )  # изображение преимущества
+
+    def __str__(self):
+        return f'{self.title}'
+
+    class Meta:
+        verbose_name = 'Преимущество'
+        verbose_name_plural = 'Преимущества'
+        db_table = 'advantages'
+
+
+class TermForBuy(models.Model):
+    title = models.CharField(
+        max_length=100,
+        verbose_name='Заголовок',
+        help_text='Заголовок условия',
+    )  # заголовок условия
+
+    def __str__(self):
+        return f'{self.title}'
+
+    class Meta:
+        verbose_name = 'Условия'
+        verbose_name_plural = 'Условии'
+        db_table = 'term_for_buy'
+
+
+class TermsBuy(models.Model):
+    title = models.CharField(
+        max_length=100,
+        verbose_name='Заголовок',
+        help_text='Заголовок условия',
+    )  # заголовок условия
+    terms = models.ManyToManyField(
+        TermForBuy,
+        verbose_name='Условия',
+        help_text='Условия',
+    )  # условия
+
+    def __str__(self):
+        return f'{self.title}'
+
+    class Meta:
+        verbose_name = 'Условие покупки'
+        verbose_name_plural = 'Условия покупок'
+        db_table = 'terms_buy'
+
+
+class Doc(models.Model):
+    title = models.CharField(
+        max_length=100,
+        verbose_name='Заголовок',
+        help_text='Заголовок документа',
+    )  # заголовок документа
+
+    def __str__(self):
+        return f'{self.title}'
+
+    class Meta:
+        verbose_name = 'Документ'
+        verbose_name_plural = 'Документы'
+        db_table = 'doc'
+
+
+class TermsDoc(models.Model):
+    title = models.CharField(
+        max_length=100,
+        verbose_name='Заголовок',
+        help_text='Заголовок условия',
+    )
+    docs = models.ManyToManyField(
+        Doc,
+        verbose_name='Документы',
+        help_text='Документы',
+    )
+
+    def __str__(self):
+        return f'{self.title}'
+
+    class Meta:
+        verbose_name = 'Необходимые документы'
+        verbose_name_plural = 'Необходимые документы'
+        db_table = 'terms_doc'
+
+
+class BenefitsCredit(models.Model):
+    image = models.FileField(
+        upload_to='benefits/',
+        verbose_name='Изображение',
+        help_text='Изображение преимущества',
+    )  # изображение преимущества
+
+    description = models.CharField(
+        max_length=100,
+        verbose_name='Описание',
+        help_text='Описание преимущества',
+    )  # описание преимущества
+
+    def __str__(self):
+        return f'{self.description}'
+
+    class Meta:
+        verbose_name = 'Преимущество кредита'
+        verbose_name_plural = 'Преимущества кредитов'
+        db_table = 'benefits_credit'
+
+
+class AdvantagesCredit(models.Model):
+    image = models.FileField(
+        upload_to='advantages/',
+        verbose_name='Изображение',
+        help_text='Изображение преимущества',
+    )  # изображение преимущества
+    title = models.CharField(
+        max_length=100,
+        verbose_name='Заголовок',
+        help_text='Заголовок преимущества',
+    )  # заголовок преимущества
+    description = models.CharField(
+        max_length=100,
+        verbose_name='Описание',
+        help_text='Описание преимущества',
+    )  # описание преимущества
+    def __str__(self):
+        return f'{self.description}'
+
+    class Meta:
+        verbose_name = 'Выгода кредита'
+        verbose_name_plural = 'Выгода кредитов'
+        db_table = 'advantages_credit'

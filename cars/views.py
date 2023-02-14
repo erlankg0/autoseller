@@ -155,16 +155,9 @@ def get_car(request):
     car_id = request.GET.get('car')
     if car_id != '':
         car = Car.objects.filter(id=car_id).values(
-            'brand__title',
-            'model__title',
-            'generation__title',
-            'modification__title',
-            'price',
-            'id',
+
         )
-        image = CarImages.objects.filter(car_id=car_id)
-        image = [i.image.url for i in image[:1]]
-        # добавить картинки в словарь
+        images = [image.image.url for image in Car.objects.get(id=car_id).car_images.all()]
         result = list(car)
-        result[0]['image'] = image[0]
+        result[0]['images'] = images
         return JsonResponse({'car': result})

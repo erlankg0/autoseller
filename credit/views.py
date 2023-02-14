@@ -1,12 +1,14 @@
 from django.contrib import messages
+from django.http import JsonResponse
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views.generic import CreateView
 
 from cars.models import Car
 from credit.forms import CreditRequestForm
-from credit.models import TradeIn, CallBack, TradeInRequest, CarReservation, Competitively
+from credit.models import Benefits, BenefitsCredit
 from credit.models import Question
+from credit.models import TradeIn, CallBack, TradeInRequest, CarReservation, Competitively, Advantages, AdvantagesCredit
 
 
 class CreditRequestCreateView(CreateView):
@@ -22,6 +24,12 @@ class CreditRequestCreateView(CreateView):
     def form_invalid(self, form):
         messages.warning(self.request, "Ваша заявка на кредит не отправлена")
         return super().form_invalid(form)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['advantages'] = AdvantagesCredit.objects.all()
+        context['benefits'] = BenefitsCredit.objects.all()
+        return context
 
 
 def trade_in(request):
@@ -54,6 +62,12 @@ class TradeInCreateView(CreateView):
         messages.warning(self.request, "Ваша заявка на Trade-in не отправлена")
         return super().form_invalid(form)
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['advantages'] = Advantages.objects.all()
+        context['benefits'] = Benefits.objects.all()
+        return context
+
 
 def callback(request):
     if request.method == 'GET':
@@ -61,7 +75,7 @@ def callback(request):
             name=request.GET.get('name'),
             phone=request.GET.get('phone'),
         )
-    return redirect('index')
+    return JsonResponse({'status': 'ok'})
 
 
 def car_reservation(request):
@@ -82,7 +96,7 @@ def competitively(request):
         Competitively.objects.create(
             phone=request.GET.get('phone'),
         )
-    return redirect('index')
+    return JsonResponse({'status': 'ok'})
 
 
 def question(request):

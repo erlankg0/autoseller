@@ -1,6 +1,17 @@
 from django.contrib import admin
 from content.models import Phone, Address, Email, Logo, WorkTime, TechCenter, Whatsapp, Title, Banner
 from content.models import About, Images, Best
+from content.models import DNS, HowToGo, Banks, Favicon
+
+
+@admin.register(Favicon)
+class FaviconAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(Banks)
+class BanksAdmin(admin.ModelAdmin):
+    pass
 
 
 @admin.register(Banner)
@@ -79,3 +90,13 @@ class ImagesInline(admin.TabularInline):
 @admin.register(About)
 class AboutAdmin(admin.ModelAdmin):
     inlines = [ImagesInline]
+
+
+@admin.register(DNS)
+class DNSAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(HowToGo)
+class HowToGoAdmin(admin.ModelAdmin):
+    pass

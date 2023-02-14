@@ -7,6 +7,15 @@
 
 {% endblock %}
 {% block content %}
+    <div class="container">
+        <p class="backlink-p">
+            <a href="{% url 'index' %}" class="back-link">Главная / </a>
+            Новые автомобили
+        </p>
+        <h1 class="page__title">
+            Новые автомобили
+        </h1>
+    </div>
     <section class="pick-up">
         <div class="pick-up__container _container">
             <div class="pick-up__content-wrapper">
@@ -29,9 +38,6 @@
         </div>
     </section>
     <section class="auto">
-        <div class="_container">
-            <h2 class="auto__heading">Автомобили в наличии с ПТС</h2>
-        </div>
         <div class="auto__container _container">
             <div class="auto__list">
                 {% for car in cars %}
@@ -164,6 +170,34 @@
                         </div>
                     </div>
                 {% endfor %}
+            </div>
+        </div>
+    </section>
+    <section class="question_">
+        <div class="_container">
+            <div class="question__inner">
+                <div class="sale__content">
+                    <h3 class="-bold">Остались вопросы?</h3>
+                    <p class="text">
+                        Оставьте свой номер и мы перезвоним вам
+                    </p>
+                    <div class="sale__form form_question">
+
+                        <input type="text" id="question_name" placeholder="Ваше имя и фамилия"
+                               class="input question__input">
+                        <input type="tel" id="question_phone" placeholder="Ваш телефон" min="14"
+                               class="input question__input">
+                        <button class="button question__input " id="question_btn_send">Заказать звонок
+                        </button>
+                    </div>
+                    <p class="sale__note">
+                        Нажимая кнопку “Заказать звонок” Вы даете согласие на обработку своих
+                        <a href="{% url 'privacy' %}" class="">персональных данных</a>
+                    </p>
+                </div>
+                <img src="{% static 'img/credit/beatu.girl.svg' %}"
+                     alt=""
+                     class="question_img">
             </div>
         </div>
     </section>

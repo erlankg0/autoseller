@@ -38,6 +38,29 @@ send.onclick = function () {
     success_modal.style.display = "flex";
 }
 
+const send_question = document.getElementById("question_btn_send");
+send_question.onclick = function () {
+    var phone = $('#question_phone').val();
+    var name = $('#question_name').val();
+    $.ajax({
+        url: '/credit/callback',
+        type: 'GET',
+        async: false,
+        data: {
+            name: name,
+            phone: phone
+        },
+        success: function (data) {
+            const modal_ = document.getElementById("success_modal");
+            modal_.style.display = "flex";
+        }
+    });
+    // stop action form
+    phone.val(''); // clear input
+    name.val(''); // clear input
+    return false;
+}
+
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function (event) {
@@ -72,7 +95,7 @@ function showModal(image, price, pk) {
                 </div>
                 <div class="right_reserve">
                     <div class="flex_right" >
-                        <p class="title -bold title_modal" style="text-align: end; margin-bottom: 40px;">от ${price} &#8381</p>
+                        <p class="title -bold title_modal" style="text-align: end; margin-bottom: 40px;">${price}</p>
                         <img src="${image}" style="max-width: 440px; max-height: 250px; object-fit: fill;" alt="Тёлка">
                     </div>
                 </div>
@@ -163,13 +186,18 @@ send_competitively.onclick = function () {
     $.ajax({
         url: '/credit/competitively',
         type: 'GET',
+        async: false,
         data: {
             phone: phone
         },
         success: function (data) {
-            location.reload();
+            const modal_ = document.getElementById("success_modal");
+            modal_.style.display = "flex";
         }
     });
+    // clear input
+    phone.val('');
+    return false;
 }
 
 const question_btn = document.getElementById("question_btn");
@@ -184,7 +212,7 @@ question_btn.onclick = function () {
             name: name
         },
         success: function (data) {
-            location.reload();
+            success_modal.style.display = "flex";
         }
     });
 }

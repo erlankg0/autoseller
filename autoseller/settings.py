@@ -12,7 +12,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django1-insecure-c*k5o_86df1bafuusv*y^v2a71znfb=*vx!kim%p)s(0be83lb'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', '89.108.79.196', 'avtomirmsk.ru']
 # Quick-start development settings - unsuitable for production
@@ -85,10 +85,12 @@ TEMPLATES = [
                 'content.context_processors.get_dns',  # context processor for getting dns
                 # context processor for getting banners
                 'content.context_processors.get_banners',
-                'content.context_processors.how_to_go',  # context processor for getting how to go
+                'content.context_processors.how_to_go',  # context processor for getting socials
                 # context processor for getting all gifts
                 'credit.context_processors.get_all_gifts',
                 'blog.context.blogs',  # context processor for getting all blogs
+                'content.context_processors.bank',  # context processor for getting bank
+                'content.context_processors.get_favicon',  # context processor for getting all socials
 
             ],
         },
@@ -99,14 +101,11 @@ WSGI_APPLICATION = 'autoseller.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'autoseller',
-        'USER': 'userdb',
-        'PASSWORD': '12345',
-        'HOST': 'localhost',
-        'PORT': '',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
@@ -138,13 +137,14 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 STATIC_URL = 'static/'  # path to static files
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')  # path to static file
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')  # path to static file
 # for development server only (manage.py runserver)
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'autoseller/assets')]  # path to static files
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static')
+]
 MEDIA_URL = 'media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 

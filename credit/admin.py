@@ -1,6 +1,47 @@
 from django.contrib import admin
 
 from credit.models import CreditRequest, TradeInRequest, Gift, CallBack, Competitively
+from credit.models import TermsBuy, TermsDoc, TermForBuy, Doc, Benefits, Advantages, BenefitsCredit, AdvantagesCredit
+
+
+@admin.register(AdvantagesCredit)
+class AdvantagesCreditAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(BenefitsCredit)
+class BenefitsCreditAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(Advantages)
+class AdvantagesAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(Benefits)
+class BenefitsAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(TermsBuy)
+class TermsBuyAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(TermsDoc)
+class TermsDocAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(TermForBuy)
+class TermForBuyAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(Doc)
+class DocAdmin(admin.ModelAdmin):
+    pass
 
 
 @admin.register(CreditRequest)
@@ -68,11 +109,6 @@ class TradeInRequestAdmin(admin.ModelAdmin):
 
     price.short_description = 'Предложенная цена'
 
-    def credit(self, obj):
-        return f'{obj.credit}'
-
-    credit.short_description = 'Кредит'
-
     list_display = (
         'id',
         'name',
@@ -80,13 +116,9 @@ class TradeInRequestAdmin(admin.ModelAdmin):
         'get_future_car',
         'current_car',
         'price',
-        'credit',
 
     )
     list_display_links = list_display
-    list_filter = (
-        'credit',
-    )
 
 
 @admin.register(Gift)

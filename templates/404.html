@@ -6,16 +6,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>404</title>
-    <link rel="stylesheet" href="{% static '' %}">
+    <link rel="stylesheet" href="{% static 'css/404.css' %}">
 </head>
 <body>
 <main class="main">
     <center>
         <nav class="main__nav">
-            <a href="katalog-auto.html" class="main__nav-item">Каталог авто</a>
-            <a href="trade-in.html" class="main__nav-item">Trade-in</a>
-            <a href="express-credit.html" class="main__nav-item">Экспресс кредит</a>
-            <a href="contacts.html" class="main__nav-item">Контакты</a>
+            <a href="" class="main__nav-item">Каталог авто</a>
+            <a href="{% url 'trade_in_create' %}" class="main__nav-item">Trade-in</a>
+            <a href="{% url 'credit_request_create' %}" class="main__nav-item">Экспресс кредит</a>
+            <a href="{% url 'contacts' %}" class="main__nav-item">Контакты</a>
         </nav>
         <h1 class="main__404">
             404

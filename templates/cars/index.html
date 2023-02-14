@@ -61,7 +61,7 @@
                                 {% if car.car_images %}
                                     {% for car_image in car.car_images.all %}
                                         <img src="{{ car_image.image.url }}"
-                                             alt="{{ car.brand.title }}" class="image">
+                                             alt="{{ car.brand.title }}" class="image" width="287" height="195">
                                     {% endfor %}
                                 {% endif %}
                             </a>

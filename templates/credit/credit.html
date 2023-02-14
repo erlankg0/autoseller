@@ -2,9 +2,15 @@
 {% load static %}
 {% block css %}
     <link rel="stylesheet" href="{% static 'css/kredit-rassr.css' %}">
+    <link rel="stylesheet" href="{% static 'css/taxi-credit.css' %}">
 {% endblock %}
 {% block content %}
     <style>
+        .title {
+            font-size: 24px;
+            line-height: 28px;
+        }
+
         .messages {
             padding: 10px;
             margin-bottom: 20px;
@@ -27,19 +33,144 @@
             width: 250px;
             border-radius: 15px;
         }
-    </style>
 
+        .advantages {
+            margin: 0;
+        }
+
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 20px;
+            justify-content: center;
+        }
+
+        .card_ {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            justify-content: center;
+
+        }
+
+        .card_ img {
+            display: block;
+            margin: 0 auto;
+        }
+
+        .card_ .text {
+            text-align: center;
+        }
+
+
+        .card_::after {
+            content: "";
+            position: absolute;
+            width: 120px;
+            height: 1.5px;
+            background-color: #E5E5E5;
+            bottom: 160px;
+            left: 260px;
+        }
+
+        .card_:last-child::after {
+            display: none;
+        }
+
+        @media screen and (max-width: 1024px) {
+            .card_::after {
+                display: none;
+            }
+        }
+
+
+        @media (max-width: 1024px) {
+            .card-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .card-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 426px) {
+            .card-container {
+                grid-template-columns: repeat(2, 1fr);
+
+            }
+
+            .card_ img {
+                height: 46px;
+            }
+
+        }
+
+        .benefits__item {
+            display: flex;
+            flex-direction: column;
+            max-width: 23.333%;
+            min-width: 23.333%;
+        }
+
+        .benefits__card {
+            gap: 0;
+        }
+
+        @media screen and (max-width: 426px) {
+            .benefits__item {
+                max-width: 100%;
+                min-width: 100%;
+            }
+
+        }
+
+        @media screen and (max-width: 377px) {
+            .benefits__card {
+                flex-direction: column;
+                max-width: 100%;
+                min-width: 100%;
+                align-items: center;
+                text-align: center;
+            }
+        }
+    </style>
+    <div class="container">
+        <p class="backlink-p">
+            <a href="{% url 'index' %}" class="back-link">Главная / </a>
+            Кредит и рассрочка
+        </p>
+        <p class="page__title">
+            Кредит и рассрочка
+        </p>
+    </div>
     <main class="main">
+        <section class="advantages">
+            <div class="container">
+                <p class="title -bold">
+                    Преимущества программы
+                </p>
+                <div class="card-container">
+                    {% for advantage in advantages %}
+                        <div class="card_">
+                            <img src="{{ advantage.image.url }}" alt="Card Image 1">
+                            <div class="">
+                                <h2 class="-bold" style="padding: 20px;">{{ advantage.title }}</h2>
+                                <p class="text">{{ advantage.description }}.</p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section> <!-- advantages -->
+
         <section class="credit">
             <div class="credit__wrapper">
                 <div class="_container">
-                    <p class="backlink-p">
-                        <a href="{% url 'index' %}" class="back-link">Главная / </a>
-                        Кредит и рассрочка
-                    </p>
-                    <p class="page__title">
-                        Кредит и рассрочка
-                    </p>
                     {% if messages %}
                         <ul class="messages">
                             {% for message in messages %}
@@ -123,6 +254,230 @@
             </div>
         </section>
 
+        <section class="benefits">
+            <div class="container">
+                <p class="title -bold">Преимущества автокредита </p>
+                <div class="benefits__list">
+                    {% for benefit in benefits %}
+
+                        <div class="benefits__item">
+                            <div class="benefits__card">
+                                <div class="benefits__card__img">
+                                    <img src="{{ benefit.image.url }}" alt="{{ benefit.title }}">
+                                </div>
+                                <div class="benefits__card__desc">
+                                    <div style="min-width: 150px; max-width: 180px;">
+                                        {{ benefit.description }}
+                                    </div>
+                                </div> <!-- benefits__card__desc -->
+                            </div> <!-- benefits__card -->
+                        </div> <!-- benefits__item -->
+
+                        <div class="benefits__item">
+                            <div class="benefits__card">
+                                <div class="benefits__card__img">
+                                    <img src="{{ benefit.image.url }}" alt="{{ benefit.title }}">
+                                </div>
+                                <div class="benefits__card__desc">
+                                    <div style="min-width: 150px; max-width: 180px;">
+                                        {{ benefit.description }}
+                                    </div>
+                                </div> <!-- benefits__card__desc -->
+                            </div> <!-- benefits__card -->
+                        </div> <!-- benefits__item -->
+
+
+                        <div class="benefits__item">
+                            <div class="benefits__card">
+                                <div class="benefits__card__img">
+                                    <img src="{{ benefit.image.url }}" alt="{{ benefit.title }}">
+                                </div>
+                                <div class="benefits__card__desc">
+                                    <div style="min-width: 150px; max-width: 180px;">
+                                        {{ benefit.description }}
+                                    </div>
+                                </div> <!-- benefits__card__desc -->
+                            </div> <!-- benefits__card -->
+                        </div> <!-- benefits__item -->
+
+                        <div class="benefits__item">
+                            <div class="benefits__card">
+                                <div class="benefits__card__img">
+                                    <img src="{{ benefit.image.url }}" alt="{{ benefit.title }}">
+                                </div>
+                                <div class="benefits__card__desc">
+                                    <div style="min-width: 150px; max-width: 180px;">
+                                        {{ benefit.description }}
+                                    </div>
+                                </div> <!-- benefits__card__desc -->
+                            </div> <!-- benefits__card -->
+                        </div> <!-- benefits__item -->
+
+                    {% endfor %}
+                </div>
+            </div>
+        </section> <!-- benefits -->
+
+        <section class="terms">
+            <div class="container">
+                <div class="terms__list">
+                    <div class="terms__item terms_buy">
+                        <p class="title">
+                            Условия покупки
+                        </p>
+                        <div class="buy">
+                            <ul class="buy__terms__list">
+                                <li>
+                                    <img src="{% static 'img/traid/accept.svg' %}" alt="img">
+                                    <span>Взнос 0%</span>
+                                </li>
+                                <li>
+                                    <img src="{% static 'img/traid/accept.svg' %}" alt="img">
+                                    <span>Срок кредита до 5 лет</span>
+                                </li>
+                                <li>
+                                    <img src="{% static 'img/traid/accept.svg' %}" alt="img">
+                                    <span>Ставка от 9,9%</span>
+                                </li>
+                                <li>
+                                    <img src="{% static 'img/traid/accept.svg' %}" alt="img">
+                                    <span>Минимальный пакет документов</span>
+                                </li>
+                            </ul>
+                            <ul class="buy__terms__list">
+                                <li>
+                                    <img src="{% static 'img/traid/accept.svg' %}" alt="img">
+                                    <span>Взнос 0%</span>
+                                </li>
+                                <li>
+                                    <img src="{% static 'img/traid/accept.svg' %}" alt="img">
+                                    <span>Срок кредита до 5 лет</span>
+                                </li>
+                                <li>
+                                    <img src="{% static 'img/traid/accept.svg' %}" alt="img">
+                                    <span>Ставка от 9,9%</span>
+                                </li>
+                                <li>
+                                    <img src="{% static 'img/traid/accept.svg' %}" alt="img">
+                                    <span>Минимальный пакет документов</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="vertical_line"></div>
+                    <div class="terms__item doc">
+                        <p class="title">
+                            Необходимые документы
+                        </p>
+
+                        <div class="buy">
+                            <ul class="buy__terms__list">
+                                <li>
+                                    <img src="{% static 'img/traid/accept.svg' %}" alt="img">
+                                    <span>Взнос 0%</span>
+                                </li>
+                                <li>
+                                    <img src="{% static 'img/traid/accept.svg' %}" alt="img">
+                                    <span>Срок кредита до 5 лет</span>
+                                </li>
+                                <li>
+                                    <img src="{% static 'img/traid/accept.svg' %}" alt="img">
+                                    <span>Ставка от 9,9%</span>
+                                </li>
+                                <li>
+                                    <img src="{% static 'img/traid/accept.svg' %}" alt="img">
+                                    <span>Минимальный пакет документов</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="credit_banner">
+            <div class="container">
+                <div class="credit_banner__inner">
+                    <p class="title -bold title_credit">Условия получения кредита</p>
+                    <div class="credit_list">
+                        <div class="left_side left_side_trans">
+                            <div class="left__list">
+                                <div class="left_item">
+                                    <div class="left_item__img">
+                                        <img src="{% static 'img/traid/accept.svg' %}" alt="accept">
+                                    </div>
+                                    <div class="left_item__desc">
+                                        <p class="title-s">Без подтверждения дохода</p>
+                                        <p class="text">Чтобы получить кредит, вам нужны паспорт и водительское
+                                            удостоверение. Банк не требует подтверждение дохода, информацию о
+                                            продавце и
+                                            оформление КАСКО.</p>
+                                    </div>
+                                </div>
+                                <div class="left_item">
+                                    <div class="left_item__img">
+                                        <img src="{% static 'img/traid/accept.svg' %}" alt="accept">
+                                    </div>
+                                    <div class="left_item__desc">
+                                        <p class="title-s">Без сложностей с регистрацией</p>
+                                        <p class="text">Для регистрации автомобиля после покупки нужны только
+                                            копии
+                                            договора
+                                            купли-продажи и паспорта транспортного средства. Да, это всё..</p>
+                                    </div>
+                                </div>
+                                <div class="left_item">
+                                    <div class="left_item__img">
+                                        <img src="{% static 'img/traid/accept.svg' %}" alt="accept">
+                                    </div>
+                                    <div class="left_item__desc">
+                                        <p class="title-s">Срок кредита</p>
+                                        <p class="text">Чтобы получить кредит, вам нужны паспорт и водительское
+                                            удостоверение. Банк не требует подтверждение дохода, информацию о
+                                            продавце и
+                                            оформление КАСКО.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="right_side">
+                            <div class="right_list">
+                                <div class="right_item">
+                                    <img src="{% static 'img/credit/skoda.svg' %}" alt="skoda" class="skoda">
+                                </div>
+                                <div class="right_item">
+                                    <img src="{% static 'img/credit/hunday.svg' %}" alt="huyday" class="huyday">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="benefits">
+            <div class="container">
+                <p class="title -bold">Преимущества автокредита</p>
+                <div class="benefits__list">
+                    {% for benefit in benefits %}
+                        <div class="benefits__item">
+                            <div class="benefits__card">
+                                <div class="benefits__card__img">
+                                    <img src="{{ benefit.image.url }}" alt="{{ benefit.title }}">
+                                </div>
+                                <div class="benefits__card__desc">
+                                    <div style="min-width: 150px; max-width: 180px;">
+                                        {{ benefit.description }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+
         <section class="partners">
             <div class="_container">
                 <h2 class="partners__heading">Банки-партнеры</h2>
@@ -131,18 +486,11 @@
                 <div class="slider-swiper" data-slides="1">
                     <div class="slider-swiper__item">
                         <div class="partners__slide">
-                            <div class="partners__item">
-                                <img src="{% static 'img/logo/0alfa.png' %}" alt="">
-                            </div>
-                            <div class="partners__item">
-                                <img src="{% static 'img/logo/0vsk.png' %}" alt="">
-                            </div>
-                            <div class="partners__item">
-                                <img src="{% static 'img/logo/0sovkom.png' %}" alt="">
-                            </div>
-                            <div class="partners__item">
-                                <img src="{% static 'img/logo/0rosgosstrah.png' %}" alt="">
-                            </div>
+                            {% for bank in banks %}
+                                <div class="partners__item">
+                                    <img src="{{ bank.image.url }}" alt="{{ bank.title }}">
+                                </div>
+                            {% endfor %}
                         </div>
                     </div>
                 </div>

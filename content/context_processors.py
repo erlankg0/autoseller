@@ -1,4 +1,5 @@
-from content.models import Phone, Address, Email, Logo, WorkTime, TechCenter, Whatsapp, Title, DNS, Banner, HowToGo
+from content.models import Phone, Address, Email, Logo, WorkTime, TechCenter, Whatsapp, Title, DNS, Banner, HowToGo, \
+    Banks, Favicon
 
 
 def get_phone_numbers(request):
@@ -17,7 +18,7 @@ def get_address(request):
 
 
 def get_logo(request):
-    logo = Logo.objects.first()
+    logo = Logo.objects.last()
     return {'logo': logo}
 
 
@@ -54,3 +55,12 @@ def get_banners(request):
 def how_to_go(request):
     walks = HowToGo.objects.all()
     return {'walks': walks}
+
+def bank(request):
+    banks = Banks.objects.all()
+    return {'banks': banks}
+
+
+def get_favicon(request):
+    favicon = Favicon.objects.last()
+    return {'favicon': favicon}

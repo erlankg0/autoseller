@@ -125,6 +125,34 @@
                 </div>
             </div>
         </section>
+        <section class="question_">
+            <div class="_container">
+                <div class="question__inner">
+                    <div class="sale__content">
+                        <h3 class="-bold">Остались вопросы?</h3>
+                        <p class="text">
+                            Оставьте свой номер и мы перезвоним вам
+                        </p>
+                        <div action="" class="sale__form form_question">
+
+                            <input type="text" id="question_name" placeholder="Ваше имя и фамилия"
+                                   class="input question__input">
+                            <input type="tel" id="question_phone" placeholder="Ваш телефон" min="15"
+                                   class="input question__input">
+                            <button class="button question__input " id="question_btn_send">Заказать звонок
+                            </button>
+                        </div>
+                        <p class="sale__note">
+                            Нажимая кнопку “Заказать звонок” Вы даете согласие на обработку своих
+                            <a href="{% url 'privacy' %}" class="">персональных данных</a>
+                        </p>
+                    </div>
+                    <img src="{% static 'img/credit/beatu.girl.svg' %}"
+                         alt=""
+                         class="question_img">
+                </div>
+            </div>
+        </section>
     </main>
     <script>
         // если auto__item больше 3, то убираем атрибут hidden у кнопки

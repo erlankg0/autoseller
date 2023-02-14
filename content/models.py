@@ -67,12 +67,6 @@ class Logo(models.Model):
     def __str__(self):
         return f'Логотип {self.pk}'
 
-    # singelton pattern
-    def save(self, *args, **kwargs):
-        if Logo.objects.exists() and not self.pk:  # если логотип уже существует и это не редактирование
-            raise ValidationError('Логотип уже существует')  # то выкидываем ошибку валидации (происходит в админке)
-        return super().save(*args, **kwargs)
-
     class Meta:
         verbose_name = 'Логотип'
         verbose_name_plural = 'Логотипы'
@@ -329,7 +323,7 @@ class Banks(models.Model):
     )  # название банка
     image = models.ImageField(
         upload_to='banks/',
-        verbose_name='Изображение',
+        verbose_name='Изображение логотип банка',
         help_text='Размер изображения должен быть минимум 200px по ширине и максимум 100px по высоте',
     )  # изображение банка
 
@@ -372,3 +366,42 @@ class Color(models.Model):
         verbose_name = 'Цвет'
         verbose_name_plural = 'Цвета'
         db_table = 'color'
+
+
+class Favicon(models.Model):
+    favicon = models.ImageField(
+        upload_to='favicon/',
+        verbose_name='Иконка',
+        help_text='Иконка',
+    )  # иконка
+
+    def get_last_favicon(self):
+        return Favicon.objects.last()
+
+    class Meta:
+        verbose_name = 'Иконка'
+        verbose_name_plural = 'Иконки'
+        db_table = 'favicon'
+
+
+class Tag(models.Model):
+    title = models.CharField(
+        max_length=255,
+        verbose_name='Название тега',
+        help_text='Название тега',
+        unique=True
+    )  # название тега
+    description = models.CharField(
+        max_length=50,
+        verbose_name='Описание тега',
+        help_text='Описание тега (до 50 символов)',
+        unique=True
+    )  # описание тега
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = 'Тег'
+        verbose_name_plural = 'Теги'
+        db_table = 'tag'

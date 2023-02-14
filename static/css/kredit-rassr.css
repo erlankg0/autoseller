@@ -14,3 +14,243 @@
     margin-top: 0;
     margin-bottom: 80px;
 }
+
+.credit_banner {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-image: url("/static/img/traid/credit_banner.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 690px;
+    border-radius: 25px;
+
+    margin: 10px 0;
+
+}
+
+.credit_list {
+    display: flex;
+    flex-direction: row;
+}
+
+.left__list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 500px;
+}
+
+.left_item {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.left_item__list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.title-s {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 35px;
+
+    /* black */
+
+    color: #262626;
+}
+
+.text {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+
+    /* black 100 */
+
+    color: #595D60;
+}
+
+.left_item__img img {
+    vertical-align: -webkit-baseline-middle;
+}
+
+.right_list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 50%;
+
+}
+
+.title_credit {
+    transform: translateY(100px);
+}
+
+.left_side_trans {
+    transform: translateY(130px)
+}
+
+.huyday {
+    transform: translate(125px, -240px);
+}
+
+@media screen and (max-width: 768px) {
+    .credit_list {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transform: translate(60px, -85px);
+    }
+
+    .title_credit {
+        transform: translate(60px, 45px);
+    }
+
+    .right_side {
+        transform: translateX(-60px);
+    }
+
+    .credit_banner {
+        height: 580px;
+    }
+
+    .partners {
+        margin-top: 110px;
+    }
+
+    .huyday {
+        transform: translate(180px, -190px);
+        height: 270px;
+    }
+
+    .skoda {
+        height: 290px;
+        transform: translate(-30px, 30px);
+    }
+}
+
+
+@media screen and (max-width: 426px) {
+
+    .partners {
+        margin-top: 0;
+    }
+
+    .credit_banner {
+        height: 660px;
+    }
+
+    .credit_list {
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: space-between;
+        transform: translate(42px, -415px);
+        padding: 7px;
+    }
+
+    .title_credit {
+        transform: translateY(90px);
+    }
+
+    .left_side_trans {
+        transform: translate(-50px, 130px)
+    }
+
+    .title.title_credit {
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 28px;
+        padding: 20px;
+
+        /* black */
+
+        color: #262626;
+    }
+
+    .title-s {
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 150%;
+        /* or 24px */
+
+
+        /* black */
+
+        color: #262626;
+    }
+
+    .text {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 150%;
+        /* or 21px */
+
+        /* black 100 */
+
+        color: #595D60;
+    }
+
+    .huyday {
+        transform: translate(60px, 50px);
+        height: 160px;
+    }
+
+    .skoda {
+        height: 190px;
+        transform: translate(-60px, 170px);
+    }
+
+}
+
+@media screen and (max-width: 377px) {
+    .credit_banner {
+        height: 735px;
+    }
+
+    .title_credit {
+        transform: translateY(65px);
+    }
+
+    .skoda {
+        height: 145px;
+        transform: translate(-60px, 220px);
+    }
+
+    .huyday {
+        transform: translate(60px, 110px);
+        height: 130px;
+    }
+
+    .left_side_trans {
+        transform: translate(-50px, 195px)
+    }
+}
+
+@media screen and (max-width: 330px) {
+    .credit_banner {
+        height: 900px;
+    }
+    .credit_list {
+        transform: translate(42px, -415px);
+    }
+
+     .left_side_trans {
+        transform: translate(-50px, 275px)
+    }
+
+    .huyday {
+        transform: translate(50px, 120px);
+        height: 105px;
+    }
+
+    .skoda {
+        height: 95px;
+        transform: translate(-35px, 210px);
+    }
+}

@@ -65,7 +65,7 @@
                             {% endfor %}
                         </div>
                         <div class="navigation__contacts__worktime worktime worktime--l">
-                            c 08:00 до 21:00
+                            {{ work_time }}
                         </div>
                         <div class="navigation__contacts__address address address--l">
                             <p class="js-address">{{ address }}</p>
@@ -75,7 +75,7 @@
                             style="padding: 10px;">Обратный звонок
                     </button>
 
-                    <nav class="navigation__menu" id="large_menu">
+                    <nav class="navigation__menu" id="large_menu" style="max-height: 30px;">
                         <div class="header-bottom__list">
                             <a href="{% url 'index' %}" class="header-bottom__list-link">
                                 Главная

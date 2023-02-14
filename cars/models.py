@@ -1,7 +1,6 @@
-from PIL import Image
-from django.core.exceptions import ValidationError
 from django.db import models
 from django.urls import reverse
+
 from cars.utils import directory_image_path, directory_image_path_vehicle
 
 
@@ -141,7 +140,7 @@ class Brand(models.Model):
         help_text='Марка автомобиля (например, BMW)',
         unique=True,
     )
-    icon = models.ImageField(
+    icon = models.FileField(
         upload_to=directory_image_path,
         verbose_name='Иконка',
         help_text='Иконка марки автомобиля',
@@ -561,14 +560,6 @@ class CarImages(models.Model):
         help_text='Автомобиль, к которому относится изображение',
         related_name='car_images',
     )
-
-    # валидация на разрешение изображения
-    def clean(self):
-        img = Image.open(self.image)
-        width, height = img.size  # (width, height)
-        # разрешение изображения должно быть больше 1920x1080 пикселей
-        if width < 1920 or height < 1080:
-            raise ValidationError('Разрешение изображения должно быть 1920x1080')
 
     class Meta:
         verbose_name = 'Изображение'

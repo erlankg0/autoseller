@@ -105,67 +105,21 @@
         <section class="advantages">
             <div class="container">
                 <p class="title -bold">
-                    Преимущества покупки в trade-in
+                    Преимущества покупки в Trade-in
                 </p>
                 <div class="advantages-list">
                     <div class="advantages-list__top">
-                        <div class="advantages-list__item">
-                            <div class="" style="padding: 20px; width: 100%;">
-                                <img src="{% static 'img/traid/clock.svg' %}" alt="">
-                                <p>Экономия вашего времени</p>
-                                <div>
-                                    на поиски покупателя, договоренностях и т.д.
+                        {% for advantage in advantages %}
+                            <div class="advantages-list__item">
+                                <div class="" style="padding: 20px; width: 100%;">
+                                    <img src="{{ advantage.image.url }}" alt="">
+                                    <p>{{ advantage.title }}</p>
+                                    <div>
+                                        {{ advantage.description }}
+                                    </div>
                                 </div>
-                            </div>
-                        </div> <!-- advantages-list__item -->
-
-                        <div class="advantages-list__item">
-                            <div class="" style="padding: 20px; width: 100%;">
-                                <img src="{% static 'img/traid/doc.svg' %}" alt="">
-                                <p>Экономия вашего времени</p>
-                                <div>
-                                    на поиски покупателя, договоренностях и т.д.
-                                </div>
-                            </div>
-                        </div> <!-- advantages-list__item -->
-
-                        <div class="advantages-list__item">
-                            <div class="" style="padding: 20px; width: 100%;">
-                                <img src="{% static 'img/traid/safe.svg' %}" alt="">
-                                <p>Экономия вашего времени</p>
-                                <div>
-                                    на поиски покупателя, договоренностях и т.д.
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="advantages-list__item">
-                            <div class="" style="padding: 20px; width: 100%;">
-                                <img src="{% static 'img/traid/car_money.svg' %}" alt="">
-                                <p>Экономия вашего времени</p>
-                                <div>
-                                    на поиски покупателя, договоренностях и т.д.
-                                </div>
-                            </div>
-                        </div>  <!-- advantages-list__item -->
-                        <div class="advantages-list__item">
-                            <div class="" style="padding: 20px; width: 100%;">
-                                <img src="{% static 'img/traid/comfort.svg' %}" alt="">
-                                <p>Экономия вашего времени</p>
-                                <div>
-                                    на поиски покупателя, договоренностях и т.д.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="advantages-list__item">
-                            <div class="" style="padding: 20px; width: 100%;">
-                                <img src="{% static 'img/traid/monitor.svg' %}" alt="">
-                                <p>Экономия вашего времени</p>
-                                <div>
-                                    на поиски покупателя, договоренностях и т.д.
-                                </div>
-                            </div>
-                        </div>
+                            </div> <!-- advantages-list__item -->
+                        {% endfor %}
                     </div>
                 </div>
             </div>
@@ -240,25 +194,7 @@
                         </div>
                     </section>
                     <div class="line"></div>
-                    <section class="future_auto">
-                        <div class="container">
-                            <div class="content">
 
-                                <div style="display: flex;">
-                                    <h3 class="title -bold" style="color: rgba(173, 173, 176, 1);">Купить в кредит</h3>
-                                    <div class="button credit_btn" id="credit_btn">
-                                        Добавить
-                                    </div>
-                                </div>
-                                <div style="display: flex;">
-                                    <input type="checkbox" name="credit" id="credit_checkbox">
-                                    <p class="discount_auto">Скидка от 70
-                                        000 ₽</p>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                    <div class="line"></div>
                     <section class="future_auto">
                         <div class="future_auto__list">
                             <div class="future_auto__item">
@@ -339,91 +275,23 @@
             <div class="container">
                 <p class="title -bold">Преимущество программы Trade-in</p>
                 <div class="benefits__list">
+                    {% for benefit in benefits %}
 
-                    <div class="benefits__item">
-                        <div class="benefits__card">
-                            <div class="benefits__card__img">
-                                <img src="{% static 'img/traid/benefits_doc.svg' %}" alt="">
-                            </div>
-                            <div class="benefits__card__desc">
-                                <p>Минимальный пакет документов</p>
-                                <div>
-                                    два комплекта ключей, ПТС, СТС, и паспорт владельца
+                        <div class="benefits__item">
+                            <div class="benefits__card">
+                                <div class="benefits__card__img">
+                                    <img src="{{ benefit.image.url }}" alt="{{ benefit.title }}">
                                 </div>
-                            </div> <!-- benefits__card__desc -->
-                        </div> <!-- benefits__card -->
-                    </div> <!-- benefits__item -->
+                                <div class="benefits__card__desc">
+                                    <p>{{ benefit.title }}</p>
+                                    <div>
+                                        {{ benefit.description }}
+                                    </div>
+                                </div> <!-- benefits__card__desc -->
+                            </div> <!-- benefits__card -->
+                        </div> <!-- benefits__item -->
 
-                    <div class="benefits__item">
-                        <div class="benefits__card">
-                            <div class="benefits__card__img">
-                                <img src="{% static 'img/traid/benefits_family.svg' %}" alt="">
-                            </div>
-                            <div class="benefits__card__desc">
-                                <p>Минимальный пакет документов</p>
-                                <div>
-                                    два комплекта ключей, ПТС, СТС, и паспорт владельца
-                                </div>
-                            </div> <!-- benefits__card__desc -->
-                        </div> <!-- benefits__card -->
-                    </div> <!-- benefits__item -->
-
-                    <div class="benefits__item">
-                        <div class="benefits__card">
-                            <div class="benefits__card__img">
-                                <img src="{% static 'img/traid/benefits_time.svg' %}" alt="">
-                            </div>
-                            <div class="benefits__card__desc">
-                                <p>Минимальный пакет документов</p>
-                                <div>
-                                    два комплекта ключей, ПТС, СТС, и паспорт владельца
-                                </div>
-                            </div> <!-- benefits__card__desc -->
-                        </div> <!-- benefits__card -->
-                    </div> <!-- benefits__item -->
-
-                    <div class="benefits__item">
-                        <div class="benefits__card">
-                            <div class="benefits__card__img">
-                                <img src="{% static 'img/traid/benefits_car.svg' %}" alt="">
-                            </div>
-                            <div class="benefits__card__desc">
-                                <p>Минимальный пакет документов</p>
-                                <div>
-                                    два комплекта ключей, ПТС, СТС, и паспорт владельца
-                                </div>
-                            </div> <!-- benefits__card__desc -->
-                        </div> <!-- benefits__card -->
-                    </div> <!-- benefits__item -->
-
-                    <div class="benefits__item">
-                        <div class="benefits__card">
-                            <div class="benefits__card__img">
-                                <img src="{% static 'img/traid/girl.svg' %}" alt="">
-                            </div>
-                            <div class="benefits__card__desc">
-                                <p>Минимальный пакет документов</p>
-                                <div>
-                                    два комплекта ключей, ПТС, СТС, и паспорт владельца
-                                </div>
-                            </div> <!-- benefits__card__desc -->
-                        </div> <!-- benefits__card -->
-                    </div> <!-- benefits__item -->
-
-                    <div class="benefits__item">
-                        <div class="benefits__card">
-                            <div class="benefits__card__img">
-                                <img src="{% static 'img/traid/benefits_price.svg' %}" alt="">
-                            </div>
-                            <div class="benefits__card__desc">
-                                <p>Минимальный пакет документов</p>
-                                <div>
-                                    два комплекта ключей, ПТС, СТС, и паспорт владельца
-                                </div>
-                            </div> <!-- benefits__card__desc -->
-                        </div> <!-- benefits__card -->
-                    </div> <!-- benefits__item -->
-
+                    {% endfor %}
                 </div>
             </div>
         </section> <!-- benefits -->
@@ -439,40 +307,12 @@
                         </p>
                         <div class="buy">
                             <ul class="buy__terms__list">
-                                <li>
-                                    <img src="{% static 'img/traid/accept.svg' %}" alt="img">
-                                    <span>Взнос 0%</span>
-                                </li>
-                                <li>
-                                    <img src="{% static 'img/traid/accept.svg' %}" alt="img">
-                                    <span>Срок кредита до 5 лет</span>
-                                </li>
-                                <li>
-                                    <img src="{% static 'img/traid/accept.svg' %}" alt="img">
-                                    <span>Ставка от 9,9%</span>
-                                </li>
-                                <li>
-                                    <img src="{% static 'img/traid/accept.svg' %}" alt="img">
-                                    <span>Минимальный пакет документов</span>
-                                </li>
-                            </ul>
-                            <ul class="buy__terms__list">
-                                <li>
-                                    <img src="{% static 'img/traid/accept.svg' %}" alt="img">
-                                    <span>Взнос 0%</span>
-                                </li>
-                                <li>
-                                    <img src="{% static 'img/traid/accept.svg' %}" alt="img">
-                                    <span>Срок кредита до 5 лет</span>
-                                </li>
-                                <li>
-                                    <img src="{% static 'img/traid/accept.svg' %}" alt="img">
-                                    <span>Ставка от 9,9%</span>
-                                </li>
-                                <li>
-                                    <img src="{% static 'img/traid/accept.svg' %}" alt="img">
-                                    <span>Минимальный пакет документов</span>
-                                </li>
+                                {% for term in term_buy.terms.all %}
+                                    <li>
+                                        <img src="{% static 'img/traid/accept.svg' %}" alt="img">
+                                        <span>{{ term }}</span>
+                                    </li>
+                                {% endfor %}
                             </ul>
                         </div>
                     </div>
@@ -484,22 +324,12 @@
 
                         <div class="buy">
                             <ul class="buy__terms__list">
-                                <li>
-                                    <img src="{% static 'img/traid/accept.svg' %}" alt="img">
-                                    <span>Взнос 0%</span>
-                                </li>
-                                <li>
-                                    <img src="{% static 'img/traid/accept.svg' %}" alt="img">
-                                    <span>Срок кредита до 5 лет</span>
-                                </li>
-                                <li>
-                                    <img src="{% static 'img/traid/accept.svg' %}" alt="img">
-                                    <span>Ставка от 9,9%</span>
-                                </li>
-                                <li>
-                                    <img src="{% static 'img/traid/accept.svg' %}" alt="img">
-                                    <span>Минимальный пакет документов</span>
-                                </li>
+                                {% for doc in term_doc.docs.all %}
+                                    <li>
+                                        <img src="{% static 'img/traid/accept.svg' %}" alt="img">
+                                        <span>{{ doc }}</span>
+                                    </li>
+                                {% endfor %}
                             </ul>
                         </div>
                     </div>
@@ -592,7 +422,7 @@
                     $('#autoname').text(data["car"][0]["brand__title"] + ' ' + data["car"][0]["model__title"] + ' ' + data["car"][0]["generation__title"] + ' ' + data["car"][0]["modification__title"]);
                     $('#old_price').text(data["car"][0]["price"] + 300000 + ' ₽');
                     $('#current_price').text(data["car"][0]["price"] + ' ₽');
-                    $('#image').attr('src', '/assets/img/secret-car.png');
+                    $('#image').attr('src', '/static/img/secret-car.png');
                 }
             });
         });
