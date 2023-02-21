@@ -405,3 +405,19 @@ class Tag(models.Model):
         verbose_name = 'Тег'
         verbose_name_plural = 'Теги'
         db_table = 'tag'
+
+
+class VK(models.Model):
+    url = models.URLField(
+        verbose_name='Ссылка на группу',
+        help_text='Ссылка на группу',
+        unique=True
+    )  # ссылка на группу
+
+    def __str__(self):
+        return self.url
+
+    class Meta:
+        verbose_name = 'Группа ВК'
+        verbose_name_plural = 'Группы ВК'
+        db_table = 'vk'

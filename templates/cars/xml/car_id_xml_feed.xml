@@ -1,26 +1,45 @@
-<car>
-    <brand>{{ car.brand }}</brand>
-    <model>{{ car.model }}</model>
-    <generation>{{ car.generation }}</generation>
-    <modification>{{ car.modification }}</modification>
-    <body_type>{{ car.modification.body_type }}</body_type>
-    <year>{{ car.modification.year }}</year>
-    <description>{{ car.description }}</description>
-    <price>{{ car.price }}</price>
-    <credit_from>{{ car.credit_from }}</credit_from>
-    <credit>{{ car.credit }}</credit>
-    <mileage>{{ car.mileage }}</mileage>
-    <engine>{{ car.modification.engine }}</engine>
-    <volume>{{ car.modification.volume }}</volume>
-    <power>{{ car.modification.power }}</power>
-    <fuel>{{ car.modification.engine.fuel }}</fuel>
-    <fuel_consumption>{{ car.modification.fuel_consumption }}</fuel_consumption>
-    <acceleration>{{ car.modification.acceleration }}</acceleration>
-    <max_speed>{{ car.modification.max_speed }}</max_speed>
-    <transmission>{{ car.modification.transmission }}</transmission>
-    <drive_unit>{{ car.modification.drive_unit }}</drive_unit>
-    {% for car_image in car.car_images.all %}
-        <image>{{ car_image.image.url }}</image>
-    {% endfor %}
+<?xml version="1.0" encoding="UTF-8"?>
+<yml_catalog date="2023-02-20 12:00" xmlns="http://www.yandex.ru">
+    <shop>
+        <name>Автосалон автомобилей</name>
+        <company>"Автомир"</company>
+        <url>https://example.com</url>
+        <currencies>
+            <currency id="RUB" rate="1"/>
+        </currencies>
+        <categories>
+            <category id="1" parentId="0">Автомобили</category>
+        </categories>
+        <offer id="{{ car.pk }}" available="{{ car.is_active }}">
+            <url>{{ car.get_absolute_url }}</url>
+            <price>{{ car.price }}</price>
+            <currencyId>RUB</currencyId>
+            <categoryId>1</categoryId>
+            {% if car.car_images.all %}
+                <picture>https://avtomirmsk.ru/{{ car.get_first_image }}</picture>
+            {% endif %}
+            <name>{{ car }}</name>
+            <vendor>{{ car.brand }}</vendor>
+            <vendorCode>{{ car.model }}</vendorCode>
+            <description>-</description>
+            <param name="Марка">{{ car.brand }}</param>
+            <param name="Модель">{{ car.model }}</param>
+            <param name="Поколение">{{ car.generation }}</param>
+            <param name="Модификация">{{ car.modification }}</param>
+            <param name="Год">{{ car.modification.year }}</param>
+            <param name="Тип кузова">{{ car.modification.body_type }}</param>
+            <param name="Объем двигателя">{{ car.modification.volume }}</param>
+            <param name="Мощность двигателя">{{ car.modification.power }}</param>
+            <param name="Топливо">{{ car.modification.engine }}</param>
+            <param name="Расход топлива">{{ car.modification.fuel_consumption }}</param>
+            <param name="Разгон до 100 км/ч">{{ car.modification.acceleration }}</param>
+            <param name="Максимальная скорость">{{ car.modification.max_speed }}</param>
+            <param name="Коробка передач">{{ car.modification.transmission }}</param>
+            <param name="Привод">{{ car.modification.drive_unit }}</param>
+            <param name="Цена">{{ car.price }}</param>
+            <param name="Кредит">{{ car.credit_from }}</param>
+        </offer>
 
-</car>
+
+    </shop>
+</yml_catalog>

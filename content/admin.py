@@ -1,7 +1,12 @@
 from django.contrib import admin
 from content.models import Phone, Address, Email, Logo, WorkTime, TechCenter, Whatsapp, Title, Banner
 from content.models import About, Images, Best
-from content.models import DNS, HowToGo, Banks, Favicon
+from content.models import DNS, HowToGo, Banks, Favicon, VK
+
+
+@admin.register(VK)
+class VKAdmin(admin.ModelAdmin):
+    pass
 
 
 @admin.register(Favicon)

@@ -363,56 +363,56 @@
                     </h2>
                 {% endif %}
                 <div class="auto__list">
-                    {% for car_ in cars %}
+                    {% for car_ in olds %}
                         <div class="auto__item" data-pk="{{ car.pk }}">
-                            <div class="card" style="background-image: none; max-height: 390px; min-height: 390px;">
-                                <a href="{{ car.get_absolute_url }}" class="card__flex">
+                            <div class="card" style="background-image: none; max-height: 440px; min-height: 440px;">
+                                <a href="{{ car_.get_absolute_url }}" class="card__flex">
                                     <div class="card__title">
-                                        {{ car.brand.title }}
-                                        <nobr>{{ car.modification.volume }}</nobr>
-                                        {{ car.modification }}
+                                        {{ car_.brand.title }}
+                                        <nobr>{{ car_.modification.volume }}</nobr>
+                                        {{ car_.modification }}
                                     </div>
                                 </a>
 
-                                <a href="{{ car.get_absolute_url }}" class="brazzer-dady">
-                                    {% if car.car_images %}
-                                        {% for car_image in car.car_images.all %}
+                                <a href="{{ car_.get_absolute_url }}" class="brazzer-dady">
+                                    {% if car_.car_images %}
+                                        {% for car_image in car_.car_images.all %}
                                             <img src="{{ car_image.image.url }}"
-                                                 alt="{{ car.brand.title }}" class="image">
+                                                 alt="{{ car_.brand.title }}" class="image">
                                         {% endfor %}
                                     {% endif %}
                                 </a>
                                 <div class="card__price card__flex">
                                 <span class=" -bold"
-                                      style="max-width: 54%; width: 50%; align-self: end;font-size: 16px; transform: translateY(3px);">от {{ car.price }} &#8381</span>
-                                    {% if car.credit_from %}
+                                      style="max-width: 54%; width: 50%; align-self: end;font-size: 16px; transform: translateY(3px);">от {{ car_.price }} &#8381</span>
+                                    {% if car_.credit_from %}
                                         <div class=""
                                              style="width: 50%; max-width: 50%;font-size: 14px; display: flex; flex-direction: column;">
                                             <span>Кредит</span>
-                                            <span class="-bold bold_price">от {{ car.credit_from }} &#8381 мес.</span>
+                                            <span class="-bold bold_price">от {{ car_.credit_from }} &#8381 мес.</span>
                                         </div>
                                     {% endif %}
                                 </div>
                                 <div class="card__flex card__option-list" style="flex-direction: row;">
                                     <div class="card__option-item i-engine i-engine--m">
-                                        {{ car.modification.power }} л.с.
+                                        {{ car_.modification.power }} л.с.
                                     </div>
                                     <div class="card__option-item i-gas i-gas--m">
-                                        {{ car.modification.fuel_consumption }} л/км
+                                        {{ car_.modification.fuel_consumption }} л/км
                                     </div>
                                     <div class="card__option-item i-speed i-speed--m">
-                                        {{ car.modification.max_speed }} км/ч
+                                        {{ car_.modification.max_speed }} км/ч
                                     </div>
                                     <div class="card__option-item i-timer i-timer--m">
-                                        {{ car.modification.acceleration }}c.
+                                        {{ car_.modification.acceleration }}c.
                                     </div>
                                 </div>
                                 <div class="card__nav nav">
                                     <a class="card__polygon nav__buy" style="background: #CA0100; cursor: pointer;"
-                                       onclick="showModal('{{ car.get_first_image }}', '{{ car.price }}', '{{ car.pk }}')">
+                                       onclick="showModal('{{ car_.get_first_image }}', '{{ car_.price }}', '{{ car_.pk }}')">
                                         Резервировать
                                     </a>
-                                    <a href="{{ car.get_absolute_url }}" class="card__polygon nav__more">
+                                    <a href="{{ car_.get_absolute_url }}" class="card__polygon nav__more">
                                         Подробнее
                                     </a>
                                 </div>

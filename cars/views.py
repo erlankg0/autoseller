@@ -1,3 +1,5 @@
+import datetime
+
 from django.http import JsonResponse, HttpResponse
 from django.template.loader import get_template
 from django.views.generic import ListView, DetailView
@@ -13,7 +15,7 @@ class CarsListView(ListView):
 
     def get_queryset(self):
         queryset = super().get_queryset()
-        queryset = queryset.all()[0:12]
+        queryset = queryset.filter(is_active=True)
         return queryset
 
 
@@ -25,10 +27,7 @@ class NewCarsListView(ListView):
 
     def get_queryset(self):
         queryset = super().get_queryset()
-        queryset = queryset.filter(new=True)
-        queryset = queryset.filter(
-
-        )
+        queryset = queryset.filter(new=True, is_active=True)
         return queryset
 
 
@@ -40,7 +39,7 @@ class NewCarsByBrandListView(ListView):
 
     def get_queryset(self):
         queryset = super().get_queryset()
-        queryset = queryset.filter(new=True)
+        queryset = queryset.filter(new=True, is_active=True) # new=True, is_active=True - ��� ��������� ��������
         queryset = queryset.filter(brand__id=self.kwargs['brand_id'])
         return queryset
 
@@ -53,7 +52,7 @@ class UsedCarsByBrandListView(ListView):
 
     def get_queryset(self):
         queryset = super().get_queryset()
-        queryset = queryset.filter(new=False)
+        queryset = queryset.filter(new=False, is_active=True)
         queryset = queryset.filter(brand__id=self.kwargs['brand_id'])
         return queryset
 
@@ -72,8 +71,7 @@ class DetailCarView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         price = Car.objects.get(id=self.kwargs['pk']).price
-        context['cars'] = Car.objects.filter(price__lte=price).exclude(id=self.kwargs['pk']).order_by(
-            '-price')  # будут показаны все машины с ценой ниже текущей и не будут показаны текущая машина
+        context['olds'] = Car.objects.filter(price__lte=price).exclude(id=self.kwargs['pk'])[:4]
         return context
 
 
@@ -92,7 +90,9 @@ class UsedCarsListView(ListView):
 def car_xml_feed(request):
     cars = Car.objects.all()
     template = get_template('cars/xml/car_xml_feed.xml')
-    xml = template.render({'cars': cars})
+    # get current date time
+    date = datetime.datetime.now()
+    xml = template.render({'cars': cars, "data": date.strftime("%Y-%m-%d %H:%M:%S")})
     return HttpResponse(xml, content_type='application/xml')
 
 

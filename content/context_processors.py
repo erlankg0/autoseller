@@ -1,5 +1,10 @@
 from content.models import Phone, Address, Email, Logo, WorkTime, TechCenter, Whatsapp, Title, DNS, Banner, HowToGo, \
-    Banks, Favicon
+    Banks, Favicon, VK
+
+
+def get_vk_url(request):
+    vk = VK.objects.last()
+    return {'vk': vk}
 
 
 def get_phone_numbers(request):
@@ -55,6 +60,7 @@ def get_banners(request):
 def how_to_go(request):
     walks = HowToGo.objects.all()
     return {'walks': walks}
+
 
 def bank(request):
     banks = Banks.objects.all()

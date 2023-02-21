@@ -32,6 +32,132 @@
             width: 250px;
             border-radius: 15px;
         }
+
+        .advantages {
+            margin: 40px 0;
+        }
+
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 20px;
+            justify-content: center;
+        }
+
+        .card_ {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            justify-content: center;
+
+        }
+
+        .card_ img {
+            display: block;
+            margin: 0 auto;
+        }
+
+        .card_ .text {
+            text-align: center;
+        }
+
+
+        .card_::after {
+            content: "";
+            position: absolute;
+            width: 120px;
+            height: 1.5px;
+            background-color: #E5E5E5;
+            bottom: 150px;
+            left: 400px;
+        }
+
+        .card_:nth-child(3)::after {
+            display: none;
+        }
+
+        .card_:last-child::after {
+            display: none;
+        }
+
+        @media screen and (max-width: 1024px) {
+            .card_::after {
+                display: none;
+            }
+        }
+
+
+        @media (max-width: 1024px) {
+            .card-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .card-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 426px) {
+            .card-container {
+                grid-template-columns: repeat(2, 1fr);
+
+            }
+
+
+        }
+
+        @media screen and (max-width: 426px) {
+            .left-X-100 {
+                max-width: 280px;
+                max-height: 150px;
+            }
+
+            .title {
+                font-size: 24px;
+                line-height: 23px;
+            }
+        }
+
+        @media screen and (max-width: 376px) {
+            .hero {
+                height: 670px;
+            }
+        }
+
+        @media screen and (max-width: 321px) {
+            .hero {
+                height: 690px;
+            }
+
+            .-bold {
+                font-size: 16px;
+            }
+
+            .text {
+                font-size: 12px;
+            }
+
+            .left-X-100 {
+                max-width: 220px;
+            }
+        }
+
+
+        .benefits__card__desc p {
+            font-size: 16px;
+            line-height: 19px;
+            color: #000000;
+        }
+
+        .benefits__card__desc div {
+            font-size: 14px;
+            line-height: 16px;
+            color: rgba(0, 0, 0, 0.5);
+        }
     </style>
     <main class="main">
         <section class="hero" style="background-image: url('{% static "img/pics/trade-in.jpg" %}')">
@@ -46,12 +172,18 @@
                             <h1 class="hero-title">
                                 Госпрограмма Trade-in
                             </h1>
-
-                            <p class="hero-desc"
-                               style="color: rgba(255, 255, 255, 1); font-size: 20px; line-height: 23px;">
+                            <p class="hero-desc">
                                 Обменяйте свой автомобиль
                                 на новый с максимальной скидкой
                             </p>
+                            <div class="hero__discount">
+                                <p class="hero__discount__title">
+                                    от 1,9%
+                                </p>
+                                <p class="hero__discount__value">
+                                    По льготной ставке
+                                </p>
+                            </div>
                         </div>
                         <div class="main__item up-to">
                             <p class="hero-title discount">
@@ -105,22 +237,18 @@
         <section class="advantages">
             <div class="container">
                 <p class="title -bold">
-                    Преимущества покупки в Trade-in
+                    Преимущества программы
                 </p>
-                <div class="advantages-list">
-                    <div class="advantages-list__top">
-                        {% for advantage in advantages %}
-                            <div class="advantages-list__item">
-                                <div class="" style="padding: 20px; width: 100%;">
-                                    <img src="{{ advantage.image.url }}" alt="">
-                                    <p>{{ advantage.title }}</p>
-                                    <div>
-                                        {{ advantage.description }}
-                                    </div>
-                                </div>
-                            </div> <!-- advantages-list__item -->
-                        {% endfor %}
-                    </div>
+                <div class="card-container">
+                    {% for advantage in advantages %}
+                        <div class="card_">
+                            <img src="{{ advantage.image.url }}" alt="Card Image 1">
+                            <div class="">
+                                <h2 class="-bold" style="padding: 20px;">{{ advantage.title }}</h2>
+                                <p class="text">{{ advantage.description }}.</p>
+                            </div>
+                        </div>
+                    {% endfor %}
                 </div>
             </div>
         </section> <!-- advantages -->
@@ -211,7 +339,7 @@
                                 </select>
                             </div>
                             <div class="future_auto__item">
-                                <p class="title" style="color: #CA0100;">Скидка от 120 000 ₽ </p>
+                                <p class="title" style="color: #CA0100; opacity: 0;">Скидка от 120 000 ₽ </p>
                                 <div class="row_">
                                     <select class="select future_select" name="current_car_year">
                                         <option class="select2-results__option" value="">Год выпуска</option>

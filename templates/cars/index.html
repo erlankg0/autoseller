@@ -103,11 +103,13 @@
                     </div>
                 {% endfor %}
             </div>
+        {{ cars.paginator.page_range }}
+        {{ object_list.paginator.page_range }}
             <nav class="mt-4" aria-label="Page navigation sample">
                 <ul class="pagination" style="justify-content: center;">
                     {% if page_obj.has_other_pages %}
                         {% if page_obj.has_previous %}
-                            <li class="page-item disabled">
+                            <li class="page-item">
                                 <a class="page-link"
                                    href="?page={{ page_obj.previous_page_number }}">Назад</a>
                             </li>
@@ -150,7 +152,7 @@
                     </form>
                     <p class="sale__note">
                         Нажимая кнопку “Отправить” Вы даете согласие на обработку своих
-                        <a href="" class="">персональных данных</a>
+                        <a href="{% url 'privacy' %}" class="">персональных данных</a>
                     </p>
                 </div>
             </div>

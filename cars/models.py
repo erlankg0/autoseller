@@ -9,7 +9,7 @@ class Engine(models.Model):
         max_length=50,
         verbose_name='Название двигателя',
         help_text='Наименование двигателя (например, M20B25)',
-        unique=True,
+
     )
     fuel = models.ForeignKey(
         'Fuel',
@@ -229,7 +229,6 @@ class Modification(models.Model):
         max_length=50,
         verbose_name='Модификация',
         help_text='Модификация автомобиля (например, 320i)',
-        unique=True,
     )
     engine = models.ForeignKey(
         Engine,
@@ -435,6 +434,12 @@ class Other(models.Model):
 
 # Автомобиль на продажу
 class Car(models.Model):
+    # показывать в каталоге или нет
+    is_active = models.BooleanField(
+        verbose_name='Активный',
+        help_text='Истина, если автомобиль активен, иначе неактивен. По умолчанию активен',
+        default=True,
+    )
     new = models.BooleanField(
         verbose_name='Новый автомобиль или нет',
         help_text='Истина, если автомобиль новый, иначе Б/У. По умолчанию Б/У',
@@ -499,30 +504,40 @@ class Car(models.Model):
         verbose_name='Безопасность',
         help_text='Безопасность автомобиля',
         related_name='car_secure',
+        blank=True,
+        null=True,
     )
     exterior = models.ManyToManyField(
         Exterior,
         verbose_name='Экстерьер',
         help_text='Экстерьер автомобиля',
         related_name='car_exterior',
+        blank=True,
+        null=True,
     )
     interior = models.ManyToManyField(
         Interior,
         verbose_name='Интерьер',
         help_text='Интерьер автомобиля',
         related_name='car_interior',
+        blank=True,
+        null=True,
     )
     comfort = models.ManyToManyField(
         Comfort,
         verbose_name='Комфорт',
         help_text='Комфорт автомобиля',
         related_name='car_comfort',
+        blank=True,
+        null=True,
     )
     multimedia = models.ManyToManyField(
         Multimedia,
         verbose_name='Мультимедиа',
         help_text='Мультимедиа автомобиля',
         related_name='car_multimedia',
+        blank=True,
+        null=True,
     )
     other = models.ManyToManyField(
         Other,
@@ -541,7 +556,7 @@ class Car(models.Model):
         return reverse('car_detail', kwargs={'pk': self.pk})
 
     def __str__(self):
-        return f"{self.brand} {self.model} {self.generation} {self.modification}"
+        return f"{self.brand} {self.model} {self.modification}"
 
     class Meta:
         verbose_name = 'Автомобиль'
@@ -552,6 +567,7 @@ class CarImages(models.Model):
     image = models.ImageField(
         verbose_name='Изображение',
         help_text='Разрешение изображения должно быть 1920x1080',
+        max_length=255,
     )
     car = models.ForeignKey(
         Car,

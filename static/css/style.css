@@ -470,6 +470,17 @@ h6 {
     background-image: url("/static/img/whatsapp.svg");
 }
 
+.vk--s {
+    background-image: url("/static/img/VK_Compact_Logo_(2021-present).svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    max-width: 23px;
+    max-height: 23px;
+
+}
+
+
 .i-engine--l::before {
     background-image: url("/static/img/engine.svg");
 }

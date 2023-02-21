@@ -1,7 +1,13 @@
 from django.contrib import admin
 
 from credit.models import CreditRequest, TradeInRequest, Gift, CallBack, Competitively
-from credit.models import TermsBuy, TermsDoc, TermForBuy, Doc, Benefits, Advantages, BenefitsCredit, AdvantagesCredit
+from credit.models import TermsBuy, TermsDoc, TermForBuy, Doc, Benefits, Advantages, BenefitsCredit, AdvantagesCredit, \
+    CarReservation
+
+
+@admin.register(CarReservation)
+class CarReservationAdmin(admin.ModelAdmin):
+    pass
 
 
 @admin.register(AdvantagesCredit)

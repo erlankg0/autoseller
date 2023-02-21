@@ -128,7 +128,8 @@ class CarAdmin(admin.ModelAdmin):
     get_generation.short_description = 'Поколение'
     get_modification.short_description = 'Модификация'
 
-    list_display = ('new', 'get_brand', 'get_model', 'get_generation', 'price', 'get_year', 'get_modification')
+    list_display = (
+    'new', 'is_active', 'get_brand', 'get_model', 'get_generation', 'price', 'get_year', 'get_modification')
     list_display_links = ('get_brand', 'get_model', 'get_generation', 'get_year', 'get_modification')
-    list_editable = ('price', 'new',)
-    list_filter = ('price', 'mileage',)
+    list_editable = ('price', 'new', 'is_active')
+    list_filter = ('new', 'is_active', 'brand', 'price',)

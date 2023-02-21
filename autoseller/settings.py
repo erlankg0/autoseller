@@ -91,7 +91,7 @@ TEMPLATES = [
                 'blog.context.blogs',  # context processor for getting all blogs
                 'content.context_processors.bank',  # context processor for getting bank
                 'content.context_processors.get_favicon',  # context processor for getting all socials
-
+                'content.context_processors.get_vk_url',  # context processor for getting vk url
             ],
         },
     },
